@@ -18,6 +18,7 @@ namespace Common
         /// <summary>
         /// 验证码的最大长度
         /// </summary>
+        /// 
         public int MaxLength
         {
             get { return 10; }

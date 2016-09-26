@@ -23,6 +23,10 @@ namespace Web.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult CheckLogin()
+        {
+            return View();
+        }
 
         /// <summary>
         /// 获取图形验证码

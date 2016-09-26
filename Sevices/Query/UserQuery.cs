@@ -34,5 +34,16 @@ namespace Sevices
         }
 
 
+        /// <summary>
+        ///  用户登录
+        /// </summary>
+        /// <param name="sUserName">用户</param>
+        /// <param name="sPassWord">密码</param>
+        /// <returns></returns>
+        public User Login(string sUserName, string sPassWord)
+        {
+            var user = _server.db.User.Where(m => m.sUserName == sUserName && m.sPassWord == sPassWord).SingleOrDefault();
+            return user;
+        }
     }
 }

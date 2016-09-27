@@ -12,13 +12,11 @@ namespace Web.App_Start
         //
         // GET: /AdminBase/
 
-        public Result result
+        public Result result;
+
+        public AdminBaseController()
         {
-            get;
-            set;
+            result = new Result();
         }
-
-
-
     }
 }

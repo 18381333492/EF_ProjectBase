@@ -17,7 +17,7 @@
             </div>
             <div class="code">
                 <label>验证码：</label>
-                <input type="text" name="sImgCode" maxlength="5" tabindex="3" />
+                <input id="code" type="text" name="sImgCode" maxlength="5" tabindex="3" />
                 <div class="codeImg">
                     <img  src="/Admin/Home/GetImgCode" />
                 </div>
@@ -58,7 +58,7 @@
                  return;
              }
              i++;
-             $(this).attr("src", "/Admin/Home/GetImgCode?" + i + "");
+             $(this).attr("src", "/Admin/Home/GetImgCode/" + i + "");
          });
 
          //后台用户登录
@@ -67,7 +67,7 @@
              var sPassWord = $('.password input').val().trim();
              var sImgCode = $('.code input').val().trim();
              $.ajax({
-                 url: '',
+                 url: '/Admin/Home/CheckLogin',
                  type: 'POST',
                  dataType: 'json',
                  data: {
@@ -75,8 +75,11 @@
                      sPassWord, sPassWord,
                      sImgCode: sImgCode
                      },
-                 success:function (res) {
+                 success: function (res) {
                      if (res.success) {
+                         alert(res.info);
+                     }
+                     else {
                          alert(res.info);
                      }
                  },

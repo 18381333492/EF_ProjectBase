@@ -19,15 +19,6 @@ namespace Web.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            UserService _server = new UserService();
-            User user = new User();
-            user.ID=Guid.NewGuid();
-            user.sPassWord = "5522915+.q";
-            user.sPhone = "18381333492";
-            user.sUserName = "Admin";
-            user.bState = true;
-            user.dInsertTime = DateTime.Now;
-            _server.Add(user);
             return View();
         }
 

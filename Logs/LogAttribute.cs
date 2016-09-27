@@ -25,6 +25,7 @@ namespace Logs
 	 */
     public class LogAttribute : Attribute
     {
+
         /*
          * 操作的模块名字
          */

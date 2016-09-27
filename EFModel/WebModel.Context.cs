@@ -12,8 +12,6 @@ namespace EFModel
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
     
     public partial class Entities : DbContext
     {
@@ -28,39 +26,5 @@ namespace EFModel
         }
     
         public virtual DbSet<User> User { get; set; }
-    
-
-        public virtual int Proc_PageQuery(string sTableName, Nullable<int> page, Nullable<int> rows, string sSelectFields, string sOrderField, string sOrder, string sWhereFields)
-        {
-            var sTableNameParameter = sTableName != null ?
-                new ObjectParameter("sTableName", sTableName) :
-                new ObjectParameter("sTableName", typeof(string));
-    
-            var pageParameter = page.HasValue ?
-                new ObjectParameter("page", page) :
-                new ObjectParameter("page", typeof(int));
-    
-            var rowsParameter = rows.HasValue ?
-                new ObjectParameter("rows", rows) :
-                new ObjectParameter("rows", typeof(int));
-    
-            var sSelectFieldsParameter = sSelectFields != null ?
-                new ObjectParameter("sSelectFields", sSelectFields) :
-                new ObjectParameter("sSelectFields", typeof(string));
-    
-            var sOrderFieldParameter = sOrderField != null ?
-                new ObjectParameter("sOrderField", sOrderField) :
-                new ObjectParameter("sOrderField", typeof(string));
-    
-            var sOrderParameter = sOrder != null ?
-                new ObjectParameter("sOrder", sOrder) :
-                new ObjectParameter("sOrder", typeof(string));
-    
-            var sWhereFieldsParameter = sWhereFields != null ?
-                new ObjectParameter("sWhereFields", sWhereFields) :
-                new ObjectParameter("sWhereFields", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Proc_PageQuery", sTableNameParameter, pageParameter, rowsParameter, sSelectFieldsParameter, sOrderFieldParameter, sOrderParameter, sWhereFieldsParameter);
-        }
     }
 }

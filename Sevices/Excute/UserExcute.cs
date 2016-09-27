@@ -27,13 +27,6 @@ namespace Sevices
         [Log("用户",Operate.Create)]
         public int Add(User item)
         {
-            item.ID = Guid.NewGuid();
-            item.sPassWord = string.Empty;
-            item.sPhone = "18381333492";
-            item.sRoleID = Guid.NewGuid();
-            item.sUserName = "TT";
-            item.bState = true;
-            item.bIsDeleted = false;
             _server.Add<User>(item);
             return _server.SaveChange(this,"Add");      
         }

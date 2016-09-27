@@ -29,6 +29,7 @@ namespace Common
         public int MinLength
         {
             get { return 1; }
+
         }
 
         /// <summary>

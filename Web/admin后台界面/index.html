@@ -84,7 +84,7 @@
             overflow-x: hidden;
             background: url(images/main/leftbg.jpg) left top repeat-y #f2f0f5;
             width: 194px;
-            height:1000px;
+            height:auto
         }
     </style>
     <div id="tt" onselectstart="return false;" ondragstart="return false;" oncontextmenu="return false;">
@@ -132,10 +132,37 @@
     <div style="overflow-x:hidden; background:url(images/main/bottombg.jpg) repeat-x top left;" onselectstart="return false" oncontextmenu=return(false)>
         <table width="100%" border="0" cellspacing="0" cellpadding="0" id="footer">
             <tr>
-                <td align="left" valign="middle" class="footer_pad">COPYRIGHT©2012    版权所有 北京**科技发展有限公司 </td>
+                <td align="left" style="text-align:center" valign="middle" class="footer_pad">COPYRIGHT©2012    版权所有 北京**科技发展有限公司 </td>
                 <td align="right" valign="middle" class="footer_pad"><img src="images/main/why.gif" width="12" height="12" alt="疑问图标" align="absmiddle">&nbsp;&nbsp;如有疑问请您联系TEL：010-88312038-8015</td>
             </tr>
         </table>
     </div>
 </body>
+</html>
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>网站后台管理系统</title>
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link href="css/css.css" type="text/css" rel="stylesheet" />
+</head>
+<!--框架样式-->
+<frameset rows="95,*,30" cols="*" frameborder="no" border="0" framespacing="0">
+    <!--top样式-->
+    <frame src="top.html" name="topframe" scrolling="no" noresize id="topframe" title="topframe" />
+    <!--contact样式-->
+    <frameset id="attachucp" framespacing="0" border="0" frameborder="no" cols="194,12,*" rows="*">
+        <frame scrolling="auto" noresize="" frameborder="no" name="leftFrame" src="left.html"></frame>
+        <frame id="leftbar" scrolling="no" noresize="" name="switchFrame" src="swich.html"></frame>
+        <frame scrolling="auto" noresize="" border="0" name="mainFrame" src="main.html"></frame>
+    </frameset>
+    <!--bottom样式-->
+    <frame src="bottom.html" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" title="bottomFrame" />
+</frameset>
+<noframes></noframes>
+<!--不可以删除-->
 </html>

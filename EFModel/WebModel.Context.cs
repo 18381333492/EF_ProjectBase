@@ -26,5 +26,6 @@ namespace EFModel
         }
     
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Menus> Menus { get; set; }
     }
 }

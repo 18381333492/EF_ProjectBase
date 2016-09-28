@@ -3,166 +3,132 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>网站后台管理系统</title>
-<link rel="shortcut icon" href="images/favicon.ico" />
-<link href="css/css.css" type="text/css" rel="stylesheet" />
-    <style>
-        #footer {
-            font-size: 12px;
-        }
-
-        .footer_pad {
-            padding: 7px 9px 5px 9px;
-        }
-    </style>
-</head>
-<body onselectstart="return false" oncontextmenu=return(false) style="overflow-x:hidden;">
-    <!--header-->
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="header">
-        <tr>
-            <td rowspan="2" align="left" valign="top" id="logo"><img src="images/main/logo.jpg" width="74" height="64"></td>
-            <td align="left" valign="bottom">
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td align="left" valign="bottom" id="header-name">侯马经济开发区</td>
-                        <td align="right" valign="top" id="header-right">
-                            <a href="index.html" target="topFrame" onFocus="this.blur()" class="admin-out">注销</a>
-                            <a href="index.html" target="top" onFocus="this.blur()" class="admin-home">管理首页</a>
-                            <a href="index.html" target="_blank" onFocus="this.blur()" class="admin-index">网站首页</a>
-                            <span>
-                                <!-- 日历 -->
-                                <SCRIPT type=text/javascript src="js/clock.js"></SCRIPT>
-                                <SCRIPT type=text/javascript>showcal();</SCRIPT>
-                            </span>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td align="left" valign="bottom">
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td align="left" valign="top" id="header-admin">后台管理系统</td>
-                        <td align="left" valign="bottom" id="header-menu">
-                            <a href="index.html" target="left" onFocus="this.blur()" id="menuon">后台首页</a>
-                            <a href="index.html" target="left" onFocus="this.blur()">用户管理</a>
-                            <a href="index.html" target="left" onFocus="this.blur()">栏目管理</a>
-                            <a href="index.html" target="left" onFocus="this.blur()">信息管理</a>
-                            <a href="index.html" target="left" onFocus="this.blur()">留言管理</a>
-                            <a href="index.html" target="left" onFocus="this.blur()">附件管理</a>
-                            <a href="index.html" target="left" onFocus="this.blur()">站点管理</a>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <!--center-->
-    <script type="text/javascript" src="js/sdmenu.js"></script>
+    <script src="/Areas/Admin/Content/easyui/jquery.min.js"></script>
+    <script src="/Areas/Admin/Content/easyui/jquery.easyui.min.js"></script>
+    <link href="/Areas/Admin/Content/easyui/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="/Areas/Admin/Content/easyui/themes/icon.css" rel="stylesheet" />
+    <link href="/Areas/Admin/Content/Index/css/css.css" rel="stylesheet" />
+    <script src="/Areas/Admin/Content/Index/js/sdmenu.js"></script>
+    <script type=text/javascript src="/Areas/Admin/Content/Index/js/clock.js"></script>
     <script type="text/javascript">
 	// <![CDATA[
-	var myMenu;
-	window.onload = function() {
-		myMenu = new SDMenu("my_menu");
-		myMenu.init();
+	      var myMenu;
+           window.onload = function() {
+		   myMenu = new SDMenu("my_menu");
+		   myMenu.init();
+		   $('ul').attr("style", "height:33px");
+		   $('ul .tabs-inner').attr("style", "height: 33px; line-height: 33px");
 	};
 	// ]]>
     </script>
-    <style type=text/css>
-        html {
-            SCROLLBAR-FACE-COLOR: #538ec6;
-            SCROLLBAR-HIGHLIGHT-COLOR: #dce5f0;
-            SCROLLBAR-SHADOW-COLOR: #2c6daa;
-            SCROLLBAR-3DLIGHT-COLOR: #dce5f0;
-            SCROLLBAR-ARROW-COLOR: #2c6daa;
-            SCROLLBAR-TRACK-COLOR: #dce5f0;
-            SCROLLBAR-DARKSHADOW-COLOR: #dce5f0;
-            overflow-x: hidden;
-        }
-
-        #tt{
-            overflow-x: hidden;
-            background: url(images/main/leftbg.jpg) left top repeat-y #f2f0f5;
-            width: 194px;
-            height:auto
-        }
-    </style>
-    <div id="tt" onselectstart="return false;" ondragstart="return false;" oncontextmenu="return false;">
-        <div id="left-top">
-            <div><img src="images/main/member.gif" width="44" height="44" /></div>
-            <span>用户：admin<br>角色：超级管理员</span>
-        </div>
-        <div style="float: left" id="my_menu" class="sdmenu">
-            <div class="collapsed">
-                <span>系统设置</span>
-                <a href="main.html" target="mainFrame" onFocus="this.blur()">后台首页</a>
-                <a href="main_list.html" target="mainFrame" onFocus="this.blur()">列表页</a>
-                <a href="main_info.html" target="mainFrame" onFocus="this.blur()">列表详细页</a>
-                <a href="main_message.html" target="mainFrame" onFocus="this.blur()">留言页</a>
-                <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">栏目管理</a>
-            </div>
-            <div>
-                <span>系统设置</span>
-                <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
-                <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
-                <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
-                <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
-            </div>
-            <div>
-                <span>系统设置</span>
-                <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
-                <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
-                <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
-                <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
-            </div>
-            <div>
-                <span>系统设置</span>
-                <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
-                <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
-                <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
-                <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
-            </div>
-        </div>
-    </div>
-
-  
-    
-
-    <!--bottom-->
-    <div style="overflow-x:hidden; background:url(images/main/bottombg.jpg) repeat-x top left;" onselectstart="return false" oncontextmenu=return(false)>
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="footer">
-            <tr>
-                <td align="left" style="text-align:center" valign="middle" class="footer_pad">COPYRIGHT©2012    版权所有 北京**科技发展有限公司 </td>
-                <td align="right" valign="middle" class="footer_pad"><img src="images/main/why.gif" width="12" height="12" alt="疑问图标" align="absmiddle">&nbsp;&nbsp;如有疑问请您联系TEL：010-88312038-8015</td>
-            </tr>
-        </table>
-    </div>
-</body>
-</html>
-
-
-
-<!doctype html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>网站后台管理系统</title>
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link href="css/css.css" type="text/css" rel="stylesheet" />
 </head>
-<!--框架样式-->
-<frameset rows="95,*,30" cols="*" frameborder="no" border="0" framespacing="0">
-    <!--top样式-->
-    <frame src="top.html" name="topframe" scrolling="no" noresize id="topframe" title="topframe" />
-    <!--contact样式-->
-    <frameset id="attachucp" framespacing="0" border="0" frameborder="no" cols="194,12,*" rows="*">
-        <frame scrolling="auto" noresize="" frameborder="no" name="leftFrame" src="left.html"></frame>
-        <frame id="leftbar" scrolling="no" noresize="" name="switchFrame" src="swich.html"></frame>
-        <frame scrolling="auto" noresize="" border="0" name="mainFrame" src="main.html"></frame>
-    </frameset>
-    <!--bottom样式-->
-    <frame src="bottom.html" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" title="bottomFrame" />
-</frameset>
-<noframes></noframes>
-<!--不可以删除-->
+<body onselectstart="return false" oncontextmenu=return(false)>
+    <div class="easyui-layout" data-options="fit:'true',border:'false'">
+        <!--header-->
+        <div data-options="region:'north',border:'false'" style="height:98px;">
+            <div style="overflow-x:hidden;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" id="header">
+                    <tr>
+                        <td rowspan="2" align="left" valign="top" id="logo"><img src="/Areas/Admin/Content/Index/images/main/logo.jpg" width="74" height="64"></td>
+                        <td align="left" valign="bottom">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" valign="bottom" id="header-name">侯马经济开发区</td>
+                                    <td align="right" valign="top" id="header-right">
+                                        <a href="index.html" target="topFrame" onFocus="this.blur()" class="admin-out">注销</a>
+                                        <a href="index.html" target="top" onFocus="this.blur()" class="admin-home">管理首页</a>
+                                        <a href="index.html" target="_blank" onFocus="this.blur()" class="admin-index">网站首页</a>
+                                        <span>
+                                            <!-- 日历 -->
+                                            <script type=text/javascript>showcal();</script>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="bottom">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="left" valign="top" id="header-admin">后台管理系统</td>
+                                    <td>
+                                        您的位置：<span>首页</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!--Left-->
+        <div data-options="region:'west',border:false" style="width:194px;">  
+            <div class="MenuStyle">
+                <div id="left-top">
+                    <div><img src="/Areas/Admin/Content/Index/images/main/member.gif" width="44" height="44" /></div>
+                    <span>用户：admin<br>角色：超级管理员</span>
+                </div>
+                <div style="float:left" id="my_menu" class="sdmenu">
+                    <div class="collapsed">
+                        <span>系统设置</span>
+                        <a href="main.html" target="mainFrame" onFocus="this.blur()">后台首页</a>
+                        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">列表页</a>
+                        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">列表详细页</a>
+                        <a href="main_message.html" target="mainFrame" onFocus="this.blur()">留言页</a>
+                        <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">栏目管理</a>
+                    </div>
+                    <div>
+                        <span>系统设置</span>
+                        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
+                        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
+                        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
+                        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
+                    </div>
+                    <div>
+                        <span>系统设置</span>
+                        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
+                        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
+                        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
+                        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
+                    </div>
+                    <div>
+                        <span>系统设置</span>
+                        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
+                        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
+                        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
+                        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!--<!--Center-->
+        <div data-options="region:'center'">
+                <div class="easyui-tabs" data-options="fit:'true'">
+                    <div title="首页"  style="padding:20px;">
+                        tab1
+                    </div>
+                    <div title="用户管理" data-options="closable:true" style="overflow:auto;padding:20px;">
+                        tab2
+                    </div>
+                    <div title="会员管理" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;">
+                        tab3
+                    </div>
+                </div>
+            </div>
+        <!--bottom-->
+        <div data-options="region:'south',border:false" style="height:32px;">
+            <div style="overflow-x:hidden; background:url(/Areas/Admin/Content/Index/images/main/bottombg.jpg) repeat-x top left;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" id="footer">
+                    <tr>
+                        <td align="left" style="text-align:center" valign="middle" class="footer_pad">COPYRIGHT©2012    版权所有 北京**科技发展有限公司 </td>
+                        <td align="right" valign="middle" class="footer_pad"><img src="/Areas/Admin/Content/Index/images/main/why.gif" width="12" height="12" alt="疑问图标" align="absmiddle">&nbsp;&nbsp;如有疑问请您联系TEL：010-88312038-8015</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+     </div>
+    </body>
 </html>
+

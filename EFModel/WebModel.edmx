@@ -5,25 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="EF_ProjectBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--生成过程中发现错误:
-警告 6002: 表/视图“EF_ProjectBase.dbo.Menus”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="Menus">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="sMenuName" />
-            <PropertyRef Name="sMenuUrl" />
-            <PropertyRef Name="sParentMenuId" />
-            <PropertyRef Name="sMenuIcon" />
-            <PropertyRef Name="dInsertTime" />
-            <PropertyRef Name="bIsDeleted" />
           </Key>
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="sMenuName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="sMenuUrl" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="sParentMenuId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="sParentMenuId" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="sMenuIcon" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="dInsertTime" Type="datetime" Nullable="false" />
           <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+          <Property Name="iOrder" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -39,18 +32,8 @@
           <Property Name="dInsertTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityContainer Name="EF_ProjectBaseModelStoreContainer">
+          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Menus" EntityType="Self.Menus" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Menus].[ID] AS [ID], 
-    [Menus].[sMenuName] AS [sMenuName], 
-    [Menus].[sMenuUrl] AS [sMenuUrl], 
-    [Menus].[sParentMenuId] AS [sParentMenuId], 
-    [Menus].[sMenuIcon] AS [sMenuIcon], 
-    [Menus].[dInsertTime] AS [dInsertTime], 
-    [Menus].[bIsDeleted] AS [bIsDeleted]
-    FROM [dbo].[Menus] AS [Menus]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -76,20 +59,15 @@
         <EntityType Name="Menus">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="sMenuName" />
-            <PropertyRef Name="sMenuUrl" />
-            <PropertyRef Name="sParentMenuId" />
-            <PropertyRef Name="sMenuIcon" />
-            <PropertyRef Name="dInsertTime" />
-            <PropertyRef Name="bIsDeleted" />
           </Key>
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="sMenuName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="sMenuUrl" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="sParentMenuId" Type="Guid" Nullable="false" />
+          <Property Name="sParentMenuId" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="sMenuIcon" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="iOrder" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -114,6 +92,7 @@
           <EntitySetMapping Name="Menus">
             <EntityTypeMapping TypeName="EF_ProjectBaseModel.Menus">
               <MappingFragment StoreEntitySet="Menus">
+                <ScalarProperty Name="iOrder" ColumnName="iOrder" />
                 <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
                 <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
                 <ScalarProperty Name="sMenuIcon" ColumnName="sMenuIcon" />

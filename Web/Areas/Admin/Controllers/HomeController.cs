@@ -46,16 +46,15 @@ namespace Web.Areas.Admin.Controllers
                         ID = user.ID,
                         sUserName = user.sUserName
                     };
+                    result.success = true;
                 }
                 else
                 {
-                    result.success = false;
                     result.info = "用户名或密码错误!";
                 }
             }
             else
             {
-                result.success = false;
                 result.info = "验证码错误!";
             }
             return Content(result.toJson());
@@ -69,7 +68,7 @@ namespace Web.Areas.Admin.Controllers
         {
             string sCode = C_ImgCode.CreateValidateCode(5);
             var code=C_ImgCode.CreateValidateGraphic(sCode);
-            Session["ImgCode"] = code;
+            Session["ImgCode"] = sCode;
             return File(code, "@image/jpeg");
         }
    

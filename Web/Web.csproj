@@ -145,6 +145,7 @@
     <Content Include="admin后台界面\bottom.html" />
     <Content Include="Areas\Admin\Content\Index\css\css.css" />
     <Content Include="Areas\Admin\Content\Index\css\main.css" />
+    <Content Include="Areas\Admin\Content\Index\css\tablestyle.css" />
     <Content Include="Areas\Admin\Content\Index\images\main\add.jpg" />
     <Content Include="Areas\Admin\Content\Index\images\main\addinfoblack.jpg" />
     <Content Include="Areas\Admin\Content\Index\images\main\addinfoblue.jpg" />
@@ -205,6 +206,7 @@
     <Content Include="Areas\Admin\Content\Login\css\Login.css" />
     <Content Include="Areas\Admin\Content\Login\demo.html" />
     <Content Include="Areas\Admin\js\Home\Index.js" />
+    <Content Include="Areas\Admin\js\Home\Login.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -268,6 +270,8 @@
     <Content Include="Areas\Pays\Views\Web.config" />
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Menus\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Menus\Add.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -283,6 +287,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\mylib\eui.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -313,7 +318,6 @@
     <Folder Include="Areas\Pays\Views\Shared\" />
     <Folder Include="Areas\WeiXin\Views\Shared\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Scripts\mylib\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

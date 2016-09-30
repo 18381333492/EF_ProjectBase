@@ -17,9 +17,10 @@ namespace EFModel
         public System.Guid ID { get; set; }
         public string sMenuName { get; set; }
         public string sMenuUrl { get; set; }
-        public System.Guid sParentMenuId { get; set; }
+        public string sParentMenuId { get; set; }
         public string sMenuIcon { get; set; }
         public System.DateTime dInsertTime { get; set; }
         public bool bIsDeleted { get; set; }
+        public int iOrder { get; set; }
     }
 }

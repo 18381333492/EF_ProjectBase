@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common;
+using Logs;
 
 namespace Sevices
 {
@@ -21,6 +22,21 @@ namespace Sevices
         {
             _server = new ServicesBase();
         }
+
+
+        /// <summary>
+        /// 添加菜单
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <returns></returns>
+        [Log("菜单",Operate.Create)]
+        public int Add(Menus menu)
+        {
+            _server.Add<Menus>(menu);
+            return _server.SaveChange(this,"Add");
+        }
+
+
 
 
     }

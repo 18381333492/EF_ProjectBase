@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "菜单列表";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<form id="ModuleSearchForm" style="height:100%">
+    <table id="Module"></table>
+    <div id="ModuleToolbar">
+        <a class="easyui-linkbutton" handle="Insert" data-options="iconCls:'icon-add',plain:'true'">新增</a>&nbsp
+        <a class="easyui-linkbutton" handle="Update" data-options="iconCls:'icon-edit',plain:'true'">编辑</a>&nbsp
+        <a class="easyui-linkbutton" handle="Cancel" data-options="iconCls:'icon-remove',plain:'true'">删除</a>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        //var f = new eui();
+        //var config = f.url("Module");//配置按钮的url
+        //var form = {
+        //    search: $('#ModuleSearchForm'),
+        //    add: $('#AddFrom'),
+        //    edit: $('#EditFrom')
+        //};
+        /***菜单列表数据加载***/
+        var config = {};
+        config.grid = $('#Module');
+        config.list="/Admin/Menus/List"
+        config.grid.treegrid({
+            url: config.list,
+            toolbar: '#ModuleToolbar',
+            idField: "ID",//必需的
+            treeField: "sMenuName",
+            striped: true,
+            singleSelect: true,
+            //onDblClickRow: onDoubleClick,
+            loadMsg: "正在加载...",
+            columns: [[
+                { field: 'sMenuName', title: '菜单名称', align: 'center', width: 250 },// formatter: sModuleName },
+                { field: 'sModulePath', title: '菜单地址', align: 'center', width: 250 },
+                { field: 'iOrder', title: '排序ID', align: 'center', width: 80 },
+                { field: 'dInsertTime', title: '添加时间', align: 'center', width: 200 }
+            ]],
+        });
+
+        ///***绑定按钮事件***/
+        //$('.easyui-linkbutton').click(function () { f.linkbutton(config, $(this).attr("handle"), 1) });
+        ///*
+        //* 添加菜单的处理.
+        //* author [汤台]
+        //* version 1.0.0
+        //*/
+        //config.Insert = function () {
+        //    var $this = f.dialog(config.add, '新增菜单', function () {
+        //        f.check(form.add);//验证表单
+        //        $this.dialog('close');
+        //        config.grid.treegrid('reload');
+        //    })
+        //}
+        ///*
+        //* 编辑菜单的处理.
+        //* author [汤台]
+        //* version 1.0.0
+        //*/
+        //config.Update = function () {
+        //    var $this = f.dialog(config.add, '编辑菜单', function () {
+        //        f.check(form.edit);//验证表单
+        //        f.post(config.insert, '', function (r) {
+        //        });
+        //        $this.dialog('close');
+        //        config.grid.treegrid('reload');
+        //    });
+        //}
+        ///*
+        //* 删除菜单的处理.
+        //* author [汤台]
+        //* version 1.0.0
+        //*/
+        //config.Cancel = function () {
+        //    f.dialog(config.add, '删除菜单', function () {
+        //        f.alert("OK");
+        //    })
+        //}
+    });
+</script>

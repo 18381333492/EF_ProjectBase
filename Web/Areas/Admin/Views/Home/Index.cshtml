@@ -5,7 +5,9 @@
 <link href="/Areas/Admin/Content/Index/css/css.css" rel="stylesheet" />
 <script src="/Areas/Admin/Content/Index/js/sdmenu.js"></script>
 <script type=text/javascript src="/Areas/Admin/Content/Index/js/clock.js"></script>
+<script src="~/Scripts/mylib/eui.js"></script>
 <script src="~/Areas/Admin/js/Home/Index.js"></script>
+
 <body onselectstart="return false" oncontextmenu=return(false)>
     <div class="easyui-layout" data-options="fit:'true',border:'false'">
         <!--header-->
@@ -55,54 +57,23 @@
                     <span>用户：admin<br>角色：超级管理员</span>
                 </div>
                 <div style="float:left" id="my_menu" class="sdmenu">
-                    <div class="collapsed">
-                        <span>系统设置</span>
-                        <a href="main.html" target="mainFrame" onFocus="this.blur()">后台首页</a>
-                        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">列表页</a>
-                        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">列表详细页</a>
-                        <a href="main_message.html" target="mainFrame" onFocus="this.blur()">留言页</a>
-                        <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">栏目管理</a>
-                    </div>
-                    <div>
-                        <span>系统设置</span>
-                        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
-                        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
-                        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
-                        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
-                    </div>
-                    <div>
-                        <span>系统设置</span>
-                        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
-                        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
-                        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
-                        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
-                    </div>
-                    <div>
-                        <span>系统设置</span>
-                        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
-                        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
-                        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
-                        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
-                    </div>
+                    <!--
+                    菜单列表    
+                    -->
                 </div>
             </div>
         </div>
+
         <!--<!--Center-->
         <div data-options="region:'center'">
-            <div class="easyui-tabs" data-options="fit:'true'">
+            <div id="tabs" class="easyui-tabs" data-options="fit:'true'">
                 <div title="首页" style="padding:10px;">
                     tab1
                 </div>
-                <div title="用户管理" data-options="closable:true" style="overflow:auto;padding:20px;">
-                    tab2
-                </div>
-                <div title="会员管理" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;">
-                    tab3
-                </div>
             </div>
         </div>
-        <!--bottom-->
 
+        <!--bottom-->
         <div data-options="region:'south',border:false" style="height:32px;">
             <div style="overflow-x:hidden; background:url(/Areas/Admin/Content/Index/images/main/bottombg.jpg) repeat-x top left;">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" id="footer">

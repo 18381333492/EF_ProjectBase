@@ -11,17 +11,87 @@ namespace Sevices
 {
     public partial class MenusService
     {
+        public class MenuData
+        {
+            public string sMenuName;
+            public List<Data> Menus=new List<Data>();
+        }
 
-       
+        public class Data
+        {
+            public string sMenuName;
+            public string sMenuLink;
+        }
+
         /// <summary>
         /// 根据用户权限获取获取菜单列表数据
         /// </summary>
         /// <returns></returns>
         public string GetMenusList()
         {
-            var menu = _server.db.Menus;
-            return string.Empty;
+            try
+            {
+                var MainMenu = new List<MenuData>();
+                var menu = _server.db.Menus.
+                    Where(m => m.sParentMenuId == string.Empty&&m.bIsDeleted==false).
+                    OrderBy(m => m.iOrder).ToList();
+                var childMenu = _server.db.Menus.
+                    Where(m => m.sParentMenuId != string.Empty&& m.bIsDeleted == false).
+                    OrderBy(m => m.iOrder).ToList();
+                //组装菜单数据
+                foreach (var m in menu)
+                {
+                    var Menu = new MenuData();
+                    Menu.sMenuName = m.sMenuName;
+                    foreach (var k in childMenu)
+                    {
+                        if (k.sParentMenuId.ToLower()== m.ID.ToString())
+                        {
+                            Menu.Menus.Add(new Data()
+                            {
+                                sMenuName = k.sMenuName,
+                                sMenuLink = k.sMenuUrl
+                            });
+                        }
+                    }
+                    MainMenu.Add(Menu);
+                }
+                return C_Json.toJson(MainMenu);
+            }
+            catch (Exception e)
+            {
+                Logs.LogHelper.ErrorLog(e);
+                return string.Empty;
+            }
         }
+
+        
+        /// <summary>
+        /// 获取所有的菜单列表数据
+        /// </summary>
+        /// <returns></returns>
+        public string GetList()
+        {
+            try
+            {
+                var entry = from m in _server.db.Menus
+                            where m.bIsDeleted == false
+                            orderby m.iOrder
+                            select m;
+                object array =C_Json.Parse(C_Json.toJson(entry.ToList()));
+                var Dic = new Dictionary<string, object>();
+                Dic.Add("total", entry.Count());
+                Dic.Add("rows", array);
+                return  C_Json.JsonString(Dic).Replace("sParentMenuId", "_parentId");
+                
+            }
+            catch (Exception e)
+            {
+                Logs.LogHelper.ErrorLog(e);
+                return string.Empty;
+            }
+        }
+        
 
         /// <summary>
         /// 获取用户数据
@@ -32,6 +102,7 @@ namespace Sevices
         {
             return _server.db.User.Find(ID);
         }
+
 
 
         /// <summary>

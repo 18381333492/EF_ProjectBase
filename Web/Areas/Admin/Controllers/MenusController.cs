@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EFModel;
+using Sevices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,15 +18,65 @@ namespace Web.Areas.Admin.Controllers
         //
         // GET: /Admin/Menus/
 
-        
+        private MenusService server;
+
+        public MenusController()
+        {
+            server = new MenusService();
+        }
+
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 获取菜单列表数据
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult List()
+        {
+            string data = server.GetList();
+            return Content(data);
+        }
+
         /// <summary>
         /// 获取菜单栏目
         /// </summary>
         /// <returns></returns>
         public ActionResult GetMenusList()
         {
-            return Content(string.Empty);
+            result.data = server.GetMenusList();
+            if (!string.IsNullOrEmpty(result.data.ToString()))
+            {
+                result.success = true;
+            }
+            else
+            {
+                result.info = "菜单加载失败!";
+            }   
+            return Content(result.toJson());
         }
 
+        /// <summary>
+        /// 添加菜单
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <returns></returns>
+        public ActionResult Insert(Menus menu)
+        {
+            int res=server.Add(menu);
+            if (res>0)
+            {
+                result.success = true;
+            }
+            return Content(result.toJson());
+        }
     }
 }

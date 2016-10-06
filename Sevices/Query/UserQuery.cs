@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 
 namespace Sevices
 {
@@ -42,6 +43,7 @@ namespace Sevices
         /// <returns></returns>
         public User Login(string sUserName, string sPassWord)
         {
+            sPassWord = C_String.MD5(sPassWord);
             var user = _server.db.User.Where(m => m.sUserName == sUserName && m.sPassWord == sPassWord).SingleOrDefault();
             return user;
         }

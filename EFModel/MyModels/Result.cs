@@ -12,35 +12,22 @@ namespace EFModel.MyModels
         /// <summary>
         /// 需要返回的数据
         /// </summary>
-        public object data
-        {
-            get;
-            set;
-        }
+        public object data = null;
 
         /// <summary>
         /// 信息描述
         /// </summary>
-        public string info
-        {
-            get { return "操作成功"; }
-            set { }
-        }
+        public string info = "操作成功";
 
         /// <summary>
         /// 成功标识
         /// </summary>
-        public bool success
-        {
-            get { return false; }
-            set { }
-        } 
-
+        public bool success = false;
 
         public string toJson()
         {
             return C_Json.toJson(this);
         }
     }
-    
+
 }

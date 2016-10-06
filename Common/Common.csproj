@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="C_ImgCode.cs" />
     <Compile Include="C_Json.cs" />
+    <Compile Include="C_String.cs" />
+    <Compile Include="C_TreeData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="EF_ProjectBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="sMenuName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sMenuUrl" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="sParentMenuId" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="sMenuIcon" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+          <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+          <Property Name="iOrder" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
@@ -18,16 +31,8 @@
           <Property Name="bIsDeleted" Type="bit" Nullable="false" />
           <Property Name="dInsertTime" Type="datetime" Nullable="false" />
         </EntityType>
-        <Function Name="Proc_PageQuery" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="sTableName" Type="nvarchar" Mode="In" />
-          <Parameter Name="page" Type="int" Mode="In" />
-          <Parameter Name="rows" Type="int" Mode="In" />
-          <Parameter Name="sSelectFields" Type="nvarchar(max)" Mode="In" />
-          <Parameter Name="sOrderField" Type="nvarchar" Mode="In" />
-          <Parameter Name="sOrder" Type="nvarchar" Mode="In" />
-          <Parameter Name="sWhereFields" Type="nvarchar(max)" Mode="In" />
-        </Function>
         <EntityContainer Name="EF_ProjectBaseModelStoreContainer">
+          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -49,16 +54,21 @@
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="User" EntityType="Self.User" />
-          <FunctionImport Name="Proc_PageQuery">
-            <Parameter Name="sTableName" Mode="In" Type="String" />
-            <Parameter Name="page" Mode="In" Type="Int32" />
-            <Parameter Name="rows" Mode="In" Type="Int32" />
-            <Parameter Name="sSelectFields" Mode="In" Type="String" />
-            <Parameter Name="sOrderField" Mode="In" Type="String" />
-            <Parameter Name="sOrder" Mode="In" Type="String" />
-            <Parameter Name="sWhereFields" Mode="In" Type="String" />
-          </FunctionImport>
+          <EntitySet Name="Menus" EntityType="EF_ProjectBaseModel.Menus" />
         </EntityContainer>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="sMenuName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sMenuUrl" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="sParentMenuId" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="sMenuIcon" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="iOrder" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -79,7 +89,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Proc_PageQuery" FunctionName="EF_ProjectBaseModel.Store.Proc_PageQuery" />
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="EF_ProjectBaseModel.Menus">
+              <MappingFragment StoreEntitySet="Menus">
+                <ScalarProperty Name="iOrder" ColumnName="iOrder" />
+                <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+                <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+                <ScalarProperty Name="sMenuIcon" ColumnName="sMenuIcon" />
+                <ScalarProperty Name="sParentMenuId" ColumnName="sParentMenuId" />
+                <ScalarProperty Name="sMenuUrl" ColumnName="sMenuUrl" />
+                <ScalarProperty Name="sMenuName" ColumnName="sMenuName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

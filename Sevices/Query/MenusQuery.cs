@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common;
+using Newtonsoft.Json.Linq;
 
 namespace Sevices
 {
@@ -78,12 +79,16 @@ namespace Sevices
                             where m.bIsDeleted == false
                             orderby m.iOrder
                             select m;
-                object array =C_Json.Parse(C_Json.toJson(entry.ToList()));
-                var Dic = new Dictionary<string, object>();
-                Dic.Add("total", entry.Count());
-                Dic.Add("rows", array);
-                return  C_Json.JsonString(Dic).Replace("sParentMenuId", "_parentId");
-                
+                JArray array = JArray.Parse(C_Json.toJson(entry));
+
+                //JObject job = new JObject();
+              //  job.Add(new JProperty("rows", array));
+                //string sResult= job.ToString();
+                //sResult = sResult.Replace("sParentMenuId", "_parentId");
+                return array.ToString().Replace("sParentMenuId", "_parentId");
+              //  var Dic = new Dictionary<string, object>();
+                //Dic.Add("rows", array);
+                //return  C_Json.JsonString(Dic).Replace("sParentMenuId", "_parentId");    
             }
             catch (Exception e)
             {

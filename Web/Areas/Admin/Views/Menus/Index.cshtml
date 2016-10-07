@@ -2,9 +2,15 @@
     ViewBag.Title = "菜单列表";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<style>
+    body {
+        margin:0px;
+        padding:0px;
+    }
+</style>
 <form id="ModuleSearchForm" style="height:100%">
     <table id="Module"></table>
-    <div id="ModuleToolbar">
+    <div id="ModuleToolbar" style="padding:50px;">
         <a class="easyui-linkbutton" handle="Insert" data-options="iconCls:'icon-add',plain:'true'">新增</a>&nbsp
         <a class="easyui-linkbutton" handle="Update" data-options="iconCls:'icon-edit',plain:'true'">编辑</a>&nbsp
         <a class="easyui-linkbutton" handle="Cancel" data-options="iconCls:'icon-remove',plain:'true'">删除</a>
@@ -25,6 +31,7 @@
         config.grid = $('#Module');
         config.list="/Admin/Menus/List"
         config.grid.treegrid({
+            title:' ',
             url: config.list,
             toolbar: '#ModuleToolbar',
             idField: "ID",//必需的
@@ -35,11 +42,12 @@
             loadMsg: "正在加载...",
             columns: [[
                 { field: 'sMenuName', title: '菜单名称', align: 'center', width: 250 },// formatter: sModuleName },
-                { field: 'sModulePath', title: '菜单地址', align: 'center', width: 250 },
+                { field: 'sMenuUrl', title: '菜单地址', align: 'center', width: 250 },
                 { field: 'iOrder', title: '排序ID', align: 'center', width: 80 },
                 { field: 'dInsertTime', title: '添加时间', align: 'center', width: 200 }
             ]],
         });
+
 
         ///***绑定按钮事件***/
         //$('.easyui-linkbutton').click(function () { f.linkbutton(config, $(this).attr("handle"), 1) });

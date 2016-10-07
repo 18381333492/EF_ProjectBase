@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Converters;
 
 namespace Common
 {
@@ -20,7 +21,7 @@ namespace Common
         {
             try
             {
-                return JsonConvert.SerializeObject(m);
+                return JsonConvert.SerializeObject(m, new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-dd HH:mm:ss" });
             }
             catch
             {
@@ -35,7 +36,7 @@ namespace Common
         /// <returns></returns>
         public static JArray Parse(string sJson)
         {
-            return JsonConvert.DeserializeObject(sJson) as JArray;
+            return JArray.Parse(sJson);
         }
 
         /// <summary>

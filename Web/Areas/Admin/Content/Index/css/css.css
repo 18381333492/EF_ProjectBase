@@ -29,12 +29,12 @@ a.black:hover,a.black:active{ font-size:12px; color:#548fc9; font-weight:bold;  
 #header-right{ padding:3px 10px 0 0; font-size:12px;}
 #header-right span,#header-right a{ float:right}
 #header-right span{ background:url(../images/main/time.jpg) no-repeat 0px 2px; padding:0 10px 0 20px;}
-#header-right a.admin-out{ background:url(../images/main/exit.jpg) no-repeat 0px 2px; padding:0 0px 0 20px;}
+#header-right a.admin-out{ background:url(../images/main/exit.jpg) no-repeat 0px 1px; padding:0 0px 0 20px;}
 #header-right a:hover.admin-out{ background:url(../images/main/exiton.jpg) no-repeat 0px 2px;}
-#header-right a.admin-home{ background:url(../images/main/bool.jpg) no-repeat 0px 1px; padding:0 10px 0 20px;}
-#header-right a:hover.admin-home{ background:url(../images/main/boolon.jpg) no-repeat 1px 2px;}
+#header-right a.admin-home{ background:url(../images/main/bool.jpg) no-repeat 0px 0px; padding:0 10px 0 20px;}
+#header-right a:hover.admin-home{ background:url(../images/main/boolon.jpg) no-repeat 0px 2px;}
 #header-right a.admin-index{ background:url(../images/main/home.jpg) no-repeat 0px 1px; padding:0 10px 0 20px;}
-#header-right a:hover.admin-index{ background:url(../images/main/homeon.jpg) no-repeat 0px -1px;}
+#header-right a:hover.admin-index{ background:url(../images/main/homeon.jpg) no-repeat 0px 2px;}
 #header-menu a{ width:87px; height:37px; line-height:32px; margin:0 2px 0 0; display:inline; text-align:center; font-size:14px; font-weight:bold; background:url(../images/main/menu.jpg) no-repeat left bottom; float:left}
 #header-menu a:hover{ background:url(../images/main/menuon.jpg) no-repeat left bottom; color:#FFF}
 #header-menu a#menuon{ background:url(../images/main/menuon.jpg) no-repeat left bottom; color:#FFF}

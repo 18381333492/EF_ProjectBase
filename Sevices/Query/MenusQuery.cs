@@ -81,11 +81,12 @@ namespace Sevices
                             select m;
                 JArray array = JArray.Parse(C_Json.toJson(entry));
 
-                //JObject job = new JObject();
-              //  job.Add(new JProperty("rows", array));
+                JObject job = new JObject();
+                job.Add(new JProperty("total", array.Count));
+                job.Add(new JProperty("rows", array));
                 //string sResult= job.ToString();
                 //sResult = sResult.Replace("sParentMenuId", "_parentId");
-                return array.ToString().Replace("sParentMenuId", "_parentId");
+                return job.ToString().Replace("sParentMenuId", "_parentId");
               //  var Dic = new Dictionary<string, object>();
                 //Dic.Add("rows", array);
                 //return  C_Json.JsonString(Dic).Replace("sParentMenuId", "_parentId");    

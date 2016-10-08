@@ -32,10 +32,10 @@ $(function () {
                 $('#tabs').tabs("select", $(this).text());
             }
             else {
+                var height = $('#tabs').height() - 35 - 2 * 4;
                 $('#tabs').tabs('add', {
-                    fit: true,
                     title: $(this).text(),
-                    content: '<iframe name="mainFrame" scrolling="auto" frameborder="0"  src="' + $(this).attr("url") + '" style="width:100%;height:100%;" ></iframe>',
+                    content: '<iframe scrolling="auto" frameborder="0"  src="' + $(this).attr("url") + '" width="100%" height="' + height + 'px";></iframe>',
                     closable: true,
                 });
             }

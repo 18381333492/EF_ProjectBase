@@ -199,10 +199,6 @@
     <Content Include="admin后台界面\swich.html" />
     <Content Include="admin后台界面\top.html" />
     <Content Include="App_Data\PayConfig\PayConfig.xml" />
-    <Content Include="Areas\Admin\Content\easyui\easyloader.js" />
-    <Content Include="Areas\Admin\Content\easyui\jquery.easyui.min.js" />
-    <Content Include="Areas\Admin\Content\easyui\jquery.easyui.mobile.js" />
-    <Content Include="Areas\Admin\Content\easyui\jquery.min.js" />
     <Content Include="Areas\Admin\Content\Login\css\Login.css" />
     <Content Include="Areas\Admin\Content\Login\demo.html" />
     <Content Include="Areas\Admin\js\Home\Index.js" />
@@ -304,10 +300,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Content\easyui\locale\" />
-    <Folder Include="Areas\Admin\Content\easyui\plugins\" />
-    <Folder Include="Areas\Admin\Content\easyui\src\" />
-    <Folder Include="Areas\Admin\Content\easyui\themes\" />
+    <Folder Include="Areas\Admin\Content\easyui\" />
     <Folder Include="Areas\Admin\Content\Login\images\" />
     <Folder Include="Areas\Admin\Content\Login\js\" />
     <Folder Include="Areas\Mobile\Content\" />

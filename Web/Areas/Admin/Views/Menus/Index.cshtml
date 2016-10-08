@@ -21,6 +21,7 @@
         var f = new eui();
         var menus = f.getObject("Menus");
 
+
         //菜单treegrid的数据绑定
         menus.grid.treegrid({
             url: menus.url,
@@ -43,18 +44,16 @@
 
         //添加菜单
         menus.Insert.handle = function () {
-            f.dialog(menus.add, '添加菜单', function () {
-                 debugger
-                 if (f.check(menus.addform)) {
-                     debugger
-                    var data = menus.addform.serialize();
+            var dialog = f.dialog(menus.add, '添加菜单', function () {
+                if (f.check(menus.addform)) {
+                    var data = $(menus.addform.selector).serialize();
                     f.post(menus.Insert.url, data, function (res) {
-                        f.alert(res.info);
+                        dialog.dialog('close');
+                        menus.grid.treegrid('reload');
                     });
                 }
-            })
+            });
         }
-       
 
 
 

@@ -23,7 +23,6 @@ namespace Sevices
             _server = new ServicesBase();
         }
 
-
         /// <summary>
         /// 添加菜单
         /// </summary>
@@ -35,6 +34,8 @@ namespace Sevices
             menu.ID = Guid.NewGuid();
             menu.sMenuIcon = string.Empty;
             menu.dInsertTime = DateTime.Now;
+            if (string.IsNullOrEmpty(menu.sParentMenuId))
+                menu.sParentMenuId = string.Empty;
             _server.Add<Menus>(menu);
             return _server.SaveChange(this,"Add");
         }

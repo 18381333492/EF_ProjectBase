@@ -1,44 +1,31 @@
-﻿@{
-    ViewBag.Title = "添加菜单";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-}
-<link href="~/Areas/Admin/Content/Index/css/tablestyle.css" rel="stylesheet" />
+﻿
 
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
-    <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">用户名：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-            <input type="text" name="" value="" class="text-word">
+<form id="add_form">
+<table class="gridtable">
+    <tr>
+        <td>所属菜单</td>
+        <td>
+            <input class="easyui-combobox" name="sParentMenuId"
+                   data-options="valueField:'id',textField:'text',url:'/Admin/Menus/GetFirstMenus'" />
         </td>
     </tr>
-    <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">用户密码：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-            <input type="text" name="" value="" class="text-word">
+    <tr>
+        <td>菜单名称</td>
+        <td>
+            <input  class="easyui-textbox"  name="sMenuName"/>
         </td>
     </tr>
-    <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">确认密码：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-            <input type="text" name="" value="" class="text-word">
+    <tr>
+        <td>菜单链接</td>
+        <td>
+            <input class="easyui-textbox" name="sMenuUrl" />
         </td>
     </tr>
-    <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">用户权限：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-            <select name="level" id="level">
-                <option value="1">&nbsp;&nbsp;信息录入员</option>
-                <option value="2">&nbsp;&nbsp;一般管理员</option>
-                <option value="3">&nbsp;&nbsp;超级管理员</option>
-            </select>
-        </td>
-    </tr>
-    <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">&nbsp;</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-            <input name="" type="submit" value="提交" class="text-but">
-            <input name="" type="reset" value="重置" class="text-but">
+    <tr>
+        <td>排 序</td>
+        <td>
+            <input class="easyui-textbox" name="iOrder"/>
         </td>
     </tr>
 </table>
+</form>

@@ -30,13 +30,23 @@ namespace Common
         }
 
         /// <summary>
-        /// 反序列化
+        /// 反序列化JArray
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static JArray Parse(string sJson)
+        public static JArray Array(string sJson)
         {
             return JArray.Parse(sJson);
+        }
+
+        /// <summary>
+        /// 反序列化成JObject
+        /// </summary>
+        /// <param name="sJson"></param>
+        /// <returns></returns>
+        public static JObject Object(string sJson)
+        {
+            return JObject.Parse(sJson);
         }
 
         /// <summary>

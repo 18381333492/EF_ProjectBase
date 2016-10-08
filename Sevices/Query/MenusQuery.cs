@@ -10,6 +10,9 @@ using Newtonsoft.Json.Linq;
 
 namespace Sevices
 {
+    /// <summary>
+    /// 菜单服务
+    /// </summary>
     public partial class MenusService
     {
         public class MenuData
@@ -66,6 +69,35 @@ namespace Sevices
             }
         }
 
+        /// <summary>
+        /// 获取一级菜单数据
+        /// </summary>
+        /// <returns></returns>
+        public string GetFirstMenus()
+        {
+            try
+            {
+                var entry = from m in _server.db.Menus
+                            where m.sParentMenuId == string.Empty
+                            orderby m.iOrder
+                            select new
+                            {
+                                id = m.ID,
+                                text = m.sMenuName
+                            };
+                JArray array =C_Json.Array(C_Json.toJson(entry));
+                JObject job = new JObject();
+                job.Add(new JProperty("id", string.Empty));
+                job.Add(new JProperty("text", "一级菜单"));
+                array.AddFirst(job);
+                return array.ToString();
+            }
+            catch (Exception e)
+            {
+                Logs.LogHelper.ErrorLog(e);
+                return string.Empty;
+            }
+        }
         
         /// <summary>
         /// 获取所有的菜单列表数据
@@ -79,17 +111,10 @@ namespace Sevices
                             where m.bIsDeleted == false
                             orderby m.iOrder
                             select m;
-                JArray array = JArray.Parse(C_Json.toJson(entry));
-
-                JObject job = new JObject();
-                job.Add(new JProperty("total", array.Count));
-                job.Add(new JProperty("rows", array));
-                //string sResult= job.ToString();
-                //sResult = sResult.Replace("sParentMenuId", "_parentId");
-                return job.ToString().Replace("sParentMenuId", "_parentId");
-              //  var Dic = new Dictionary<string, object>();
-                //Dic.Add("rows", array);
-                //return  C_Json.JsonString(Dic).Replace("sParentMenuId", "_parentId");    
+                JArray array = C_Json.Array(C_Json.toJson(entry));
+                var Dic = new Dictionary<string, object>();
+                Dic.Add("rows", array);
+                return  C_Json.JsonString(Dic).Replace("sParentMenuId", "_parentId");    
             }
             catch (Exception e)
             {
@@ -97,31 +122,6 @@ namespace Sevices
                 return string.Empty;
             }
         }
-        
-
-        /// <summary>
-        /// 获取用户数据
-        /// </summary>
-        /// <param name="ID">主键ID</param>
-        /// <returns></returns>
-        public User Get(string ID)
-        {
-            return _server.db.User.Find(ID);
-        }
-
-
-
-        /// <summary>
-        ///  用户登录
-        /// </summary>
-        /// <param name="sUserName">用户</param>
-        /// <param name="sPassWord">密码</param>
-        /// <returns></returns>
-        public User Login(string sUserName, string sPassWord)
-        {
-            sPassWord = C_String.MD5(sPassWord);
-            var user = _server.db.User.Where(m => m.sUserName == sUserName && m.sPassWord == sPassWord).SingleOrDefault();
-            return user;
-        }
+       
     }
 }

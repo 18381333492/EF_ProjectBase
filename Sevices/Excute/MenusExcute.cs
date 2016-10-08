@@ -32,6 +32,9 @@ namespace Sevices
         [Log("菜单",Operate.Create)]
         public int Add(Menus menu)
         {
+            menu.ID = Guid.NewGuid();
+            menu.sMenuIcon = string.Empty;
+            menu.dInsertTime = DateTime.Now;
             _server.Add<Menus>(menu);
             return _server.SaveChange(this,"Add");
         }

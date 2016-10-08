@@ -2,6 +2,26 @@
 
 function eui() {
 
+    this.getObject = function (name) {
+        var path='/Admin/'+name+'/';
+        var object = {
+            grid: $('#' + name),
+            toolbar: '#' + name + '_toolbar',
+            url: path + 'List',
+            //表单配置
+            addform: $('#add_form'),
+            editform: $('#edit_form'),
+            searchform:$('#search_form'),
+            //路由配置
+            add: path + 'Add',
+            edit: path + 'Edit',
+            Insert: { url: path + 'Insert', handle: null },
+            Update: { url: path + 'Update', handle: null },
+            Cancel: { url: path + 'Cancel', handle: null },   
+        }
+        return object;
+    }
+
     /*  
     * EasyUi提示框（messager）.
     * @author [汤台]
@@ -15,7 +35,6 @@ function eui() {
         icon = icon || 'info';
         $.messager.alert(title, msg, icon, fn);
     }
-
     /*  
     * ajax的post请求的封装（form）.
     * @author [汤台]
@@ -54,5 +73,56 @@ function eui() {
                 }
             }
         });
+    }
+
+     /*  
+     * EasyUi表单验证（form）.
+     * @author [汤台]
+     * @version 1.0.0
+     * @param   form
+     * @return {void} 
+     */
+    this.check = function (form) {
+        if (!$(form.selector).form('validate')) {
+            this.alert('请输入所有的必填项');
+            return false;
+        }
+        return true;
+    }
+
+
+
+     /*  
+     * EasyUi弹出框（dialog）.
+     * @author [汤台]
+     * @version 1.0.0
+     * @param  url, title, callback(确认的回调函数),callload(加载成功的回调函数),width,height
+     * @return {dialog} 
+     */
+    this.dialog = function (url, title, callback, callload, width, height) {
+        width = width || 600;
+        height = height || 400;
+        var name = $('<div/>');
+        var dlg =
+            name.dialog({
+                href: url,
+                title: title,
+                iconCls: 'icon-save',
+                width: width,
+                height: height,
+                buttons: [{
+                    text: '<span style="padding-right:10px;">确 认</span>',
+                    iconCls: 'icon-ok',
+                    handler: callback,
+                }, {
+                    text: '<span>关闭</span>',
+                    iconCls: 'icon-cancel',
+                    handler: function () { name.dialog('close'); }
+                }],
+                onClose: function () { name.dialog("destroy"); },
+                onLoad: callload,
+                modal: true
+            });
+        return dlg;
     }
 }

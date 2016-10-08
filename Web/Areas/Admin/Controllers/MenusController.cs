@@ -65,6 +65,14 @@ namespace Web.Areas.Admin.Controllers
         }
 
         /// <summary>
+        /// 获取一级菜单栏目
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetFirstMenus()
+        {
+            return Content(server.GetFirstMenus());
+        }
+        /// <summary>
         /// 添加菜单
         /// </summary>
         /// <param name="menu"></param>

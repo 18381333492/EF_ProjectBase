@@ -143,6 +143,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin后台界面\bottom.html" />
+    <Content Include="Areas\Admin\Content\easyui\easyloader.js" />
+    <Content Include="Areas\Admin\Content\easyui\jquery.easyui.min.js" />
+    <Content Include="Areas\Admin\Content\easyui\jquery.easyui.mobile.js" />
+    <Content Include="Areas\Admin\Content\easyui\jquery.min.js" />
     <Content Include="Areas\Admin\Content\Index\css\css.css" />
     <Content Include="Areas\Admin\Content\Index\css\main.css" />
     <Content Include="Areas\Admin\Content\Index\css\tablestyle.css" />
@@ -283,6 +287,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\mylib\defaults.js" />
     <Content Include="Scripts\mylib\eui.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
@@ -300,7 +305,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Content\easyui\" />
+    <Folder Include="Areas\Admin\Content\easyui\locale\" />
+    <Folder Include="Areas\Admin\Content\easyui\plugins\" />
+    <Folder Include="Areas\Admin\Content\easyui\src\" />
+    <Folder Include="Areas\Admin\Content\easyui\themes\material\" />
     <Folder Include="Areas\Admin\Content\Login\images\" />
     <Folder Include="Areas\Admin\Content\Login\js\" />
     <Folder Include="Areas\Mobile\Content\" />

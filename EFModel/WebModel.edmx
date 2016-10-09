@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="EF_ProjectBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Button">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="sButtonName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sToMenuId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="sButtonIcon" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sButtonEn_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Menus">
           <Key>
             <PropertyRef Name="ID" />
@@ -32,6 +42,7 @@
           <Property Name="dInsertTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityContainer Name="EF_ProjectBaseModelStoreContainer">
+          <EntitySet Name="Button" EntityType="Self.Button" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -55,6 +66,7 @@
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="User" EntityType="Self.User" />
           <EntitySet Name="Menus" EntityType="EF_ProjectBaseModel.Menus" />
+          <EntitySet Name="Button" EntityType="EF_ProjectBaseModel.Button" />
         </EntityContainer>
         <EntityType Name="Menus">
           <Key>
@@ -68,6 +80,16 @@
           <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="iOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Button">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="sButtonName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sToMenuId" Type="Guid" Nullable="false" />
+          <Property Name="sButtonIcon" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sButtonEn_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -99,6 +121,17 @@
                 <ScalarProperty Name="sParentMenuId" ColumnName="sParentMenuId" />
                 <ScalarProperty Name="sMenuUrl" ColumnName="sMenuUrl" />
                 <ScalarProperty Name="sMenuName" ColumnName="sMenuName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Button">
+            <EntityTypeMapping TypeName="EF_ProjectBaseModel.Button">
+              <MappingFragment StoreEntitySet="Button">
+                <ScalarProperty Name="sButtonEn_Name" ColumnName="sButtonEn_Name" />
+                <ScalarProperty Name="sButtonIcon" ColumnName="sButtonIcon" />
+                <ScalarProperty Name="sToMenuId" ColumnName="sToMenuId" />
+                <ScalarProperty Name="sButtonName" ColumnName="sButtonName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

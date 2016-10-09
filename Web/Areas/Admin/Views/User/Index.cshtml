@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "后台用户";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/mylib/eui.js"></script>
+<body style="margin:2px;height:100%">
+    @*<form id="search_form" style="height:100%;display:block;width:100%">*@
+        <table id="User"></table>
+        <div id="User_toolbar" style="padding:5px">
+            <div>
+                <a class="easyui-linkbutton Insert" data-options="iconCls:'icon-add',plain:'true'">新增</a>&nbsp
+                <a class="easyui-linkbutton Update" data-options="iconCls:'icon-edit',plain:'true'">编辑</a>&nbsp
+                <a class="easyui-linkbutton Cancel" data-options="iconCls:'icon-remove',plain:'true'">冻结</a>&nbsp
+                <a class="easyui-linkbutton Cancel" data-options="iconCls:'icon-remove',plain:'true'">删除</a>
+            </div>
+        </div>
+    @*</form>*@
+</body>
+
+<script type="text/javascript">
+    $(function () {
+        var f = new eui();
+        var user = f.getObject("User");
+
+        user.grid.datagrid({
+            fit:true,
+            url: user.url,
+            toolbar: user.toolbar,
+            striped: true,
+            pagination: true,
+            singleSelect: true,
+            height: 400,
+            loadMsg: "正在加载...",
+            columns: [[
+                { field: '', checkbox: true, },
+                { field: 'sUserName', title: '登录名', align: 'center', width: 150 },
+                { field: 'sPhone', title: '电话', align: 'center', width: 150 },
+                { field: 'bState', title: '状态', align: 'center', width: 100  },
+                { field: 'dInsertTime', title: '添加时间', align: 'center', width: 90}
+            ]],
+        });
+    });
+
+</script>

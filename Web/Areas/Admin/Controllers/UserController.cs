@@ -50,7 +50,7 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public ActionResult Add(User user)
+        public ActionResult Insert(User user)
         {
             int res=_server.Add(user);
             if (res > 0)
@@ -65,7 +65,7 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public ActionResult Edit(User user)
+        public ActionResult Update(User user)
         {
             int res = _server.Edit(user);
             if (res > 0)

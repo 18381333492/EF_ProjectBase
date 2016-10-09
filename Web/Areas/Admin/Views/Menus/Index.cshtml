@@ -3,7 +3,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <script src="~/Scripts/mylib/eui.js"></script>
-<body style="margin:2px;">
+<body style="margin:2px;" oncontextmenu="return(false)">
     <form id="search_form" style="height:100%">
         <table id="Menus"></table>
         <div id="Menus_toolbar" style="padding:5px">
@@ -14,12 +14,22 @@
          </div>
         </div>
     </form>
+    <div id="mm" class="easyui-menu"  style="width:120px;">
+        <div data-options="iconCls:'icon-add'">新增按钮</div>
+        <div data-options="iconCls:'icon-edit'">编辑按钮</div>
+        <div class="menu-sep"></div>
+        <div>Exit</div>
+    </div>
 </body>
 <script type="text/javascript">
     $(function () {
 
         var f = new eui();
         var menus = f.getObject("Menus");
+
+        menus.button = {
+            add_url: '/Admin/Button/Add'
+        }
 
 
         //菜单treegrid的数据绑定
@@ -30,7 +40,6 @@
             treeField: "sMenuName",
             striped: true,
             singleSelect: true,
-            //onDblClickRow: onDoubleClick,
             loadMsg: "正在加载...",
             columns: [[
                 { field: 'sMenuName', title: '菜单名称', align: 'center', width: 250 },// formatter: sModuleName },
@@ -40,7 +49,27 @@
             ]],
             onLoadSuccess: function (row, data) {
             },
+            onContextMenu: function (e, row) {
+                if (row._parentId != "") {
+                    $('#mm').menu('show', {
+                        left: 200,
+                        top: 100
+                    });
+                }
+            }
         });
+
+        //菜单鼠标右键的单击菜单事件监听
+        $('#mm').menu({
+            onClick: function (item) {
+                if (item.text == "新增按钮") {
+                    var dialog = f.dialog(menus.button.add_url, "添加菜单按钮", function () {
+                    })
+                }
+            }
+        });
+
+
 
         //添加菜单
         menus.Insert.handle = function () {

@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Excute\ButtonExcute.cs" />
     <Compile Include="Excute\MenusExcute.cs" />
     <Compile Include="Excute\UserExcute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

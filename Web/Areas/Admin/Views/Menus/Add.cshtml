@@ -29,3 +29,29 @@
     </tr>
 </table>
 </form>
+<div id="tt" style="background-color:#CACACA;height:30px;line-height:30px;text-align:right">
+    <input id="addRow" type="button" value="新增" />
+</div>
+<form id="button_form">
+<table id="button"></table> 
+</form>
+<script type="text/javascript">
+    $(function () {
+        $('#addRow').click(function () {
+            var html = [];  
+            html.push('<tr>');
+            html.push('<td>按钮名称:</td>');
+            html.push('<td><input type="text" style="width:100px" /></td>');
+            html.push('<td>按钮英文名称:</td>');
+            html.push('<td><input type="text" style="width:100px" /></td>');
+            html.push('<td>按钮样式:</td>');
+            html.push('<td><input type="text" style="width:110px" /></td>');
+            html.push('<td><a style="cursor:pointer;color:blue">删除</a></td>');
+            html.push('</tr>');
+            $('#button').append(html.join(''));
+            $('#button').on('click', 'a', function () {
+                $(this).parent().parent().remove();
+            })
+        });
+    });
+</script>

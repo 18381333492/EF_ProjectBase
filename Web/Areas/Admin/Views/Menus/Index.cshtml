@@ -28,7 +28,9 @@
         var menus = f.getObject("Menus");
 
         menus.button = {
-            add_url: '/Admin/Button/Add'
+            add_url: '/Admin/Button/Add',
+            add_form: $('#add_button_form'),
+            insert_url: '/Admin/Button/Insert',
         }
 
 
@@ -64,7 +66,11 @@
             onClick: function (item) {
                 if (item.text == "新增按钮") {
                     var dialog = f.dialog(menus.button.add_url, "添加菜单按钮", function () {
-                    })
+                        var data = $(menus.button.add_form.selector).serialize();
+                        f.post(menus.button.insert_url, data, function (res) {
+                            dialog.dialog('close');
+                        });
+                    },null,400,300)
                 }
             }
         });

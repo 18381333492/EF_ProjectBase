@@ -83,7 +83,7 @@ function eui() {
      * @return {void} 
      */
     this.check = function (form) {
-        if (!$(form.selector).form('validate')) {
+        if (!form.form('validate')) {
             this.alert('请输入所有的必填项');
             return false;
         }
@@ -110,6 +110,7 @@ function eui() {
                 iconCls: 'icon-save',
                 width: width,
                 height: height,
+                border:false,
                 buttons: [{
                     text: '<span style="padding-right:10px;">确 认</span>',
                     iconCls: 'icon-ok',

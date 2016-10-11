@@ -14,7 +14,7 @@
          </div>
         </div>
     </form>
-    <div id="mm" class="easyui-menu"  style="width:120px;">
+    <div id="mm" class="easyui-menu" style="width:120px;">
         <div data-options="iconCls:'icon-add'">新增按钮</div>
         <div data-options="iconCls:'icon-edit'">编辑按钮</div>
         <div class="menu-sep"></div>
@@ -31,6 +31,7 @@
             add_url: '/Admin/Button/Add',
             add_form: $('#add_button_form'),
             insert_url: '/Admin/Button/Insert',
+            menuId:null
         }
 
 
@@ -53,9 +54,10 @@
             },
             onContextMenu: function (e, row) {
                 if (row._parentId != "") {
+                    menus.button.menuId = row.ID;
                     $('#mm').menu('show', {
-                        left: 200,
-                        top: 100
+                        left: e.clientX,
+                        top: e.clientY
                     });
                 }
             }
@@ -67,8 +69,10 @@
                 if (item.text == "新增按钮") {
                     var dialog = f.dialog(menus.button.add_url, "添加菜单按钮", function () {
                         var data = $(menus.button.add_form.selector).serialize();
+                        data = data + '&sToMenuId=' + menus.button.menuId;
                         f.post(menus.button.insert_url, data, function (res) {
                             dialog.dialog('close');
+                            menus.grid.treegrid('reload');
                         });
                     },null,400,300)
                 }
@@ -80,7 +84,7 @@
         //添加菜单
         menus.Insert.handle = function () {
             var dialog = f.dialog(menus.add, '添加菜单', function () {
-                if (f.check(menus.addform)) {
+                if (f.check($(menus.addform.selector))) {
                     var data = $(menus.addform.selector).serialize();
                     f.post(menus.Insert.url, data, function (res) {
                         dialog.dialog('close');

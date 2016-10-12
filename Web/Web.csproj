@@ -130,6 +130,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ButtonController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenusController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
@@ -275,6 +276,10 @@
     <Content Include="Areas\Admin\Views\Menus\Add.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Button\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Button\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Button\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Add.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -292,6 +297,7 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\mylib\defaults.js" />
     <Content Include="Scripts\mylib\eui.js" />
+    <Content Include="Scripts\mylib\extend.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -311,7 +317,7 @@
     <Folder Include="Areas\Admin\Content\easyui\locale\" />
     <Folder Include="Areas\Admin\Content\easyui\plugins\" />
     <Folder Include="Areas\Admin\Content\easyui\src\" />
-    <Folder Include="Areas\Admin\Content\easyui\themes\material\" />
+    <Folder Include="Areas\Admin\Content\easyui\themes\" />
     <Folder Include="Areas\Admin\Content\Login\images\" />
     <Folder Include="Areas\Admin\Content\Login\js\" />
     <Folder Include="Areas\Mobile\Content\" />

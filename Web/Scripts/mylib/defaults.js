@@ -15,6 +15,6 @@ void function () {
     $.extend($.fn.combobox.defaults, {
         height: 30,
         width: 250,
-        panelHeight:'autos'
+        panelHeight:'auto'
     });
 }()

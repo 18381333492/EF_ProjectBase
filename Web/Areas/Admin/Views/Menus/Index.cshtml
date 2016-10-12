@@ -2,37 +2,21 @@
     ViewBag.Title = "菜单列表";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<script src="~/Scripts/mylib/eui.js"></script>
-<body style="margin:2px;" oncontextmenu="return(false)">
-    <form id="search_form" style="height:100%">
-        <table id="Menus"></table>
+ <form id="search_form" style="height:100%">
+        <table id="Menus" oncontextmenu="return(false)"></table>
         <div id="Menus_toolbar" style="padding:5px">
           <div >
             <a class="easyui-linkbutton Insert"  data-options="iconCls:'icon-add',plain:'true'">新增</a>&nbsp
             <a class="easyui-linkbutton Update"  data-options="iconCls:'icon-edit',plain:'true'">编辑</a>&nbsp
             <a class="easyui-linkbutton Cancel"  data-options="iconCls:'icon-remove',plain:'true'">删除</a>
          </div>
-        </div>
-    </form>
-    <div id="mm" class="easyui-menu" style="width:120px;">
-        <div data-options="iconCls:'icon-add'">新增按钮</div>
-        <div data-options="iconCls:'icon-edit'">编辑按钮</div>
-        <div class="menu-sep"></div>
-        <div>Exit</div>
-    </div>
-</body>
+       </div> 
+ </form>
 <script type="text/javascript">
     $(function () {
 
         var f = new eui();
-        var menus = f.getObject("Menus");
-
-        menus.button = {
-            add_url: '/Admin/Button/Add',
-            add_form: $('#add_button_form'),
-            insert_url: '/Admin/Button/Insert',
-            menuId:null
-        }
+        var menus = f.config("Admin","Menus");
 
 
         //菜单treegrid的数据绑定
@@ -52,31 +36,6 @@
             ]],
             onLoadSuccess: function (row, data) {
             },
-            onContextMenu: function (e, row) {
-                if (row._parentId != "") {
-                    menus.button.menuId = row.ID;
-                    $('#mm').menu('show', {
-                        left: e.clientX,
-                        top: e.clientY
-                    });
-                }
-            }
-        });
-
-        //菜单鼠标右键的单击菜单事件监听
-        $('#mm').menu({
-            onClick: function (item) {
-                if (item.text == "新增按钮") {
-                    var dialog = f.dialog(menus.button.add_url, "添加菜单按钮", function () {
-                        var data = $(menus.button.add_form.selector).serialize();
-                        data = data + '&sToMenuId=' + menus.button.menuId;
-                        f.post(menus.button.insert_url, data, function (res) {
-                            dialog.dialog('close');
-                            menus.grid.treegrid('reload');
-                        });
-                    },null,400,300)
-                }
-            }
         });
 
 
@@ -93,11 +52,6 @@
                 }
             });
         }
-
-
-
-
-
 
 
         //绑定事件

@@ -2,11 +2,13 @@
 
 function eui() {
 
-    this.getObject = function (name) {
-        var path='/Admin/'+name+'/';
+
+
+    this.config = function (name, controller) {
+        var path = '/' + name + '/' + controller + '/';
         var object = {
-            grid: $('#' + name),
-            toolbar: '#' + name + '_toolbar',
+            grid: $('#' + controller),
+            toolbar: '#' + controller + '_toolbar',
             url: path + 'List',
             //表单配置
             addform: $('#add_form'),
@@ -21,6 +23,13 @@ function eui() {
         }
         return object;
     }
+
+
+    //this.routeConfig = function (name,controller) {
+    //    return '/' + name + '/' + controller + '/'.toString();
+    //}
+
+
 
     /*  
     * EasyUi提示框（messager）.
@@ -83,6 +92,7 @@ function eui() {
      * @return {void} 
      */
     this.check = function (form) {
+        debugger
         if (!form.form('validate')) {
             this.alert('请输入所有的必填项');
             return false;
@@ -96,10 +106,10 @@ function eui() {
      * EasyUi弹出框（dialog）.
      * @author [汤台]
      * @version 1.0.0
-     * @param  url, title, callback(确认的回调函数),callload(加载成功的回调函数),width,height
+     * @param  url, title, callback(确认的回调函数),width,height,callload(加载成功的回调函数)
      * @return {dialog} 
      */
-    this.dialog = function (url, title, callback, callload, width, height) {
+    this.dialog = function (url, title, callback, width, height ,callload) {
         width = width || 600;
         height = height || 400;
         var name = $('<div/>');

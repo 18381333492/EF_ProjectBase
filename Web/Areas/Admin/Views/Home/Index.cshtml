@@ -1,18 +1,32 @@
 ﻿@{
     ViewBag.Title = "后台管理系统";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<link href="/Areas/Admin/Content/Index/css/css.css" rel="stylesheet" />
-<script src="/Areas/Admin/Content/Index/js/sdmenu.js"></script>
-<script type=text/javascript src="/Areas/Admin/Content/Index/js/clock.js"></script>
-<script src="~/Scripts/mylib/eui.js"></script>
-<script src="~/Areas/Admin/js/Home/Index.js"></script>
-<style>
-.panel-header,
-.panel-body {
-  border-width: 0px;
-}
-</style>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Areas/Admin/Content/easyui/jquery.min.js"></script>
+    <script src="~/Areas/Admin/Content/easyui/jquery.easyui.min.js"></script>
+    @*<link href="~/Areas/Admin/Content/easyui/themes/gray/easyui.css" rel="stylesheet" />*@
+    @*<link href="~/Areas/Admin/Content/easyui/themes/bootstrap/easyui.css" rel="stylesheet" />*@
+    <link href="~/Areas/Admin/Content/easyui/themes/material/easyui.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/easyui/themes/icon.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/Index/css/tablestyle.css" rel="stylesheet" />
+    <script src="~/Scripts/mylib/defaults.js"></script>
+    <title>@ViewBag.Title</title>
+    <link href="/Areas/Admin/Content/Index/css/css.css" rel="stylesheet" />
+    <script src="/Areas/Admin/Content/Index/js/sdmenu.js"></script>
+    <script type=text/javascript src="/Areas/Admin/Content/Index/js/clock.js"></script>
+    <script src="~/Scripts/mylib/eui.js"></script>
+    <script src="~/Areas/Admin/js/Home/Index.js"></script>
+    <style>
+        .panel-header,
+        .panel-body {
+            border-width: 0px;
+        }
+    </style>
+</head>
 <body onselectstart="return false" oncontextmenu="return(false)">
     <div class="easyui-layout" data-options="fit:'true',border:'false'">
         <!--header-->
@@ -63,7 +77,7 @@
                 </div>
                 <div style="float:left" id="my_menu" class="sdmenu">
                     <!--
-                    菜单列表    
+                    菜单列表
                     -->
                 </div>
             </div>
@@ -71,11 +85,11 @@
 
         <!--<!--Center-->
         <div data-options="region:'center'">
-             <div id="tabs" class="easyui-tabs" data-options="fit:'true',tabHeight:35">
+            <div id="tabs" class="easyui-tabs" data-options="fit:'true',tabHeight:35">
                 <div title="首页" style="padding:10px;">
                     tab1
                 </div>
-             </div>
+            </div>
         </div>
 
         <!--bottom-->
@@ -91,4 +105,4 @@
         </div>
     </div>
 </body>
-
+</html>

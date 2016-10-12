@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "角色管理";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<table id="Role"></table>
+<div id="Role_toolbar" style="padding:5px">
+    <div>
+        <a class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:'true'">新增</a>&nbsp
+        <a class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:'true'">编辑</a>&nbsp
+        <a class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:'true'">删除</a>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        var f = new eui();
+        var role = f.config("Admin", "Role");
+
+        role.grid.datagrid({
+            fit:true,
+            url: role.url,
+            toolbar: role.toolbar,
+            striped: true,
+            pagination: true,
+            singleSelect: true,
+            height: 400,
+            loadMsg: "正在加载...",
+            columns: [[
+                { field: '', checkbox: true, },
+                { field: 'sRoleName', title: '角色名称', align: 'center', width: 150 },
+                { field: 'sPower', title: '权限等级', align: 'center', width: 180 },
+                { field: 'dInsertTime', title: '添加时间', align: 'center', width: 200}
+            ]],
+        });
+    });
+
+</script>

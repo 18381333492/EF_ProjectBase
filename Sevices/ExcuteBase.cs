@@ -64,7 +64,9 @@ namespace Sevices
             int res = 0;
             try
             {
-                res = this.db.Database.ExecuteSqlCommand(@"update @tablename set bIsDeleted = 1 where ID in(@ID)", new { tablename=typeof(T).Name, ID=Ids });
+                res = this.db.Database.ExecuteSqlCommand(@"update 
+                                                            @tablename set bIsDeleted = 1 
+                                                            where ID in(@ID)", new { tablename=typeof(T).Name, ID=Ids });
             }
             catch (Exception e)
             {
@@ -93,6 +95,7 @@ namespace Sevices
             }
             return res;
         }
+
 
 
         /// <summary>

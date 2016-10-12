@@ -36,8 +36,17 @@ namespace Sevices
             return _server.SaveChange(this,"Add");
         }
 
-
-
+        /// <summary>
+        /// 编辑按钮
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <returns></returns>
+        [Log("按钮", Operate.Update)]
+        public int Edit(Button button)
+        {
+            _server.Edit<Button>(button);
+            return _server.SaveChange(this, "Edit");
+        }
 
     }
 }

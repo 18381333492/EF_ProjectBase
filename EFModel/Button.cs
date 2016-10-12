@@ -19,5 +19,6 @@ namespace EFModel
         public System.Guid sToMenuId { get; set; }
         public string sButtonIcon { get; set; }
         public string sButtonEn_Name { get; set; }
+        public int iOrder { get; set; }
     }
 }

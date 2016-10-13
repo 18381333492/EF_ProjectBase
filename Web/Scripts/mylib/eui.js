@@ -10,13 +10,6 @@ function eui() {
             grid: $('#' + controller),
             toolbar: '#' + controller + '_toolbar',
             url: path + 'List',
-            //表单配置
-            addform: $('#add_form'),
-            editform: $('#edit_form'),
-            searchform:$('#search_form'),
-            //路由配置
-            add: path + 'Add',
-            edit: path + 'Edit',
             Insert: { url: path + 'Insert', handle: null },
             Update: { url: path + 'Update', handle: null },
             Cancel: { url: path + 'Cancel', handle: null },   

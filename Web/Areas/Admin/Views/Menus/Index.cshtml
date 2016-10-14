@@ -16,7 +16,7 @@
     $(function () {
 
         var f = new eui();
-        var menus = f.config("Admin","Menus");
+        var menus = f.config("Admin", "Menus");
 
 
         //菜单treegrid的数据绑定
@@ -39,18 +39,24 @@
         });
 
 
-
         //添加菜单
         menus.Insert.handle = function () {
             var dialog = f.dialog(menus.add, '添加菜单', function () {
-                if (f.check($(menus.addform.selector))) {
-                    var data = $(menus.addform.selector).serialize();
+                if (f.check($('#add_form'))) {
+                    var data = $('#add_form').serialize();
                     f.post(menus.Insert.url, data, function (res) {
                         dialog.dialog('close');
                         menus.grid.treegrid('reload');
                     });
                 }
             });
+        }
+
+        /*
+        * 编辑菜单
+        */
+        menus.Update.handle = function () {
+
         }
 
 

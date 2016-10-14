@@ -17,7 +17,7 @@
 <script type="text/javascript">
     $(function () {
         var f = new eui();
-        var tree = $('#Button'); 
+        var button = f.config("Admin", "Button");
         var menuId;
         var buttonId;
 
@@ -25,8 +25,8 @@
         /*
         *树形菜单按钮数据绑定
         */
-        tree.tree({
-            url:'/Admin/Button/List',
+        button.grid.tree({
+            url: button.url,
             animate: true,
             onContextMenu: function (e, row) {
                 if (row.iconCls == "") {
@@ -59,7 +59,7 @@
         $('#mm').menu({
             onClick: function (item) {
                 if (item.text == "新增按钮") {
-                    var dialog = f.dialog('/Admin/Button/Add', '添加按钮', function () {
+                    var dialog = f.dialog(button. ,'添加按钮', function () {
                         if ($('#add_form').form('validate'))
                         {
                             var data = $('#add_form').serialize() + '&sToMenuId=' + menuId;

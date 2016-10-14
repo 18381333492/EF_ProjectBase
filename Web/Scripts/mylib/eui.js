@@ -2,8 +2,6 @@
 
 function eui() {
 
-
-
     this.config = function (name, controller) {
         var path = '/' + name + '/' + controller + '/';
         var object = {
@@ -12,7 +10,8 @@ function eui() {
             url: path + 'List',
             Insert: { url: path + 'Insert', handle: null },
             Update: { url: path + 'Update', handle: null },
-            Cancel: { url: path + 'Cancel', handle: null },   
+            Cancel: { url: path + 'Cancel', handle: null },
+            Route: path
         }
         return object;
     }

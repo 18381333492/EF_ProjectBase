@@ -86,5 +86,15 @@ namespace Web.Areas.Admin.Controllers
             }
             return Content(result.toJson());
         }
+
+        public ActionResult Update(Menus menu)
+        {
+            int res = server.Add(menu);
+            if (res > 0)
+            {
+                result.success = true;
+            }
+            return Content(result.toJson());
+        }
     }
 }

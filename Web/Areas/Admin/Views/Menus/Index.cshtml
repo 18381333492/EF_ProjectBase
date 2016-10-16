@@ -21,7 +21,7 @@
 
         //菜单treegrid的数据绑定
         menus.grid.treegrid({
-            url: menus.url,
+            url: menus.route('List'),
             toolbar:menus.toolbar,
             idField: "ID",//必需的
             treeField: "sMenuName",
@@ -41,10 +41,11 @@
 
         //添加菜单
         menus.Insert.handle = function () {
-            var dialog = f.dialog(menus.add, '添加菜单', function () {
-                if (f.check($('#add_form'))) {
-                    var data = $('#add_form').serialize();
-                    f.post(menus.Insert.url, data, function (res) {
+            var dialog = f.dialog(menus.route('Add'), '添加菜单', function () {
+                if ($(menus.form.add).form('validate'))
+                {
+                    var data = $(menus.form.add).serialize();
+                    f.post(menus.route('Insert'), data, function (res) {
                         dialog.dialog('close');
                         menus.grid.treegrid('reload');
                     });
@@ -54,6 +55,7 @@
 
         /*
         * 编辑菜单
+        * author [汤台]
         */
         menus.Update.handle = function () {
 
@@ -64,50 +66,6 @@
         $('.Insert').on('click', menus.Insert.handle);
         $('.Update').on('click', menus.Update.handle);
         $('.Cancel').on('click', menus.Cancel.handle);
-        
-        ////添加菜单
-        //menus.Insert.handle = function () {
-        //    alert('dfs');
-        //}
-
-
-        ///***绑定按钮事件***/
-        //$('.easyui-linkbutton').click(function () { f.linkbutton(config, $(this).attr("handle"), 1) });
-        ///*
-        //* 添加菜单的处理.
-        //* author [汤台]
-        //* version 1.0.0
-        //*/
-        //config.Insert = function () {
-        //    var $this = f.dialog(config.add, '新增菜单', function () {
-        //        f.check(form.add);//验证表单
-        //        $this.dialog('close');
-        //        config.grid.treegrid('reload');
-        //    })
-        //}
-        ///*
-        //* 编辑菜单的处理.
-        //* author [汤台]
-        //* version 1.0.0
-        //*/
-        //config.Update = function () {
-        //    var $this = f.dialog(config.add, '编辑菜单', function () {
-        //        f.check(form.edit);//验证表单
-        //        f.post(config.insert, '', function (r) {
-        //        });
-        //        $this.dialog('close');
-        //        config.grid.treegrid('reload');
-        //    });
-        //}
-        ///*
-        //* 删除菜单的处理.
-        //* author [汤台]
-        //* version 1.0.0
-        //*/
-        //config.Cancel = function () {
-        //    f.dialog(config.add, '删除菜单', function () {
-        //        f.alert("OK");
-        //    })
-        //}
+  
     });
 </script>

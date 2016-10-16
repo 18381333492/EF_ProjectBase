@@ -20,13 +20,12 @@
         var button = f.config("Admin", "Button");
         var menuId;
         var buttonId;
-
-       
+  
         /*
         *树形菜单按钮数据绑定
         */
         button.grid.tree({
-            url: button.url,
+            url: button.route('List'),
             animate: true,
             onContextMenu: function (e, row) {
                 if (row.iconCls == "") {
@@ -59,11 +58,11 @@
         $('#mm').menu({
             onClick: function (item) {
                 if (item.text == "新增按钮") {
-                    var dialog = f.dialog(button. ,'添加按钮', function () {
-                        if ($('#add_form').form('validate'))
+                    var dialog = f.dialog(button.route('Add') ,'添加按钮', function () {
+                        if ($(button.form.add).form('validate'))
                         {
-                            var data = $('#add_form').serialize() + '&sToMenuId=' + menuId;
-                            f.post('/Admin/Button/Insert', data, function (res) {
+                            var data = $(button.form.add).serialize() + '&sToMenuId=' + menuId;
+                            f.post(button.route('Insert'), data, function (res) {
                                 dialog.dialog('close');
                                 tree.tree('reload');
                             });
@@ -72,10 +71,10 @@
                     return;
                 }
                 if (item.text == "编辑按钮") {
-                    var dialog = f.dialog('/Admin/Button/Edit?ID=' + buttonId, '编辑按钮', function () {
-                        if ($('#edit_form').form('validate')) {
-                            var data = $('#edit_form').serialize() + '&sToMenuId=' + menuId;
-                            f.post('/Admin/Button/Update', data, function (res) {
+                    var dialog = f.dialog(button.route('Edit')+'?ID=' + buttonId, '编辑按钮', function () {
+                        if ($(button.form.edit).form('validate')) {
+                            var data = $(button.form.edit).serialize() + '&sToMenuId=' + menuId;
+                            f.post(button.route('Update'), data, function (res) {
                                 dialog.dialog('close');
                                 tree.tree('reload');
                             });
@@ -84,7 +83,7 @@
                    return;
                 }
                 if (item.text == "删除按钮") {
-                    var dialog = f.dialog('/Admin/Button/Cancel', '删除按钮', function () {
+                    var dialog = f.dialog(button.route('Cancel'), '删除按钮', function () {
                        
                     });
                    return;

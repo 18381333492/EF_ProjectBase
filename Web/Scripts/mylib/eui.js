@@ -7,11 +7,13 @@ function eui() {
         var object = {
             grid: $('#' + controller),
             toolbar: '#' + controller + '_toolbar',
-            url: path + 'List',
-            Insert: { url: path + 'Insert', handle: null },
-            Update: { url: path + 'Update', handle: null },
-            Cancel: { url: path + 'Cancel', handle: null },
-            Route: path
+            form:{ add:'#add_form',edit:'#edit_form' },
+            Insert: {  handle: null },
+            Update: {  handle: null },
+            Cancel: {  handle: null },
+            route: function (name) {
+                return path + name;
+            }
         }
         return object;
     }
@@ -84,7 +86,6 @@ function eui() {
      * @return {void} 
      */
     this.check = function (form) {
-        debugger
         if (!form.form('validate')) {
             this.alert('请输入所有的必填项');
             return false;

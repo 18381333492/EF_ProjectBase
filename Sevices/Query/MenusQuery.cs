@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Common;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Sevices
 {
@@ -108,13 +109,32 @@ namespace Sevices
             try
             {
                 var entry = from m in _server.db.Menus
-                             where m.bIsDeleted == false
-                             orderby m.iOrder
-                             select m;
-                JArray array = C_Json.Array(C_Json.toJson(entry));
-                var Dic = new Dictionary<string, object>();
-                Dic.Add("rows", array);
-                return  C_Json.JsonString(Dic).Replace("sParentMenuId", "_parentId");    
+                            where m.bIsDeleted == false && m.sParentMenuId == string.Empty
+                            orderby m.iOrder
+                            select m;
+
+                var child= from m in _server.db.Menus
+                           where m.bIsDeleted == false && m.sParentMenuId != string.Empty
+                           orderby m.iOrder
+                           select m;
+
+                JArray Main = new JArray();
+                foreach(var m in entry)
+                {
+                    var item =C_Json.Object(C_Json.toJson(m)); 
+                    JArray array = new JArray();
+                    foreach(var n in child)
+                    {
+                        if (m.ID.ToString() == n.sParentMenuId)
+                        {
+                            var temp = C_Json.Object(C_Json.toJson(n));
+                            array.Add(temp);
+                        }
+                    }
+                    item.Add(new JProperty("children", array));
+                    Main.Add(item);
+                }
+                return Main.ToString();
             }
             catch (Exception e)
             {

@@ -40,6 +40,20 @@ namespace Sevices
             return _server.SaveChange(this,"Add");
         }
 
+        /// <summary>
+        /// 编辑菜单
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <returns></returns>
+        [Log("菜单", Operate.Update)]
+        public int Edit(Menus menu)
+        {
+            if (string.IsNullOrEmpty(menu.sParentMenuId))
+                menu.sParentMenuId = string.Empty;
+            _server.Edit<Menus>(menu);
+            return _server.SaveChange(this, "Edit");
+        }
+
 
 
 

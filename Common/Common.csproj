@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="C_Convert.cs" />
     <Compile Include="C_ImgCode.cs" />
     <Compile Include="C_Json.cs" />
     <Compile Include="C_String.cs" />

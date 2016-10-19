@@ -17,10 +17,10 @@
     $(function () {
         var f = new eui();
         var user = f.config("Admin","User");
-
+    
         user.grid.datagrid({
             fit:true,
-            url: user.url,
+            url: user.route('List'),
             toolbar: user.toolbar,
             striped: true,
             pagination: true,

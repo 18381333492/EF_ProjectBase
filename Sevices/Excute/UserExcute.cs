@@ -9,15 +9,8 @@ using System.Threading.Tasks;
 
 namespace Sevices
 {
-    public partial class UserService
+    public partial class UserService: ServiceBase
     {
-
-        private ServicesBase _server;
-
-        public UserService()
-        {
-            _server = new ServicesBase();
-        }
 
         /// <summary>
         /// 添加后台用户
@@ -27,8 +20,8 @@ namespace Sevices
         [Log("用户",Operate.Create)]
         public int Add(User item)
         {
-            _server.Add<User>(item);
-            return _server.SaveChange(this,"Add");      
+            excute.Add<User>(item);
+            return excute.SaveChange(this,"Add");      
         }
 
         /// <summary>
@@ -39,8 +32,8 @@ namespace Sevices
         [Log("用户", Operate.Update)]
         public int Edit(User item)
         {
-             _server.Edit<User>(item);
-             return  _server.SaveChange(this, "Edit");
+            excute.Edit<User>(item);
+             return excute.SaveChange(this, "Edit");
         }
 
         /// <summary>
@@ -50,7 +43,7 @@ namespace Sevices
         [Log("用户", Operate.Delete)]
         public int Cancel(string Ids)
         {
-            int res= _server.Cancel<User>(Ids);
+            int res= excute.Cancel<User>(Ids);
             if (res > 0)
             {//手动写日志
                 LogHelper.OperateLog(this, "Cancel");
@@ -67,7 +60,7 @@ namespace Sevices
         public int Freeze(string Ids)
         {
             string sSql = "Update User Set State=0 Where ID IN(@ID)";
-            int res=_server.Update(sSql,new { ID= Ids });
+            int res= excute.Update(sSql,new { ID= Ids });
             if (res > 0)
             {//手动写日志
                 LogHelper.OperateLog(this, "Freeze");

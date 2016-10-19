@@ -14,7 +14,7 @@ namespace Sevices
     /// <summary>
     /// 菜单服务
     /// </summary>
-    public partial class MenusService
+    public partial class MenusService: ServiceBase
     {
         public class MenuData
         {
@@ -37,10 +37,10 @@ namespace Sevices
             try
             {
                 var MainMenu = new List<MenuData>();
-                var menu = _server.db.Menus.
+                var menu = query.db.Menus.
                     Where(m => m.sParentMenuId == string.Empty&&m.bIsDeleted==false).
                     OrderBy(m => m.iOrder).ToList();
-                var childMenu = _server.db.Menus.
+                var childMenu = query.db.Menus.
                     Where(m => m.sParentMenuId != string.Empty&& m.bIsDeleted == false).
                     OrderBy(m => m.iOrder).ToList();
                 //组装菜单数据
@@ -78,7 +78,7 @@ namespace Sevices
         {
             try
             {
-                var entry = from m in _server.db.Menus
+                var entry = from m in query.db.Menus
                             where m.sParentMenuId == string.Empty
                             orderby m.iOrder
                             select new
@@ -108,12 +108,12 @@ namespace Sevices
         {
             try
             {
-                var entry = from m in _server.db.Menus
+                var entry = from m in query.db.Menus
                             where m.bIsDeleted == false && m.sParentMenuId == string.Empty
                             orderby m.iOrder
                             select m;
 
-                var child= from m in _server.db.Menus
+                var child= from m in query.db.Menus
                            where m.bIsDeleted == false && m.sParentMenuId != string.Empty
                            orderby m.iOrder
                            select m;

@@ -16,8 +16,8 @@ namespace EFModel.MyModels
         /// </summary>
         public int page
         {
-            get { return 1;}
-            set { page = value; }
+            get;
+            set;
         }
 
         /// <summary>
@@ -25,8 +25,8 @@ namespace EFModel.MyModels
         /// </summary>
         public int rows
         {
-            get { return 10; }
-            set { rows = value; }
+            get;
+            set;
         }
 
         /// <summary>
@@ -34,8 +34,8 @@ namespace EFModel.MyModels
         /// </summary>
         public string sort
         {
-            get { return "ID"; }
-            set { sort = value; }
+            get;
+            set;
         }
 
         /// <summary>
@@ -43,8 +43,8 @@ namespace EFModel.MyModels
         /// </summary>
         public Order order
         {
-            get { return Order.asc; }
-            set { order = value;  }
+            get;
+            set;
         }
 
         /// <summary>

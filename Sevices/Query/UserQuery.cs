@@ -9,7 +9,7 @@ using Common;
 
 namespace Sevices
 {
-    public partial class UserService
+    public partial class UserService:ServiceBase
     {
 
         /// <summary>
@@ -20,8 +20,8 @@ namespace Sevices
         /// <returns></returns>
         public string GetList(PageInfo Info,Dictionary<string,object> Params)
         {
+            query.QueryPage<Dictionary<string, object>>(Info,@"select * from User");
             return null;
-
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Sevices
         /// <returns></returns>
         public User Get(string ID)
         {
-            return _server.db.User.Find(ID);
+            return query.db.User.Find(ID);
         }
 
 
@@ -44,7 +44,7 @@ namespace Sevices
         public User Login(string sUserName, string sPassWord)
         {
             sPassWord = C_String.MD5(sPassWord);
-            var user = _server.db.User.Where(m => m.sUserName == sUserName && m.sPassWord == sPassWord).SingleOrDefault();
+            var user = query.db.User.Where(m => m.sUserName == sUserName && m.sPassWord == sPassWord).SingleOrDefault();
             return user;
         }
     }

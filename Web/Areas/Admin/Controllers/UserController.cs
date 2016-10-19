@@ -40,8 +40,9 @@ namespace Web.Areas.Admin.Controllers
 
         #endregion
 
-        public ActionResult List()
+        public ActionResult List(PageInfo Info)
         {
+             _server.GetList(Info,null);
             return Content(string.Empty);
         }
 

@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 using Common;
 using EFModel.MyModels;
 using Logs;
+using EFModel;
 
 namespace Sevices
 {
-    public partial class ServicesBase
+    public  class QueryBase
     {
+        public Entities db;
+
+        public QueryBase()
+        {
+            db = new Entities();
+        }
+
         /// <summary>
         /// 根据sql语句查询
         /// </summary>
@@ -32,7 +40,7 @@ namespace Sevices
         /// <param name="sWhereFields"></param>
         /// <param name="sSelectFields"></param>
         /// <returns></returns>
-        public object QueryPage<T>(PageInfo info, string sWhereFields, string sSelectFields="*") where T:class,new ()
+        public object QueryPage<T>(PageInfo info, string sWhereFields=null, string sSelectFields="*") where T:class,new ()
         {
 
             try
@@ -75,15 +83,15 @@ namespace Sevices
         {
             try
             {
-                string sSql = string.Format(@"select 
-                                            top @rows * from
-                                            (select ROW_NUMBER() OVER(order by @sort @order) as _Num,*
-                                            from
-                                            ({0}) as query) as entry 
-                                            where _Num>@rows*(@page-1)
-                                            select COUNT(*) from (select * from Table_Module) as _temp
-                                        ", sql);
-
+                string sSql = string.Format(@"SELECT  
+                                            TOP @rows entry.* FROM
+                                            (SELECT ROW_NUMBER() OVER(ORDER BY @sort @order) AS _Num,*
+                                            FROM
+                                            ({0}) AS query) AS entry 
+                                            WHERE _Num>@rows*(@page-1);
+                                            SELECT COUNT(*) as _temp
+                                            FROM ({0}) ", sql);
+            
                 var entry = this.db.Database.SqlQuery<T>(sSql,
                                                               new
                                                               {

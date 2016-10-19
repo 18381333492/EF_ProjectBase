@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 
 namespace Sevices
 {
-    public partial class ServicesBase
+    public  class ExcuteBase
     {
 
         public Entities db;
 
-
-        public ServicesBase()
+        public ExcuteBase()
         {
             db = new Entities();
         }
@@ -64,9 +63,10 @@ namespace Sevices
             int res = 0;
             try
             {
-                res = this.db.Database.ExecuteSqlCommand(@"update 
-                                                            @tablename set bIsDeleted = 1 
-                                                            where ID in(@ID)", new { tablename=typeof(T).Name, ID=Ids });
+                res = this.db.Database.
+                    ExecuteSqlCommand(@"UPDATE
+                                        @tablename SET bIsDeleted = 1 
+                                        WHERE ID IN(@ID)", new { tablename=typeof(T).Name, ID=Ids });
             }
             catch (Exception e)
             {

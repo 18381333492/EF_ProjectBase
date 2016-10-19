@@ -13,15 +13,8 @@ namespace Sevices
     /// <summary>
     /// 菜单的服务
     /// </summary>
-    public partial class ButtonService
+    public partial class ButtonService: ServiceBase
     {
-
-        private ServicesBase _server;
-
-        public ButtonService()
-        {
-            _server = new ServicesBase();
-        }
 
         /// <summary>
         /// 添加按钮
@@ -32,8 +25,8 @@ namespace Sevices
         public int Add(Button button)
         {
             button.ID = Guid.NewGuid();
-            _server.Add<Button>(button);
-            return _server.SaveChange(this,"Add");
+            excute.Add<Button>(button);
+            return excute.SaveChange(this,"Add");
         }
 
         /// <summary>
@@ -44,8 +37,8 @@ namespace Sevices
         [Log("按钮", Operate.Update)]
         public int Edit(Button button)
         {
-            _server.Edit<Button>(button);
-            return _server.SaveChange(this, "Edit");
+            excute.Edit<Button>(button);
+            return excute.SaveChange(this, "Edit");
         }
 
     }

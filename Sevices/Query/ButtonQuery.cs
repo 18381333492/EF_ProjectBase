@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Sevices
 {
-    public partial class ButtonService
+    public partial class ButtonService: ServiceBase
     {
 
 
@@ -36,7 +36,7 @@ namespace Sevices
             try
             {
                 //根级菜单
-                var FirstMenu = (from m in _server.db.Menus
+                var FirstMenu = (from m in query.db.Menus
                                  where m.bIsDeleted == false && m.sParentMenuId == string.Empty
                                  orderby m.iOrder
                                  select new MenuButton
@@ -45,7 +45,7 @@ namespace Sevices
                                      text = m.sMenuName,
                                  }).ToList();
                 //二级菜单
-                var Menu = (from m in _server.db.Menus
+                var Menu = (from m in query.db.Menus
                             where m.bIsDeleted == false && m.sParentMenuId != string.Empty
                             orderby m.iOrder
                             select new MenuButton
@@ -55,7 +55,7 @@ namespace Sevices
                                 toid = m.sParentMenuId
                             }).ToList();
                 //二级菜单按钮
-                var Button = from m in _server.db.Button orderby m.iOrder 
+                var Button = from m in query.db.Button orderby m.iOrder 
                              select new MenuButton
                              {
                                  id = m.ID.ToString(),
@@ -118,7 +118,7 @@ namespace Sevices
         {
             try
             {
-                return  _server.db.Button.Find(ID);
+                return query.db.Button.Find(ID);
             }
             catch (Exception e)
             {

@@ -54,6 +54,7 @@
     <Compile Include="Query\ButtonQuery.cs" />
     <Compile Include="Query\UserQuery.cs" />
     <Compile Include="ExcuteBase.cs" />
+    <Compile Include="ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

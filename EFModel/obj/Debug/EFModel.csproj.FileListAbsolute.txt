@@ -1,0 +1,16 @@
+D:\GitHub源代码\EF_ProjectBase\EFModel\bin\Debug\EFModel.dll.config
+D:\GitHub源代码\EF_ProjectBase\EFModel\bin\Debug\EFModel.dll
+D:\GitHub源代码\EF_ProjectBase\EFModel\bin\Debug\EFModel.pdb
+D:\GitHub源代码\EF_ProjectBase\EFModel\bin\Debug\Common.dll
+D:\GitHub源代码\EF_ProjectBase\EFModel\bin\Debug\EntityFramework.dll
+D:\GitHub源代码\EF_ProjectBase\EFModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\GitHub源代码\EF_ProjectBase\EFModel\bin\Debug\Newtonsoft.Json.dll
+D:\GitHub源代码\EF_ProjectBase\EFModel\bin\Debug\Common.pdb
+D:\GitHub源代码\EF_ProjectBase\EFModel\bin\Debug\EntityFramework.xml
+D:\GitHub源代码\EF_ProjectBase\EFModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\GitHub源代码\EF_ProjectBase\EFModel\bin\Debug\Newtonsoft.Json.xml
+D:\GitHub源代码\EF_ProjectBase\EFModel\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\GitHub源代码\EF_ProjectBase\EFModel\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\GitHub源代码\EF_ProjectBase\EFModel\obj\Debug\EFModel.csprojResolveAssemblyReference.cache
+D:\GitHub源代码\EF_ProjectBase\EFModel\obj\Debug\EFModel.dll
+D:\GitHub源代码\EF_ProjectBase\EFModel\obj\Debug\EFModel.pdb

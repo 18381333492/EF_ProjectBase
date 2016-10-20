@@ -22,7 +22,7 @@ namespace Web.Areas.Admin.Controllers
             _server = new UserService();
         }
 
-        #region 视图
+        #region 后台用户视图
         public ActionResult Index()
         {
             return View();
@@ -40,10 +40,10 @@ namespace Web.Areas.Admin.Controllers
 
         #endregion
 
+
         public ActionResult List(PageInfo Info)
         {
-             _server.GetList(Info,null);
-            return Content(string.Empty);
+            return Content(_server.GetList(Info, null));
         }
 
         /// <summary>

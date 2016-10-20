@@ -18,7 +18,7 @@ namespace EFModel.MyModels
         {
             get;
             set;
-        }
+        } = 1;
 
         /// <summary>
         /// 页面数据的大小
@@ -27,7 +27,7 @@ namespace EFModel.MyModels
         {
             get;
             set;
-        }
+        } = 10;
 
         /// <summary>
         /// 排序的字段名称
@@ -36,16 +36,16 @@ namespace EFModel.MyModels
         {
             get;
             set;
-        }
+        } = "ID";
 
         /// <summary>
         /// 排序方式asc or desc
         /// </summary>
-        public Order order
+        public string order
         {
             get;
             set;
-        }
+        } = "DESC";
 
         /// <summary>
         /// 关键字
@@ -54,13 +54,6 @@ namespace EFModel.MyModels
         {
             get;
             set;
-        }
-
-
-        public enum Order
-        {
-            asc=0,
-            desc=1
         }
     }
 }

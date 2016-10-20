@@ -1,0 +1,4 @@
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\Logs.dll
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\Logs.pdb
+D:\GitHub源代码\EF_ProjectBase\Logs\obj\Debug\Logs.dll
+D:\GitHub源代码\EF_ProjectBase\Logs\obj\Debug\Logs.pdb

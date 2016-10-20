@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EF_ProjectBaseModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="sUserName" ColumnName="sUserName" />
+          <ScalarProperty Name="sPassWord" ColumnName="sPassWord" />
+          <ScalarProperty Name="sPhone" ColumnName="sPhone" />
+          <ScalarProperty Name="bState" ColumnName="bState" />
+          <ScalarProperty Name="sRoleID" ColumnName="sRoleID" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+          <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.Menus">
+        <MappingFragment StoreEntitySet="Menus">
+          <ScalarProperty Name="iOrder" ColumnName="iOrder" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+          <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+          <ScalarProperty Name="sMenuIcon" ColumnName="sMenuIcon" />
+          <ScalarProperty Name="sParentMenuId" ColumnName="sParentMenuId" />
+          <ScalarProperty Name="sMenuUrl" ColumnName="sMenuUrl" />
+          <ScalarProperty Name="sMenuName" ColumnName="sMenuName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Button">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.Button">
+        <MappingFragment StoreEntitySet="Button">
+          <ScalarProperty Name="iOrder" ColumnName="iOrder" />
+          <ScalarProperty Name="sButtonEn_Name" ColumnName="sButtonEn_Name" />
+          <ScalarProperty Name="sButtonIcon" ColumnName="sButtonIcon" />
+          <ScalarProperty Name="sToMenuId" ColumnName="sToMenuId" />
+          <ScalarProperty Name="sButtonName" ColumnName="sButtonName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

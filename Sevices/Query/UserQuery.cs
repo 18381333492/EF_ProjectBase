@@ -20,8 +20,8 @@ namespace Sevices
         /// <returns></returns>
         public string GetList(PageInfo Info,Dictionary<string,object> Params)
         {
-            query.QueryPage<Dictionary<string, object>>(Info,@"select * from User");
-            return null;
+
+            return query.QueryPage<Dictionary<string,object>>(@"select * from [User]",Info, null);
         }
 
         /// <summary>

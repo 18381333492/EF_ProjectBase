@@ -1,16 +1,15 @@
 ﻿
 
 function eui() {
-
     this.config = function (name, controller) {
         var path = '/' + name + '/' + controller + '/';
         var object = {
             grid: $('#' + controller),
             toolbar: '#' + controller + '_toolbar',
-            form:{ add:'#add_form',edit:'#edit_form' },
-            Insert: {  handle: null },
-            Update: {  handle: null },
-            Cancel: {  handle: null },
+            form: { add: '#add_form', edit: '#edit_form' },
+            Insert: { handle: null },
+            Update: { handle: null },
+            Cancel: { handle: null },
             route: function (name) {
                 return path + name;
             }
@@ -18,19 +17,12 @@ function eui() {
         return object;
     }
 
-
-    //this.routeConfig = function (name,controller) {
-    //    return '/' + name + '/' + controller + '/'.toString();
-    //}
-
-
-
-    /*  
+    /*
     * EasyUi提示框（messager）.
     * @author [汤台]
     * @version 1.0.0
     * @param   msg, title, icon, fn(确认回调函数)
-    * @return {dialog} 
+    * @return {dialog}
     * @icon   {String}error（X）,question(?),info,warning(!)
     */
     this.alert = function (msg, title, icon, fn) {
@@ -38,12 +30,14 @@ function eui() {
         icon = icon || 'info';
         $.messager.alert(title, msg, icon, fn);
     }
-    /*  
+
+
+    /*
     * ajax的post请求的封装（form）.
     * @author [汤台]
     * @version 1.0.0
     * @param   url,data,callback,er_callback
-    * @return {void} 
+    * @return {void}
     */
     this.post = function (url, data, callback, er_callback) {
         var f = new eui();
@@ -78,31 +72,14 @@ function eui() {
         });
     }
 
-     /*  
-     * EasyUi表单验证（form）.
-     * @author [汤台]
-     * @version 1.0.0
-     * @param   form
-     * @return {void} 
-     */
-    this.check = function (form) {
-        if (!form.form('validate')) {
-            this.alert('请输入所有的必填项');
-            return false;
-        }
-        return true;
-    }
-
-
-
-     /*  
-     * EasyUi弹出框（dialog）.
-     * @author [汤台]
-     * @version 1.0.0
-     * @param  url, title, callback(确认的回调函数),width,height,callload(加载成功的回调函数)
-     * @return {dialog} 
-     */
-    this.dialog = function (url, title, callback, width, height ,callload) {
+    /*
+    * EasyUi弹出框（dialog）.
+    * @author [汤台]
+    * @version 1.0.0
+    * @param  url, title, callback(确认的回调函数),width,height,callload(加载成功的回调函数)
+    * @return {dialog}
+    */
+    this.dialog = function (url, title, callback, width, height, callload) {
         width = width || 600;
         height = height || 400;
         var name = $('<div/>');
@@ -113,7 +90,7 @@ function eui() {
                 iconCls: 'icon-save',
                 width: width,
                 height: height,
-                border:false,
+                border: false,
                 buttons: [{
                     text: '<span style="padding-right:10px;">确 认</span>',
                     iconCls: 'icon-ok',

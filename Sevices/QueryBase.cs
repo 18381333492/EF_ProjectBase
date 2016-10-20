@@ -7,6 +7,10 @@ using Common;
 using EFModel.MyModels;
 using Logs;
 using EFModel;
+using System.Data.Entity.Infrastructure;
+using Newtonsoft.Json.Linq;
+
+
 
 namespace Sevices
 {
@@ -32,76 +36,45 @@ namespace Sevices
             return entry;
         }
 
-        /// <summary>
-        /// 分页查询数据
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="info"></param>
-        /// <param name="sWhereFields"></param>
-        /// <param name="sSelectFields"></param>
-        /// <returns></returns>
-        public object QueryPage<T>(PageInfo info, string sWhereFields=null, string sSelectFields="*") where T:class,new ()
-        {
-
-            try
-            {
-                var entry = this.db.Database.SqlQuery<T>(@"EXEC Proc_PageQuery 
-                                                            @sTableName,
-                                                            @page,
-                                                            @rows,
-                                                            @sSelectFields,
-                                                            @sOrderField,
-                                                            @sOrder,
-                                                            @sWhereFields"
-                                                                          , new
-                                                                          {
-                                                                              sTableName = typeof(T).Name,
-                                                                              page = info.page,//页码
-                                                                              rows = info.rows,//数量
-                                                                              sSelectFields = sSelectFields,
-                                                                              sOrderField = info.sort,//排序的字段
-                                                                              sOrder = info.order,//排序ASC OR DESC
-                                                                              sWhereFields = sWhereFields //过滤的字段
-                                                                          });
-                return entry;
-            }
-            catch (Exception e)
-            {
-                LogHelper.ErrorLog(e);
-                return null;
-            }
-        }
 
         /// <summary>
         /// 通过Sql语句分页查询
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">必需是实体模型</typeparam>
         /// <param name="sql"></param>
         /// <param name="info"></param>
         /// <returns></returns>
-        public object QueryPage<T>(PageInfo info,string sql)
+        public string QueryPage<T>(string sql, PageInfo info,object param) 
         {
             try
             {
-                string sSql = string.Format(@"SELECT  
-                                            TOP @rows entry.* FROM
-                                            (SELECT ROW_NUMBER() OVER(ORDER BY @sort @order) AS _Num,*
-                                            FROM
-                                            ({0}) AS query) AS entry 
-                                            WHERE _Num>@rows*(@page-1);
-                                            SELECT COUNT(*) as _temp
-                                            FROM ({0}) ", sql);
-            
-                var entry = this.db.Database.SqlQuery<T>(sSql,
-                                                              new
-                                                              {
-                                                                  rows = info.rows,
-                                                                  sort = info.sort,
-                                                                  order = info.order,
-                                                                  page = info.page
-                                                              });
+                string sSql = string.Format(@"DECLARE @rows int 
+                                                SELECT @rows=COUNT(*) FROM(select * from [User]) as entry 
+                                                SELECT  TOP 
+                                                {1} *,@rows MaxRows FROM
+                                                (SELECT  ROW_NUMBER() OVER(ORDER BY {2} {3}) AS Number,*
+                                                FROM ({0}) AS query) AS entry 
+                                                WHERE  Number>{1}*({4}-1) ", sql,
+                                                info.rows,
+                                                info.sort,
+                                                info.order,
+                                                info.page);
 
-                return entry;
+                DapperHelper.QueryBase ba = new DapperHelper.QueryBase();
+
+                var entry = ba.QueryPage(sSql, param);
+
+                if (entry != null)
+                {
+                    JObject job = new JObject();
+                    job.Add(new JProperty("rows", C_Json.Array(C_Json.toJson(entry))));
+                    job.Add(new JProperty("total", entry[0]["MaxRows"].toInt32()));
+                    return job.ToString();
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch (Exception e)
             {

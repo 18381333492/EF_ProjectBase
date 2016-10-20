@@ -28,5 +28,11 @@ namespace Common
             }
             return sBuilder.ToString();
         }
+
+
+        public static string NoHtml()
+        {
+            return null;
+        }
     }
 }

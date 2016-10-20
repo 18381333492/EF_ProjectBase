@@ -24,6 +24,7 @@ namespace EFModel.MyModels
         /// </summary>
         public bool success = false;
 
+
         public string toJson()
         {
             return C_Json.toJson(this);

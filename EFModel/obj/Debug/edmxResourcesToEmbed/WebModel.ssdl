@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EF_ProjectBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Button">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sButtonName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sToMenuId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sButtonIcon" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sButtonEn_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="iOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sMenuName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sMenuUrl" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sParentMenuId" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sMenuIcon" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+    <Property Name="iOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sUserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sPassWord" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="bState" Type="bit" Nullable="false" />
+    <Property Name="sRoleID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+    <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="EF_ProjectBaseModelStoreContainer">
+    <EntitySet Name="Button" EntityType="Self.Button" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

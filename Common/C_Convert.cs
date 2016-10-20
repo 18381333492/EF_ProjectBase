@@ -38,7 +38,7 @@ namespace Common
         }
 
         /// <summary>
-        /// 将Object类型转化为Int32
+        /// 将Object类型转化为Int64
         /// </summary>
         /// <param name="s"></param>
         /// <param name="result"></param>
@@ -49,6 +49,13 @@ namespace Common
             return result;
         }
 
+
+        /// <summary>
+        /// 将将Object类型转化为boolean
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
         public static bool toBoolean(this object s,bool result=false)
         {
             Boolean.TryParse(s.ToString(), out result);

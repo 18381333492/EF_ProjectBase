@@ -61,6 +61,10 @@
       <Project>{f78e3ce0-6aaf-4139-a0cf-f3a1e29cf990}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DapperHelper\DapperHelper.csproj">
+      <Project>{15ae0127-6ec4-4de5-bc01-7f58dd5bb4e9}</Project>
+      <Name>DapperHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EFModel\EFModel.csproj">
       <Project>{0988fb43-c26d-459c-b5e6-35271e6717d0}</Project>
       <Name>EFModel</Name>

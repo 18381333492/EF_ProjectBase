@@ -24,6 +24,16 @@
     <Property Name="bIsDeleted" Type="bit" Nullable="false" />
     <Property Name="iOrder" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sRoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sRolePower" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="sInsertTime" Type="datetime" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="ID" />
@@ -40,6 +50,7 @@
   <EntityContainer Name="EF_ProjectBaseModelStoreContainer">
     <EntitySet Name="Button" EntityType="Self.Button" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

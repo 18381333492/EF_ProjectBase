@@ -9,17 +9,10 @@ using Web.App_Start;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class ButtonController : AdminBaseController
+    public class ButtonController : AdminBaseController<ButtonService>
     {
         //
         // GET: /Admin/Button/
-
-        private ButtonService server;
-
-        public ButtonController()
-        {
-            server = new ButtonService();
-        }
 
         #region 菜单按钮视图
 
@@ -36,7 +29,7 @@ namespace Web.Areas.Admin.Controllers
 
         public ActionResult Edit(Guid ID)
         {
-            var button = server.Get(ID) != null ? server.Get(ID) : new Button();
+            var button = _server.Get(ID) != null ? _server.Get(ID) : new Button();
             return View(button);
         }
 
@@ -48,7 +41,7 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult List()
         {
-            return Content(server.GetList());
+            return Content(_server.GetList());
         }
 
         /// <summary>
@@ -58,7 +51,7 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult Insert(Button button)
         {
-            int res = server.Add(button);
+            int res = _server.Add(button);
             if (res > 0)
             {
                 result.success = true;
@@ -74,7 +67,7 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult Update(Button button)
         {
-            int res = server.Edit(button);
+            int res = _server.Edit(button);
             if (res > 0)
             {
                 result.success = true;

@@ -11,7 +11,7 @@ using EFModel;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class HomeController : AdminBaseController
+    public class HomeController : AdminBaseController<UserService>
     {
         //
         // GET: /Admin/Home/
@@ -37,7 +37,6 @@ namespace Web.Areas.Admin.Controllers
         {
             if (sImgCode == Session["ImgCode"].ToString())
             {
-                UserService _server = new UserService();
                 var user = _server.Login(sUserName, sPassWord);
                 if (user != null)
                 {

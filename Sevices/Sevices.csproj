@@ -47,11 +47,13 @@
   <ItemGroup>
     <Compile Include="Excute\ButtonExcute.cs" />
     <Compile Include="Excute\MenusExcute.cs" />
+    <Compile Include="Excute\RoleExcute.cs" />
     <Compile Include="Excute\UserExcute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryBase.cs" />
     <Compile Include="Query\MenusQuery.cs" />
     <Compile Include="Query\ButtonQuery.cs" />
+    <Compile Include="Query\RoleQuery.cs" />
     <Compile Include="Query\UserQuery.cs" />
     <Compile Include="ExcuteBase.cs" />
     <Compile Include="ServiceBase.cs" />

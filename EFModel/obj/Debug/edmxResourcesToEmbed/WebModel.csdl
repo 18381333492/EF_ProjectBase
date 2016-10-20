@@ -17,6 +17,7 @@
     <EntitySet Name="User" EntityType="Self.User" />
     <EntitySet Name="Menus" EntityType="EF_ProjectBaseModel.Menus" />
     <EntitySet Name="Button" EntityType="EF_ProjectBaseModel.Button" />
+    <EntitySet Name="Role" EntityType="EF_ProjectBaseModel.Role" />
   </EntityContainer>
   <EntityType Name="Menus">
     <Key>
@@ -41,5 +42,15 @@
     <Property Name="sButtonIcon" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="sButtonEn_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="iOrder" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="sRoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sRolePower" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="sInsertTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
   </EntityType>
 </Schema>

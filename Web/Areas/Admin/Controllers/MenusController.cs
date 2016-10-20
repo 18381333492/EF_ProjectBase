@@ -13,19 +13,11 @@ namespace Web.Areas.Admin.Controllers
     /// <summary>
     /// 菜单控制器
     /// </summary>
-    public class MenusController : AdminBaseController
+    public class MenusController : AdminBaseController<MenusService>
     {
         //
         // GET: /Admin/Menus/
-
-        private MenusService server;
-
-        public MenusController()
-        {
-            server = new MenusService();
-        }
-
-
+   
         public ActionResult Index()
         {
             return View();
@@ -42,7 +34,7 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult List()
         {
-            string data = server.GetList();
+            string data = _server.GetList();
             return Content(data);
         }
 
@@ -52,7 +44,7 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult GetMenusList()
         {
-            result.data = server.GetMenusList();
+            result.data = _server.GetMenusList();
             if (!string.IsNullOrEmpty(result.data.ToString()))
             {
                 result.success = true;
@@ -70,7 +62,7 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult GetFirstMenus()
         {
-            return Content(server.GetFirstMenus());
+            return Content(_server.GetFirstMenus());
         }
         /// <summary>
         /// 添加菜单
@@ -79,7 +71,7 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult Insert(Menus menu)
         {
-            int res=server.Add(menu);
+            int res= _server.Add(menu);
             if (res>0)
             {
                 result.success = true;
@@ -89,7 +81,7 @@ namespace Web.Areas.Admin.Controllers
 
         public ActionResult Update(Menus menu)
         {
-            int res = server.Add(menu);
+            int res = _server.Add(menu);
             if (res > 0)
             {
                 result.success = true;

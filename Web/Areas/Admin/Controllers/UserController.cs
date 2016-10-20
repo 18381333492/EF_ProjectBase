@@ -10,17 +10,10 @@ using Web.App_Start;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class UserController : AdminBaseController
+    public class UserController : AdminBaseController<UserService>
     {
         //
         // GET: /Admin/User/
-
-        private UserService _server;
-
-        public UserController()
-        {
-            _server = new UserService();
-        }
 
         #region 后台用户视图
         public ActionResult Index()

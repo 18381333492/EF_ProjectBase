@@ -64,7 +64,7 @@
                             var data = $(button.form.add).serialize() + '&sToMenuId=' + menuId;
                             f.post(button.route('Insert'), data, function (res) {
                                 dialog.dialog('close');
-                                tree.tree('reload');
+                                button.tree('reload');
                             });
                         }
                     },400,300);
@@ -76,7 +76,7 @@
                             var data = $(button.form.edit).serialize() + '&sToMenuId=' + menuId;
                             f.post(button.route('Update'), data, function (res) {
                                 dialog.dialog('close');
-                                tree.tree('reload');
+                                button.tree('reload');
                             });
                         }
                     },400,300);

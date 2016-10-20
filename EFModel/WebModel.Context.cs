@@ -28,5 +28,6 @@ namespace EFModel
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Menus> Menus { get; set; }
         public virtual DbSet<Button> Button { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
     }
 }

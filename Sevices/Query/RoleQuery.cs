@@ -21,7 +21,7 @@ namespace Sevices
         /// <returns></returns>
         public string GetList(PageInfo Info,Dictionary<string,object> Params)
         {
-            return query.QueryPage<Dictionary<string,object>>(@"select * from [Role]",Info, null);
+            return query.QueryPage<Dictionary<string,object>>(@"select * from [Role] where bIsDeleted=0",Info, null);
         }
 
         /// <summary>
@@ -34,19 +34,21 @@ namespace Sevices
             return query.db.Role.Find(ID);
         }
 
+        
         /// <summary>
-        /// 获取所有的菜单和按钮
+        /// 获取所有的菜单和菜单按钮
         /// </summary>
+        /// <param name="ID">角色ID</param>
         /// <returns></returns>
-        public string GetAllMenuAndButton()
+        public string GetAllMenuAndButton(Guid ID)
         {
             try
             {
                 /*
-                * 获取菜单数据*
+                * 获取一级菜单数据*
                 */
                 var menus = from m in query.db.Menus
-                            where m.bIsDeleted == false
+                            where m.bIsDeleted == false &&m.sParentMenuId==string.Empty
                             orderby m.iOrder ascending
                             select new
                             {
@@ -55,6 +57,20 @@ namespace Sevices
                                 m.sMenuName,
                                 m.sParentMenuId,
                             };
+                /*
+                * 获取二级菜单数据*
+                */
+                var childMenu = from m in query.db.Menus
+                                where m.bIsDeleted == false && m.sParentMenuId != string.Empty
+                                orderby m.iOrder ascending
+                                select new
+                                {
+                                    m.ID,
+                                    m.iOrder,
+                                    m.sMenuName,
+                                    m.sParentMenuId,
+                                };
+
                 /*
                  * 获取菜单按钮数据*
                  */
@@ -67,9 +83,17 @@ namespace Sevices
                                  n.sToMenuId,
                              };
 
+                /*
+                 * 根据角色ID获取角色权限*
+                 */
+
+                var role = query.db.Role.Find(ID);
+
                 JObject job = new JObject();
                 job.Add(new JProperty("menu", C_Json.Array(C_Json.toJson(menus))));
+                job.Add(new JProperty("childMenu", C_Json.Array(C_Json.toJson(childMenu))));
                 job.Add(new JProperty("button", C_Json.Array(C_Json.toJson(button))));
+                job.Add(new JProperty("power", role.sRolePower));
                 return job.ToString();
             }
             catch (Exception e)

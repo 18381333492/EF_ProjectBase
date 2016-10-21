@@ -31,7 +31,7 @@ namespace Sevices
         [Log("角色", Operate.Update)]
         public int Edit(Role item)
         {
-            excute.Edit<Role>(item);
+             excute.Edit<Role>(item);
              return excute.SaveChange(this, "Edit");
         }
 
@@ -48,6 +48,21 @@ namespace Sevices
                 LogHelper.OperateLog(this, "Cancel");
             }
             return res;
+        }
+
+        /// <summary>
+        /// 设置角色权限
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="sPower"></param>
+        /// <returns></returns>
+        [Log("角色权限", Operate.Alter)]
+        public int SetPower(Guid ID,string sPower)
+        {
+            var role = query.db.Role.Find(ID);
+            role.sRolePower = sPower;
+            excute.Edit<Role>(role);
+            return  excute.SaveChange(this, "SetPower");
         }
     }
 }

@@ -16,7 +16,6 @@ namespace Web.Areas.Admin.Controllers
         //
         // GET: /Admin/Home/
 
-
         public ActionResult Index()
         {
             return View();
@@ -35,16 +34,23 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult CheckLogin(string sUserName, string sPassWord,string sImgCode)
         {
-            if (sImgCode == Session["ImgCode"].ToString())
+            if (sImgCode == Session[SESSION.ImgCode].ToString())
             {
                 var user = _server.Login(sUserName, sPassWord);
                 if (user != null)
                 {
-                    Session["User"] = new UserInfo()
+                    Session[SESSION.User] = new UserInfo()
                     {
                         ID = user.ID,
-                        sUserName = user.sUserName
+                        sUserName = user.sUserName,
+                        sRoleId = user.sRoleID     
                     };
+
+                    //缓存用户的二级菜单和按钮
+                    var menu = Resolve<MenusService>();
+                    var button= Resolve<ButtonService>();
+                    Session[SESSION.Menu] = menu.GetSecondMenus(user.sRoleID);
+                    Session[SESSION.Button] = button.GetButton(user.sRoleID);
                     result.success = true;
                 }
                 else

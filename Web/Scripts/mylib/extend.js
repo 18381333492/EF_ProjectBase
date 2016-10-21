@@ -12,3 +12,24 @@
 String.prototype.url = function (name) {
     return this + name;
 }
+
+
+
+Array.prototype.GetValue = function () {
+    var data = [];
+    $(this).each(function () {
+        var $this = this;
+        data.push($($this).val());
+    });
+    return data.join();
+}
+
+
+Array.prototype.GetAttr = function (attrName) {
+    var data = [];
+    $(this).each(function () {
+        var $this = this;
+        data.push($($this).attr(attrName));
+    });
+    return data.join();
+}

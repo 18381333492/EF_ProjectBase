@@ -25,17 +25,28 @@ namespace Web.Areas.Admin.Controllers
         /// 权限分配视图
         /// </summary>
         /// <returns></returns>
-        public ActionResult Power()
+        public ActionResult Power(Guid ID)
         {
-            ViewBag.MenuAndButton =_server.GetAllMenuAndButton();
+            ViewBag.ID = ID;
             return View();
         }
 
-        public ActionResult List()
+        public ActionResult List(PageInfo info)
         {
-            return Content("");
+            return Content(_server.GetList(info,null));
         }
 
+
+        /// <summary>
+        /// 获取权限列表
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetPowerList(Guid ID)
+        {
+            result.data = _server.GetAllMenuAndButton(ID);
+            result.success = true;
+            return Content(result.toJson());
+        }
 
 
 
@@ -84,6 +95,22 @@ namespace Web.Areas.Admin.Controllers
             return Content(result.toJson());
         }
 
-
+        
+        /// <summary>
+        /// 设置角色权限
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="sPower"></param>
+        /// <returns></returns>
+        public ActionResult SetPower(Guid ID,string sPower)
+        {
+            int res = _server.SetPower(ID, sPower);
+            if (res > 0)
+            {
+                result.success = true;
+            }
+            return Content(result.toJson());
+        }
+             
     }
 }

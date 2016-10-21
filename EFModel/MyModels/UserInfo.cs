@@ -23,5 +23,11 @@ namespace EFModel.MyModels
             get;
             set;
         }
+
+        public Guid sRoleId
+        {
+            get;
+            set;
+        }
     }
 }

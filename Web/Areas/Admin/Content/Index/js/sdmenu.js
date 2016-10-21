@@ -8,7 +8,7 @@ function SDMenu(id) {
 	this.markCurrent = true;
 	this.oneSmOnly = false;
 }
-SDMenu.prototype.init = function() {
+SDMenu.prototype.init = function () {
 	var mainInstance = this;
 	for (var i = 0; i < this.submenus.length; i++)
 		this.submenus[i].getElementsByTagName("span")[0].onclick = function() {

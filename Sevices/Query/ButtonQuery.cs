@@ -24,8 +24,6 @@ namespace Sevices
             public string sToMenuId;
         }
 
-
-
         /// <summary>
         /// 获取菜单按钮数据列表
         /// </summary>
@@ -125,6 +123,32 @@ namespace Sevices
                 Logs.LogHelper.ErrorLog(e);
                 return null;
             }
+        }
+
+
+        /// <summary>
+        /// 根据用户角色获取用户菜单下面的按钮
+        /// </summary>
+        /// <param name="sRoleId"></param>
+        /// <returns></returns>
+        public List<Button> GetButton(Guid sRoleId)
+        {
+            try
+            {
+                var role = query.db.Role.Find(sRoleId);
+                var array = role.sRolePower.Split('|');
+                if (array.Length > 1)
+                {
+                    List<Guid> buttonId = array[1].Split(',').Select(m => new Guid(m)).ToList();
+                    return query.db.Button.
+                      Where(m => buttonId.Contains(m.ID)).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Logs.LogHelper.ErrorLog(e);            
+            }
+            return null;
         }
     }
 }

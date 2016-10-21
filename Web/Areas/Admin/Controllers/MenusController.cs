@@ -44,15 +44,8 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult GetMenusList()
         {
-            result.data = _server.GetMenusList();
-            if (!string.IsNullOrEmpty(result.data.ToString()))
-            {
-                result.success = true;
-            }
-            else
-            {
-                result.info = "菜单加载失败!";
-            }   
+            result.data = _server.GetMenusList(SessionUser().sRoleId);
+            result.success = true;
             return Content(result.toJson());
         }
 

@@ -32,17 +32,19 @@ namespace Sevices
         /// 根据用户权限获取获取菜单列表数据
         /// </summary>
         /// <returns></returns>
-        public string GetMenusList()
+        public string GetMenusList(Guid sRoleId)
         {
             try
             {
                 var MainMenu = new List<MenuData>();
+                //获取角色
+                var childMenu=GetSecondMenus(sRoleId);//获取角色下面的所有二级菜单
+
+                List<Guid> sParentMenuId = childMenu.Select(m => new Guid(m.sParentMenuId)).ToList(); 
                 var menu = query.db.Menus.
-                    Where(m => m.sParentMenuId == string.Empty&&m.bIsDeleted==false).
+                    Where(m => sParentMenuId.Contains(m.ID)).
                     OrderBy(m => m.iOrder).ToList();
-                var childMenu = query.db.Menus.
-                    Where(m => m.sParentMenuId != string.Empty&& m.bIsDeleted == false).
-                    OrderBy(m => m.iOrder).ToList();
+
                 //组装菜单数据
                 foreach (var m in menu)
                 {
@@ -99,7 +101,43 @@ namespace Sevices
                 return string.Empty;
             }
         }
-        
+
+
+
+        /// <summary>
+        /// 根据角色获取用户的二级菜单
+        /// </summary>
+        /// <param name="sRoleId"></param>
+        /// <returns></returns>
+        public List<Menus> GetSecondMenus(Guid sRoleId)
+        {
+            try
+            {
+                //获取角色
+                var role = query.db.Role.Find(sRoleId);
+                string sSql = string.Empty;
+                var MenuIdAndButtonId = role.sRolePower.Split('|');
+                string[] menuId = MenuIdAndButtonId[0].Split(',');
+                menuId = menuId.Select(m => "'" + m + "'").ToArray();
+                sSql = string.Format(@"SELECT * FROM [Menus] WHERE ID IN({0}) ORDER BY iOrder ", string.Join(",", menuId));
+                if (MenuIdAndButtonId.Length > 1)
+                {
+                    string[] buttonId = MenuIdAndButtonId[1].Split(',');
+                    buttonId = buttonId.Select(m => "'" + m + "'").ToArray();
+                    sSql = string.Format(@"SELECT * FROM [Menus]
+                                           WHERE ID IN(SELECT sToMenuId FROM Button 
+                                           WHERE ID IN({0}))
+                                           OR ID IN({1}) ORDER BY iOrder ", string.Join(",", buttonId), string.Join(",", menuId));
+                }
+                return query.Query<Menus>(sSql);//获取角色下面的所有二级菜单
+
+            }
+            catch(Exception e)
+            {
+                Logs.LogHelper.ErrorLog(e);
+                return null;
+            }
+        }
         /// <summary>
         /// 获取所有的菜单列表数据
         /// </summary>

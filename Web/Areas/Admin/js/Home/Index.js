@@ -24,6 +24,7 @@ $(function () {
             html.push('</div>');
         });
         $('#my_menu').append(html.join(''));
+        debugger
         myMenu = new SDMenu("my_menu");
         myMenu.init();
         //绑定菜单单击事件

@@ -30,10 +30,17 @@ namespace Sevices
         /// <param name="sql"></param>
         /// <param name="param"></param>
         /// <returns></returns>
-        public object Query<T>(string sql,params object[] param)where T:class,new()
+        public List<T> Query<T>(string sql,params object[] param)where T:class,new()
         {
-            var entry=this.db.Database.SqlQuery<T>(sql,param);
-            return entry;
+            try
+            {
+                return  this.db.Database.SqlQuery<T>(sql, param).ToList();
+            }
+            catch (Exception e)
+            {
+                LogHelper.ErrorLog(e);
+                return null;
+            }
         }
 
 

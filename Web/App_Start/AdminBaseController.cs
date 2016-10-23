@@ -1,4 +1,5 @@
-﻿using EFModel.MyModels;
+﻿using EFModel;
+using EFModel.MyModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +52,8 @@ namespace Web.App_Start
         }
 
 
+
+
         /// <summary>
         /// 在ActionFiter执行完之后操作
         /// tip:主要根据角色获取权限相应的按钮
@@ -59,7 +62,15 @@ namespace Web.App_Start
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             var user = SessionUser();
+            //请求的路径
             var sPath = filterContext.RequestContext.HttpContext.Request.Url.AbsolutePath;
+            if (sPath.ToLower().Contains("index"))
+            {
+                var menu=(Session[SESSION.Menu] as List<Menus>).Where(m=>m.sMenuUrl.ToLower()== sPath).FirstOrDefault();
+                var buttonList = (Session[SESSION.Button] as List<Button>).Where(m => m.sToMenuId == menu.ID).ToList();
+                filterContext.Controller.ViewData["Button"] = buttonList;
+            }
+           //filterContext.Controller
         }
 
         

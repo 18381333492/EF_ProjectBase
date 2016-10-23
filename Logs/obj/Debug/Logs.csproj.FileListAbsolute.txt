@@ -3,3 +3,8 @@ D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\Logs.pdb
 D:\GitHub源代码\EF_ProjectBase\Logs\obj\Debug\Logs.dll
 D:\GitHub源代码\EF_ProjectBase\Logs\obj\Debug\Logs.pdb
 D:\GitHub源代码\EF_ProjectBase\Logs\obj\Debug\Logs.csprojResolveAssemblyReference.cache
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\Logs.dll
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\Logs.pdb
+E:\GitHub源代码管理\EF_ProjectBase\Logs\obj\Debug\Logs.csprojResolveAssemblyReference.cache
+E:\GitHub源代码管理\EF_ProjectBase\Logs\obj\Debug\Logs.dll
+E:\GitHub源代码管理\EF_ProjectBase\Logs\obj\Debug\Logs.pdb

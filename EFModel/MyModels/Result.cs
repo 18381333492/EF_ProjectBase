@@ -24,6 +24,11 @@ namespace EFModel.MyModels
         /// </summary>
         public bool success = false;
 
+        /// <summary>
+        /// 登录是否过时标识
+        /// </summary>
+        public bool over = false;
+
 
         public string toJson()
         {

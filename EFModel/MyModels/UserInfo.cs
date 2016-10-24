@@ -29,5 +29,14 @@ namespace EFModel.MyModels
             get;
             set;
         }
+
+        /// <summary>
+        /// 角色名称
+        /// </summary>
+        public string sRoleName
+        {
+            get;
+            set;
+        }
     }
 }

@@ -18,6 +18,7 @@
     <link href="/Areas/Admin/Content/Index/css/css.css" rel="stylesheet" />
     <script src="/Areas/Admin/Content/Index/js/sdmenu.js"></script>
     <script type=text/javascript src="/Areas/Admin/Content/Index/js/clock.js"></script>
+
     <script src="~/Scripts/mylib/eui.js"></script>
     <script src="~/Areas/Admin/js/Home/Index.js"></script>
     <style>
@@ -40,9 +41,9 @@
                                 <tr>
                                     <td align="left" valign="bottom" id="header-name">侯马经济开发区</td>
                                     <td align="right" valign="top" id="header-right">
-                                        <a href="index.html" target="topFrame" onFocus="this.blur()" class="admin-out">注销</a>
-                                        <a href="index.html" target="top" onFocus="this.blur()" class="admin-home">管理首页</a>
-                                        <a href="index.html" target="_blank" onFocus="this.blur()" class="admin-index">网站首页</a>
+                                        <a  style="cursor:pointer" onFocus="this.blur()" class="admin-out">安全退出</a>
+                                        <a  style="cursor:pointer" onFocus="this.blur()" class="admin-home">管理首页</a>
+                                        <a  style="cursor:pointer" onFocus="this.blur()" class="admin-index">网站首页</a>
                                         <span>
                                             <!-- 日历 -->
                                             <script type=text/javascript>showcal();</script>
@@ -73,7 +74,7 @@
             <div class="MenuStyle">
                 <div id="left-top">
                     <div><img src="/Areas/Admin/Content/Index/images/main/member.gif" width="44" height="44" /></div>
-                    <span>用户：admin<br>角色：超级管理员</span>
+                    <span>用户：@ViewBag.sUserName<br>角色：@ViewBag.sRoleName</span>
                 </div>
                 <div style="float:left" id="my_menu" class="sdmenu">
                     <!--

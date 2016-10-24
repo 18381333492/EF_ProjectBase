@@ -47,16 +47,23 @@ function eui() {
             type: 'POST',
             dataType: 'json',
             success: function (r) {
-                if (r.success) {
-                    callback(r);
-                }
-                else {
-                    if (er_callback) {
-                        er_callback(r);//手动提示错误
+                if (!r.over)
+                { /*判断登录是否过期*/
+                    if (r.success) {
+                        callback(r);
                     }
                     else {
-                        f.alert("操作失败,请联系管理员!");
+                        if (er_callback) {
+                            er_callback(r);//手动提示错误
+                        }
+                        else {
+                            f.alert("操作失败,请联系管理员!");
+                        }
                     }
+                }
+                else {
+                    f.alert("登录过期,请重新登录");
+                    location.href = "/Admin/Home/Tip";
                 }
             },
             // jqXHR 是经过jQuery封装的XMLHttpRequest对象
@@ -80,6 +87,7 @@ function eui() {
     * @return {dialog}
     */
     this.dialog = function (url, title, callback, width, height, callload) {
+        debugger
         width = width || 600;
         height = height || 400;
         var name = $('<div/>');

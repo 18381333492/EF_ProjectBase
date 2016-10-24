@@ -23,5 +23,17 @@ namespace Web
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 		}
-	}
+
+
+        protected void Session_End()
+        {
+
+        }
+
+
+        protected void Session_Start()
+        {
+
+        }
+    }
 }

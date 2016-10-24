@@ -41,10 +41,15 @@ namespace Sevices
         /// <param name="sUserName">用户</param>
         /// <param name="sPassWord">密码</param>
         /// <returns></returns>
-        public User Login(string sUserName, string sPassWord)
+        public User Login(string sUserName, string sPassWord,out string sRoleName)
         {
+            sRoleName = string.Empty;
             sPassWord = C_String.MD5(sPassWord);
             var user = query.db.User.Where(m => m.sUserName == sUserName && m.sPassWord == sPassWord).SingleOrDefault();
+            if (user != null)
+            {
+                sRoleName = query.db.Role.Find(user.sRoleID).sRoleName;
+            }
             return user;
         }
     }

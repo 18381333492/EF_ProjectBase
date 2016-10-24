@@ -18,8 +18,20 @@ namespace Web.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.sUserName = SessionUser().sUserName;
+            ViewBag.sRoleName = SessionUser().sRoleName;
             return View();
         }
+
+        /// <summary>
+        /// 登录过期提示页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Tip()
+        {
+            return View();
+        }
+
 
         public ActionResult Login()
         {
@@ -36,14 +48,16 @@ namespace Web.Areas.Admin.Controllers
         {
             if (sImgCode == Session[SESSION.ImgCode].ToString())
             {
-                var user = _server.Login(sUserName, sPassWord);
+                string sRoleName;
+                var user = _server.Login(sUserName, sPassWord, out sRoleName);
                 if (user != null)
                 {
                     Session[SESSION.User] = new UserInfo()
                     {
                         ID = user.ID,
                         sUserName = user.sUserName,
-                        sRoleId = user.sRoleID     
+                        sRoleId = user.sRoleID,
+                        sRoleName = sRoleName
                     };
 
                     //缓存用户的二级菜单和按钮
@@ -65,6 +79,19 @@ namespace Web.Areas.Admin.Controllers
             return Content(result.toJson());
         }
 
+
+        /// <summary>
+        /// 安全退出
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Quit()
+        {
+            Session.RemoveAll();
+            Session.Abandon();//清除全部Session
+            result.success = true;
+            return Content(result.toJson());
+        }
+
         /// <summary>
         /// 获取图形验证码
         /// </summary>
@@ -73,7 +100,7 @@ namespace Web.Areas.Admin.Controllers
         {
             string sCode = C_ImgCode.CreateValidateCode(5);
             var code=C_ImgCode.CreateValidateGraphic(sCode);
-            Session["ImgCode"] = sCode;
+            Session[SESSION.ImgCode] = sCode;
             return File(code, "@image/jpeg");
         }
    

@@ -21,8 +21,10 @@
         var menuId;
         var buttonId;
   
-        /*
-        *树形菜单按钮数据绑定
+        /*!
+        * method:树形菜单按钮数据绑定
+        * author:[汤台]
+        * version:[1.0.0]
         */
         button.grid.tree({
             url: button.route('List'),
@@ -53,8 +55,11 @@
             }
         });
 
-
-        //菜单鼠标右键的单击菜单事件监听
+        /*!
+        * method:菜单鼠标右键的单击菜单事件监听
+        * author:[汤台]
+        * version:[1.0.0]
+        */
         $('#mm').menu({
             onClick: function (item) {
                 if (item.text == "新增按钮") {
@@ -64,29 +69,32 @@
                             var data = $(button.form.add).serialize() + '&sToMenuId=' + menuId;
                             f.post(button.route('Insert'), data, function (res) {
                                 dialog.dialog('close');
-                                button.tree('reload');
+                                button.grid.tree('reload');
                             });
                         }
                     },400,300);
                     return;
                 }
+                /*编辑按钮*/
                 if (item.text == "编辑按钮") {
                     var dialog = f.dialog(button.route('Edit')+'?ID=' + buttonId, '编辑按钮', function () {
                         if ($(button.form.edit).form('validate')) {
                             var data = $(button.form.edit).serialize() + '&sToMenuId=' + menuId;
                             f.post(button.route('Update'), data, function (res) {
                                 dialog.dialog('close');
-                                button.tree('reload');
+                                button.grid.tree('reload');
                             });
                         }
                     },400,300);
                    return;
                 }
+                /*删除按钮*/
                 if (item.text == "删除按钮") {
-                    var dialog = f.dialog(button.route('Cancel'), '删除按钮', function () {
-                       
-                    });
-                   return;
+                    f.post(button.route("Cancel"), { Ids: "'" + buttonId + "'" },
+                        function (res) {
+                            f.alert("删除成功!")
+                            button.grid.tree('reload');
+                        });
                 }
             }
         });

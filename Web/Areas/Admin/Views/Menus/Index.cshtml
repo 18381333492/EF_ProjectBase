@@ -11,6 +11,7 @@
 <script type="text/javascript">
     $(function () {
         var f = new eui();
+        var d = new extend();
         var menus = f.config("Admin", "Menus");
 
         /*!
@@ -28,7 +29,7 @@
                         menus.grid.treegrid('reload');
                     });
                 }
-            });
+            },450,300);
         }
 
         /*!
@@ -37,9 +38,45 @@
         * version:[1.0.0]
         */
         menus.Update.handle = function () {
-            f.alert("fdf");
+            var select = menus.grid.datagrid('getSelections');
+            if (select.length) {
+                var dialog = f.dialog(menus.route('Edit') + "?ID=" + select[0].ID, '编辑菜单',
+                    function () {
+                        if ($(menus.form.edit).form('validate')) {
+                            var data = $(menus.form.edit).serialize();
+                            f.post(menus.route('Update'), data, function (res) {
+                                dialog.dialog('close');
+                                menus.grid.treegrid('reload');
+                            });
+                        }
+                    }, 450, 300);
+            }
+            else {
+                f.alert("请选择一条数据进行操作!");
+            }
         }
 
+        /*!
+        * method:删除菜单
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        menus.Cancel.handle = function () {
+            var select = menus.grid.datagrid('getSelections');
+            if (select.length > 0) {
+                $.messager.confirm('确认', '您确认想要删除所选择的数据？', function (r) {
+                    if (r) {
+                        f.post(menus.route("Cancel"), { Ids: d.GetIds(select) },
+                            function (res) {
+                                menus.grid.treegrid('reload');
+                            });
+                    }
+                });
+            }
+            else {
+                f.alert("请选择数据进行操作!");
+            }
+        }
 
 
         /*!
@@ -50,7 +87,7 @@
         $(menus.toolbar)
                 .on('click', 'a[data-name=menu_add]', menus.Insert.handle)
                 .on('click', 'a[data-name=menu_edit]', menus.Update.handle)
-              //.on('click', 'a[data-name=menu_cancel]', menus.Cancel.handle)
+                .on('click', 'a[data-name=menu_cancel]', menus.Cancel.handle)
 
 
         /*!
@@ -73,6 +110,7 @@
                 { field: 'dInsertTime', title: '添加时间', align: 'center', width: 200 }
             ]],
             onLoadSuccess: function (row, data) {
+               
             },
         });    
     });

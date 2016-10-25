@@ -41,5 +41,15 @@ namespace Sevices
             return excute.SaveChange(this, "Edit");
         }
 
+        /// <summary>
+        /// 删除菜单下面的按钮
+        /// </summary>
+        /// <param name="Ids"></param>
+        /// <returns></returns>
+        public int Cancel(string Ids)
+        {
+            return  excute.Excute(string.Format( @"DELETE Button WHERE ID={0}", Ids),this, "Cancel");
+        }
+
     }
 }

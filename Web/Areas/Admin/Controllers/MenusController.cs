@@ -17,7 +17,9 @@ namespace Web.Areas.Admin.Controllers
     {
         //
         // GET: /Admin/Menus/
-   
+
+        #region 菜单相关视图
+
         public ActionResult Index()
         {
             return View();
@@ -27,6 +29,13 @@ namespace Web.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult Edit(Guid ID)
+        {
+            return View(_server.GetById(ID));
+        }
+
+        #endregion
 
         /// <summary>
         /// 获取菜单列表数据
@@ -57,6 +66,7 @@ namespace Web.Areas.Admin.Controllers
         {
             return Content(_server.GetFirstMenus());
         }
+
         /// <summary>
         /// 添加菜单
         /// </summary>
@@ -72,14 +82,36 @@ namespace Web.Areas.Admin.Controllers
             return Content(result.toJson());
         }
 
+        /// <summary>
+        /// 编辑菜单
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <returns></returns>
         public ActionResult Update(Menus menu)
         {
-            int res = _server.Add(menu);
+            int res = _server.Edit(menu);
             if (res > 0)
             {
                 result.success = true;
             }
             return Content(result.toJson());
+        }
+
+
+        /// <summary>
+        /// 删除菜单
+        /// </summary>
+        /// <param name="Ids"></param>
+        /// <returns></returns>
+        public ActionResult Cancel(string Ids)
+        {
+            int res= _server.Cancel(Ids);
+            if (res > 0)
+            {
+                result.success = true;
+            }
+            return Content(result.toJson());
+
         }
     }
 }

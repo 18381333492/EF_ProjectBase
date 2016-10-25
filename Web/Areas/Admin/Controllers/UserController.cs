@@ -46,10 +46,17 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult Insert(User user)
         {
-            int res=_server.Add(user);
-            if (res > 0)
+            if (!_server.CheckUserName(user.sUserName))
             {
-                result.success = true;
+                int res = _server.Add(user);
+                if (res > 0)
+                {
+                    result.success = true;
+                }
+            }
+            else
+            {
+                result.info = "该账户已被注册过!";
             }
             return Content(result.toJson());
         }

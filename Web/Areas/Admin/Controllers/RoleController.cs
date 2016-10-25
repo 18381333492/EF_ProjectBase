@@ -48,6 +48,14 @@ namespace Web.Areas.Admin.Controllers
             return Content(result.toJson());
         }
 
+        /// <summary>
+        /// 获取所有的角色名称数据列表
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetRoleNameList()
+        {
+            return Content(_server.GetRoleNameList());
+        }
 
 
         /// <summary>

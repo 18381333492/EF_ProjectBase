@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 
 namespace Sevices
 {
@@ -20,6 +21,10 @@ namespace Sevices
         [Log("用户",Operate.Create)]
         public int Add(User item)
         {
+            item.dInsertTime = DateTime.Now;
+            item.bState = true;
+            item.sPassWord = C_String.MD5(item.sPassWord);
+            item.sPhone = string.Empty;
             excute.Add<User>(item);
             return excute.SaveChange(this,"Add");      
         }
@@ -43,12 +48,7 @@ namespace Sevices
         [Log("用户", Operate.Delete)]
         public int Cancel(string Ids)
         {
-            int res= excute.Cancel<User>(Ids);
-            if (res > 0)
-            {//手动写日志
-                LogHelper.OperateLog(this, "Cancel");
-            }
-            return res;
+            return excute.Cancel<User>(Ids,this, "Cancel");
         }
 
         /// <summary>
@@ -59,13 +59,8 @@ namespace Sevices
         [Log("用户", Operate.Freeze)]
         public int Freeze(string Ids)
         {
-            string sSql = "Update User Set State=0 Where ID IN(@ID)";
-            int res= excute.Update(sSql,new { ID= Ids });
-            if (res > 0)
-            {//手动写日志
-                LogHelper.OperateLog(this, "Freeze");
-            }
-            return res;
+            string sSql =string.Format("Update User Set State=0 Where ID IN({0})",Ids);
+            return excute.Excute(sSql, this, "Freeze", new { ID = Ids });
         }
     }
 }

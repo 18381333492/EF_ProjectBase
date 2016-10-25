@@ -75,5 +75,16 @@ namespace Web.Areas.Admin.Controllers
             return Content(result.toJson());
         }
 
+
+        public ActionResult Cancel(string Ids)
+        {
+            int res = _server.Cancel(Ids);
+            if (res > 0)
+            {
+                result.success = true;
+            }
+            return Content(result.toJson());
+        }
+
     }
 }

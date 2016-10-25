@@ -283,6 +283,7 @@
     <Content Include="Areas\Admin\Views\Role\Power.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Button.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Tip.cshtml" />
+    <Content Include="Areas\Admin\Views\Menus\Edit.cshtml" />
     <None Include="bundleconfig.json" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />

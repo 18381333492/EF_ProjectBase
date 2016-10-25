@@ -17,8 +17,7 @@
         * version:[1.0.0]
          */
         f.post(role.route("GetPowerList") + "?ID=" + $('#RoleId').val(), null,
-           function (res)
-            {
+           function (res){
             var data =JSON.parse(res.data);
             var menu = data.menu;
             var childMenu = data.childMenu;

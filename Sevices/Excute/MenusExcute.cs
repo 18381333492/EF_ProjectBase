@@ -43,12 +43,22 @@ namespace Sevices
         {
             if (string.IsNullOrEmpty(menu.sParentMenuId))
                 menu.sParentMenuId = string.Empty;
+            menu.sMenuIcon = string.Empty;
             excute.Edit<Menus>(menu);
             return excute.SaveChange(this, "Edit");
         }
 
 
-
+        /// <summary>
+        /// 删除菜单数据
+        /// </summary>
+        /// <param name="Ids"></param>
+        /// <returns></returns>
+        [Log("菜单", Operate.Delete)]
+        public int Cancel(string Ids)
+        {
+            return  excute.Cancel<Menus>(Ids, this, "Cancel");
+        }
 
     }
 }

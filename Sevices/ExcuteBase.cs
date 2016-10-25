@@ -58,15 +58,17 @@ namespace Sevices
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="Ids">主键Ids集合</param>
-        public int Cancel<T>(string Ids) where T : class, new()
+        public int Cancel<T>(string Ids, object services, string method) where T : class, new()
         {
             int res = 0;
             try
             {
                 res = this.db.Database.
-                    ExecuteSqlCommand(@"UPDATE
-                                        @tablename SET bIsDeleted = 1 
-                                        WHERE ID IN(@ID)", new { tablename=typeof(T).Name, ID=Ids });
+                    ExecuteSqlCommand(string.Format(@"UPDATE
+                                        [{0}] SET bIsDeleted = 1 
+                                        WHERE ID IN({1})", typeof(T).Name,Ids));
+                if (res > 0)
+                    LogHelper.OperateLog(services, method);
             }
             catch (Exception e)
             {
@@ -76,18 +78,20 @@ namespace Sevices
         }
 
         /// <summary>
-        /// 根据Sql语句更新数据
+        /// 根据Sql语句执行
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="sql">Sql语句</param>
         /// <param name="param"></param>
         /// <returns></returns>
-        public int Update(string sql, params object[] param)
+        public int Excute(string sql, object services, string method ,params object[] param)
         {
             int res = 0;
             try
             {
                 res = this.db.Database.ExecuteSqlCommand(sql, param);
+                if (res > 0)
+                    LogHelper.OperateLog(services, method);
             }
             catch (Exception e)
             {

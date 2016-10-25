@@ -21,7 +21,7 @@ namespace Sevices
         /// <returns></returns>
         public string GetList(PageInfo Info,Dictionary<string,object> Params)
         {
-            return query.QueryPage<Dictionary<string,object>>(@"select * from [Role] where bIsDeleted=0",Info, null);
+            return query.QueryPage(@"select * from [Role] where bIsDeleted=0",Info, null);
         }
 
         /// <summary>
@@ -34,7 +34,19 @@ namespace Sevices
             return query.db.Role.Find(ID);
         }
 
-        
+
+        public string GetRoleNameList()
+        {
+            var entry = from m in query.db.Role
+                        where m.bIsDeleted == false
+                        select new
+                        {
+                            m.ID,
+                            m.sRoleName
+                        };
+            return C_Json.toJson(entry);
+        }
+
         /// <summary>
         /// 获取所有的菜单和菜单按钮
         /// </summary>
@@ -44,19 +56,6 @@ namespace Sevices
         {
             try
             {
-                /*
-                * 获取一级菜单数据*
-                */
-                var menus = from m in query.db.Menus
-                            where m.bIsDeleted == false &&m.sParentMenuId==string.Empty
-                            orderby m.iOrder ascending
-                            select new
-                            {
-                                m.ID,
-                                m.iOrder,
-                                m.sMenuName,
-                                m.sParentMenuId,
-                            };
                 /*
                 * 获取二级菜单数据*
                 */
@@ -70,6 +69,22 @@ namespace Sevices
                                     m.sMenuName,
                                     m.sParentMenuId,
                                 };
+
+                List<string> ChildIds = childMenu.Select(m =>m.sParentMenuId).ToList();
+
+                /*
+                 * 获取一级菜单数据*
+                 */
+                var menus = from m in query.db.Menus
+                            where ChildIds.Contains(m.ID.ToString()) && m.bIsDeleted == false
+                            orderby m.iOrder ascending
+                            select new
+                            {
+                                m.ID,
+                                m.iOrder,
+                                m.sMenuName,
+                                m.sParentMenuId,
+                            };
 
                 /*
                  * 获取菜单按钮数据*
@@ -99,7 +114,7 @@ namespace Sevices
             catch (Exception e)
             {
                 Logs.LogHelper.ErrorLog(e);
-                return null;
+                return string.Empty;
             }
         }
     }

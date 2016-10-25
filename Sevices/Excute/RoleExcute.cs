@@ -42,12 +42,7 @@ namespace Sevices
         [Log("角色", Operate.Delete)]
         public int Cancel(string Ids)
         {
-            int res= excute.Cancel<Role>(Ids);
-            if (res > 0)
-            {//手动写日志
-                LogHelper.OperateLog(this, "Cancel");
-            }
-            return res;
+            return excute.Cancel<Role>(Ids,this, "Cancel");
         }
 
         /// <summary>

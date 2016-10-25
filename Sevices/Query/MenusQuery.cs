@@ -29,6 +29,16 @@ namespace Sevices
         }
 
         /// <summary>
+        /// 根据主键ID获取菜单实体
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public Menus GetById(Guid ID)
+        {
+            return query.db.Menus.Find(ID);
+        }
+
+        /// <summary>
         /// 根据用户权限获取获取菜单列表数据
         /// </summary>
         /// <returns></returns>
@@ -42,7 +52,7 @@ namespace Sevices
 
                 List<Guid> sParentMenuId = childMenu.Select(m => new Guid(m.sParentMenuId)).ToList(); 
                 var menu = query.db.Menus.
-                    Where(m => sParentMenuId.Contains(m.ID)).
+                    Where(m => sParentMenuId.Contains(m.ID)&&m.bIsDeleted==false).
                     OrderBy(m => m.iOrder).ToList();
 
                 //组装菜单数据
@@ -81,7 +91,7 @@ namespace Sevices
             try
             {
                 var entry = from m in query.db.Menus
-                            where m.sParentMenuId == string.Empty
+                            where m.sParentMenuId == string.Empty &&m.bIsDeleted==false
                             orderby m.iOrder
                             select new
                             {
@@ -103,7 +113,6 @@ namespace Sevices
         }
 
 
-
         /// <summary>
         /// 根据角色获取用户的二级菜单
         /// </summary>
@@ -119,7 +128,7 @@ namespace Sevices
                 var MenuIdAndButtonId = role.sRolePower.Split('|');
                 string[] menuId = MenuIdAndButtonId[0].Split(',');
                 menuId = menuId.Select(m => "'" + m + "'").ToArray();
-                sSql = string.Format(@"SELECT * FROM [Menus] WHERE ID IN({0}) ORDER BY iOrder ", string.Join(",", menuId));
+                sSql = string.Format(@"SELECT * FROM [Menus] WHERE ID IN({0}) AND bIsDeleted=0 ORDER BY iOrder ", string.Join(",", menuId));
                 if (MenuIdAndButtonId.Length > 1)
                 {
                     string[] buttonId = MenuIdAndButtonId[1].Split(',');
@@ -127,7 +136,7 @@ namespace Sevices
                     sSql = string.Format(@"SELECT * FROM [Menus]
                                            WHERE ID IN(SELECT sToMenuId FROM Button 
                                            WHERE ID IN({0}))
-                                           OR ID IN({1}) ORDER BY iOrder ", string.Join(",", buttonId), string.Join(",", menuId));
+                                           OR ID IN({1}) AND bIsDeleted=0  ORDER BY iOrder ", string.Join(",", buttonId), string.Join(",", menuId));
                 }
                 return query.Query<Menus>(sSql);//获取角色下面的所有二级菜单
 

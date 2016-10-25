@@ -20,8 +20,9 @@ namespace Sevices
         /// <returns></returns>
         public string GetList(PageInfo Info,Dictionary<string,object> Params)
         {
-
-            return query.QueryPage<Dictionary<string,object>>(@"select * from [User]",Info, null);
+            return query.QueryPage(@"select A.*,B.sRoleName from [User] AS A 
+                                            LEFT JOIN [Role] AS B  
+                                            ON A.sRoleID=B.ID WHERE A.bIsDeleted=0 ", Info, null);
         }
 
         /// <summary>
@@ -29,11 +30,24 @@ namespace Sevices
         /// </summary>
         /// <param name="ID">主键ID</param>
         /// <returns></returns>
-        public User Get(string ID)
+        public User Get(Guid ID)
         {
             return query.db.User.Find(ID);
         }
 
+        /// <summary>
+        /// 检查用户名是否已存在
+        /// </summary>
+        /// <param name="sUserName"></param>
+        /// <returns></returns>
+        public bool CheckUserName(string sUserName)
+        {
+            if (query.db.User.Where(m => m.sUserName == sUserName && m.bIsDeleted == false).Count() > 0)
+            {
+                return true;
+            }
+            else return false;
+        }
 
         /// <summary>
         ///  用户登录
@@ -45,7 +59,7 @@ namespace Sevices
         {
             sRoleName = string.Empty;
             sPassWord = C_String.MD5(sPassWord);
-            var user = query.db.User.Where(m => m.sUserName == sUserName && m.sPassWord == sPassWord).SingleOrDefault();
+            var user = query.db.User.Where(m => m.sUserName == sUserName && m.sPassWord == sPassWord&&m.bIsDeleted==false).SingleOrDefault();
             if (user != null)
             {
                 sRoleName = query.db.Role.Find(user.sRoleID).sRoleName;

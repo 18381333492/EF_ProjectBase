@@ -52,25 +52,27 @@ namespace Web.Areas.Admin.Controllers
                 var user = _server.Login(sUserName, sPassWord, out sRoleName);
                 if (user != null)
                 {
-                    Session[SESSION.User] = new UserInfo()
+                    if (user.bState)
                     {
-                        ID = user.ID,
-                        sUserName = user.sUserName,
-                        sRoleId = user.sRoleID,
-                        sRoleName = sRoleName
-                    };
+                        Session[SESSION.User] = new UserInfo()
+                        {
+                            ID = user.ID,
+                            sUserName = user.sUserName,
+                            sRoleId = user.sRoleID,
+                            sRoleName = sRoleName
+                        };
 
-                    //缓存用户的二级菜单和按钮
-                    var menu = Resolve<MenusService>();
-                    var button= Resolve<ButtonService>();
-                    Session[SESSION.Menu] = menu.GetSecondMenus(user.sRoleID);
-                    Session[SESSION.Button] = button.GetButton(user.sRoleID);
-                    result.success = true;
+                        //缓存用户的二级菜单和按钮
+                        var menu = Resolve<MenusService>();
+                        var button = Resolve<ButtonService>();
+                        Session[SESSION.Menu] = menu.GetSecondMenus(user.sRoleID);
+                        Session[SESSION.Button] = button.GetButton(user.sRoleID);
+                        result.success = true;
+                    }
+                    else result.info = "该用户已被冻结,请联系管理员!";
                 }
                 else
-                {
                     result.info = "用户名或密码错误!";
-                }
             }
             else
             {

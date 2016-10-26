@@ -9,6 +9,22 @@
 function extend() {
 
     /*
+    * 给字符串前后添加单引号
+    * @author [汤台]
+    * @version 1.0.0
+    * @param   String(数据源)
+    * @return {String}
+    */
+    this.AddQuote = function (str) {
+        try {
+            return "'" + str + "'";
+        }
+        catch (e) {
+            alert(e.message);
+        }
+    }
+
+    /*
     * 获取datagrid选择行的ID集合(逗号隔开)
     * @author [汤台]
     * @version 1.0.0
@@ -20,7 +36,7 @@ function extend() {
             var Ids = [];
             $(array).each(function () {
                 var $this = this;
-                Ids.push("'" + $this.ID + "'");
+                Ids.push(new extend().AddQuote($this.ID));
             });
             return Ids.join();
         } catch (e) {
@@ -68,5 +84,4 @@ function extend() {
             alert(e.message);
         }
     }
-
 }

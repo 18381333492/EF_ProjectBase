@@ -23,6 +23,7 @@
             var dialog = f.dialog(menus.route('Add'), '添加菜单', function () {
                 if ($(menus.form.add).form('validate'))
                 {
+                    menus.button.disable();
                     var data = $(menus.form.add).serialize();
                     f.post(menus.route('Insert'), data, function (res) {
                         dialog.dialog('close');
@@ -43,6 +44,7 @@
                 var dialog = f.dialog(menus.route('Edit') + "?ID=" + select[0].ID, '编辑菜单',
                     function () {
                         if ($(menus.form.edit).form('validate')) {
+                            menus.button.disable();
                             var data = $(menus.form.edit).serialize();
                             f.post(menus.route('Update'), data, function (res) {
                                 dialog.dialog('close');

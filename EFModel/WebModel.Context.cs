@@ -29,5 +29,6 @@ namespace EFModel
         public virtual DbSet<Menus> Menus { get; set; }
         public virtual DbSet<Button> Button { get; set; }
         public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<OperateLog> OperateLog { get; set; }
     }
 }

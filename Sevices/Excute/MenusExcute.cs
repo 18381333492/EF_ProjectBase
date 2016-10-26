@@ -21,7 +21,7 @@ namespace Sevices
         /// </summary>
         /// <param name="menu"></param>
         /// <returns></returns>
-        [Log("菜单",Operate.Create)]
+        [Log("菜单",Operate.添加)]
         public int Add(Menus menu)
         {
             menu.ID = Guid.NewGuid();
@@ -38,7 +38,7 @@ namespace Sevices
         /// </summary>
         /// <param name="menu"></param>
         /// <returns></returns>
-        [Log("菜单", Operate.Update)]
+        [Log("菜单", Operate.编辑)]
         public int Edit(Menus menu)
         {
             if (string.IsNullOrEmpty(menu.sParentMenuId))
@@ -54,7 +54,7 @@ namespace Sevices
         /// </summary>
         /// <param name="Ids"></param>
         /// <returns></returns>
-        [Log("菜单", Operate.Delete)]
+        [Log("菜单", Operate.删除)]
         public int Cancel(string Ids)
         {
             return  excute.Cancel<Menus>(Ids, this, "Cancel");

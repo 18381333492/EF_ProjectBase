@@ -29,6 +29,17 @@
           <Property Name="bIsDeleted" Type="bit" Nullable="false" />
           <Property Name="iOrder" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="OperateLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="sUserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+          <Property Name="sIpAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sContent" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="ID" />
@@ -55,6 +66,7 @@
         <EntityContainer Name="EF_ProjectBaseModelStoreContainer">
           <EntitySet Name="Button" EntityType="Self.Button" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperateLog" EntityType="Self.OperateLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -80,6 +92,7 @@
           <EntitySet Name="Menus" EntityType="EF_ProjectBaseModel.Menus" />
           <EntitySet Name="Button" EntityType="EF_ProjectBaseModel.Button" />
           <EntitySet Name="Role" EntityType="EF_ProjectBaseModel.Role" />
+          <EntitySet Name="OperateLog" EntityType="EF_ProjectBaseModel.OperateLog" />
         </EntityContainer>
         <EntityType Name="Menus">
           <Key>
@@ -114,6 +127,17 @@
           <Property Name="sRolePower" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="sInsertTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OperateLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="sUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sIpAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sCity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sContent" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -168,6 +192,18 @@
                 <ScalarProperty Name="sInsertTime" ColumnName="sInsertTime" />
                 <ScalarProperty Name="sRolePower" ColumnName="sRolePower" />
                 <ScalarProperty Name="sRoleName" ColumnName="sRoleName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperateLog">
+            <EntityTypeMapping TypeName="EF_ProjectBaseModel.OperateLog">
+              <MappingFragment StoreEntitySet="OperateLog">
+                <ScalarProperty Name="sContent" ColumnName="sContent" />
+                <ScalarProperty Name="sCity" ColumnName="sCity" />
+                <ScalarProperty Name="sIpAddress" ColumnName="sIpAddress" />
+                <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+                <ScalarProperty Name="sUserName" ColumnName="sUserName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

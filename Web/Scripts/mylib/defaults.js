@@ -8,13 +8,13 @@
 void function () {
     $.extend($.fn.textbox.defaults, {
         height: 30,
-        width: 250,
+        width: 200,
         required:true 
     });
 
     $.extend($.fn.combobox.defaults, {
         height: 30,
-        width: 250,
+        width: 200,
         panelHeight:'auto'
     });
 }()

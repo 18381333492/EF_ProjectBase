@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "后台操作日志";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<table id="OperateLog"></table>
+<div id="OperateLog_toolbar" style="padding:5px">
+    @Html.Partial("~/Areas/Admin/Views/Shared/_Button.cshtml")
+</div>
+<script type="text/javascript">
+    $(function () {
+        var f = new eui();
+        var operatelog = f.config("Admin", "OperateLog");
+
+
+
+        /*!
+        * method:操作日志数据列表(datagrid)的绑定
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        operatelog.grid.datagrid({
+            fit: true,
+            url: operatelog.route('List'),
+            toolbar: operatelog.toolbar,
+            striped: true,
+            pagination: true,
+            loadMsg: "正在加载...",
+            columns: [[
+                { field: '', checkbox: true, },
+                { field: 'sUserName', title: '操作人', align: 'center', width: 100 },
+                { field: 'sContent', title: '操作内容', align: 'center', width: 150 },
+                { field: 'dInsertTime', title: '操作时间', align: 'center', width: 200 },
+                { field: 'sIpAddress', title: 'IP地址', align: 'center', width: 200 }
+            ]],
+        });
+    });
+</script>

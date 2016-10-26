@@ -55,15 +55,15 @@ namespace Logs
     public enum Operate
     {
         //添加
-        Create = 1,
+        添加 = 1,
         //更新
-        Update = 2,
+        编辑 = 2,
         //删除
-        Delete = 3,
+        删除 = 3,
         //修改
-        Alter = 4,
-        //冻结
-        Freeze=5,
+        修改 = 4,
+        //冻结/解冻
+        冻结解冻 = 5
 
     }
 }

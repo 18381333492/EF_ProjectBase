@@ -7,3 +7,17 @@ E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\Logs.pdb
 E:\GitHub源代码管理\EF_ProjectBase\Logs\obj\Debug\Logs.csprojResolveAssemblyReference.cache
 E:\GitHub源代码管理\EF_ProjectBase\Logs\obj\Debug\Logs.dll
 E:\GitHub源代码管理\EF_ProjectBase\Logs\obj\Debug\Logs.pdb
+D:\GitHub源代码\EF_ProjectBase\Logs\obj\Debug\Logs.csprojResolveAssemblyReference.cache
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\Logs.dll.config
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\EFModel.dll
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\EntityFramework.dll
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\EntityFramework.SqlServer.dll
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\Common.dll
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\Newtonsoft.Json.dll
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\EFModel.pdb
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\EntityFramework.xml
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\EntityFramework.SqlServer.xml
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\Common.pdb
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\Newtonsoft.Json.xml
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll

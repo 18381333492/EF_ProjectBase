@@ -4,8 +4,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Web.App_Start
 {
@@ -34,8 +36,7 @@ namespace Web.App_Start
         /// 缓存的session的相关信息
         /// </summary>
         public class SESSION
-        {
-           
+        { 
             public static string User = "@_User";
             public static string Menu = "@_Menu";
             public static string Button = "@_Button";
@@ -51,6 +52,27 @@ namespace Web.App_Start
             return Session[SESSION.User] as UserInfo;
         }
 
+
+        /// <summary>
+        /// 重写RequestContext的对象数据的初始化
+        /// tip: /*反射缓存设置用户的相关信息*/
+        /// </summary>
+        /// <param name="requestContext"></param>
+        protected override void Initialize(RequestContext requestContext)
+        {
+            base.Initialize(requestContext);
+            if (Session[SESSION.User]!=null)
+            {
+                UserInfo info = SessionUser();
+                /*反射缓存设置用户的相关信息*/
+                Type t = _server.GetType(); //获得该类的Type
+                PropertyInfo sUserName = t.GetProperty("sUserName");
+                PropertyInfo sIpAddress = t.GetProperty("sIpAddress");
+
+                sUserName.SetValue(_server, info.sUserName, null);
+                sIpAddress.SetValue(_server, info.Ip, null);
+            }
+        }
 
 
         /// <summary>
@@ -83,7 +105,6 @@ namespace Web.App_Start
                 }
             }
         }
-
 
 
         /// <summary>

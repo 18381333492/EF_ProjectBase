@@ -9,7 +9,7 @@
 <script type="text/javascript">
     $(function () {
         var f = new eui();
-        var d=new extend();
+        var d = new extend();
         var user = f.config("Admin","User");
         
         /*!
@@ -19,12 +19,16 @@
         */
         user.Insert.handle = function () {
             var dialog = f.dialog(user.route("Add"), "新增用户", function () {
-                if ($(user.form.add).form("validate"))
-                {
+                if ($(user.form.add).form("validate")) {
+                    user.button.disable();
                     var param = $(user.form.add).serialize();
                     f.post(user.route("Insert"), param, function (res) {
                         dialog.dialog("close");
                         user.grid.datagrid("reload");
+                    },
+                    function (r) {
+                        f.alert(r.info);
+                        user.button.enable();
                     });
                 }
             },400,280);
@@ -37,11 +41,20 @@
         */
         user.Freeze = function () {
             var select = user.grid.datagrid('getSelections');
-            if (select.length > 1) {
-                
+            if (select.length == 1) {
+                var name = select[0].bState == true ? "冻结" : "解冻";
+                $.messager.confirm('确认', '您确认想要'+name+'该用户？', function (r) {
+                    if (r) {
+                        f.post(user.route("Freeze"),
+                            { Ids: d.AddQuote(select[0].ID), bState: select[0].bState },
+                            function (res) {
+                                user.grid.datagrid("reload");
+                            });
+                    }
+                });
             }
             else {
-                f.alert("请选择数据进行操作!");
+                f.alert("请选择一条数据进行操作!");
             }
 
         }

@@ -59,7 +59,8 @@ namespace Web.Areas.Admin.Controllers
                             ID = user.ID,
                             sUserName = user.sUserName,
                             sRoleId = user.sRoleID,
-                            sRoleName = sRoleName
+                            sRoleName = sRoleName,
+                            Ip = Request.UserHostAddress
                         };
 
                         //缓存用户的二级菜单和按钮

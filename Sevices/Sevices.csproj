@@ -54,6 +54,7 @@
     <Compile Include="Query\MenusQuery.cs" />
     <Compile Include="Query\ButtonQuery.cs" />
     <Compile Include="Query\RoleQuery.cs" />
+    <Compile Include="Query\OperateLogQuery.cs" />
     <Compile Include="Query\UserQuery.cs" />
     <Compile Include="ExcuteBase.cs" />
     <Compile Include="ServiceBase.cs" />

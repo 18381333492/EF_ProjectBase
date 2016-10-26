@@ -92,14 +92,18 @@ namespace Web.Areas.Admin.Controllers
         }
 
         /// <summary>
-        /// 冻结用户
+        /// 冻结/解冻用户
         /// </summary>
         /// <param name="Ids"></param>
         /// <returns></returns>
-        public ActionResult Freeze(string Ids)
+        public ActionResult Freeze(string Ids,bool bState)
         {
-            int res = _server.Cancel(Ids);
-            return View();
+            int res = _server.Freeze(Ids, bState);
+            if (res > 0)
+            {
+                result.success = true;
+            }
+            return Content(result.toJson());
         }
     }
 }

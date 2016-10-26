@@ -18,9 +18,10 @@ namespace Sevices
         /// </summary>
         /// <param name="Item"></param>
         /// <returns></returns>
-        [Log("用户",Operate.Create)]
+        [Log("用户",Operate.添加)]
         public int Add(User item)
         {
+            item.ID = Guid.NewGuid();
             item.dInsertTime = DateTime.Now;
             item.bState = true;
             item.sPassWord = C_String.MD5(item.sPassWord);
@@ -34,7 +35,7 @@ namespace Sevices
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        [Log("用户", Operate.Update)]
+        [Log("用户", Operate.编辑)]
         public int Edit(User item)
         {
             excute.Edit<User>(item);
@@ -45,7 +46,7 @@ namespace Sevices
         /// 删除用户
         /// </summary>
         /// <param name="Ids"></param>
-        [Log("用户", Operate.Delete)]
+        [Log("用户", Operate.删除)]
         public int Cancel(string Ids)
         {
             return excute.Cancel<User>(Ids,this, "Cancel");
@@ -56,11 +57,14 @@ namespace Sevices
         /// </summary>
         /// <param name="Ids"></param>
         /// <returns></returns>
-        [Log("用户", Operate.Freeze)]
-        public int Freeze(string Ids)
+        [Log("用户", Operate.冻结解冻)]
+        public int Freeze(string Ids,bool bState)
         {
-            string sSql =string.Format("Update User Set State=0 Where ID IN({0})",Ids);
-            return excute.Excute(sSql, this, "Freeze", new { ID = Ids });
+            int type = 0;
+            if (bState) type = 0;
+            else type = 1;
+            string sSql =string.Format("Update [User] Set bState={0} Where ID IN({1})", type, Ids);
+            return excute.Excute(sSql, this, "Freeze");
         }
     }
 }

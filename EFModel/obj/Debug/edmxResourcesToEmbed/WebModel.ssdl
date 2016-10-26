@@ -24,6 +24,17 @@
     <Property Name="bIsDeleted" Type="bit" Nullable="false" />
     <Property Name="iOrder" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="OperateLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sUserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+    <Property Name="sIpAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sContent" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="ID" />
@@ -50,6 +61,7 @@
   <EntityContainer Name="EF_ProjectBaseModelStoreContainer">
     <EntitySet Name="Button" EntityType="Self.Button" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OperateLog" EntityType="Self.OperateLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
   </EntityContainer>

@@ -16,9 +16,12 @@ namespace Sevices
         /// </summary>
         /// <param name="Item"></param>
         /// <returns></returns>
-        [Log("角色",Operate.Create)]
+        [Log("角色",Operate.添加)]
         public int Add(Role item)
         {
+            item.ID =Guid.NewGuid();
+            item.sInsertTime = DateTime.Now;
+            item.sRolePower = string.Empty;
             excute.Add<Role>(item);
             return excute.SaveChange(this,"Add");      
         }
@@ -28,21 +31,32 @@ namespace Sevices
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        [Log("角色", Operate.Update)]
+        [Log("角色", Operate.编辑)]
         public int Edit(Role item)
         {
-             excute.Edit<Role>(item);
-             return excute.SaveChange(this, "Edit");
+            var temp = query.db.Role.Find(item.ID);
+            temp.sRoleName = item.sRoleName;
+            excute.Edit<Role>(temp);
+            return excute.SaveChange(this, "Edit");
         }
 
         /// <summary>
         /// 删除角色
         /// </summary>
         /// <param name="Ids"></param>
-        [Log("角色", Operate.Delete)]
+        [Log("角色", Operate.删除)]
         public int Cancel(string Ids)
         {
-            return excute.Cancel<Role>(Ids,this, "Cancel");
+            List<string> list = Ids.Split(',').Select(m => m.Trim('\'')).ToList();
+            var entry=query.db.User.Select(m => list.Contains(m.sRoleID.ToString()));
+            if (entry.Count() == 0)
+            {
+                return excute.Cancel<Role>(Ids, this, "Cancel");
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         /// <summary>
@@ -51,7 +65,7 @@ namespace Sevices
         /// <param name="ID"></param>
         /// <param name="sPower"></param>
         /// <returns></returns>
-        [Log("角色权限", Operate.Alter)]
+        [Log("角色权限", Operate.修改)]
         public int SetPower(Guid ID,string sPower)
         {
             var role = query.db.Role.Find(ID);

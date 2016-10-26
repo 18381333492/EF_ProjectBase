@@ -52,5 +52,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="OperateLog">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.OperateLog">
+        <MappingFragment StoreEntitySet="OperateLog">
+          <ScalarProperty Name="sContent" ColumnName="sContent" />
+          <ScalarProperty Name="sCity" ColumnName="sCity" />
+          <ScalarProperty Name="sIpAddress" ColumnName="sIpAddress" />
+          <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+          <ScalarProperty Name="sUserName" ColumnName="sUserName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

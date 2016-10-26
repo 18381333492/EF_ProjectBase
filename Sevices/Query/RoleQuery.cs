@@ -29,7 +29,7 @@ namespace Sevices
         /// </summary>
         /// <param name="ID">主键ID</param>
         /// <returns></returns>
-        public Role Get(string ID)
+        public Role Get(Guid ID)
         {
             return query.db.Role.Find(ID);
         }

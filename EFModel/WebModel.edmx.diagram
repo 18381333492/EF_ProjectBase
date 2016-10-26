@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="EF_ProjectBaseModel.Menus" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="EF_ProjectBaseModel.Button" Width="1.5" PointX="0.75" PointY="5.375" />
         <EntityTypeShape EntityType="EF_ProjectBaseModel.Role" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="EF_ProjectBaseModel.OperateLog" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

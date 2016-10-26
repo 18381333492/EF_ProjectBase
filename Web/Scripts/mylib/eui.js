@@ -12,6 +12,10 @@ function eui() {
             Cancel: { handle: null },
             route: function (name) {
                 return path + name;
+            },
+            button: {
+                enable: function () { $('#ok').eq(0).linkbutton('enable'); },
+                disable: function () { $('#ok').eq(0).linkbutton('disable'); }
             }
         }
         return object;
@@ -58,6 +62,7 @@ function eui() {
                         }
                         else {
                             f.alert("操作失败,请联系管理员!");
+                            $('#ok').eq(0).linkbutton('enable');//启用按钮
                         }
                     }
                 }
@@ -87,7 +92,6 @@ function eui() {
     * @return {dialog}
     */
     this.dialog = function (url, title, callback, width, height, callload) {
-        debugger
         width = width || 600;
         height = height || 400;
         var name = $('<div/>');
@@ -100,6 +104,7 @@ function eui() {
                 height: height,
                 border: false,
                 buttons: [{
+                    id:'ok',
                     text: '<span style="padding-right:10px;">确 认</span>',
                     iconCls: 'icon-ok',
                     handler: callback,

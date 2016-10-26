@@ -21,7 +21,7 @@ namespace Sevices
         /// </summary>
         /// <param name="menu"></param>
         /// <returns></returns>
-        [Log("按钮", Operate.Create)]
+        [Log("按钮", Operate.添加)]
         public int Add(Button button)
         {
             button.ID = Guid.NewGuid();
@@ -34,7 +34,7 @@ namespace Sevices
         /// </summary>
         /// <param name="menu"></param>
         /// <returns></returns>
-        [Log("按钮", Operate.Update)]
+        [Log("按钮", Operate.编辑)]
         public int Edit(Button button)
         {
             excute.Edit<Button>(button);
@@ -46,6 +46,7 @@ namespace Sevices
         /// </summary>
         /// <param name="Ids"></param>
         /// <returns></returns>
+        [Log("按钮", Operate.删除)]
         public int Cancel(string Ids)
         {
             return  excute.Excute(string.Format( @"DELETE Button WHERE ID={0}", Ids),this, "Cancel");

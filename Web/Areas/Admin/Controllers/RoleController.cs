@@ -21,6 +21,16 @@ namespace Web.Areas.Admin.Controllers
             return View();
         }
 
+
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        public ActionResult Edit(Guid ID)
+        {
+            return View(_server.Get(ID));
+        }
         /// <summary>
         /// 权限分配视图
         /// </summary>
@@ -99,6 +109,10 @@ namespace Web.Areas.Admin.Controllers
             if (res > 0)
             {
                 result.success = true;
+            }
+            if(res==-1)
+            {
+                result.info = "该角色下面绑定有用户,不能删除该角色!";
             }
             return Content(result.toJson());
         }

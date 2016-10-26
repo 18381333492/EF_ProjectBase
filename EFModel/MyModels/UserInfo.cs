@@ -38,5 +38,14 @@ namespace EFModel.MyModels
             get;
             set;
         }
+
+        /// <summary>
+        /// Ip地址
+        /// </summary>
+        public string Ip
+        {
+            get;
+            set;
+        }
     }
 }

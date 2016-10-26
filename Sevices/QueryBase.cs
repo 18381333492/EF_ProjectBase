@@ -64,7 +64,7 @@ namespace Sevices
                                                 WHERE  Number>{1}*({4}-1) ", sql,
                                             info.rows,
                                             info.sort,
-                                            info.order,
+                                            info.order.ToString(),
                                             info.page);
 
             DapperHelper.QueryBase ba = new DapperHelper.QueryBase();

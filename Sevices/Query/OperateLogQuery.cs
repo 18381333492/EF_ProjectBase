@@ -20,6 +20,7 @@ namespace Sevices
         /// <returns></returns>
         public string GetList(PageInfo Info,Dictionary<string,object> Params)
         {
+            Info.sort = "dInsertTime";
             return query.QueryPage(@"select * from [OperateLog]", Info, null);
         }
     }

@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace EFModel.MyModels
 {
+
+    public enum OrderType
+    {
+        ASC = 1,
+        DESC = 2,
+    }
     /// <summary>
     /// 分页数据对象
     /// </summary>
@@ -41,11 +47,11 @@ namespace EFModel.MyModels
         /// <summary>
         /// 排序方式asc or desc
         /// </summary>
-        public string order
+        public OrderType order
         {
             get;
             set;
-        } = "DESC";
+        } = OrderType.DESC;
 
         /// <summary>
         /// 关键字

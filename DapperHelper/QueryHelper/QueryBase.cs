@@ -16,25 +16,17 @@ namespace DapperHelper
         /// </summary>
         /// <param name="sSql"></param>
         /// <param name="parameter"></param>
-        public List<Dictionary<string,object>> QueryPage(string sSql, object parameter)
+        public List<Dictionary<string, object>> QueryPage(string sSql, object parameter)
         {
-            try
+            using (SqlConnection conn = GetSqlConnection())
             {
-                using (SqlConnection conn = GetSqlConnection())
-                {
-                    // conn.Query(sSql, param,)
-                    //获取查询结（DapperRow[类型是IEnumerable<dynamic>]）,并将其转换为字典
-                    var ret = conn.Query(sSql, parameter, null, true, null, CommandType.Text)
-                                    .Select(m => ((IDictionary<string, object>)m).ToDictionary(pi => pi.Key, pi => pi.Value))
-                                    .ToList();
-                    CloseConnect(conn);
-                    return ret;
-                }
-            }
-            catch (Exception e)
-            {
-                Logs.LogHelper.ErrorLog(e);
-                return null;
+                // conn.Query(sSql, param,)
+                //获取查询结（DapperRow[类型是IEnumerable<dynamic>]）,并将其转换为字典
+                var ret = conn.Query(sSql, parameter, null, true, null, CommandType.Text)
+                                .Select(m => ((IDictionary<string, object>)m).ToDictionary(pi => pi.Key, pi => pi.Value))
+                                .ToList();
+                CloseConnect(conn);
+                return ret;
             }
         }
     }

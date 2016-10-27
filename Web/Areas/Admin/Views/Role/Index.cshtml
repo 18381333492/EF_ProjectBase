@@ -71,6 +71,7 @@
                         f.post(role.route("Cancel"), { Ids: d.GetIds(select) },
                             function (res) {
                                 role.grid.datagrid('reload');
+                                role.grid.datagrid('clearSelections');
                             }, function (r) {
                                 f.alert(r.info);
                             });
@@ -131,6 +132,7 @@
             fit:true,
             url: role.route('List'),
             toolbar: role.toolbar,
+            rownumbers: true,
             striped: true,
             pagination: true,
             loadMsg: "正在加载...",

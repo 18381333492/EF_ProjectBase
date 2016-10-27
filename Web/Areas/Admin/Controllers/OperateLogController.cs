@@ -29,5 +29,20 @@ namespace Web.Areas.Admin.Controllers
         {
             return Content(_server.GetList(info, null));
         }
+
+
+        /// <summary>
+        /// 删除日志
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Cancel(string Ids)
+        {
+            int res = _server.Cancel(Ids);
+            if (res > 0)
+            {
+                result.success = true;
+            }
+            return Content(result.toJson());
+        }
     }
 }

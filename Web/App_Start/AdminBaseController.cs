@@ -11,7 +11,6 @@ using System.Web.Routing;
 
 namespace Web.App_Start
 {
-    [HandleErrorAttribute]
     public class AdminBaseController<T> : Controller, IExceptionFilter where T:class,new ()
     {
         //
@@ -52,16 +51,15 @@ namespace Web.App_Start
             return Session[SESSION.User] as UserInfo;
         }
 
-
         /// <summary>
         /// 重写RequestContext的对象数据的初始化
         /// tip: /*反射缓存设置用户的相关信息*/
         /// </summary>
-        /// <param name="requestContext"></param>
+        /// <param name = "requestContext" ></ param >
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
-            if (Session[SESSION.User]!=null)
+            if (Session[SESSION.User] != null)
             {
                 UserInfo info = SessionUser();
                 /*反射缓存设置用户的相关信息*/
@@ -73,7 +71,6 @@ namespace Web.App_Start
                 sIpAddress.SetValue(_server, info.Ip, null);
             }
         }
-
 
         /// <summary>
         /// 在Action之前调用
@@ -106,7 +103,6 @@ namespace Web.App_Start
             }
         }
 
-
         /// <summary>
         /// 在Action执行完之后操作
         /// tip:主要根据角色获取权限相应的按钮
@@ -133,16 +129,13 @@ namespace Web.App_Start
 
         /// <summary>
         /// 异常捕捉
-        /// tip：主要是捕捉Get请求的异常,跳转到错误提示页面
+        /// tip：捕捉代码异常,写代码错误日志.
         /// </summary>
         /// <param name="filterContext"></param>
         protected override void OnException(ExceptionContext filterContext)
-       {
-            if (filterContext.HttpContext.Request.HttpMethod.ToUpper() == "GET")
-            {
-                /*跳转到错误提示页面*/
-                filterContext.Result = new RedirectResult("/Admin/Home/Error");
-            }
+        {
+            Exception e = filterContext.Exception;
+            Logs.LogHelper.ErrorLog(e);
         }
     }
 }

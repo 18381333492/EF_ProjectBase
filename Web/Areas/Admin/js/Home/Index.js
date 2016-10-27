@@ -1,13 +1,38 @@
 ﻿
 $(function () {
     var f = new eui();
+
+    /*!
+    * method:给Tab标签绑定添加事件
+    * author:[汤台]
+    * version:[1.0.0]
+    */
+    $('#tabs').tabs({
+        onSelect: function (title, index) {
+            //位置的绑定
+            var text = $("#my_menu a[sMenuName=" + title + "]");
+            var parent = $(text).parent().find('span').text();
+            parent = parent + ">";
+            var spath = parent + title;
+            $('#Address').text(spath)
+        }
+        //onAdd:function () {
+        //    /*显示loading效果*/
+        //    alert(0);
+        //},
+        //onLoadSuccess: function () {
+        //    debugger
+        //    /*关闭loading效果*/
+        //    f.alert(1);
+        //}
+    });
+
     /*!
     * method:获取菜单列表数据
     * author:[汤台]
     * version:[1.0.0]
     */
     f.post("/Admin/Menus/GetMenusList", null, function (res) {
-        
         LoadMenu(res);
     },
     function (r) {
@@ -29,7 +54,7 @@ $(function () {
                 html.push('<span>' + this.sMenuName + '</span>');
                 $(this.Menus).each(function () {
                     var item = this;
-                    html.push('<a url="' + item.sMenuLink + '" style="cursor:pointer">' + item.sMenuName + '</a>');
+                    html.push('<a url="' + item.sMenuLink + '" style="cursor:pointer" sMenuName="' + item.sMenuName + '" >' + item.sMenuName + '</a>');
                 });
                 html.push('</div>');
             });

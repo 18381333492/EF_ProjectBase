@@ -208,6 +208,7 @@
     <Content Include="App_Data\PayConfig\PayConfig.xml" />
     <Content Include="Areas\Admin\Content\Login\css\Login.css" />
     <Content Include="Areas\Admin\Content\Login\demo.html" />
+    <Content Include="Areas\Admin\Content\Login\images\1.jpg" />
     <Content Include="Areas\Admin\js\Home\Index.js" />
     <Content Include="Areas\Admin\js\Home\Login.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -288,6 +289,7 @@
     <Content Include="Areas\Admin\Views\Role\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Role\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\OperateLog\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\My404.cshtml" />
     <None Include="bundleconfig.json" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
@@ -331,7 +333,6 @@
     <Folder Include="Areas\Admin\Content\easyui\plugins\" />
     <Folder Include="Areas\Admin\Content\easyui\src\" />
     <Folder Include="Areas\Admin\Content\easyui\themes\" />
-    <Folder Include="Areas\Admin\Content\Login\images\" />
     <Folder Include="Areas\Admin\Content\Login\js\" />
     <Folder Include="Areas\Mobile\Content\" />
     <Folder Include="Areas\Mobile\Controllers\" />
@@ -341,6 +342,8 @@
     <Folder Include="Areas\Pays\Views\Shared\" />
     <Folder Include="Areas\WeiXin\Views\Shared\" />
     <Folder Include="Controllers\" />
+    <Folder Include="ErrorLogs\ApplicationError\" />
+    <Folder Include="ErrorLogs\Error\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -353,6 +356,10 @@
     <ProjectReference Include="..\EFModel\EFModel.csproj">
       <Project>{0988fb43-c26d-459c-b5e6-35271e6717d0}</Project>
       <Name>EFModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logs\Logs.csproj">
+      <Project>{bc3d8507-da98-449b-8839-63d44d5fc839}</Project>
+      <Name>Logs</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sevices\Sevices.csproj">
       <Project>{efe8ce4c-d0a4-46f1-9b1e-7dbf5167f936}</Project>

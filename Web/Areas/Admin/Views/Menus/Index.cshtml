@@ -71,6 +71,7 @@
                         f.post(menus.route("Cancel"), { Ids: d.GetIds(select) },
                             function (res) {
                                 menus.grid.treegrid('reload');
+                                menus.grid.datagrid('clearSelections');
                             });
                     }
                 });

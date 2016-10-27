@@ -20,7 +20,7 @@ namespace Sevices
         /// <returns></returns>
         public string GetList(PageInfo Info,Dictionary<string,object> Params)
         {
-            return query.QueryPage(@"select A.*,B.sRoleName from [User] AS A 
+            return query.QueryPage(@"select A.*,B.sRoleName from [User AS A 
                                             LEFT JOIN [Role] AS B  
                                             ON A.sRoleID=B.ID WHERE A.bIsDeleted=0 ", Info, null);
         }
@@ -58,7 +58,7 @@ namespace Sevices
         public User Login(string sUserName, string sPassWord,out string sRoleName)
         {
             sRoleName = string.Empty;
-            sPassWord = C_String.MD5(sPassWord);
+            sPassWord = C_Security.MD5(sPassWord);
             var user = query.db.User.Where(m => m.sUserName == sUserName && m.sPassWord == sPassWord&&m.bIsDeleted==false).SingleOrDefault();
             if (user != null)
             {

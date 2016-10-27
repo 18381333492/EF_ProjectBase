@@ -33,15 +33,7 @@ namespace Sevices
         /// <returns></returns>
         public List<T> Query<T>(string sql, params object[] param) where T : class, new()
         {
-            try
-            {
-                return this.db.Database.SqlQuery<T>(sql, param).ToList();
-            }
-            catch (Exception e)
-            {
-                LogHelper.ErrorLog(e);
-                return null;
-            }
+            return this.db.Database.SqlQuery<T>(sql, param).ToList();
         }
 
 
@@ -56,7 +48,7 @@ namespace Sevices
         {
 
             string sSql = string.Format(@"DECLARE @rows int 
-                                                SELECT @rows=COUNT(*) FROM(select * from [User]) as entry 
+                                                SELECT @rows=COUNT(*) FROM({0}) as entry 
                                                 SELECT  TOP 
                                                 {1} *,@rows MaxRows FROM
                                                 (SELECT  ROW_NUMBER() OVER(ORDER BY {2} {3}) AS Number,*
@@ -80,7 +72,7 @@ namespace Sevices
             }
             else
             {
-                return null;
+                return string.Empty;
             }
         }
 

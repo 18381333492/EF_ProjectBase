@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Excute\ButtonExcute.cs" />
     <Compile Include="Excute\MenusExcute.cs" />
+    <Compile Include="Excute\OperateLogExcute.cs" />
     <Compile Include="Excute\RoleExcute.cs" />
     <Compile Include="Excute\UserExcute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

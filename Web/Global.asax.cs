@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -23,6 +24,25 @@ namespace Web
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 		}
+
+
+        /// <summary>
+        /// 截取应用程序的错误
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Application_Error(object sender,EventArgs e)
+        {       
+            //Exception ex = Server.GetLastError();
+            //if(ex is HttpException)
+            //{
+            //    if((ex as HttpException).GetHttpCode() == (int)HttpStatusCode.NotFound)
+            //    {
+            //        ;
+            //    }
+            //}
+        }
+
 
 
         protected void Session_End()

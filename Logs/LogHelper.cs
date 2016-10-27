@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using EFModel;
+using System.IO;
+using System.Globalization;
 
 namespace Logs
 {
@@ -53,7 +55,26 @@ namespace Logs
         /// </summary>
         public static void ErrorLog(Exception e)
         {
-
+            string path = AppDomain.CurrentDomain.BaseDirectory+
+                            "ErrorLogs\\Error\\" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
+            if (!File.Exists(path))
+            {
+                File.Create(path).Close();
+            }
+            using (StreamWriter w = File.AppendText(path))
+            {
+                w.WriteLine("\r\nLog Entry : ");
+                w.WriteLine("{0}", DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                w.WriteLine("Message:{0}",e.Message);
+                if (e.InnerException != null) 
+                w.WriteLine("InnerException:{0}", e.InnerException.Message);
+                w.WriteLine("TargetSite.Name:{0}", e.TargetSite.Name);
+                w.WriteLine("Source:{0}", e.Source);
+                w.WriteLine("StackTrace:{0}", e.StackTrace);
+                w.WriteLine("________________________________________________________");
+                w.Flush();
+                w.Close();
+            }
         }
     }
 }

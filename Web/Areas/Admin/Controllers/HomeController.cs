@@ -23,6 +23,11 @@ namespace Web.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult My404()
+        {
+            return View();
+        }
+
         /// <summary>
         /// 登录过期提示页面
         /// </summary>

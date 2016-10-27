@@ -34,7 +34,10 @@ namespace Sevices
             return query.db.Role.Find(ID);
         }
 
-
+        /// <summary>
+        /// 获取所有的角色名字列表
+        /// </summary>
+        /// <returns></returns>
         public string GetRoleNameList()
         {
             var entry = from m in query.db.Role
@@ -54,29 +57,12 @@ namespace Sevices
         /// <returns></returns>
         public string GetAllMenuAndButton(Guid ID)
         {
-            try
-            {
-                /*
-                * 获取二级菜单数据*
-                */
-                var childMenu = from m in query.db.Menus
-                                where m.bIsDeleted == false && m.sParentMenuId != string.Empty
-                                orderby m.iOrder ascending
-                                select new
-                                {
-                                    m.ID,
-                                    m.iOrder,
-                                    m.sMenuName,
-                                    m.sParentMenuId,
-                                };
 
-                List<string> ChildIds = childMenu.Select(m =>m.sParentMenuId).ToList();
-
-                /*
-                 * 获取一级菜单数据*
-                 */
-                var menus = from m in query.db.Menus
-                            where ChildIds.Contains(m.ID.ToString()) && m.bIsDeleted == false
+            /*
+            * 获取二级菜单数据*
+            */
+            var childMenu = from m in query.db.Menus
+                            where m.bIsDeleted == false && m.sParentMenuId != string.Empty
                             orderby m.iOrder ascending
                             select new
                             {
@@ -86,36 +72,46 @@ namespace Sevices
                                 m.sParentMenuId,
                             };
 
-                /*
-                 * 获取菜单按钮数据*
-                 */
-                var button = from n in query.db.Button
-                             orderby n.iOrder ascending
-                             select new
-                             {
-                                 n.ID,
-                                 n.sButtonName,
-                                 n.sToMenuId,
-                             };
+            List<string> ChildIds = childMenu.Select(m => m.sParentMenuId).ToList();
 
-                /*
-                 * 根据角色ID获取角色权限*
-                 */
+            /*
+             * 获取一级菜单数据*
+             */
+            var menus = from m in query.db.Menus
+                        where ChildIds.Contains(m.ID.ToString()) && m.bIsDeleted == false
+                        orderby m.iOrder ascending
+                        select new
+                        {
+                            m.ID,
+                            m.iOrder,
+                            m.sMenuName,
+                            m.sParentMenuId,
+                        };
 
-                var role = query.db.Role.Find(ID);
+            /*
+             * 获取菜单按钮数据*
+             */
+            var button = from n in query.db.Button
+                         orderby n.iOrder ascending
+                         select new
+                         {
+                             n.ID,
+                             n.sButtonName,
+                             n.sToMenuId,
+                         };
 
-                JObject job = new JObject();
-                job.Add(new JProperty("menu", C_Json.Array(C_Json.toJson(menus))));
-                job.Add(new JProperty("childMenu", C_Json.Array(C_Json.toJson(childMenu))));
-                job.Add(new JProperty("button", C_Json.Array(C_Json.toJson(button))));
-                job.Add(new JProperty("power", role.sRolePower));
-                return job.ToString();
-            }
-            catch (Exception e)
-            {
-                Logs.LogHelper.ErrorLog(e);
-                return string.Empty;
-            }
+            /*
+             * 根据角色ID获取角色权限*
+             */
+
+            var role = query.db.Role.Find(ID);
+
+            JObject job = new JObject();
+            job.Add(new JProperty("menu", C_Json.Array(C_Json.toJson(menus))));
+            job.Add(new JProperty("childMenu", C_Json.Array(C_Json.toJson(childMenu))));
+            job.Add(new JProperty("button", C_Json.Array(C_Json.toJson(button))));
+            job.Add(new JProperty("power", role.sRolePower));
+            return job.ToString();
         }
     }
 }

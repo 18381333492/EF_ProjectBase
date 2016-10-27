@@ -24,7 +24,7 @@ namespace Sevices
             item.ID = Guid.NewGuid();
             item.dInsertTime = DateTime.Now;
             item.bState = true;
-            item.sPassWord = C_String.MD5(item.sPassWord);
+            item.sPassWord = C_Security.MD5(item.sPassWord);
             item.sPhone = string.Empty;
             excute.Add<User>(item);
             return excute.SaveChange(this,"Add");      

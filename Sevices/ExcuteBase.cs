@@ -61,19 +61,13 @@ namespace Sevices
         public int Cancel<T>(string Ids, object services, string method) where T : class, new()
         {
             int res = 0;
-            try
-            {
-                res = this.db.Database.
-                    ExecuteSqlCommand(string.Format(@"UPDATE
+
+            res = this.db.Database.
+                ExecuteSqlCommand(string.Format(@"UPDATE
                                         [{0}] SET bIsDeleted = 1 
-                                        WHERE ID IN({1})", typeof(T).Name,Ids));
-                if (res > 0)
-                    LogHelper.OperateLog(services, method);
-            }
-            catch (Exception e)
-            {
-                LogHelper.ErrorLog(e);
-            }
+                                        WHERE ID IN({1})", typeof(T).Name, Ids));
+            if (res > 0)
+                LogHelper.OperateLog(services, method);
             return res;
         }
 
@@ -84,19 +78,12 @@ namespace Sevices
         /// <param name="sql">Sql语句</param>
         /// <param name="param"></param>
         /// <returns></returns>
-        public int Excute(string sql, object services, string method ,params object[] param)
+        public int Excute(string sql, object services, string method, params object[] param)
         {
             int res = 0;
-            try
-            {
-                res = this.db.Database.ExecuteSqlCommand(sql, param);
-                if (res > 0)
-                    LogHelper.OperateLog(services, method);
-            }
-            catch (Exception e)
-            {
-                LogHelper.ErrorLog(e);
-            }
+            res = this.db.Database.ExecuteSqlCommand(sql, param);
+            if (res > 0)
+                LogHelper.OperateLog(services, method);
             return res;
         }
 
@@ -106,19 +93,12 @@ namespace Sevices
         /// 提交操作
         /// </summary>
         /// <returns></returns>
-        public int SaveChange(object services ,string method)
+        public int SaveChange(object services, string method)
         {
             int res = 0;
-            try
-            {
-                res =db.SaveChanges();
-                if(res>0)
+            res = db.SaveChanges();
+            if (res > 0)
                 LogHelper.OperateLog(services, method);
-            }
-            catch (Exception e)
-            {
-                LogHelper.ErrorLog(e);
-            }
             return res;
         }
 
@@ -129,16 +109,7 @@ namespace Sevices
         /// <returns></returns>
         public int SaveChange()
         {
-            int res = 0;
-            try
-            {
-                res = db.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                LogHelper.ErrorLog(e);
-            }
-            return res;
+            return db.SaveChanges();
         }
     }
 }

@@ -73,6 +73,7 @@
                             function (res) {
                                 f.alert(res.info);
                                 user.grid.datagrid("reload");
+                                user.grid.datagrid('clearSelections');
                             });
                     }
                 });
@@ -106,6 +107,7 @@
             fit:true,
             url: user.route('List'),
             toolbar: user.toolbar,
+            rownumbers:true,
             striped: true,
             pagination: true,
             loadMsg: "正在加载...",

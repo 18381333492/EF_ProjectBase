@@ -15,6 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperHelper", "DapperHelper\DapperHelper.csproj", "{15AE0127-6EC4-4DE5-BC01-7F58DD5BB4E9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "代码片段文件", "代码片段文件", "{14BCC3CC-319A-4681-B3EE-6EE8634C44D1}"
+	ProjectSection(SolutionItems) = preProject
+		JS.snippet = JS.snippet
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

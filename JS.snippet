@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+
+ <!--datagrid列表数据绑定js代码-->
+ <CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <Header>
+      <Title>datagrid</Title>
+      <Author>汤台</Author>
+      <Shortcut>list</Shortcut>
+      <Description>datagrid列表数据绑定js代码</Description>
+      <SnippetTypes>
+        <SnippetType>SurroundsWith</SnippetType>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>名称</ID>
+          <Default>值</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="HTML">
+      <![CDATA[
+      xxx.grid.datagrid({
+            fit:true,
+            url: xxx.route('List'),
+            toolbar: xxx.toolbar,
+            rownumbers: true,
+            striped: true,
+            pagination: true,
+            loadMsg: "正在加载...",
+            columns: [[
+                { field: '', checkbox: true, },
+                { field: 'sRoleName', title: '角色名称', align: 'center', width: 150 },
+                { field: 'sPower', title: '权限等级', align: 'center', width: 180 },
+                { field: 'sInsertTime', title: '添加时间', align: 'center', width: 200}
+            ]],
+        });
+      ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+  
+  
+</CodeSnippets>

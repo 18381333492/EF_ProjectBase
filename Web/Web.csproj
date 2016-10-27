@@ -344,6 +344,7 @@
     <Folder Include="Controllers\" />
     <Folder Include="ErrorLogs\ApplicationError\" />
     <Folder Include="ErrorLogs\Error\" />
+    <Folder Include="Scripts\plug-in\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

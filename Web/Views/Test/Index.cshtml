@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "KindEditor测试";
+}
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Content/kindeditor/kindeditor.js"></script>
+<script src="~/Content/kindeditor/lang/zh_CN.js"></script>
+
+<script src="~/Scripts/plug-in/kindeditor.js"></script>
+<h2>开始测试</h2>
+<br />
+<textarea id="editor">111111</textarea>
+<script type="text/javascript">
+
+    /*!
+    * method:
+    * author:[汤台]
+    * version:[1.0.0]
+    */
+    var editor = new kindeditor();
+    editor.create('#editor', { items: editor.items.single });
+
+ 
+</script>

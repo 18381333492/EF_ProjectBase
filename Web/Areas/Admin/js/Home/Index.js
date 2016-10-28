@@ -15,16 +15,16 @@ $(function () {
             parent = parent + ">";
             var spath = parent + title;
             $('#Address').text(spath)
-        }
+        },
         //onAdd:function () {
         //    /*显示loading效果*/
         //    alert(0);
         //},
-        //onLoadSuccess: function () {
-        //    debugger
-        //    /*关闭loading效果*/
-        //    f.alert(1);
-        //}
+        onLoad: function () {
+            debugger
+            /*关闭loading效果*/
+            f.alert(1);
+        }
     });
 
     /*!

@@ -71,7 +71,8 @@ namespace Logs
                 w.WriteLine("TargetSite.Name:{0}", e.TargetSite.Name);
                 w.WriteLine("Source:{0}", e.Source);
                 w.WriteLine("StackTrace:{0}", e.StackTrace);
-                w.WriteLine("________________________________________________________");
+                w.WriteLine("_____________________________________________________________________________________________________");
+                w.WriteLine("_____________________________________________________________________________________________________");
                 w.Flush();
                 w.Close();
             }

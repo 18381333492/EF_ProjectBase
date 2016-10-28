@@ -34,8 +34,8 @@ $(function () {
             {
                 sUserName: sUserName,
                 sPassWord, sPassWord,
-                  sImgCode: sImgCode
-            },
+                    sImgCode: sImgCode
+                },
                 function (res) {
                     location.href = "/Admin/Home/Index";
                 },

@@ -20,7 +20,7 @@ namespace Sevices
         /// <returns></returns>
         public string GetList(PageInfo Info,Dictionary<string,object> Params)
         {
-            return query.QueryPage(@"select A.*,B.sRoleName from [User AS A 
+            return query.QueryPage(@"select A.*,B.sRoleName from [User] AS A 
                                             LEFT JOIN [Role] AS B  
                                             ON A.sRoleID=B.ID WHERE A.bIsDeleted=0 ", Info, null);
         }

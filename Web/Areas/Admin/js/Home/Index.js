@@ -14,17 +14,20 @@ $(function () {
             var parent = $(text).parent().find('span').text();
             parent = parent + ">";
             var spath = parent + title;
-            $('#Address').text(spath)
+            $('#Address').text(spath);
+         
+         
+       
         },
         //onAdd:function () {
         //    /*显示loading效果*/
         //    alert(0);
         //},
-        onLoad: function () {
-            debugger
-            /*关闭loading效果*/
-            f.alert(1);
-        }
+        //onLoad: function () {
+        //    debugger
+        //    /*关闭loading效果*/
+        //    f.alert(1);
+        //}
     });
 
     /*!
@@ -68,12 +71,20 @@ $(function () {
                     $('#tabs').tabs("select", $(this).text());
                 }
                 else {
+                    //debugger
+                    //$("#tabs .panel").append("<div class='opacity'><div>");
                     var height = $('#tabs').height() - 35 - 2 * 4;
                     $('#tabs').tabs('add', {
                         title: $(this).text(),
                         content: '<iframe scrolling="auto" frameborder="0"  src="' + $(this).attr("url") + '" width="100%" height="' + height + 'px";></iframe>',
-                        closable: true,
+                        closable: true
                     });
+                    debugger
+
+                    /*遮掩层效果和等待效果*/
+                    var panel = $('#tabs').tabs('getTab', $(this).text());
+                    var height = $(panel).height();
+                    $(panel).append("<div class='opacity' style='height:" + height + "px'><div>");
                 }
             });
         }

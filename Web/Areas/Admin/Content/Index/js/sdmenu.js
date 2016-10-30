@@ -23,13 +23,15 @@ SDMenu.prototype.init = function () {
 			}
 	}
 	if (this.remember) {
-		var regex = new RegExp("sdmenu_" + encodeURIComponent(this.menu.id) + "=([01]+)");
-		var match = regex.exec(document.cookie);
-		if (match) {
-			var states = match[1].split("");
-			for (var i = 0; i < states.length; i++)
-				this.submenus[i].className = (states[i] == 0 ? "collapsed" : "");
-		}
+	    try {
+	        var regex = new RegExp("sdmenu_" + encodeURIComponent(this.menu.id) + "=([01]+)");
+	        var match = regex.exec(document.cookie);
+	        if (match) {
+	            var states = match[1].split("");
+	            for (var i = 0; i < states.length; i++)
+	                this.submenus[i].className = (states[i] == 0 ? "collapsed" : "");
+	        }
+	    } catch (e) {}
 	}
 };
 SDMenu.prototype.toggleMenu = function(submenu) {

@@ -80,11 +80,11 @@ $(function () {
                         closable: true
                     });
                     debugger
-
+                  
                     /*遮掩层效果和等待效果*/
                     var panel = $('#tabs').tabs('getTab', $(this).text());
                     var height = $(panel).height();
-                    $(panel).append("<div class='opacity' style='height:" + height + "px'><div>");
+                    $(panel).append("<section class='opacity mod model-1' style='height:" + height + "px'><span class='circles-loader'>Loading</span></section>");
                 }
             });
         }

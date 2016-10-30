@@ -21,3 +21,16 @@ D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\Common.pdb
 D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\Newtonsoft.Json.xml
 D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\zh-Hans\EntityFramework.resources.dll
 D:\GitHub源代码\EF_ProjectBase\Logs\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\Logs.dll.config
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\EFModel.dll
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\EntityFramework.dll
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\EntityFramework.SqlServer.dll
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\Common.dll
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\Newtonsoft.Json.dll
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\EFModel.pdb
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\EntityFramework.xml
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\EntityFramework.SqlServer.xml
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\Common.pdb
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\Newtonsoft.Json.xml
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\GitHub源代码管理\EF_ProjectBase\Logs\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll

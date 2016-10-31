@@ -51,7 +51,6 @@ function eui() {
             type: 'POST',
             dataType: 'json',
             success: function (r) {
-                debugger
                 if (!r.over)
                 { /*判断登录是否过期*/
                     if (r.success) {
@@ -76,7 +75,6 @@ function eui() {
             // textStatus 可能为null、 'timeout（超时）'、 'error（错误）'、 'abort(中止)'和'parsererror（解析错误)'等
             // errorMsg 是错误信息字符串(响应状态的文本描述部分，例如'Not Found'或'Internal Server Error')
             error: function (jqXHR, textStatus, errorMsg) {
-                debugger
                 switch (jqXHR.status) {
                     case 404: f.alert('链接地址错误!', null, 'error'); break;
                     case 500: f.alert('服务器内部错误!', null, 'error'); break;

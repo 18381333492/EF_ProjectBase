@@ -13,6 +13,8 @@
     <link href="~/Areas/Admin/Content/easyui/themes/material/easyui.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Content/easyui/themes/icon.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Content/Index/css/tablestyle.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/loading/css/spinners.css" rel="stylesheet" />
+
     <script src="~/Scripts/mylib/defaults.js"></script>
     <title>@ViewBag.Title</title>
     <link href="/Areas/Admin/Content/Index/css/css.css" rel="stylesheet" />
@@ -21,111 +23,13 @@
 
     <script src="~/Scripts/mylib/eui.js"></script>
     <script src="~/Areas/Admin/js/Home/Index.js"></script>
+    
     <style>
         .panel-header,
         .panel-body {
             border-width: 0px;
         }
-
-
-          .opacity {
-            display: block;
-            position: absolute;
-            bottom: 0%;
-            left: 0%;
-            width:100%;
-            /*height:802px;*/
-            background-color: black;
-            z-index: 1001;
-            -moz-opacity: 0.7;
-            opacity: .70;
-            filter: alpha(opacity=70);
-            text-align:center;
-        }
-
-
-        @@-moz-keyframes circles-loader {
-            0% {
-                -moz-transform: rotate(-720deg);
-                transform: rotate(-720deg);
-            }
-
-            50% {
-                -moz-transform: rotate(720deg);
-                transform: rotate(720deg);
-            }
-        }
-
-        @@-webkit-keyframes circles-loader {
-            0% {
-                -webkit-transform: rotate(-720deg);
-                transform: rotate(-720deg);
-            }
-
-            50% {
-                -webkit-transform: rotate(720deg);
-                transform: rotate(720deg);
-            }
-        }
-
-        @@keyframes circles-loader {
-            0% {
-                -moz-transform: rotate(-720deg);
-                -ms-transform: rotate(-720deg);
-                -webkit-transform: rotate(-720deg);
-                transform: rotate(-720deg);
-            }
-
-            50% {
-                -moz-transform: rotate(720deg);
-                -ms-transform: rotate(720deg);
-                -webkit-transform: rotate(720deg);
-                transform: rotate(720deg);
-            }
-        }
-        /* :not(:required) hides this rule from IE9 and below */
-        .circles-loader:not(:required) {
-            position: relative;
-            text-indent: -9999px;
-            display: inline-block;
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 204, 51, 0.9);
-            border-radius: 100%;
-            -moz-animation: circles-loader 3s infinite ease-in-out;
-            -webkit-animation: circles-loader 3s infinite ease-in-out;
-            animation: circles-loader 3s infinite ease-in-out;
-            -moz-transform-origin: 50% 100%;
-            -ms-transform-origin: 50% 100%;
-            -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
-            top:31%;
-            
-        }
-
-        .circles-loader:not(:required)::before {
-                background: rgba(255, 102, 0, 0.6);
-                border-radius: 100%;
-                content: '';
-                position: absolute;
-                width: 100px;
-                height: 100px;
-                top: 75px;
-                left: -43.30128px;
-            }
-
-        .circles-loader:not(:required)::after {
-                background: rgba(255, 51, 0, 0.4);
-                border-radius: 100%;
-                content: '';
-                position: absolute;
-                width: 100px;
-                height: 100px;
-                top: 75px;
-                left: 43.30128px;
-            }
     </style>
- 
 </head>
 <body onselectstart="return false" oncontextmenu="return(false)">
     <div class="easyui-layout" data-options="fit:'true',border:'false'">
@@ -187,7 +91,7 @@
         <div data-options="region:'center'">
                 <div id="tabs" class="easyui-tabs" data-options="fit:'true',tabHeight:35">
                     <div title="首页" style="padding:10px;">
-                        456456456456456465465
+                        欢迎!
                     </div>
                 </div>
         </div>

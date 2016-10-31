@@ -27,13 +27,15 @@ $(function () {
     * version:[1.0.0]
     */
     $('.login input').click(function () {
+        var $this = $(this);
+        $this.parent().removeClass("login").addClass("loginout");
         var sUserName = $('.name input').val().trim();
         var sPassWord = $('.password input').val().trim();
         var sImgCode = $('.code input').val().trim();
         f.post('/Admin/Home/CheckLogin',
             {
                 sUserName: sUserName,
-                sPassWord, sPassWord,
+                sPassWord: sPassWord,
                     sImgCode: sImgCode
                 },
                 function (res) {
@@ -42,6 +44,7 @@ $(function () {
                 function (r) {
                     alert(r.info);
                     $('.codeImg img').click();
+                    $this.parent().removeClass("loginout").addClass("login");
                 });
     });
 });

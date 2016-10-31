@@ -112,7 +112,8 @@ namespace Web.App_Start
         {
             if (Session[SESSION.User] != null)
             {
-                if (filterContext.HttpContext.Request.HttpMethod.ToUpper() == "GET")
+                var request = filterContext.HttpContext.Request;
+                if (request.HttpMethod.ToUpper() == "GET")
                 {//请求的方式为Get
                     var user = SessionUser();
                     //请求的路径
@@ -122,6 +123,14 @@ namespace Web.App_Start
                         var menu = (Session[SESSION.Menu] as List<Menus>).Where(m => m.sMenuUrl.ToLower() == sPath).FirstOrDefault();
                         var buttonList = (Session[SESSION.Button] as List<Button>).Where(m => m.sToMenuId == menu.ID).OrderBy(m=>m.iOrder).ToList();
                         filterContext.Controller.ViewData["Button"] = buttonList;
+                    }
+                }
+                if (request.IsAjaxRequest() && request.HttpMethod.ToUpper() == "POST")
+                {
+                    /**统一处理ajax的返回结果**/
+                    if (!result.custom)
+                    {
+                        filterContext.Result = Content(result.toJson());
                     }
                 }
             }

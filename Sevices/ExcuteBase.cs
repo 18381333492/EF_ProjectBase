@@ -67,7 +67,7 @@ namespace Sevices
                                         [{0}] SET bIsDeleted = 1 
                                         WHERE ID IN({1})", typeof(T).Name, Ids));
             if (res > 0)
-                LogHelper.OperateLog(services, method);
+                Task.Factory.StartNew(() => LogHelper.OperateLog(services, method));
             return res;
         }
 
@@ -83,7 +83,7 @@ namespace Sevices
             int res = 0;
             res = this.db.Database.ExecuteSqlCommand(sql, param);
             if (res > 0)
-                LogHelper.OperateLog(services, method);
+                Task.Factory.StartNew(() => LogHelper.OperateLog(services, method));
             return res;
         }
 
@@ -98,7 +98,7 @@ namespace Sevices
             int res = 0;
             res = db.SaveChanges();
             if (res > 0)
-                LogHelper.OperateLog(services, method);
+                Task.Factory.StartNew(()=> LogHelper.OperateLog(services, method));
             return res;
         }
 

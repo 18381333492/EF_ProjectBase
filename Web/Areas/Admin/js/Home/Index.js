@@ -71,16 +71,12 @@ $(function () {
                     $('#tabs').tabs("select", $(this).text());
                 }
                 else {
-                    //debugger
-                    //$("#tabs .panel").append("<div class='opacity'><div>");
                     var height = $('#tabs').height() - 35 - 2 * 4;
                     $('#tabs').tabs('add', {
                         title: $(this).text(),
                         content: '<iframe scrolling="auto" frameborder="0"  src="' + $(this).attr("url") + '" width="100%" height="' + height + 'px";></iframe>',
                         closable: true
-                    });
-                    debugger
-                  
+                    });                  
                     /*遮掩层效果和等待效果*/
                     var panel = $('#tabs').tabs('getTab', $(this).text());
                     var height = $(panel).height();
@@ -96,7 +92,9 @@ $(function () {
     * version:[1.0.0]
     */
     $('.admin-out').click(function () {
+        debugger
         f.post("/Admin/Home/Quit", null, function (r) {
+            debugger
             window.location.href = "/Admin/Home/Login";
         });
     });

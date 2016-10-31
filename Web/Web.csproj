@@ -210,7 +210,7 @@
     <Content Include="admin后台界面\swich.html" />
     <Content Include="admin后台界面\top.html" />
     <Content Include="App_Data\PayConfig\PayConfig.xml" />
-    <Content Include="Areas\Admin\Content\loading\index.html" />
+    <Content Include="Areas\Admin\Content\loading\css\spinners.css" />
     <Content Include="Areas\Admin\Content\Login\css\Login.css" />
     <Content Include="Areas\Admin\Content\Login\demo.html" />
     <Content Include="Areas\Admin\Content\Login\images\1.jpg" />
@@ -589,7 +589,6 @@
     <Folder Include="Areas\Admin\Content\easyui\plugins\" />
     <Folder Include="Areas\Admin\Content\easyui\src\" />
     <Folder Include="Areas\Admin\Content\easyui\themes\" />
-    <Folder Include="Areas\Admin\Content\loading\css\" />
     <Folder Include="Areas\Admin\Content\Login\js\" />
     <Folder Include="Areas\Mobile\Content\" />
     <Folder Include="Areas\Mobile\Controllers\" />

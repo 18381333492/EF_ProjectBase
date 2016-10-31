@@ -44,6 +44,7 @@ namespace Web.Areas.Admin.Controllers
         public ActionResult List()
         {
             string data = _server.GetList();
+            result.custom = true;
             return Content(data);
         }
 
@@ -51,11 +52,10 @@ namespace Web.Areas.Admin.Controllers
         /// 获取菜单栏目
         /// </summary>
         /// <returns></returns>
-        public ActionResult GetMenusList()
+        public void GetMenusList()
         {
             result.data = _server.GetMenusList(SessionUser().sRoleId);
             result.success = true;
-            return Content(result.toJson());
         }
 
         /// <summary>
@@ -64,6 +64,7 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult GetFirstMenus()
         {
+            result.custom = true;
             return Content(_server.GetFirstMenus());
         }
 
@@ -72,14 +73,13 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="menu"></param>
         /// <returns></returns>
-        public ActionResult Insert(Menus menu)
+        public void  Insert(Menus menu)
         {
             int res= _server.Add(menu);
             if (res>0)
             {
                 result.success = true;
             }
-            return Content(result.toJson());
         }
 
         /// <summary>
@@ -87,14 +87,13 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="menu"></param>
         /// <returns></returns>
-        public ActionResult Update(Menus menu)
+        public void Update(Menus menu)
         {
             int res = _server.Edit(menu);
             if (res > 0)
             {
                 result.success = true;
             }
-            return Content(result.toJson());
         }
 
 
@@ -103,15 +102,13 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="Ids"></param>
         /// <returns></returns>
-        public ActionResult Cancel(string Ids)
+        public void  Cancel(string Ids)
         {
             int res= _server.Cancel(Ids);
             if (res > 0)
             {
                 result.success = true;
             }
-            return Content(result.toJson());
-
         }
     }
 }

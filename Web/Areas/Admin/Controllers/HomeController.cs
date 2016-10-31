@@ -92,12 +92,11 @@ namespace Web.Areas.Admin.Controllers
         /// 安全退出
         /// </summary>
         /// <returns></returns>
-        public ActionResult Quit()
+        public void Quit()
         {
             Session.RemoveAll();
             Session.Abandon();//清除全部Session
-            result.success = true;
-            return Content(result.toJson());
+            result.success = true;   
         }
 
         /// <summary>

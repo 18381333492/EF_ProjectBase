@@ -36,6 +36,7 @@ namespace Web.Areas.Admin.Controllers
 
         public ActionResult List(PageInfo Info)
         {
+            result.custom = true;
             return Content(_server.GetList(Info, null));
         }
 
@@ -44,7 +45,7 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public ActionResult Insert(User user)
+        public void Insert(User user)
         {
             if (!_server.CheckUserName(user.sUserName))
             {
@@ -57,8 +58,7 @@ namespace Web.Areas.Admin.Controllers
             else
             {
                 result.info = "该账户已被注册过!";
-            }
-            return Content(result.toJson());
+            }     
         }
         
         /// <summary>
@@ -66,14 +66,13 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public ActionResult Update(User user)
+        public void Update(User user)
         {
             int res = _server.Edit(user);
             if (res > 0)
             {
                 result.success = true;
             }
-            return Content(result.toJson());
         }
 
         /// <summary>
@@ -81,14 +80,13 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="Ids"></param>
         /// <returns></returns>
-        public ActionResult Cancel(string Ids)
+        public void Cancel(string Ids)
         {
             int res = _server.Cancel(Ids);
             if (res > 0)
             {
                 result.success = true;
             }
-            return Content(result.toJson());
         }
 
         /// <summary>
@@ -96,14 +94,13 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="Ids"></param>
         /// <returns></returns>
-        public ActionResult Freeze(string Ids,bool bState)
+        public void Freeze(string Ids,bool bState)
         {
             int res = _server.Freeze(Ids, bState);
             if (res > 0)
             {
                 result.success = true;
             }
-            return Content(result.toJson());
         }
     }
 }

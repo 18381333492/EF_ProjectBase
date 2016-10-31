@@ -51,6 +51,7 @@ function eui() {
             type: 'POST',
             dataType: 'json',
             success: function (r) {
+                debugger
                 if (!r.over)
                 { /*判断登录是否过期*/
                     if (r.success) {

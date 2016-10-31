@@ -43,6 +43,7 @@ namespace Web.Areas.Admin.Controllers
 
         public ActionResult List(PageInfo info)
         {
+            result.custom = true;
             return Content(_server.GetList(info,null));
         }
 
@@ -51,11 +52,10 @@ namespace Web.Areas.Admin.Controllers
         /// 获取权限列表
         /// </summary>
         /// <returns></returns>
-        public ActionResult GetPowerList(Guid ID)
+        public void GetPowerList(Guid ID)
         {
             result.data = _server.GetAllMenuAndButton(ID);
             result.success = true;
-            return Content(result.toJson());
         }
 
         /// <summary>
@@ -64,6 +64,7 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult GetRoleNameList()
         {
+            result.custom = true;
             return Content(_server.GetRoleNameList());
         }
 
@@ -73,14 +74,13 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public ActionResult Insert(Role role)
+        public void Insert(Role role)
         {
             int res = _server.Add(role);
             if (res > 0)
             {
                 result.success = true;
             }
-            return Content(result.toJson());
         }
 
         /// <summary>
@@ -88,14 +88,13 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public ActionResult Update(Role role)
+        public void Update(Role role)
         {
             int res = _server.Edit(role);
             if (res > 0)
             {
                 result.success = true;
             }
-            return Content(result.toJson());
         }
 
         /// <summary>
@@ -103,7 +102,7 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="Ids"></param>
         /// <returns></returns>
-        public ActionResult Cancel(string Ids)
+        public void Cancel(string Ids)
         {
             int res = _server.Cancel(Ids);
             if (res > 0)
@@ -114,7 +113,6 @@ namespace Web.Areas.Admin.Controllers
             {
                 result.info = "该角色下面绑定有用户,不能删除该角色!";
             }
-            return Content(result.toJson());
         }
 
         
@@ -124,14 +122,13 @@ namespace Web.Areas.Admin.Controllers
         /// <param name="ID"></param>
         /// <param name="sPower"></param>
         /// <returns></returns>
-        public ActionResult SetPower(Guid ID,string sPower)
+        public void SetPower(Guid ID,string sPower)
         {
             int res = _server.SetPower(ID, sPower);
             if (res > 0)
             {
                 result.success = true;
             }
-            return Content(result.toJson());
         }
              
     }

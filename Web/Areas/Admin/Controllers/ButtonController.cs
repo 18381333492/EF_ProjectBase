@@ -41,7 +41,9 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult List()
         {
-            return Content(_server.GetList());
+            string res = _server.GetList();
+            result.custom = true;
+            return Content(res);
         }
 
         /// <summary>
@@ -49,14 +51,11 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="button"></param>
         /// <returns></returns>
-        public ActionResult Insert(Button button)
+        public void Insert(Button button)
         {
             int res = _server.Add(button);
             if (res > 0)
-            {
                 result.success = true;
-            }
-            return Content(result.toJson());
         }
 
 
@@ -65,25 +64,26 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="button"></param>
         /// <returns></returns>
-        public ActionResult Update(Button button)
+        public void Update(Button button)
         {
             int res = _server.Edit(button);
             if (res > 0)
             {
                 result.success = true;
             }
-            return Content(result.toJson());
         }
 
-
-        public ActionResult Cancel(string Ids)
+        /// <summary>
+        /// 删除菜单下面的按钮
+        /// </summary>
+        /// <param name="Ids"></param>
+        public void  Cancel(string Ids)
         {
             int res = _server.Cancel(Ids);
             if (res > 0)
             {
                 result.success = true;
             }
-            return Content(result.toJson());
         }
 
     }

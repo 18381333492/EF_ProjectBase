@@ -17,6 +17,13 @@
     <script src="~/Scripts/mylib/eui.js"></script>
 
     <title>@ViewBag.Title</title>
+    <script type="text/javascript">
+        /*关闭loading效果*/
+        $(window).load(function () {
+            var s = window.parent;
+            $(s.document).find('.opacity').remove();
+        });
+    </script>
 </head>
 <body style="margin:2px;">
     @RenderBody()

@@ -27,6 +27,7 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult List(PageInfo info)
         {
+            result.custom = true;
             return Content(_server.GetList(info, null));
         }
 
@@ -35,14 +36,13 @@ namespace Web.Areas.Admin.Controllers
         /// 删除日志
         /// </summary>
         /// <returns></returns>
-        public ActionResult Cancel(string Ids)
+        public void Cancel(string Ids)
         {
             int res = _server.Cancel(Ids);
             if (res > 0)
             {
                 result.success = true;
             }
-            return Content(result.toJson());
         }
     }
 }

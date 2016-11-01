@@ -41,6 +41,11 @@ namespace Web.Areas.Admin.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 分页获取角色数据列表
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
         public ActionResult List(PageInfo info)
         {
             result.custom = true;

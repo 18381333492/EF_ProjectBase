@@ -16,7 +16,7 @@ namespace Web.App_Start
         //
         // GET: /AdminBase/
 
-        public Result result;
+        public Result result;//返回结果集
 
         protected T _server;
 

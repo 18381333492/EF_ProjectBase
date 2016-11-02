@@ -12,18 +12,19 @@
     <link href="~/Areas/Admin/Content/easyui/themes/icon.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Content/Index/css/tablestyle.css" rel="stylesheet" />
 
+    <script type="text/javascript">
+        ///*关闭loading效果*/
+        window.closeloading = function () {
+            var s = window.parent;
+            $(s.document).find('.opacity').remove();
+        }
+    </script>
+
     <script src="~/Scripts/mylib/extend.js"></script>
     <script src="~/Scripts/mylib/defaults.js"></script>
     <script src="~/Scripts/mylib/eui.js"></script>
 
     <title>@ViewBag.Title</title>
-    <script type="text/javascript">
-        /*关闭loading效果*/
-        $(window).load(function () {
-            var s = window.parent;
-            $(s.document).find('.opacity').remove();
-        });
-    </script>
 </head>
 <body style="margin:2px;">
     @RenderBody()

@@ -27,4 +27,24 @@ void function () {
         displayMsg: '当前显示 {from} - {to} 条记录  共{total}条记录',
     });
 
+    /**
+    *重写datagrid的onLoadSuccess事件
+    */
+    $.extend($.fn.datagrid.defaults, {
+        onLoadSuccess: function () {
+            window.closeloading();
+        },
+    });
+
+    $.extend($.fn.treegrid.defaults, {
+        onLoadSuccess: function () {
+            window.closeloading();
+        },
+    });
+
+    $.extend($.fn.tree.defaults, {
+        onLoadSuccess: function () {
+            window.closeloading();
+        },
+    });
 }()

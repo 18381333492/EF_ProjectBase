@@ -172,6 +172,7 @@
     <Content Include="Areas\Admin\Content\Index\images\main\home.jpg" />
     <Content Include="Areas\Admin\Content\Index\images\main\homeon.jpg" />
     <Content Include="Areas\Admin\Content\Index\images\main\leftbg.jpg" />
+    <Content Include="Areas\Admin\Content\Index\images\main\leftbg1.jpg" />
     <Content Include="Areas\Admin\Content\Index\images\main\line.jpg" />
     <Content Include="Areas\Admin\Content\Index\images\main\list_bg.jpg" />
     <Content Include="Areas\Admin\Content\Index\images\main\list_input.jpg" />
@@ -188,6 +189,7 @@
     <Content Include="Areas\Admin\Content\Index\images\main\replayblack.jpg" />
     <Content Include="Areas\Admin\Content\Index\images\main\replayblue.jpg" />
     <Content Include="Areas\Admin\Content\Index\images\main\switchbg.jpg" />
+    <Content Include="Areas\Admin\Content\Index\images\main\system.png" />
     <Content Include="Areas\Admin\Content\Index\images\main\time.jpg" />
     <Content Include="Areas\Admin\Content\Index\images\main\top_r1_c5.jpg" />
     <Content Include="Areas\Admin\Content\Index\images\main\why.gif" />

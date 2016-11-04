@@ -571,6 +571,7 @@
     <Content Include="Scripts\plug-in\cityselect\demo.html" />
     <Content Include="Scripts\plug-in\cityselect\jquery.cityselect.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\icheck.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -601,6 +602,7 @@
     <Folder Include="Areas\WeiXin\Views\Shared\" />
     <Folder Include="ErrorLogs\ApplicationError\" />
     <Folder Include="ErrorLogs\Error\" />
+    <Folder Include="Scripts\skins\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -622,9 +624,6 @@
       <Project>{efe8ce4c-d0a4-46f1-9b1e-7dbf5167f936}</Project>
       <Name>Sevices</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

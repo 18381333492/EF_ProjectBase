@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "代码片段文件", "代�
 		JS.snippet = JS.snippet
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "支付接口", "支付接口", "{1DB05575-7D1B-48EE-8EDF-493464C194B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TenPayV3", "支付接口\TenPayV3\TenPayV3.csproj", "{4FDD8859-2595-47AE-9212-7CF6A4ABF2FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,8 +54,15 @@ Global
 		{15AE0127-6EC4-4DE5-BC01-7F58DD5BB4E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15AE0127-6EC4-4DE5-BC01-7F58DD5BB4E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15AE0127-6EC4-4DE5-BC01-7F58DD5BB4E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FDD8859-2595-47AE-9212-7CF6A4ABF2FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FDD8859-2595-47AE-9212-7CF6A4ABF2FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FDD8859-2595-47AE-9212-7CF6A4ABF2FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FDD8859-2595-47AE-9212-7CF6A4ABF2FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4FDD8859-2595-47AE-9212-7CF6A4ABF2FD} = {1DB05575-7D1B-48EE-8EDF-493464C194B3}
 	EndGlobalSection
 EndGlobal

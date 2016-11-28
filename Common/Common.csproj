@@ -54,6 +54,7 @@
     <Compile Include="C_Security.cs" />
     <Compile Include="C_String.cs" />
     <Compile Include="C_TreeData.cs" />
+    <Compile Include="C_XmlHelp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

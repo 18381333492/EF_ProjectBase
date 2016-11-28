@@ -13,7 +13,7 @@ namespace Common
     public class C_Config
     {
         /// <summary>
-        /// 获取连接字符串
+        /// 获取连接字符串(从WebConfig配置文件中获取) 
         /// </summary>
         /// <param name="ConnStrinName"></param>
         /// <returns></returns>
@@ -31,5 +31,8 @@ namespace Common
             }
             return result;
         }
+
+
+        
     }
 }

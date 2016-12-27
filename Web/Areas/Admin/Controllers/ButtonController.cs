@@ -42,7 +42,6 @@ namespace Web.Areas.Admin.Controllers
         public ActionResult List()
         {
             string res = _server.GetList();
-            result.custom = true;
             return Content(res);
         }
 

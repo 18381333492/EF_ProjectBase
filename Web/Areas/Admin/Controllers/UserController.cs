@@ -36,7 +36,6 @@ namespace Web.Areas.Admin.Controllers
 
         public ActionResult List(PageInfo Info)
         {
-            result.custom = true;
             return Content(_server.GetList(Info, null));
         }
 

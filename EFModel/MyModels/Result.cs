@@ -29,10 +29,6 @@ namespace EFModel.MyModels
         /// </summary>
         public bool over = false;
 
-        /// <summary>
-        /// 是否启用自定义返回(默认为false)
-        /// </summary>
-        public bool custom = false;
 
         public string toJson()
         {

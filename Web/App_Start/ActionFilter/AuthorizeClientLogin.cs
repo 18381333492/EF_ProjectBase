@@ -12,7 +12,6 @@ namespace Web.App_Start.ActionFilter
     /// </summary>
     public class AuthorizeClientLogin:ActionFilterAttribute
     {
-        
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (filterContext.RequestContext.HttpContext.Session["User"] == null)

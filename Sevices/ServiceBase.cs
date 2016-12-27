@@ -32,7 +32,6 @@ namespace Sevices
             get;
             set;
         }
-
-
+        
     }
 }

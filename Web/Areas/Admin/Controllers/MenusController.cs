@@ -44,7 +44,6 @@ namespace Web.Areas.Admin.Controllers
         public ActionResult List()
         {
             string data = _server.GetList();
-            result.custom = true;
             return Content(data);
         }
 
@@ -64,7 +63,6 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult GetFirstMenus()
         {
-            result.custom = true;
             return Content(_server.GetFirstMenus());
         }
 

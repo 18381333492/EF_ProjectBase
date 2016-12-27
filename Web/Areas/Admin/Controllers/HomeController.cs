@@ -32,12 +32,17 @@ namespace Web.Areas.Admin.Controllers
         /// 登录过期提示页面
         /// </summary>
         /// <returns></returns>
+        [NoLogin]
         public ActionResult Tip()
         {
             return View();
         }
 
-
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <returns></returns>
+        [NoLogin]
         public ActionResult Login()
         {
             return View();
@@ -49,7 +54,8 @@ namespace Web.Areas.Admin.Controllers
         /// <param name="sUserName"></param>
         /// <param name="sPassWord"></param>
         /// <returns></returns>
-        public ActionResult CheckLogin(string sUserName, string sPassWord,string sImgCode)
+        [NoLogin]
+        public void CheckLogin(string sUserName, string sPassWord,string sImgCode)
         {
             if (sImgCode == Session[SESSION.ImgCode].ToString())
             {
@@ -84,7 +90,6 @@ namespace Web.Areas.Admin.Controllers
             {
                 result.info = "验证码错误!";
             }
-            return Content(result.toJson());
         }
 
 
@@ -92,19 +97,18 @@ namespace Web.Areas.Admin.Controllers
         /// 安全退出
         /// </summary>
         /// <returns></returns>
-        public ActionResult Quit()
+        public void Quit()
         {
             Session.RemoveAll();
             Session.Abandon();//清除全部Session
             result.success = true;
-            result.custom = true;
-            return Content(result.toJson());
         }
 
         /// <summary>
         /// 获取图形验证码
         /// </summary>
         /// <returns></returns>
+        [NoLogin]
         public ActionResult GetImgCode()
         {
             string sCode = C_ImgCode.CreateValidateCode(5);

@@ -79,14 +79,11 @@ namespace Web.App_Start
         /// <param name="filterContext"></param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (Session[SESSION.User] == null)
-            {
-                /*登录过时,session过期*/
-                string[] route = new[] { "login", "tip", "error", "getimgcode", "checklogin" };
-                string sPath = filterContext.HttpContext.Request.RequestContext.RouteData.Values["action"].ToString().ToLower();
-                //排除掉登录和获取验证码的Action和提示页面
-                if (!route.Contains(sPath))
+            if (!(filterContext.ActionDescriptor.GetCustomAttributes(typeof(NoLogin), true).Length == 1))
+            {//有NoLogin属性;不判断登录
+                if (Session[SESSION.User] == null)
                 {
+                    /*登录过时,session过期*/
                     if (filterContext.HttpContext.Request.HttpMethod.ToUpper() == "GET")
                     {
                         /*跳转到登录过期提示页面*/
@@ -110,9 +107,12 @@ namespace Web.App_Start
         /// <param name = "filterContext" ></ param >
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
+            var request = filterContext.HttpContext.Request;
+            var actionMethod = filterContext.Controller
+              .GetType()
+              .GetMethod(filterContext.ActionDescriptor.ActionName);//获取访问方法
             if (Session[SESSION.User] != null)
             {
-                var request = filterContext.HttpContext.Request;
                 if (request.HttpMethod.ToUpper() == "GET")
                 {//请求的方式为Get
                     var user = SessionUser();
@@ -125,15 +125,12 @@ namespace Web.App_Start
                         filterContext.Controller.ViewData["Button"] = buttonList;
                     }
                 }
-                if (request.IsAjaxRequest() && request.HttpMethod.ToUpper() == "POST")
-                {
-                    /**统一处理ajax的返回结果**/
-                    if (!result.custom)
-                    {
-                        filterContext.Result = Content(result.toJson());
-                    }
-                }
             }
+            if (actionMethod.ReturnType.Name.ToString() == "Void"&& request.IsAjaxRequest()&& request.HttpMethod.ToUpper()=="POST")
+            {
+                filterContext.Result = Content(result.toJson()); /**统一处理ajax的返回结果**/
+            }
+
         }
 
         /// <summary>

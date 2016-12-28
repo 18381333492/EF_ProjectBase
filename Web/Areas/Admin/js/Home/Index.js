@@ -14,20 +14,8 @@ $(function () {
             var parent = $(text).parent().find('span').text();
             parent = parent + ">";
             var spath = parent + title;
-            $('#Address').text(spath);
-         
-         
-       
-        },
-        //onAdd:function () {
-        //    /*显示loading效果*/
-        //    alert(0);
-        //},
-        //onLoad: function () {
-        //    debugger
-        //    /*关闭loading效果*/
-        //    f.alert(1);
-        //}
+            $('#Address').text(spath);   
+        }
     });
 
     /*!
@@ -79,8 +67,8 @@ $(function () {
                     });                  
                     /*遮掩层效果和等待效果*/
                     var panel = $('#tabs').tabs('getTab', $(this).text());
-                    var height = $(panel).height();
-                    $(panel).append("<section class='opacity mod model-1' style='height:" + height + "px'><span class='circles-loader'>Loading</span></section>");
+                 //   var height = $(panel).height();
+                // $(panel).append("<section class='opacity mod model-1' style='height:" + height + "px'><span class='circles-loader'>Loading</span></section>");
                 }
             });
         }
@@ -92,9 +80,7 @@ $(function () {
     * version:[1.0.0]
     */
     $('.admin-out').click(function () {
-        debugger
         f.post("/Admin/Home/Quit", null, function (r) {
-            debugger
             window.location.href = "/Admin/Home/Login";
         });
     });

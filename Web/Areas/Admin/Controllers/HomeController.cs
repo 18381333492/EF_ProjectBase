@@ -20,6 +20,8 @@ namespace Web.Areas.Admin.Controllers
         {
             ViewBag.sUserName = SessionUser().sUserName;
             ViewBag.sRoleName = SessionUser().sRoleName;
+            ViewBag.Online =HttpContext.Application["Online"];
+            ViewBag.Visits = HttpContext.Application["Visits"];
             return View();
         }
 

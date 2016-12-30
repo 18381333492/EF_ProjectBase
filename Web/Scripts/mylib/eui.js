@@ -40,16 +40,17 @@ function eui() {
     * ajax的post请求的封装（form）.
     * @author [汤台]
     * @version 1.0.0
-    * @param   url,data,callback,er_callback
+    * @param   url,data,callback,er_callback,async
     * @return {void}
     */
-    this.post = function (url, data, callback, er_callback) {
+    this.post = function (url, data, callback, er_callback,async) {
         var f = new eui();
         $.ajax({
             url: url,
             data: data,
             type: 'POST',
             dataType: 'json',
+            async: (async == null) ? true : async,
             success: function (r) {
                 if (!r.over)
                 { /*判断登录是否过期*/

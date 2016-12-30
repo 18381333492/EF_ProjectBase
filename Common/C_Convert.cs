@@ -49,9 +49,8 @@ namespace Common
             return result;
         }
 
-
         /// <summary>
-        /// 将将Object类型转化为boolean
+        /// 将Object类型转化为boolean
         /// </summary>
         /// <param name="s"></param>
         /// <param name="result"></param>
@@ -59,6 +58,78 @@ namespace Common
         public static bool toBoolean(this object s,bool result=false)
         {
             Boolean.TryParse(s.ToString(), out result);
+            return result;
+        }
+
+        /// <summary>
+        /// 将Object类型转化为decimal
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static decimal toDecimal(this object s, decimal result = 0)
+        {
+            decimal.TryParse(s.ToString(), out result);
+            return result;
+        }
+
+        /// <summary>
+        /// 将Object类型转化为float
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static float toFloat(this object s,float result = 0)
+        {
+            float.TryParse(s.ToString(),out result);
+            return result;
+        }
+
+        /// <summary>
+        /// 将Object类型转化为double
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static double toDouble(this object s, double result = 0)
+        {
+            double.TryParse(s.ToString(),out result);
+            return result;
+        }
+
+        /// <summary>
+        /// 将Object类型转化为UInt16
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static UInt16 toUInt16(this object s, UInt16 result = 0)
+        {
+            UInt16.TryParse(s.ToString(), out result);
+            return result;
+        }
+
+        /// <summary>
+        /// 将Object类型转化为UInt32
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static UInt32 toUInt16(this object s, UInt32 result = 0)
+        {
+            UInt32.TryParse(s.ToString(), out result);
+            return result;
+        }
+
+        /// <summary>
+        /// 将Object类型转化为UInt64
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static UInt64 toUInt16(this object s, UInt64 result = 0)
+        {
+            UInt64.TryParse(s.ToString(), out result);
             return result;
         }
     }

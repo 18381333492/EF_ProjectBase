@@ -23,7 +23,6 @@ namespace Sevices
             db = new Entities();
         }
 
-
         /// <summary>
         /// 根据sql语句查询
         /// </summary>
@@ -35,7 +34,6 @@ namespace Sevices
         {
             return this.db.Database.SqlQuery<T>(sql, param).ToList();
         }
-
 
         /// <summary>
         /// 通过Sql语句分页查询
@@ -59,11 +57,11 @@ namespace Sevices
                                             info.order.ToString(),
                                             info.page);
 
-            DapperHelper.QueryBase ba = new DapperHelper.QueryBase();
+            DapperHelper.QueryBase dapper = new DapperHelper.QueryBase();//Dapper查询
 
-            var entry = ba.QueryPage(sSql, param);
+            var entry = dapper.QueryPage(sSql, param);
 
-            if (entry != null)
+            if (entry != null&&entry.Count>0)
             {
                 JObject job = new JObject();
                 job.Add(new JProperty("rows", C_Json.Array(C_Json.toJson(entry))));

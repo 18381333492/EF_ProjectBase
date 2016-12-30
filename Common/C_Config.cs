@@ -33,6 +33,25 @@ namespace Common
         }
 
 
-        
+        /// <summary>
+        /// 读取配置文件中的appSetting
+        /// </summary>
+        /// <param name="appName"></param>
+        /// <returns></returns>
+        public static string ReadAppSetting(string appName)
+        {
+            string result = string.Empty;
+            try
+            {
+                result = ConfigurationManager.AppSettings[appName];
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return result;
+        }
+
+
     }
 }

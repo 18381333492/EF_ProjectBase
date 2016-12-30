@@ -12,7 +12,6 @@ namespace Web.Areas.Admin.Controllers
 {
     public class UserController : AdminBaseController<UserService>
     {
-        //
         // GET: /Admin/User/
 
         #region 后台用户视图

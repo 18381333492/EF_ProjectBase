@@ -13,7 +13,7 @@ namespace Common
     /// <summary>
     /// 图形验证码
     /// </summary>
-    public  class C_ImgCode
+    public class C_ImgCode
     {
         /// <summary>
         /// 验证码的最大长度

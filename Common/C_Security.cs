@@ -29,6 +29,8 @@ namespace Common
             for (int i = 0; i < md5data.Length; i++)
             {
                 sBuilder.Append(md5data[i].ToString("X2"));
+                //X代表十六进制
+                //2:代表每个数字2位
             }
             return sBuilder.ToString();
         }

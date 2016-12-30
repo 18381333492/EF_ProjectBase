@@ -561,12 +561,14 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\mylib\common.client.js" />
     <Content Include="Scripts\mylib\defaults.js" />
     <Content Include="Scripts\mylib\eui.js" />
     <Content Include="Scripts\mylib\eui.min.js">
       <DependentUpon>eui.js</DependentUpon>
     </Content>
     <Content Include="Scripts\mylib\extend.js" />
+    <Content Include="Scripts\plug-in\datetime.js" />
     <Content Include="Scripts\plug-in\kindeditor.js" />
     <Content Include="Scripts\plug-in\cityselect\city.min.js" />
     <Content Include="Scripts\plug-in\cityselect\demo.html" />

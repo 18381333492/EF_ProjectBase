@@ -60,21 +60,23 @@ function kindeditor() {
         var defaults = {
             items: items.single,
             /*服务端图片上传路径*/
-            uploadJson:"/HandleProgram/PictureUpload.ashx",
-            afterCreate:null
+            uploadJson: "/HandleProgram/PictureUpload.ashx",
+            afterCreate: null
         }
         defaults = $.extend(defaults, param);
-
         /**
         *创建编辑器
         */
+
         editor = KindEditor.create(id,
-                 {/*属性的配置*/
-                     items: defaults.items,
-                     uploadJson:defaults.uploadJson,
-                     /*创建编辑器之后的回调函数*/
-                     afterCreate:defaults.afterCreate  /*创建编辑器之后的回调函数*/
-                 });
+            {/*属性的配置*/
+                items: defaults.items,
+                uploadJson: defaults.uploadJson,
+                bodyClass: 'ke-content',
+                /*创建编辑器之后的回调函数*/
+                afterCreate: defaults.afterCreate  /*创建编辑器之后的回调函数*/
+            });
+
     }
 
     /*
@@ -123,6 +125,7 @@ function kindeditor() {
 
 
     return {
+        editor:editor,
         items:items,//工具栏配置项
         create: create,
         sethtml: sethtml, //html获取/设置

@@ -31,7 +31,7 @@
         }
     </style>
 </head>
-<body onselectstart="return false" oncontextmenu="return(false)">
+<body >
     <div class="easyui-layout" data-options="fit:'true',border:'false'">
         <!--header-->
         <div data-options="region:'north',border:'false'" style="height:98px;">
@@ -95,7 +95,10 @@
                         <p><span style="color:red">当前在线人数:</span>@ViewBag.Online</p>
                         <p><span style="color:green">今日访问量:</span>@ViewBag.Visits</p>
                     </div>
-                </div>
+                    <div title="图片上传测试" style="padding:10px;">
+                        <textarea id="upload" style="height:400px;width:640px;"></textarea>
+                    </div>
+                 </div>
         </div>
 
         <!--bottom-->
@@ -112,3 +115,17 @@
     </div>
 </body>
 </html>
+<link href="~/Content/kindeditor/themes/default/default.css" rel="stylesheet" />
+<script src="~/Content/kindeditor/kindeditor-all.js"></script>
+<script src="~/Content/kindeditor/lang/zh_CN.js"></script>
+<script src="~/Scripts/plug-in/kindeditor.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var f = new kindeditor();
+        f.create("#upload",
+            {
+                uploadJson: "http://localhost:8888/api/Picture/UploadByFrom", items: f.items.defaults
+            });
+    })
+   
+</script>

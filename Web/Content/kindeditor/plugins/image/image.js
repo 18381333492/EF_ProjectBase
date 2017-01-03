@@ -7,7 +7,7 @@
 * @licence http://www.kindsoft.net/license.php
 *******************************************************************************/
 
-KindEditor.plugin('image', function(K) {
+KindEditor.plugin('image', function (K) {
 	var self = this, name = 'image',
 		allowImageUpload = K.undef(self.allowImageUpload, true),
 		allowImageRemote = K.undef(self.allowImageRemote, true),
@@ -188,7 +188,8 @@ KindEditor.plugin('image', function(K) {
 			form : K('.ke-form', div),
 			target : target,
 			width: 60,
-			afterUpload : function(data) {
+			afterUpload: function (data) {
+                debugger
 				dialog.hideLoading();
 				if (data.error === 0) {
 					var url = data.url;

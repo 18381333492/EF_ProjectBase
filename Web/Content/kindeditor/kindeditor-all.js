@@ -6888,7 +6888,8 @@ KindEditor.plugin('flash', function(K) {
 					fieldName : filePostName,
 					extraParams : extraParams,
 					url : K.addParam(uploadJson, 'dir=flash'),
-					afterUpload : function(data) {
+					afterUpload: function (data) {
+                        debugger
 						dialog.hideLoading();
 						if (data.error === 0) {
 							var url = data.url;
@@ -6904,7 +6905,8 @@ KindEditor.plugin('flash', function(K) {
 							alert(data.message);
 						}
 					},
-					afterError : function(html) {
+					afterError: function (html) {
+					    debugger
 						dialog.hideLoading();
 						self.errorDialog(html);
 					}

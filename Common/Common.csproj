@@ -39,6 +39,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,8 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="C_Cache.cs" />
     <Compile Include="C_Config.cs" />
     <Compile Include="C_Convert.cs" />
+    <Compile Include="C_ExportExecl.cs" />
     <Compile Include="C_ImgCode.cs" />
     <Compile Include="C_Json.cs" />
     <Compile Include="C_Security.cs" />

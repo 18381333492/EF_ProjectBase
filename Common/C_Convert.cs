@@ -132,5 +132,17 @@ namespace Common
             UInt64.TryParse(s.ToString(), out result);
             return result;
         }
+
+        /// <summary>
+        /// 将Object类型转化为DateTime
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static DateTime toDateTime(this object s,DateTime result=default(DateTime))
+        {
+            DateTime.TryParse(s.ToString(),out result);
+            return result;
+        }
     }
 }

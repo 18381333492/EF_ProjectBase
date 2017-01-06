@@ -8,6 +8,7 @@ using Sevices;
 using Web.App_Start;
 using EFModel.MyModels;
 using EFModel;
+using System.IO;
 
 namespace Web.Areas.Admin.Controllers
 {
@@ -118,6 +119,13 @@ namespace Web.Areas.Admin.Controllers
             Session[SESSION.ImgCode] = sCode;
             return File(code, "@image/jpeg");
         }
-   
+
+
+        public FileResult file()
+        {
+            FileStream fs = new FileStream(System.AppDomain.CurrentDomain.BaseDirectory + "Content\\57521.mp4", FileMode.Open);
+
+            return File(fs,"video/mpeg4");
+        }
     }
 }

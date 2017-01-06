@@ -219,7 +219,6 @@
     <Content Include="Areas\Admin\Content\Login\images\1.jpg" />
     <Content Include="Areas\Admin\js\Home\Index.js" />
     <Content Include="Areas\Admin\js\Home\Login.js" />
-    <Content Include="Content\57521.mp4" />
     <Content Include="Content\kindeditor\examples\auto-height.html" />
     <Content Include="Content\kindeditor\examples\colorpicker.html" />
     <Content Include="Content\kindeditor\examples\custom-plugin.html" />

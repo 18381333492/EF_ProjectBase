@@ -1,3 +1,4 @@
+
 /*******************************************************************************
 * KindEditor - WYSIWYG HTML Editor for Internet
 * Copyright (C) 2006-2013 kindsoft.net
@@ -215,6 +216,7 @@ var _INLINE_TAG_MAP = _toMap('a,abbr,acronym,b,basefont,bdo,big,br,button,cite,c
 	_FILL_ATTR_MAP = _toMap('checked,compact,declare,defer,disabled,ismap,multiple,nohref,noresize,noshade,nowrap,readonly,selected'),
 	_VALUE_TAG_MAP = _toMap('input,button,textarea,select');
 function _getBasePath() {
+    debugger
 	var els = document.getElementsByTagName('script'), src;
 	for (var i = 0, len = els.length; i < len; i++) {
 		src = els[i].src || '';
@@ -222,7 +224,8 @@ function _getBasePath() {
 			return src.substring(0, src.lastIndexOf('/') + 1);
 		}
 	}
-	return '';
+    return '';
+    //return "http://img1.chuguicdn.com:58433/res/p/js/kindeditor/";//±à¼­Æ÷´æ·ÅÂ·¾¶
 }
 K.basePath = _getBasePath();
 K.options = {

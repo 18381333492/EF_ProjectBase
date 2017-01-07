@@ -568,6 +568,8 @@
       <DependentUpon>eui.js</DependentUpon>
     </Content>
     <Content Include="Scripts\mylib\extend.js" />
+    <Content Include="Scripts\plug-in\picture\style.html" />
+    <Content Include="Scripts\plug-in\picture\upload.js" />
     <Content Include="Scripts\plug-in\datetime.js" />
     <Content Include="Scripts\plug-in\kindeditor.js" />
     <Content Include="Scripts\plug-in\cityselect\city.min.js" />

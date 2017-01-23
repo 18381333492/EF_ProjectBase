@@ -62,7 +62,8 @@ function eui() {
                             er_callback(r);//手动提示错误
                         }
                         else {
-                            f.alert("操作失败,请联系管理员!");
+                            f.alert(r.info);
+                            //f.alert("操作失败,请联系管理员!");
                             $('#ok').eq(0).linkbutton('enable');//启用按钮
                         }
                     }

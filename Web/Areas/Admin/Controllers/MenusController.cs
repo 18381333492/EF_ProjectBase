@@ -73,10 +73,16 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public void  Insert(Menus menu)
         {
-            int res= _server.Add(menu);
-            if (res>0)
+            if (!_server.Check(menu))
             {
-                result.success = true;
+                int res = _server.Add(menu);
+                if (res > 0)
+                    result.success = true;
+            }
+            else
+            {
+                result.success = false;
+                result.info = "菜单名称或者路径重复!";
             }
         }
 
@@ -87,10 +93,16 @@ namespace Web.Areas.Admin.Controllers
         /// <returns></returns>
         public void Update(Menus menu)
         {
-            int res = _server.Edit(menu);
-            if (res > 0)
+            if (!_server.Check(menu,true))
             {
-                result.success = true;
+                int res = _server.Edit(menu);
+                if (res > 0)
+                    result.success = true;
+            }
+            else
+            {
+                result.success = false;
+                result.info = "菜单名称或者路径重复!";
             }
         }
 
@@ -100,13 +112,11 @@ namespace Web.Areas.Admin.Controllers
         /// </summary>
         /// <param name="Ids"></param>
         /// <returns></returns>
-        public void  Cancel(string Ids)
+        public void Cancel(string Ids)
         {
-            int res= _server.Cancel(Ids);
+            int res = _server.Cancel(Ids);
             if (res > 0)
-            {
                 result.success = true;
-            }
         }
     }
 }

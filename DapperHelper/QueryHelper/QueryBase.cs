@@ -12,11 +12,11 @@ namespace DapperHelper
     public class QueryBase : SqlDbBase,IQuery
     {
         /// <summary>
-        /// 分页查询数据列表
+        /// 查询数据列表
         /// </summary>
         /// <param name="sSql"></param>
         /// <param name="parameter"></param>
-        public List<Dictionary<string, object>> QueryPage(string sSql, object parameter)
+        public List<Dictionary<string, object>> Query(string sSql, object parameter)
         {
             using (SqlConnection conn = GetSqlConnection())
             {
@@ -27,9 +27,8 @@ namespace DapperHelper
                                 .ToList();
                 CloseConnect(conn);
                 return ret;
-            }
-
-            
+            } 
         }
+       
     }
 }

@@ -162,5 +162,24 @@ namespace Sevices
             }
             return Main.ToString();
         }
+
+
+        /// <summary>
+        /// 检查菜单名称是否重复或者路径重复
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <param name="IsEdit">是否编辑的时候检查(默认值false)</param>
+        /// <returns></returns>
+        public bool Check(Menus menu, bool IsEdit = false)
+        {
+            var list = query.db.Menus
+                .Where(m=>m.bIsDeleted==false)
+                .Where(m => m.sMenuName.Equals(menu.sMenuName) || m.sMenuUrl.ToLower().Equals(menu.sMenuUrl.ToLower()))
+                .ToList();
+            if (IsEdit)
+                return list.Count > 1 ? true : false;
+            else
+                return list.Count > 0 ? true : false;
+        }
     }
 }

@@ -150,7 +150,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin后台界面\bottom.html" />
     <Content Include="Areas\Admin\Content\easyui\easyloader.js" />
     <Content Include="Areas\Admin\Content\easyui\jquery.easyui.min.js" />
     <Content Include="Areas\Admin\Content\easyui\jquery.easyui.mobile.js" />
@@ -194,24 +193,11 @@
     <Content Include="Areas\Admin\Content\Index\images\main\time.jpg" />
     <Content Include="Areas\Admin\Content\Index\images\main\top_r1_c5.jpg" />
     <Content Include="Areas\Admin\Content\Index\images\main\why.gif" />
-    <Content Include="admin后台界面\index.html" />
-    <Content Include="admin后台界面\index1.html" />
     <Content Include="Areas\Admin\Content\Index\js\clock.js" />
     <Content Include="Areas\Admin\Content\Index\js\moo.fx.js" />
     <Content Include="Areas\Admin\Content\Index\js\moo.fx.pack.js" />
     <Content Include="Areas\Admin\Content\Index\js\prototype.lite.js" />
     <Content Include="Areas\Admin\Content\Index\js\sdmenu.js" />
-    <Content Include="admin后台界面\left.html" />
-    <Content Include="admin后台界面\login.html" />
-    <Content Include="admin后台界面\main.html" />
-    <Content Include="admin后台界面\main_info.html" />
-    <Content Include="admin后台界面\main_list.html" />
-    <Content Include="admin后台界面\main_menu.html" />
-    <Content Include="admin后台界面\main_message.html" />
-    <Content Include="admin后台界面\message_info.html" />
-    <Content Include="admin后台界面\message_replay.html" />
-    <Content Include="admin后台界面\swich.html" />
-    <Content Include="admin后台界面\top.html" />
     <Content Include="App_Data\PayConfig\PayConfig.xml" />
     <Content Include="Areas\Admin\Content\loading\css\spinners.css" />
     <Content Include="Areas\Admin\Content\Login\css\Login.css" />

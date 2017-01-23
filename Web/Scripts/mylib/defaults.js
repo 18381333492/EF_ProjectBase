@@ -1,15 +1,22 @@
 ﻿
 /*
 *
-*Easy UI 插件的重写js
+*JQUERY Easy UI 插件的重写
 *
 */
 
 void function () {
+
     $.extend($.fn.textbox.defaults, {
         height: 30,
         width: 200,
         required:true 
+    });
+   
+    $.extend($.fn.numberbox.defaults, {
+        height: 30,
+        width: 200,
+        required: true
     });
 
     $.extend($.fn.combobox.defaults, {

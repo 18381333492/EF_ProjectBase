@@ -17,6 +17,6 @@ namespace DapperHelper
         /// </summary>
         /// <param name="sSql"></param>
         /// <param name="parameter"></param>
-        List<Dictionary<string, object>> QueryPage(string sSql, object parameter);
+        List<Dictionary<string, object>> Query(string sSql, object parameter);
     }
 }

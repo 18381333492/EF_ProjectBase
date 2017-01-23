@@ -21,13 +21,13 @@
     <tr>
         <td>菜单链接</td>
         <td>
-            <input class="easyui-textbox" name="sMenuUrl" value="@Model.sMenuUrl" />
+            <input class="easyui-textbox" name="sMenuUrl" value="@Model.sMenuUrl"  data-options="required:false" />
         </td>
     </tr>
     <tr>
         <td>排 序</td>
         <td>
-            <input class="easyui-textbox" name="iOrder" value="@Model.iOrder"/>
+            <input class="easyui-numberbox" name="iOrder" value="@Model.iOrder" data-options="min:0"/>
         </td>
     </tr>
 </table>

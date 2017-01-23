@@ -142,6 +142,12 @@ namespace Web.App_Start
         {
             Exception e = filterContext.Exception;
             Logs.LogHelper.ErrorLog(e);
+            if (filterContext.HttpContext.Request.HttpMethod.ToUpper() == "POST")
+            {
+                result.success = false;
+                result.info = "数据丢失,请重新操作!";
+                filterContext.Result = Content(result.toJson());
+            }
         }
     }
 }

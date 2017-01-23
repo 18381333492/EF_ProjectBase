@@ -35,6 +35,21 @@ namespace Sevices
             return this.db.Database.SqlQuery<T>(sql, param).ToList();
         }
 
+
+        /// <summary>
+        /// 通过Sql语句查询数据
+        /// </summary>
+        /// <param name="sSql"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public List<Dictionary<string, object>> QueryBySql(string sSql, object param)
+        {
+            DapperHelper.QueryBase dapper = new DapperHelper.QueryBase();//Dapper查询
+            var entry = dapper.Query(sSql, param);
+            return entry;
+        }
+
+
         /// <summary>
         /// 通过Sql语句分页查询
         /// </summary>
@@ -59,20 +74,22 @@ namespace Sevices
 
             DapperHelper.QueryBase dapper = new DapperHelper.QueryBase();//Dapper查询
 
-            var entry = dapper.QueryPage(sSql, param);
+            var entry = dapper.Query(sSql, param);
 
+            JObject job = new JObject();
             if (entry != null&&entry.Count>0)
             {
-                JObject job = new JObject();
                 job.Add(new JProperty("rows", C_Json.Array(C_Json.toJson(entry))));
                 job.Add(new JProperty("total", entry[0]["MaxRows"].toInt32()));
-                return job.ToString();
             }
             else
             {
-                return string.Empty;
+                job.Add(new JProperty("rows", new JArray()));
+                job.Add(new JProperty("total", 0));
             }
+            return job.ToString();
         }
+
 
     }
 }

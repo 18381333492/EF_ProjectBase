@@ -17,7 +17,7 @@
         * version:[1.0.0]
          */
         f.post(role.route("GetPowerList") + "?ID=" + $('#RoleId').val(), null,
-           function (res){
+           function (res) {
             var data =JSON.parse(res.data);
             var menu = data.menu;
             var childMenu = data.childMenu;
@@ -52,7 +52,7 @@
             var array = power.split('|');
             var menuId = array[0].split(',');
             var buttonId;
-            if (array.length > 1) {
+            if (array.length > 1 && array[1]!="") {
                 buttonId = array[1].split(',');
                 $(buttonId).each(function () {
                     $('#power .buttonId[value=' + this + ']').prop("checked", true);

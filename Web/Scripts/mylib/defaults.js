@@ -22,7 +22,8 @@ void function () {
     $.extend($.fn.combobox.defaults, {
         height: 30,
         width: 200,
-        panelHeight:'auto'
+        panelHeight: 'auto',
+        editable: false
     });
 
     /**

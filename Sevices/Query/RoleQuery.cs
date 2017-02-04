@@ -41,7 +41,7 @@ namespace Sevices
         public string GetRoleNameList()
         {
             var entry = from m in query.db.Role
-                        where m.bIsDeleted == false
+                        where m.bIsDeleted == false && m.IsDeveloper==false
                         select new
                         {
                             m.ID,

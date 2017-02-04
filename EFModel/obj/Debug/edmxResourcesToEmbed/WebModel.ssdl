@@ -44,6 +44,7 @@
     <Property Name="sRolePower" Type="nvarchar(max)" Nullable="false" />
     <Property Name="sInsertTime" Type="datetime" Nullable="false" />
     <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+    <Property Name="IsDeveloper" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>

@@ -97,10 +97,10 @@
                         @*<video id="video" controls="controls" height="500" width="600">
                             <source src="/Admin/Home/file" type="video/mp4" />
                         </video>*@
-                        <div id="sds"></div>
                     </div>
                     <div title="图片上传测试" style="padding:10px;">
-                        
+                        <div id="sds"></div>
+                        <input type="hidden" name="sds" />
                         @*<textarea id="upload" style="height:400px;width:640px;"></textarea>*@
                     </div>
                     <div title="html视频测试" style="padding:10px;">
@@ -132,7 +132,6 @@
 <script src="~/Scripts/plug-in/picture/upload.js"></script>
 <script type="text/javascript">
     $(function () {
-
         var f = new upload();
         f.create("sds");
        

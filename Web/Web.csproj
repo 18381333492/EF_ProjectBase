@@ -561,6 +561,7 @@
     <Content Include="Scripts\plug-in\cityselect\city.min.js" />
     <Content Include="Scripts\plug-in\cityselect\demo.html" />
     <Content Include="Scripts\plug-in\cityselect\jquery.cityselect.js" />
+    <Content Include="Scripts\plug-in\picture\uploadimg.jpg" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\icheck.js" />
     <Content Include="Web.config">

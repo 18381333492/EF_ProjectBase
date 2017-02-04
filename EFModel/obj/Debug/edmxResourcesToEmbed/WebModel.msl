@@ -44,6 +44,7 @@
     <EntitySetMapping Name="Role">
       <EntityTypeMapping TypeName="EF_ProjectBaseModel.Role">
         <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="IsDeveloper" ColumnName="IsDeveloper" />
           <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
           <ScalarProperty Name="sInsertTime" ColumnName="sInsertTime" />
           <ScalarProperty Name="sRolePower" ColumnName="sRolePower" />

@@ -19,5 +19,6 @@ namespace EFModel
         public string sRolePower { get; set; }
         public System.DateTime sInsertTime { get; set; }
         public bool bIsDeleted { get; set; }
+        public bool IsDeveloper { get; set; }
     }
 }

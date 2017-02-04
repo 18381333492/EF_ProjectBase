@@ -48,7 +48,7 @@ namespace Sevices
         public int Cancel(string Ids)
         {
             List<string> list = Ids.Split(',').Select(m => m.Trim('\'')).ToList();
-            var entry=query.db.User.Select(m => list.Contains(m.sRoleID.ToString()));
+            var entry = query.db.User.Where(m => list.Contains(m.sRoleID.ToString().ToLower()));
             if (entry.Count() == 0)
             {
                 return excute.Cancel<Role>(Ids, this, "Cancel");

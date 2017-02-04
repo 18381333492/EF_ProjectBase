@@ -5,20 +5,20 @@
     <tr>
         <td>用户账号</td>
         <td>
-            <input class="easyui-textbox" name="sUserName" />
+            <input class="easyui-textbox" name="sUserName" data-options="iconCls:'icon-man',iconAlign:'left'" />
         </td>
     </tr>
     <tr>
         <td>用户密码</td>
         <td>
-            <input  class="easyui-textbox"  name="sPassWord"/>
+            <input type="password"  class="easyui-textbox"  name="sPassWord" data-options="iconCls:'icon-lock',iconAlign:'left'"/>
         </td>
     </tr>
     <tr>
         <td>所属角色</td>
         <td>
             <input class="easyui-combobox" name="sRoleID"
-                   data-options="valueField:'ID',textField:'sRoleName',url:'/Admin/Role/GetRoleNameList'" />
+                   data-options="valueField:'ID',textField:'sRoleName',url:'/Admin/Role/GetRoleNameList',required:true" />
         </td>
     </tr>
 </table>

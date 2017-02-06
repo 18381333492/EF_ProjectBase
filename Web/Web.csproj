@@ -129,6 +129,7 @@
     <Compile Include="App_Start\NoLogin.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\WeiXinMessage\AutoHandleMessage.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ButtonController.cs" />
     <Compile Include="Areas\Admin\Controllers\OperateLogController.cs" />
@@ -138,7 +139,7 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
     <Compile Include="Areas\Pays\PaysAreaRegistration.cs" />
-    <Compile Include="Areas\WeiXin\Controllers\CheckDeveloperController.cs" />
+    <Compile Include="Areas\WeiXin\Controllers\DeveloperController.cs" />
     <Compile Include="Areas\WeiXin\WeiXinAreaRegistration.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -150,6 +151,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\WeiXin.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\Admin\Content\easyui\easyloader.js" />
     <Content Include="Areas\Admin\Content\easyui\jquery.easyui.min.js" />
     <Content Include="Areas\Admin\Content\easyui\jquery.easyui.mobile.js" />
@@ -615,6 +619,14 @@
     <ProjectReference Include="..\Sevices\Sevices.csproj">
       <Project>{efe8ce4c-d0a4-46f1-9b1e-7dbf5167f936}</Project>
       <Name>Sevices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeiXin.Base\WeiXin.Base.csproj">
+      <Project>{98a8beff-8246-4eee-aaf4-e45d49692e9d}</Project>
+      <Name>WeiXin.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeiXin.Tool\WeiXin.Tool.csproj">
+      <Project>{407029d4-2d18-46f2-8690-ee7ddde8c429}</Project>
+      <Name>WeiXin.Tool</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

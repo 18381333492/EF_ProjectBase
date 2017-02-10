@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WeiXin.Base.Message.ReceiveModels;
 
 namespace WeiXin.Base.Message
 {
@@ -11,34 +12,33 @@ namespace WeiXin.Base.Message
     /// </summary>
     public abstract class IBaseAction
     {
-
-        public virtual string HandleText()
+        public virtual string HandleText(TextMessage message)
         {
             return string.Empty;
         }
 
-        public virtual string HandleImage()
+        public virtual string HandleImage(ImageMessage message)
         {
             return string.Empty;
         }
 
-        public virtual string HandleLink()
+        public virtual string HandleLink(LinkMessage message)
         {
             return string.Empty;
         }
 
-        public virtual string HandleLocation()
+        public virtual string HandleLocation(LocationMessage message)
         {
             return string.Empty;
         }
 
      
-        public virtual string HandleVideo()
+        public virtual string HandleVideo(VideoMessage message)
         {
             return string.Empty;
         }
 
-        public virtual string HandleVoice()
+        public virtual string HandleVoice(VoiceMessage message)
         {
             return string.Empty;
         }

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
@@ -14,108 +15,59 @@ namespace WeiXin.Tool
     public class XmlHelper
     {
         /// <summary>
-        /// 带有CDATA数据的反序列化时，对应的字段必须为CDATA类型，否则出错。
+        /// XML数据的反序列化
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="sXmlContent"></param>
         /// <returns></returns>
         public static T XmlToObject<T>(string sXmlContent)
         {
+            sXmlContent = Regex.Replace(sXmlContent, "xml", typeof(T).Name);
             StringReader stringReader = new StringReader(sXmlContent);
             XmlReader xmlReader = XmlReader.Create(stringReader);
             XmlSerializer serializer = new XmlSerializer(typeof(T));
             return (T)serializer.Deserialize(xmlReader);
         }
 
-
-        public static string ObjectToXml(Object oObject)
-        {
-            StringBuilder sResult = new StringBuilder();
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;　//是否缩进
-            settings.NewLineOnAttributes = true;
-            using (XmlWriter writer = XmlWriter.Create(sResult, settings))
-            {
-                XmlSerializer serializer = new XmlSerializer(oObject.GetType());
-                serializer.Serialize(writer, oObject);
-            }
-            return sResult.ToString();
-        }
-
         /// <summary>
-        /// 生成xml文档内容，包含属性的属性
+        /// 将对象序列化成XMl数据
         /// </summary>
-        /// <param name="oObject"></param>
-        /// <param name="sRootNodeName">根结点名字</param>
+        /// <param name="model"></param>
         /// <returns></returns>
-        public static string ObjectToXml(Object oObject, string sRootNodeName)
+        public static string ObjectToXml(object model)
         {
-            StringBuilder sResult = new StringBuilder();
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
-            settings.NewLineOnAttributes = true;
-            using (XmlWriter writer = XmlWriter.Create(sResult, settings))
+            XmlSerializerNamespaces xmlSerializerNamespaces = new XmlSerializerNamespaces();
+            xmlSerializerNamespaces.Add("", "");
+            //在Serialize对象时，传入一个XmlSerializerNamespaces，
+            //这样XmlSerializer就会用你传入的XmlSerializerNamespaces而不会用default的XmlSerializerNamespaces。
+            XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
+            xmlWriterSettings.OmitXmlDeclaration = true;
+            xmlWriterSettings.Indent = true;//一个元素一个新行
+            //去掉默认Version信息
+            XmlSerializer xs = new XmlSerializer(model.GetType());
+            StringWriter sw = new StringWriter();
+            using (XmlWriter xmlWriter = XmlWriter.Create(sw, xmlWriterSettings))
             {
-                writer.WriteStartDocument();
-                writer.WriteStartElement(sRootNodeName);
-                ObjectToXml(writer, oObject);
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
+                xs.Serialize(xmlWriter, model, xmlSerializerNamespaces);
+                string res = sw.ToString();
+                res = Regex.Replace(res, model.GetType().Name, "xml");
+                return HandleSpecialChar(res);//处理特殊字符
             }
-            return sResult.ToString();
         }
 
         /// <summary>
-        /// 反射对象属性为xml格式
+        /// XMl数据特殊字符处理
         /// </summary>
-        /// <param name="writer"></param>
-        /// <param name="oObject"></param>
-        private static void ObjectToXml(XmlWriter writer, Object oObject)
+        /// <returns></returns>
+        public static string HandleSpecialChar(string sContent)
         {
-            Type type = oObject.GetType();
-            var fieldInfos = type.GetFields();
-            foreach (FieldInfo fieldInfo in fieldInfos)
-            {
-                Console.WriteLine("{0}\t\t{1}", fieldInfo.FieldType.Name, fieldInfo.Name);
-                if (!fieldInfo.IsPublic) continue;
-
-                switch (fieldInfo.FieldType.Name)
-                {
-                    case "String":
-                        writer.WriteStartElement(fieldInfo.Name);
-                        writer.WriteCData(fieldInfo.GetValue(oObject).ToString());
-                        writer.WriteEndElement();
-                        break;
-                    case "Int32":
-                    case "Int64":
-                        writer.WriteElementString(fieldInfo.Name, fieldInfo.GetValue(oObject).ToString());
-                        break;
-                    case "CImage[]":
-                    case "CMusic[]":
-                    case "CVideo[]":
-                    case "CVoice[]":
-                    case "Article[]":
-                        var objs = (Object[])(fieldInfo.GetValue(oObject));
-                        if (null != objs && objs.Length > 0)
-                        {
-                            writer.WriteStartElement(fieldInfo.Name);
-                            foreach (Object objItem in objs)
-                            {
-                                ObjectToXml(writer, objItem);
-                            }
-                            writer.WriteEndElement();
-                        }
-                        break;
-                    case "Item":
-                        var item = (fieldInfo.GetValue(oObject));
-                        writer.WriteStartElement(fieldInfo.Name);
-                        ObjectToXml(writer, item);
-                        writer.WriteEndElement();
-                        break;
-                }
-            }
+            sContent = Regex.Replace(sContent, "&lt;", "<");
+            sContent = Regex.Replace(sContent, "&gt;", ">");
+            sContent = Regex.Replace(sContent, "&amp;", "&");
+            sContent = Regex.Replace(sContent, "&apos;", "'");
+            sContent = Regex.Replace(sContent, "&quot;", "\"");
+            return sContent;
         }
-
 
         /// <summary>
         /// 根据名字获取对应的值

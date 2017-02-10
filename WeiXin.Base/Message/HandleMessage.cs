@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WeiXin.Base.Message.ReceiveModels;
+using WeiXin.Tool;
 
 namespace WeiXin.Base.Message
 {
@@ -34,29 +36,33 @@ namespace WeiXin.Base.Message
 
             switch (type)
             {
-                case MsgType.text:
-                    sResult = Action.HandleText();
+                case MsgType.TEXT:                      //文本
+                    sResult = Action.HandleText(XmlHelper.XmlToObject<TextMessage>(xmlcontent));
                     break;
-                case MsgType.image:
-                    sResult = Action.HandleImage();
+                case MsgType.IMAGE:                     //图片
+                    sResult = Action.HandleImage(XmlHelper.XmlToObject<ImageMessage>(xmlcontent));
                     break;
-                case MsgType.link:
-                    sResult = Action.HandleLink();
+                case MsgType.LINK:                      //链接
+                    sResult = Action.HandleLink(XmlHelper.XmlToObject<LinkMessage>(xmlcontent));
                     break;
-                case MsgType.voice:
-                    sResult = Action.HandleVoice();
+                case MsgType.VOICE:                     //语音
+                    sResult = Action.HandleVoice(XmlHelper.XmlToObject<VoiceMessage>(xmlcontent));
                     break;
-                case MsgType.shortvideo:
-                    sResult = Action.HandleVideo();
+                case MsgType.SHORTVIDEO:                //小视频
+                    sResult = Action.HandleVideo(XmlHelper.XmlToObject<VideoMessage>(xmlcontent));
                     break;
-                case MsgType.video:
-                    sResult = Action.HandleVideo();
+                case MsgType.VIDEO:                     //视频
+                    sResult = Action.HandleVideo(XmlHelper.XmlToObject<VideoMessage>(xmlcontent));
                     break;
-                case MsgType.location:
-                    sResult = Action.HandleLocation();
+                case MsgType.LOCATION:                  //位置
+                    sResult = Action.HandleLocation(XmlHelper.XmlToObject<LocationMessage>(xmlcontent));
                     break;
             }
             return sResult;
         }
+
+
+
+
     }
 }

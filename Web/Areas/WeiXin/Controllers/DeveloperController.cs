@@ -58,7 +58,7 @@ namespace Web.Areas.WeiXin.Controllers
             string sMsgType = XmlHelper.getTextByNode(requestXmlMessage, "MsgType");
 
             // 找到对应的消息类型
-            MsgType msgType = (MsgType)Enum.Parse(typeof(MsgType), sMsgType);
+            MsgType msgType = (MsgType)Enum.Parse(typeof(MsgType), sMsgType.ToUpper());
 
             var handle = new HandleMessage(Action);
 

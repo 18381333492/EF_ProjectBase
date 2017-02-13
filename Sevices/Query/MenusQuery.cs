@@ -172,10 +172,21 @@ namespace Sevices
         /// <returns></returns>
         public bool Check(Menus menu, bool IsEdit = false)
         {
-            var list = query.db.Menus
-                .Where(m=>m.bIsDeleted==false)
-                .Where(m => m.sMenuName.Equals(menu.sMenuName) || m.sMenuUrl.ToLower().Equals(menu.sMenuUrl.ToLower()))
-                .ToList();
+            List<Menus> list = null;
+            if (string.IsNullOrEmpty(menu.sParentMenuId))
+            {
+                list = query.db.Menus
+                   .Where(m => m.bIsDeleted == false)
+                   .Where(m => m.sMenuName.Equals(menu.sMenuName))
+                   .ToList();
+            }
+            else
+            {
+                list = query.db.Menus
+                   .Where(m => m.bIsDeleted == false)
+                   .Where(m => m.sMenuName.Equals(menu.sMenuName) || m.sMenuUrl.ToLower().Equals(menu.sMenuUrl.ToLower()))
+                   .ToList();
+            }
             if (IsEdit)
                 return list.Count > 1 ? true : false;
             else

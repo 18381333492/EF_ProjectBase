@@ -58,7 +58,7 @@ namespace WeiXin.Base.Message
         /// <param name="text">回复的内容</param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static string Text(string text, TextMessage message)
+        public static string Text(string text, BaseMessage message)
         {
             SendTextMessage send = new SendTextMessage();
             send.Initialize(message);
@@ -71,7 +71,7 @@ namespace WeiXin.Base.Message
         /// 回复图文消息
         /// </summary>
         /// <returns></returns>
-        public static string News(List<item> Articles, TextMessage message)
+        public static string News(List<item> Articles, BaseMessage message)
         {
             SendNewsMessage send = new SendNewsMessage();
             send.Initialize(message);

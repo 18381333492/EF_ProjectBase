@@ -32,7 +32,7 @@ namespace WeiXin.Base
             string[] array ={ token, timestamp, nonce };
             Array.Sort(array);//字典排序
             string newSignature = C_Security.SHA1(string.Join("", array));
-            if (newSignature == signature)
+            if (newSignature == signature.ToUpper())
                 return echostr;
             else
                 return "Valiate Fail";

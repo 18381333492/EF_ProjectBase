@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Developer.cs" />
     <Compile Include="Message\BaseMessage.cs" />
+    <Compile Include="Message\EventModels\UnSubscribeEvent.cs" />
+    <Compile Include="Message\EventModels\SubscribeEvent.cs" />
     <Compile Include="Message\HandleMessage.cs" />
     <Compile Include="Message\IBaseAction.cs" />
     <Compile Include="Message\MessageHelper.cs" />

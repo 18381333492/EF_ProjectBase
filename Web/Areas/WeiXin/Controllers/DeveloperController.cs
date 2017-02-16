@@ -57,12 +57,21 @@ namespace Web.Areas.WeiXin.Controllers
             // 获取微信发送来的消息类型
             string sMsgType = XmlHelper.getTextByNode(requestXmlMessage, "MsgType");
 
-            // 找到对应的消息类型
-            MsgType msgType = (MsgType)Enum.Parse(typeof(MsgType), sMsgType.ToUpper());
-
             var handle = new HandleMessage(Action);
 
-            return handle.ProcessMessage(msgType, requestXmlMessage);
+            if (sMsgType.ToUpper() == "EVENT")
+            {//事件的推送
+                string EventType= XmlHelper.getTextByNode(requestXmlMessage, "Event");//获取事件类型
+                Event eventType = (Event)Enum.Parse(typeof(Event), EventType.ToUpper());
+                return handle.ProcessEvent(eventType, requestXmlMessage);
+            }
+            else
+            {//消息的推送
+
+                // 找到对应的消息类型
+                MsgType msgType = (MsgType)Enum.Parse(typeof(MsgType), sMsgType.ToUpper());
+                return handle.ProcessMessage(msgType, requestXmlMessage);
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WeiXin.Base.Message.EventModels;
 using WeiXin.Base.Message.ReceiveModels;
 
 namespace WeiXin.Base.Message
@@ -12,6 +13,7 @@ namespace WeiXin.Base.Message
     /// </summary>
     public abstract class IBaseAction
     {
+        #region 消息推送接口
         public virtual string HandleText(TextMessage message)
         {
             return string.Empty;
@@ -43,6 +45,31 @@ namespace WeiXin.Base.Message
             return string.Empty;
         }
 
+        #endregion
+
+
+        #region 事件推送的接口
+
+        /// <summary>
+        /// 关注时触发
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public virtual string HandleSubscribe(SubscribeEvent message)
+        {
+            return string.Empty;
+        }
+
+        /// <summary>
+        /// 取消关注时触发
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public virtual string HandleUnSubscribe(UnSubscribeEvent message)
+        {
+            return string.Empty;
+        }
+        #endregion
         ///// <summary>
         ///// 关注时触发
         ///// </summary>

@@ -44,21 +44,40 @@ namespace WeiXin.Base.Message
     /// </summary>
     public enum MsgType
     {
-        TEXT=1,             //文本
+        TEXT,             //文本
 
-        IMAGE=2,           //图片
+        IMAGE,           //图片
 
-        VOICE=3,           //声音
+        VOICE,           //声音
 
-        VIDEO=4,           //视频
+        VIDEO,           //视频
 
-        SHORTVIDEO=5,      //小视屏
+        SHORTVIDEO,      //小视屏
             
-        LOCATION=6,        //位置
+        LOCATION,        //位置
 
-        LINK=7,            //链接
+        LINK,            //链接
 
-        EVENT=8            //事件类型
+        EVENT            //事件类型
 
     }
+
+    /// <summary>
+    /// 微信事件的类型
+    /// </summary>
+    public enum Event
+    {
+        SUBSCRIBE,      //订阅/关注事件
+
+        UNSUBSCRIBE,    //取消订阅/取消关注事件
+
+        SCAN,           //用户已关注时的扫码的事件推送
+
+        LOCATION,       //上报地理位置事件
+
+        CLICK,          //自定义菜单事件
+
+        VIEW           //点击菜单跳转链接时的事件推送
+    }
+
 }

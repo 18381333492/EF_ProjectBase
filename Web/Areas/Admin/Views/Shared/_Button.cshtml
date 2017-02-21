@@ -3,7 +3,7 @@
 @{
     var List = ViewData["Button"] as List<Button>;
 }
-  @foreach (var m in List)
+  @foreach (var m in List) 
   {
       <a class="easyui-linkbutton" data-name="@m.sButtonEn_Name"  data-options="iconCls:'@m.sButtonIcon',plain:true">@m.sButtonName</a>
   }

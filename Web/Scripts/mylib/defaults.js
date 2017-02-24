@@ -6,7 +6,6 @@
 */
 
 void function () {
-
     $.extend($.fn.textbox.defaults, {
         height: 30,
         width: 200,
@@ -39,6 +38,7 @@ void function () {
     *重写datagrid的onLoadSuccess事件
     */
     $.extend($.fn.datagrid.defaults, {
+        pageSize: 20,
         onLoadSuccess: function () {
             window.closeloading();
         },

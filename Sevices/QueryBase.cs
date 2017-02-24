@@ -32,6 +32,7 @@ namespace Sevices
         /// <returns></returns>
         public List<T> Query<T>(string sql, params object[] param) where T : class, new()
         {
+            //注意使用EF SQL语句查询的时候必须要返回类型必须是实体类型  并且只能是属性不能是字段.
             return this.db.Database.SqlQuery<T>(sql, param).ToList();
         }
 

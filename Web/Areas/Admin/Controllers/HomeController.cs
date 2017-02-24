@@ -25,7 +25,6 @@ namespace Web.Areas.Admin.Controllers
             ViewBag.Visits = HttpContext.Application["Visits"];
             return View();
         }
-
         public ActionResult My404()
         {
             return View();

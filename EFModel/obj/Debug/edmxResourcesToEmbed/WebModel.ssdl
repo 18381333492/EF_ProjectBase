@@ -11,6 +11,26 @@
     <Property Name="sButtonEn_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="iOrder" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Goods">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sGoodsName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sGoodsPicture" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GoodsComment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sCommentContent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="dCommentTime" Type="datetime" Nullable="false" />
+    <Property Name="sCommentPerson" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="Menus">
     <Key>
       <PropertyRef Name="ID" />
@@ -34,6 +54,26 @@
     <Property Name="sIpAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="sCity" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="sContent" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sOrderNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sGoodName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sGoodsPicture" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="iGoodsCount" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="dPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="dTotalPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="sActivity" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sOrderRemark" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="sReceiver" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="iState" Type="int" Nullable="false" />
+    <Property Name="dBookTime" Type="datetime" Nullable="false" />
+    <Property Name="dPayTime" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -61,8 +101,11 @@
   </EntityType>
   <EntityContainer Name="EF_ProjectBaseModelStoreContainer">
     <EntitySet Name="Button" EntityType="Self.Button" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GoodsComment" EntityType="Self.GoodsComment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OperateLog" EntityType="Self.OperateLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
   </EntityContainer>

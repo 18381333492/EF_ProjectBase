@@ -64,12 +64,12 @@ $(function () {
                         title: $(this).text(),
                         content: '<iframe scrolling="auto" frameborder="0"  src="' + $(this).attr("url") + '" width="100%" height="' + height + 'px";></iframe>',
                         closable: true,
-                        tools: [{
-                            iconCls: 'icon-mini-refresh',
-                            handler: function () {
-                                alert('refresh');
-                            }
-                        }]
+                        //tools: [{
+                        //    iconCls: 'icon-mini-refresh',
+                        //    handler: function () {
+                        //        alert('refresh');
+                        //    }
+                        //}]
                     });                  
                     /*遮掩层效果和等待效果*/
                     var panel = $('#tabs').tabs('getTab', $(this).text());

@@ -85,3 +85,16 @@ function extend() {
         }
     }
 }
+
+
+Array.prototype.toObject = function () {
+    var obj = {};
+    for (var i = 0; i < this.length; i++) {
+        var key = this[i]["name"];
+        var value = this[i]["value"];
+        obj[key] = value;
+    }
+    return obj;
+}
+
+

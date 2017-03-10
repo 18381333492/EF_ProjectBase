@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>确认订单页面</title>
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!--分享使用-->
+	<meta itemprop="name" content="" />
+	<meta itemprop="description" name="description" content="" />
+	<meta itemprop="image" content="img_url" />
+	<meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <link rel="stylesheet" type="text/css" href="css/mobilebone.css" />
+    <link rel="stylesheet" type="text/css" href="css/weui.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script src="lib/jquery-2.1.4.min.js"></script>
+    <script src="lib/mobilebone.js"></script>
+</head>
+<body class="has-head t-p-b t-bg-f6 adress">
+    <!--订单页-->
+    <div class="page in" id="js_address_list">
+        <div class="main t-absolute mb-content">
+        <section>
+            <a href="#js_address_add" class="t-active t-address-Box t-bg-ff">
+                <i class="t-icon-arrow-left"></i>
+                <i class="t-icon-arrow-right"></i>
+                <ul style="background: url(img/location-border.jpg) repeat-x left bottom;background-size: 100%">
+                    <li >
+                        <h4>收货人：张浛庆<span class="t-m-lr">1510000000</span></h4>
+                    </li>
+                    <li class="t-c-9">成都市青羊区光华中心B座1206-1209</li>
+                </ul>
+            </a>
+        </section>
+        <!--商品清单-->
+        <section>
+             <div class="t-general-listing t-bg-ff t-m-t t-b-t t-b-b">
+                    <div class="t-listing-Box clearfix">
+                        <i class="t-picture" style="background-image: url('img/t-icon-picture.png')"></i>
+                        <div class="t-listing-right">
+                            <h3>钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒</h3>
+                            <p class="t-size">净度：VS3</p>
+                            <p class="t-listing-money">&yen; 119.00</p>
+                            <span class="t-number">&times;1</span>
+                        </div>
+                    </div>
+             </div>
+        </section>
+        <section>
+            <div class="t-b-t t-bg-ff  t-m-t t-b-b " style="padding:0 0.3rem 0.3rem 0.3rem">
+
+                <div class="t-orders-Box t-l-h t-b-dashed">
+                    <span>运费：</span>
+                    <span class="pull-right">&yen; 0.00</span>
+                </div>
+                <div class="t-orders-Box t-l-h-one t-b-dashed">
+                    <span>商品金额：</span>
+                    <span class="pull-right">&yen; 119.00</span>
+                </div>
+                <textarea class="t-text" style="margin-top:10px;font-size: 13px" placeholder="买家留言"></textarea>
+            </div>
+        </section>
+    </div>
+    </div>
+
+    <!--新增地址-->
+    <div class="page out" id="js_address_add">
+        <div class="main t-absolute mb-content">
+            <div class="weui_cells weui_cells_form address-add no-mt">
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">收件人</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" type="text" placeholder="请输入收件人姓名">
+                    </div>
+                </div>
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label">联系方式</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" type="text" placeholder="请输入联系方式">
+                    </div>
+                </div>
+                <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        省份
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <select class="weui_select" name="select2">
+                            <option value="1" >北京</option>
+                            <option value="2">四川</option>
+                            <option value="3">安徽</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        城市
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <select class="weui_select" name="select2">
+                            <option value="1">成都</option>
+                            <option value="2">达州</option>
+                            <option value="3">眉山</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="weui_cell weui_cell_select weui_select_after">
+                    <div class="weui_cell_hd">
+                        区域
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <select class="weui_select" name="select2">
+                            <option value="1">三环内</option>
+                            <option value="2">三环外</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="weui_cell">
+                    <div class="weui_cell_hd"><label class="weui_label width-auto">详细地址</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input class="weui_input" type="text" placeholder="成都市成都市成都市成都市">
+                    </div>
+                </div>
+            </div>
+            <a class="public-button m-t-10" id="js_sure">确定</a>
+        </div>
+    </div>
+
+    <footer class="t-bg-ff t-h  t-absolute t-footer">
+        <div class="t-balance-Box t-p-l t-pay-btn flex-wrap">
+            <div class="t-footer-money">
+                <span class="t-f-14">支付金额：</span>
+                <span  class="t-f-14 t-b-money">&yen; 119.00</span>
+            </div>
+            <a href="javascript:;" class="flex-item-1 t-pay-btn">确认下单</a>
+        </div>
+    </footer>
+</body>
+</html>
+<script type="text/javascript">
+    $('#js_sure').on("click", function () {
+        $('.t-size').text("dsdsdsd");
+        history.back();
+    })
+
+    //mobilebone callback
+    Mobilebone.callback = function (page_in, page_out) {
+        var id_in = page_in.id;
+        var id_out = page_out == null ? "" : page_out.id;
+        if (id_in == "js_address_list") {
+            $('.t-footer').show();
+        } else {
+            $('.t-footer').hide();
+        }
+    }
+</script>

@@ -30,5 +30,8 @@ namespace EFModel
         public virtual DbSet<Button> Button { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<OperateLog> OperateLog { get; set; }
+        public virtual DbSet<Goods> Goods { get; set; }
+        public virtual DbSet<GoodsComment> GoodsComment { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
     }
 }

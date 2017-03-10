@@ -65,5 +65,48 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Goods">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.Goods">
+        <MappingFragment StoreEntitySet="Goods">
+          <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+          <ScalarProperty Name="sGoodsPicture" ColumnName="sGoodsPicture" />
+          <ScalarProperty Name="sGoodNo" ColumnName="sGoodNo" />
+          <ScalarProperty Name="sGoodsName" ColumnName="sGoodsName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoodsComment">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.GoodsComment">
+        <MappingFragment StoreEntitySet="GoodsComment">
+          <ScalarProperty Name="sCommentPerson" ColumnName="sCommentPerson" />
+          <ScalarProperty Name="dCommentTime" ColumnName="dCommentTime" />
+          <ScalarProperty Name="sGoodNo" ColumnName="sGoodNo" />
+          <ScalarProperty Name="sCommentContent" ColumnName="sCommentContent" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="dPayTime" ColumnName="dPayTime" />
+          <ScalarProperty Name="dBookTime" ColumnName="dBookTime" />
+          <ScalarProperty Name="iState" ColumnName="iState" />
+          <ScalarProperty Name="sAddress" ColumnName="sAddress" />
+          <ScalarProperty Name="sReceiver" ColumnName="sReceiver" />
+          <ScalarProperty Name="sOrderRemark" ColumnName="sOrderRemark" />
+          <ScalarProperty Name="sActivity" ColumnName="sActivity" />
+          <ScalarProperty Name="dTotalPrices" ColumnName="dTotalPrices" />
+          <ScalarProperty Name="dPrices" ColumnName="dPrices" />
+          <ScalarProperty Name="iGoodsCount" ColumnName="iGoodsCount" />
+          <ScalarProperty Name="sGoodsPicture" ColumnName="sGoodsPicture" />
+          <ScalarProperty Name="sGoodNo" ColumnName="sGoodNo" />
+          <ScalarProperty Name="sGoodName" ColumnName="sGoodName" />
+          <ScalarProperty Name="sOrderNo" ColumnName="sOrderNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

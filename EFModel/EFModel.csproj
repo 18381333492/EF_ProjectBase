@@ -55,6 +55,12 @@
     <Compile Include="Button.cs">
       <DependentUpon>WebModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Goods.cs">
+      <DependentUpon>WebModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsComment.cs">
+      <DependentUpon>WebModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Menus.cs">
       <DependentUpon>WebModel.tt</DependentUpon>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="MyModels\Result.cs" />
     <Compile Include="MyModels\UserInfo.cs" />
     <Compile Include="OperateLog.cs">
+      <DependentUpon>WebModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Orders.cs">
       <DependentUpon>WebModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

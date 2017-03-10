@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sevices
 {
-    public  class ExcuteBase
+    public class ExcuteBase
     {
 
         public Entities db;

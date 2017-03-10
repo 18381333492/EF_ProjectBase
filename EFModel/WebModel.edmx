@@ -16,6 +16,26 @@
           <Property Name="sButtonEn_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="iOrder" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="sGoodsName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="sGoodsPicture" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GoodsComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="sCommentContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="dCommentTime" Type="datetime" Nullable="false" />
+          <Property Name="sCommentPerson" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Menus">
           <Key>
             <PropertyRef Name="ID" />
@@ -39,6 +59,26 @@
           <Property Name="sIpAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="sCity" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="sContent" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="sOrderNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sGoodName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="sGoodsPicture" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="iGoodsCount" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="dPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="dTotalPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="sActivity" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="sOrderRemark" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="sReceiver" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="iState" Type="int" Nullable="false" />
+          <Property Name="dBookTime" Type="datetime" Nullable="false" />
+          <Property Name="dPayTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -66,8 +106,11 @@
         </EntityType>
         <EntityContainer Name="EF_ProjectBaseModelStoreContainer">
           <EntitySet Name="Button" EntityType="Self.Button" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoodsComment" EntityType="Self.GoodsComment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OperateLog" EntityType="Self.OperateLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -94,6 +137,9 @@
           <EntitySet Name="Button" EntityType="EF_ProjectBaseModel.Button" />
           <EntitySet Name="Role" EntityType="EF_ProjectBaseModel.Role" />
           <EntitySet Name="OperateLog" EntityType="EF_ProjectBaseModel.OperateLog" />
+          <EntitySet Name="Goods" EntityType="EF_ProjectBaseModel.Goods" />
+          <EntitySet Name="GoodsComment" EntityType="EF_ProjectBaseModel.GoodsComment" />
+          <EntitySet Name="Orders" EntityType="EF_ProjectBaseModel.Orders" />
         </EntityContainer>
         <EntityType Name="Menus">
           <Key>
@@ -140,6 +186,46 @@
           <Property Name="sIpAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="sCity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="sContent" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="sGoodsName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="sGoodNo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="sGoodsPicture" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="GoodsComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="sCommentContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sGoodNo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="dCommentTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sCommentPerson" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="sOrderNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sGoodName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="sGoodNo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="sGoodsPicture" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="iGoodsCount" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="dPrices" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="dTotalPrices" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="sActivity" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="sOrderRemark" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sReceiver" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="iState" Type="Int32" Nullable="false" />
+          <Property Name="dBookTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dPayTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -207,6 +293,49 @@
                 <ScalarProperty Name="sIpAddress" ColumnName="sIpAddress" />
                 <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
                 <ScalarProperty Name="sUserName" ColumnName="sUserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods">
+            <EntityTypeMapping TypeName="EF_ProjectBaseModel.Goods">
+              <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+                <ScalarProperty Name="sGoodsPicture" ColumnName="sGoodsPicture" />
+                <ScalarProperty Name="sGoodNo" ColumnName="sGoodNo" />
+                <ScalarProperty Name="sGoodsName" ColumnName="sGoodsName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoodsComment">
+            <EntityTypeMapping TypeName="EF_ProjectBaseModel.GoodsComment">
+              <MappingFragment StoreEntitySet="GoodsComment">
+                <ScalarProperty Name="sCommentPerson" ColumnName="sCommentPerson" />
+                <ScalarProperty Name="dCommentTime" ColumnName="dCommentTime" />
+                <ScalarProperty Name="sGoodNo" ColumnName="sGoodNo" />
+                <ScalarProperty Name="sCommentContent" ColumnName="sCommentContent" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="EF_ProjectBaseModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="dPayTime" ColumnName="dPayTime" />
+                <ScalarProperty Name="dBookTime" ColumnName="dBookTime" />
+                <ScalarProperty Name="iState" ColumnName="iState" />
+                <ScalarProperty Name="sAddress" ColumnName="sAddress" />
+                <ScalarProperty Name="sReceiver" ColumnName="sReceiver" />
+                <ScalarProperty Name="sOrderRemark" ColumnName="sOrderRemark" />
+                <ScalarProperty Name="sActivity" ColumnName="sActivity" />
+                <ScalarProperty Name="dTotalPrices" ColumnName="dTotalPrices" />
+                <ScalarProperty Name="dPrices" ColumnName="dPrices" />
+                <ScalarProperty Name="iGoodsCount" ColumnName="iGoodsCount" />
+                <ScalarProperty Name="sGoodsPicture" ColumnName="sGoodsPicture" />
+                <ScalarProperty Name="sGoodNo" ColumnName="sGoodNo" />
+                <ScalarProperty Name="sGoodName" ColumnName="sGoodName" />
+                <ScalarProperty Name="sOrderNo" ColumnName="sOrderNo" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

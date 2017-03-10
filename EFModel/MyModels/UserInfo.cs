@@ -9,7 +9,8 @@ namespace EFModel.MyModels
 
     /// <summary>
     /// 后台session保存的数据
-    /// </summary>
+    /// <summary>
+    [Serializable]
     public  class UserInfo
     {
         public Guid ID

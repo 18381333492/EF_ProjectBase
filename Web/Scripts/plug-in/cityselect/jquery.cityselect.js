@@ -21,7 +21,7 @@ ziti:是否是自提(默认false)
 
         // 默认值
         settings = $.extend({
-            url: "city.min.js",
+            url: "/Scripts/plug-in/cityselect/city.min.js",
             prov: "四川省",
             city: "成都市",
             dist: "武侯区",
@@ -44,10 +44,22 @@ ziti:是否是自提(默认false)
         }
         else if (settings.type == 2) {
             if (settings.level == 3) {
-                boxhtml = '<div class="weui_cell weui_cell_select weui_select_after"><div class="weui_cell_hd">省份/直辖市</div><div class="weui_cell_bd weui_cell_primary"><select class="weui_select prov"></select></div></div><div class="weui_cell weui_cell_select weui_select_after"><div class="weui_cell_hd">城市</div><div class="weui_cell_bd weui_cell_primary"><select class="weui_select city"></select></div></div><div class="weui_cell weui_cell_select weui_select_after"><div class="weui_cell_hd">区域</div><div class="weui_cell_bd weui_cell_primary"><select class="weui_select dist"></select></div></div><input class="id" type="hidden"/>';
-            } else {
-                settings.dist = null;
-                boxhtml = '<div class="weui_cell weui_cell_select weui_select_after"><div class="weui_cell_hd">省份/直辖市</div><div class="weui_cell_bd weui_cell_primary"><select class="weui_select prov"></select></div></div><div class="weui_cell weui_cell_select weui_select_after"><div class="weui_cell_hd">城市</div><div class="weui_cell_bd weui_cell_primary"><select class="weui_select city"></select></div></div><div class="weui_cell weui_cell_select weui_select_after"><input class="id" type="hidden"/>';
+                var html = [];
+                html.push('<div class="weui_cell weui_cell_select weui_select_after">');
+                html.push('<div class="weui_cell_hd">省份</div>');
+                html.push('<div class="weui_cell_bd weui_cell_primary">');
+                html.push('<select class="weui_select prov" name="select2"></select></div></div>');
+
+                html.push('<div class="weui_cell weui_cell_select weui_select_after">');
+                html.push('<div class="weui_cell_hd">城市</div>');
+                html.push('<div class="weui_cell_bd weui_cell_primary">');
+                html.push('<select class="weui_select city" name="select2"></select></div></div>');
+
+                html.push('<div class="weui_cell weui_cell_select weui_select_after">');
+                html.push('<div class="weui_cell_hd">区域</div>');
+                html.push('<div class="weui_cell_bd weui_cell_primary">');
+                html.push('<select class="weui_select dist" name="select2"></select></div></div>');
+                boxhtml = html.join('');
             }
         } else {
             if (settings.level == 3) {
@@ -220,7 +232,6 @@ ziti:是否是自提(默认false)
                 type: 'get',
                 dataType: 'json',
                 success: function (json) {
-                    debugger
                     city_json = json;
                     init();
                 },

@@ -33,7 +33,6 @@ namespace Web.App_Start
 
         /// <summary>
         /// 在Action执行完之后操作
-        /// tip:主要根据角色获取权限相应的按钮
         /// </summary>
         /// <param name = "filterContext" ></ param >
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
@@ -46,7 +45,6 @@ namespace Web.App_Start
             {
                 filterContext.Result = Content(result.toJson()); /**统一处理ajax的返回结果**/
             }
-
         }
 
         /// <summary>

@@ -17,8 +17,7 @@ namespace Web.Areas.Mobile.Controllers
     {
         //
         // GET: /Mobile/Order/
-
-        
+  
         /// <summary>
         /// 下单页面
         /// </summary>

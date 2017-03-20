@@ -19,12 +19,21 @@ namespace Web.Areas.Mobile.Controllers
         // GET: /Mobile/Order/
   
         /// <summary>
-        /// 下单页面
+        /// 会员页面查询
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
         {
             return View();
+        }
+
+        /// <summary>
+        /// 检查订单状态
+        /// </summary>
+        /// <param name="sOrderId"></param>
+        public void CheckOrderState(Guid sOrderId)
+        {
+            
         }
 
         /// <summary>

@@ -69,6 +69,7 @@
           <Property Name="sGoodName" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="sGoodsPicture" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="sGoodsInfo" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="iGoodsCount" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="dPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="dTotalPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -226,6 +227,7 @@
           <Property Name="iState" Type="Int32" Nullable="false" />
           <Property Name="dBookTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dPayTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sGoodsInfo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -322,6 +324,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="EF_ProjectBaseModel.Orders">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="sGoodsInfo" ColumnName="sGoodsInfo" />
                 <ScalarProperty Name="dPayTime" ColumnName="dPayTime" />
                 <ScalarProperty Name="dBookTime" ColumnName="dBookTime" />
                 <ScalarProperty Name="iState" ColumnName="iState" />

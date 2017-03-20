@@ -117,7 +117,8 @@ function string(){
     }
 
     /**返回的接口**/
-    return{
+    return {
+        isEmpty:isEmpty,
         trim:trim,
         insert:insert,
         trimSta:trimSta,

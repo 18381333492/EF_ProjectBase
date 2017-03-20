@@ -218,6 +218,7 @@
     <Content Include="Areas\Admin\Content\Login\images\1.jpg" />
     <Content Include="Areas\Admin\js\Home\Index.js" />
     <Content Include="Areas\Admin\js\Home\Login.js" />
+    <Content Include="Areas\Mobile\js\OrderConfrim.js" />
     <Content Include="Content\kindeditor\examples\auto-height.html" />
     <Content Include="Content\kindeditor\examples\colorpicker.html" />
     <Content Include="Content\kindeditor\examples\custom-plugin.html" />
@@ -683,7 +684,6 @@
     <Folder Include="Areas\Admin\Content\easyui\themes\" />
     <Folder Include="Areas\Admin\Content\Login\js\" />
     <Folder Include="Areas\Mobile\Content\" />
-    <Folder Include="Areas\Mobile\js\" />
     <Folder Include="Areas\Mobile\Views\Shared\" />
     <Folder Include="Areas\Pays\Controllers\" />
     <Folder Include="Areas\Pays\Views\Shared\" />

@@ -12,7 +12,6 @@ namespace EFModel
     using System;
     using System.Collections.Generic;
     
-    [Serializable]
     public partial class Button
     {
         public System.Guid ID { get; set; }

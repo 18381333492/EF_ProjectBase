@@ -547,7 +547,6 @@
     <Content Include="Areas\WeiXin\Views\AutoReply\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
     <Content Include="Areas\Mobile\Views\Orders\Index.cshtml" />
-    <None Include="bundleconfig.json" />
     <Content Include="HandleProgram\PictureUpload.ashx" />
     <Content Include="OrderPage\css\weui.min.css" />
     <Content Include="OrderPage\fonts\fontawesome-webfont.eot" />
@@ -644,6 +643,7 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\mylib\common.client.js" />
+    <Content Include="Scripts\plug-in\cookie.js" />
     <Content Include="Scripts\mylib\defaults.js" />
     <Content Include="Scripts\mylib\eui.js" />
     <Content Include="Scripts\mylib\eui.min.js">
@@ -658,6 +658,7 @@
     <Content Include="Scripts\plug-in\cityselect\demo.html" />
     <Content Include="Scripts\plug-in\cityselect\jquery.cityselect.js" />
     <Content Include="Scripts\plug-in\picture\uploadimg.jpg" />
+    <Content Include="Scripts\plug-in\jquery.qrcode.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\icheck.js" />
     <Content Include="Web.config">

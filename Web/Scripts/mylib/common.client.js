@@ -1,6 +1,6 @@
-﻿window.alert = function (msg) {
-    alert(msg);
-}
+﻿
+
+//全局变量
 
 window.client = {
     ajax:new ajax(),

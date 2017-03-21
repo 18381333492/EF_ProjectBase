@@ -64,6 +64,7 @@
     <Property Name="sGoodName" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="sGoodsPicture" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sGoodsInfo" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="iGoodsCount" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="dPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="dTotalPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />

@@ -108,5 +108,6 @@
     <Property Name="iState" Type="Int32" Nullable="false" />
     <Property Name="dBookTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="dPayTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="sGoodsInfo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

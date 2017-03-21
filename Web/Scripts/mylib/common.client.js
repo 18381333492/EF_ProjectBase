@@ -2,11 +2,6 @@
     alert(msg);
 }
 
-window.confirm = function (msg) {
-    confirm(msg);
-}
-
-
 window.client = {
     ajax:new ajax(),
     string: new string(),
@@ -16,6 +11,116 @@ window.client = {
     localStorage: new localStorage(),
 }
 
+
+window.alert = function () {
+
+    //创建背景DIV(创建遮罩层)
+    var divBackground = document.createElement("div");
+    divBackground.style.cssText = "position:fixed;top: 0;left:0;width: 100%;height: 100%;background: rgba(0,0,0,0.5);z-index:9999999999;";
+
+    //加载等待提示框
+    function loading(msg) {
+        if ($(".msgloadingbar").length == 0) {
+            var maskPanelHtml = "<div class='msgloadingbar animated flipInX' style='bottom:10px;font-weight:500;left: 0;position:fixed;text-align:center;width:100%;z-index:100;opacity:0.9;'><tip style='background: rgba(0,0,0,0.5) none repeat scroll 0 0;border-radius: 2px;color:#fff;display: inline-block;line-height:35px;padding: 0 10px;'><span style='background-image:url(img/loading.gif);display:inline-block;width:16px;height:16px;background-repeat:no-repeat;background-size:100% 100%;vertical-align:middle;margin-right: 5px'></span>" + msg + "</tip></div>";
+            $("body").append(maskPanelHtml);
+            $('.msgloadingbar').animate({ bottom: '150px' });
+           // $('.msgloadingbar').animate({ fontSize: '12px' ,fontColor:'red'}, "slow");
+        }
+        $(".msgtipbar").show();
+    }
+
+    //提示框 msg-提示的消息
+    function tip(msg, hide, time) {
+        if ($(".msgtipbar").length == 0) {
+            var maskPanelHtml = "<div class='msgtipbar animated flipInX' style='bottom:10px;font-weight:500;left: 0;position:fixed;text-align:center;width:100%;z-index:100;opacity:0.9;'><tip style='background: rgba(0,0,0,0.5) none repeat scroll 0 0;border-radius: 2px;color:#fff;display: inline-block;line-height:35px;padding: 0 10px;'><span style='background-image:url(img/logo.png);display:inline-block;width:16px;height:16px;background-repeat:no-repeat;background-size:100% 100%;vertical-align:middle;margin-right: 5px'></span>" + msg + "</tip></div>";
+            $("body").append(maskPanelHtml);
+            $('.msgtipbar').animate({ bottom: '120px' });
+        }
+        $(".msgtipbar").show();
+        if (!hide) {
+            setTimeout(function () {
+                $(".msgtipbar").hide();
+            }, (time || 1500));
+        }
+    };
+
+    /**
+    * 带确认取消按钮的确认框
+    * @param {String} msg 提示的信息
+    * @param {Object} okOptopn 确认按钮配置，格式如下：{"text":"确定按钮",fn:function(){ //这里是按了确定后触发的事件 }}
+    * @param {Object} canclOption 取消按钮配置，格式如下：{"text":"取消按钮",fn:function(){ //这里是按了取消后触发的事件 }}
+    * @param {Function} callback 可选：按了确定后，调了确定方法后的回调事件*/
+    function confrim(msg, okOptopn, canclOption, callback) {
+
+        //创建内容DIV
+        var divContent = document.createElement("div");
+
+        //设置DIV样式
+        divContent.style.cssText = "width: 72%;background: #ffffff;border-radius: 8px;margin:70% auto;position: relative;text-align: center;overflow:hidden;font-size:14px;";
+
+        //创建消息SPAN
+        var outSpan = document.createElement("span");
+        var iconSpan = document.createElement("span");
+        var textSpan = document.createElement("span");
+        //设置消息提示内容
+        textSpan.innerHTML = msg;
+        //设置消息span样式
+        outSpan.style.cssText = "margin:20px;display:block;";
+        iconSpan.style.cssText = "background-image:url('img/logo.png');display:inline-block;width:30px;height:30px;background-repeat:no-repeat;background-size:100% 100%;vertical-align:middle";
+        textSpan.style.cssText = "display:inline-block;vertical-align:middle;max-width:calc(100% - 40px);margin-left: 10px";
+
+        //创建下方两个按钮的ul容器
+        var ul = document.createElement("ul");
+        //设置ulstyle
+        ul.style.cssText = "margin-top:10px;border-top: 1px solid #dcdcdc;";
+
+        // 取消按钮（默认）
+        var li1 = document.createElement("li");
+        //设置按钮样式（默认）
+        li1.style.cssText = "text-align: center;line-height: 40px;float:left;width:50%;border-right: 1px solid gainsboro;margin-left:-1px;font-size:12px;color:red;";
+        li1.innerHTML = "取消";
+        //检查是否自定义取消按钮文本
+        if (canclOption && canclOption.text) {
+            li1.innerHTML = canclOption.text;
+        }
+        //绑定取消按钮事件
+        li1.onclick = function () {
+            if (canclOption) {
+                if (canclOption.fn) canclOption.fn();
+            }
+            document.body.removeChild(divBackground);
+        };
+
+        var li2 = document.createElement("li");
+        //设置按钮样式（默认）
+        li2.style.cssText = "text-align: center;line-height: 40px;float:left;width:50%;font-size:12px;color:red;";
+        li2.innerHTML = "确定";
+        //检查是否自定义确认按钮文本
+        if (okOptopn && okOptopn.text) {
+            li2.innerHTML = okOptopn.text;
+        }
+        //绑定确认按钮事件
+        li2.onclick = function () {
+            if (okOptopn.fn) okOptopn.fn();
+            if (callback) callback();
+            document.body.removeChild(divBackground);
+        };
+        ul.appendChild(li1);
+        ul.appendChild(li2);
+        outSpan.appendChild(iconSpan);
+        outSpan.appendChild(textSpan);
+        divContent.appendChild(outSpan);
+        divContent.appendChild(ul);
+        divBackground.appendChild(divContent);
+        document.body.appendChild(divBackground);
+    }
+
+    return {
+        tip: tip,
+        loading: loading,
+        confrim: confrim
+    }
+}();
 
 /****************************
  * 前端常用的对象的封装

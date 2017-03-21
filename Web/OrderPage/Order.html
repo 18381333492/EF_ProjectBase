@@ -127,7 +127,6 @@
             <a class="public-button m-t-10" id="js_sure">确定</a>
         </div>
     </div>
-
     <footer class="t-bg-ff t-h  t-absolute t-footer">
         <div class="t-balance-Box t-p-l t-pay-btn flex-wrap">
             <div class="t-footer-money">
@@ -144,6 +143,7 @@
 <script src="../Areas/Mobile/js/OrderConfrim.js"></script>
 <script type="text/javascript">
     $(function () {
+        alert.loading("亲,手机格式错误了!");
         domin.bingEvent();
     });
     var domin = function (obj) { return obj; }(new function () {

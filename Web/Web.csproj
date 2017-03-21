@@ -556,6 +556,7 @@
     <Content Include="OrderPage\fonts\fontawesome-webfont.woff2" />
     <Content Include="OrderPage\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="OrderPage\img\loading.gif" />
     <Content Include="OrderPage\Order.html" />
     <Content Include="OrderPage\css\global.css" />
     <Content Include="OrderPage\css\mobilebone.css" />

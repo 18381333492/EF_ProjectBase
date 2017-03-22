@@ -3,7 +3,6 @@ body{
     color:#333;
     background-color:#f5f5f5;
 }
-body.has-head{padding-top:1.25rem;}
 body.has-foot{padding-bottom:1.5rem;}
 header{
     position:fixed;
@@ -686,6 +685,7 @@ input[type=button]:disabled {
 }
 .pull-right {
     float: right;
+    color:red;
 }
 .weui_switch:before {
     width: 50px;

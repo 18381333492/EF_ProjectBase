@@ -7,9 +7,9 @@
 **
 ******************************/
 
-function order() {
+function orderConfrim() {
 
-    var order = {
+    var orders = {
         sGoodName: "",              //商品名字
         sGoodNo: "",                //商品编号(唯一)
         sGoodsPicture: "",          //商品图片
@@ -27,30 +27,30 @@ function order() {
     function checkParams() {
 
         //反馈给用户的提示
-        if (client.string.isEmpty(order.sReceiver))
-            return alert("亲,请输入收件人姓名!");
-        if (client.string.isEmpty(order.sPhone))
-            return alert("亲,请输入收件人手机号码!");
-        if (!client.regex.isPhone(order.sPhone))
-            return alert("亲,手机号码格式不对!");
-        if (client.string.isEmpty(order.sAddress))
-            return alert("亲,收货地址还没填写呢!");
+        if (client.string.isEmpty(orders.sReceiver))
+            return dialog.tip("亲,请输入收件人姓名!");
+        if (client.string.isEmpty(orders.sPhone))
+            return dialog.tip("亲,请输入收件人手机号码!");
+        if (!client.regex.isPhone(orders.sPhone))
+            return dialog.tip("亲,手机号码格式不对!");
+        if (client.string.isEmpty(orders.sAddress))
+            return dialog.tip("亲,收货地址还没填写呢!");
 
         //系统验证
-        if (order.iGoodsCount <= 0)
-            return alert("参数错误!");
-        if (order.dTotalPrices <= 0)
-            return alert("参数错误!");
-        if (order.dPrices <= 0)
-            return alert("参数错误!");
-        if (client.string.isEmpty(order.sGoodName))
-            return alert("参数错误!");
-        if (client.string.isEmpty(order.sGoodNo))
-            return alert("参数错误!");
-        if (client.string.isEmpty(order.sGoodsPicture))
-            return alert("参数错误!");
-        if (client.string.isEmpty(order.sGoodsInfo))
-            return alert("参数错误!");
+        if (orders.iGoodsCount <= 0)
+            return dialog.tip("参数错误!");
+        if (orders.dTotalPrices <= 0)
+            return dialog.tip("参数错误!");
+        if (orders.dPrices <= 0)
+            return dialog.tip("参数错误!");
+        if (client.string.isEmpty(orders.sGoodName))
+            return dialog.tip("参数错误!");
+        if (client.string.isEmpty(orders.sGoodNo))
+            return dialog.tip("参数错误!");
+        if (client.string.isEmpty(orders.sGoodsPicture))
+            return dialog.tip("参数错误!");
+        if (client.string.isEmpty(orders.sGoodsInfo))
+            return dialog.tip("参数错误!");
 
         return true;
     }
@@ -60,7 +60,7 @@ function order() {
         if (checkParams()) {
             client.ajax.ajaxRequest(
                 "/Mobile/Orders/BookOrder",
-                order,
+                orders,
                 function (r) {
                     location.href = "跳转支付链接";
                 });
@@ -68,7 +68,7 @@ function order() {
     }
 
     return {
-        order: order,
+        orders: orders,
         orderCommit: orderCommit
     }
 

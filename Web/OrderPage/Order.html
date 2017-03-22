@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>确认订单页面</title>
+	<title>订单确认</title>
 	<meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<!--分享使用-->
@@ -16,20 +16,24 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
 	<script src="lib/jquery-2.1.4.min.js"></script>
     <script src="lib/mobilebone.js"></script>
+    <style>
+        .page{height:auto !important;}
+         html, body, .page{box-sizing:border-box}
+    </style>
 </head>
 <body class="has-head t-p-b t-bg-f6 adress">
     <!--订单页-->
-    <div class="page in" id="js_address_list">
-        <div class="main t-absolute mb-content">
+    <div class="page in" id="js_address_list"  style="padding-bottom:1.4rem;">
+        <div class="main  mb-content">
         <section>
             <a href="#js_address_add" class="t-active t-address-Box t-bg-ff">
                 <i class="t-icon-arrow-left"></i>
                 <i class="t-icon-arrow-right"></i>
                 <ul style="background: url(img/location-border.jpg) repeat-x left bottom;background-size: 100%">
                     <li >
-                        <h4>收货人：张浛庆<span class="t-m-lr">1510000000</span></h4>
+                        <h4>收货人：<span id="sName">张浛庆</span><span class="t-m-lr">1510000000</span></h4>
                     </li>
-                    <li class="t-c-9">成都市青羊区光华中心B座1206-1209</li>
+                    <li class="t-c-9 sAddress">成都市青羊区光华中心B座1206-1209</li>
                 </ul>
             </a>
         </section>
@@ -65,75 +69,41 @@
     </div>
 
     <!--新增地址-->
-    <div class="page out" id="js_address_add">
-        <div class="main t-absolute mb-content">
+    <div class="page out" id="js_address_add" data-title="选择地址">
+        <div class="main mb-content">
             <div class="weui_cells weui_cells_form address-add no-mt">
                 <div class="weui_cell">
                     <div class="weui_cell_hd"><label class="weui_label">收件人</label></div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="text" placeholder="请输入收件人姓名">
+                        <input class="weui_input sReceiver" type="text" placeholder="请输入收件人姓名">
                     </div>
                 </div>
-                <div class="weui_cell">
+                <div class="weui_cell" style="position:relative;">
                     <div class="weui_cell_hd"><label class="weui_label">联系方式</label></div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="text" placeholder="请输入联系方式">
+                        <input class="weui_input sPhone" type="text" placeholder="请输入联系方式">
                     </div>
+                    <b style="position:absolute;width:calc(100% - 15px);height:1px;background-color:#d9d9d9;bottom:0;right:0;-webkit-transform: scaleY(.5);transform: scaleY(.5);"></b>
                 </div>
                 <!--城市选择控件-->
-                <div id="area"></div>   
-                <!--<div class="weui_cell weui_cell_select weui_select_after">
-                    <div class="weui_cell_hd">
-                        省份
-                    </div>
-                    <div class="weui_cell_bd weui_cell_primary">
-                        <select class="weui_select" name="select2">
-                            <option value="1" >北京</option>
-                            <option value="2">四川</option>
-                            <option value="3">安徽</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="weui_cell weui_cell_select weui_select_after">
-                    <div class="weui_cell_hd">
-                        城市
-                    </div>
-                    <div class="weui_cell_bd weui_cell_primary">
-                        <select class="weui_select" name="select2">
-                            <option value="1">成都</option>
-                            <option value="2">达州</option>
-                            <option value="3">眉山</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="weui_cell weui_cell_select weui_select_after">
-                    <div class="weui_cell_hd">
-                        区域
-                    </div>
-                    <div class="weui_cell_bd weui_cell_primary">
-                        <select class="weui_select" name="select2">
-                            <option value="1">三环内</option>
-                            <option value="2">三环外</option>
-                        </select>
-                    </div>
-                </div>-->
+                <div id="area"></div>
                 <div class="weui_cell">
                     <div class="weui_cell_hd"><label class="weui_label width-auto">详细地址</label></div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="text" placeholder="成都市成都市成都市成都市">
+                        <input class="weui_input addressDetail" type="text" placeholder="请输入详细地址">
                     </div>
                 </div>
             </div>
             <a class="public-button m-t-10" id="js_sure">确定</a>
         </div>
     </div>
-    <footer class="t-bg-ff t-h  t-absolute t-footer">
+    <footer class="t-bg-ff t-h  t-footer">
         <div class="t-balance-Box t-p-l t-pay-btn flex-wrap">
             <div class="t-footer-money">
                 <span class="t-f-14">支付金额：</span>
                 <span  class="t-f-14 t-b-money">&yen; 119.00</span>
             </div>
-            <a href="javascript:;" class="flex-item-1 t-pay-btn">确认下单</a>
+            <a id="OrderConfrim" class="flex-item-1 t-pay-btn">确认下单</a>
         </div>
     </footer>
 </body>
@@ -143,19 +113,58 @@
 <script src="../Areas/Mobile/js/OrderConfrim.js"></script>
 <script type="text/javascript">
     $(function () {
-        alert.loading("亲,手机格式错误了!");
+       
         domin.bingEvent();
     });
     var domin = function (obj) { return obj; }(new function () {
-        //事件绑定
+
+        var order = new orderConfrim().orders;
+        
+        //页面的初始化
+        function initPage() {
+            order = client.localStorage.getStorage("order") || order;
+        }
+
+        //选择地址
+        function selectAddress() {
+            order.sReceiver = $('.sReceiver').val();
+            order.sPhone = $('.sPhone').val();
+            var prov = $('.prov').val();
+            var city = $('.city').val();
+            var dist = $('.dist').val();
+            var addressDetail = $('.addressDetail').val();
+
+            if (client.string.isEmpty(order.sReceiver))
+                return dialog.tip("亲,请输入收件人姓名!");
+            if (client.string.isEmpty(order.sPhone))
+                return dialog.tip("亲,请输入手机号码!");
+            if (!client.regex.isPhone(order.sPhone))
+                return dialog.tip("亲,手机号码格式不对!");
+            if (client.string.isEmpty(addressDetail))
+                return dialog.tip("亲,收货详细地址还没填写呢!");
+            order.sAddress = prov + city + dist + addressDetail;
+
+            //设置显示
+            $('.t-m-lr').text(order.sPhone);
+            $('.sAddress').text(order.sAddress);
+            $('#sName').text(order.sReceiver);
+            history.back();
+        }
+
+        //提交订单
+        function commitOrder() {
+            var object = new orderConfrim();
+            object.orders = order;
+            object.orderCommit();
+        }
+
+        //事件的绑定
         function bingEvent() {
+            $('#js_sure').on("click", selectAddress);
+
+            $('#OrderConfrim').on("click", commitOrder);
+
             $("#area").citySelect({ type: 2 });
-
-
-            $('#js_sure').on("click", function () {
-                $('.t-size').text("dsdsdsd");
-                history.back();
-            });
 
             Mobilebone.callback = function (page_in, page_out) {
                 var id_in = page_in.id;
@@ -166,11 +175,9 @@
                     $('.t-footer').hide();
                 }
             }
-
         }
         return {
             bingEvent: bingEvent
         }
     });
-    //mobilebone callback
 </script>

@@ -8,39 +8,43 @@ window.client = {
     regex: new regex(),
     cookie: new cookie(),
     datetime:new datetime(),
-    localStorage: new localStorage(),
+    localStorage: new myStorage(),
 }
 
 
-window.alert = function () {
+window.dialog = function () {
 
     //创建背景DIV(创建遮罩层)
     var divBackground = document.createElement("div");
     divBackground.style.cssText = "position:fixed;top: 0;left:0;width: 100%;height: 100%;background: rgba(0,0,0,0.5);z-index:9999999999;";
 
+
     //加载等待提示框
     function loading(msg) {
-        if ($(".msgloadingbar").length == 0) {
-            var maskPanelHtml = "<div class='msgloadingbar animated flipInX' style='bottom:10px;font-weight:500;left: 0;position:fixed;text-align:center;width:100%;z-index:100;opacity:0.9;'><tip style='background: rgba(0,0,0,0.5) none repeat scroll 0 0;border-radius: 2px;color:#fff;display: inline-block;line-height:35px;padding: 0 10px;'><span style='background-image:url(img/loading.gif);display:inline-block;width:16px;height:16px;background-repeat:no-repeat;background-size:100% 100%;vertical-align:middle;margin-right: 5px'></span>" + msg + "</tip></div>";
-            $("body").append(maskPanelHtml);
-            $('.msgloadingbar').animate({ bottom: '150px' });
-           // $('.msgloadingbar').animate({ fontSize: '12px' ,fontColor:'red'}, "slow");
+        if ($(".alert_box").length) {
+            $(".alert_box .content p:first").text(msg).parents(".alert_box").css({
+                "opacity": "1", "width": "100%", "height": "100%"
+            });
         }
-        $(".msgtipbar").show();
-    }
+        else {
+            var win = "<div class='alert_box' style='position:fixed;z-index:1500;width:100%;opacity:1;height:100%;left:0;top:0px;background-color:rgba(68,68,68,0.4);transition:all 0.3s linear'><div class='content' style='width:250px;text-align:center;position:absolute;font-size:14px;left:50%;top:50%; transform:translateY(-50%) translateX(-50%);-webkit-transform:translateY(-50%) translateX(-50%);border-radius:10px'><P style='padding:20px 15px; line-height:25px; color:#fff;font-weight:600;font-size:14px'><span style='background-image:url(img/loading.gif);display:inline-block;width:17px;height:17px;background-repeat:no-repeat;background-size:100% 100%;vertical-align:middle;margin-right:10px'></span>" + msg + "<P><div><div>";
+            $("body").append(win);
+            $("body").css({ 'position': 'fixed', 'width': '100%', 'height': '100%', 'top': '0', 'left': '0' });
+        }
+    };
 
     //提示框 msg-提示的消息
     function tip(msg, hide, time) {
         if ($(".msgtipbar").length == 0) {
-            var maskPanelHtml = "<div class='msgtipbar animated flipInX' style='bottom:10px;font-weight:500;left: 0;position:fixed;text-align:center;width:100%;z-index:100;opacity:0.9;'><tip style='background: rgba(0,0,0,0.5) none repeat scroll 0 0;border-radius: 2px;color:#fff;display: inline-block;line-height:35px;padding: 0 10px;'><span style='background-image:url(img/logo.png);display:inline-block;width:16px;height:16px;background-repeat:no-repeat;background-size:100% 100%;vertical-align:middle;margin-right: 5px'></span>" + msg + "</tip></div>";
+            var maskPanelHtml = "<div class='msgtipbar animated flipInX' style='bottom:0px;font-weight:500;left: 0;position:fixed;text-align:center;width:100%;z-index:100000;opacity:0.9;transition:all .2s linear'><tip style='background: rgba(0,0,0,0.5) none repeat scroll 0 0;border-radius: 2px;color:#fff;display: inline-block;line-height:35px;padding: 0 10px;'><span style='background-image:url(img/logo.png);display:inline-block;width:16px;height:16px;background-repeat:no-repeat;background-size:100% 100%;vertical-align:middle;margin-right: 5px'></span>" + msg + "</tip></div>";
             $("body").append(maskPanelHtml);
-            $('.msgtipbar').animate({ bottom: '120px' });
-        }
-        $(".msgtipbar").show();
-        if (!hide) {
-            setTimeout(function () {
-                $(".msgtipbar").hide();
-            }, (time || 1500));
+            $(".msgtipbar").show();
+            $('.msgtipbar').css({'bottom':'150px'});
+            if (!hide) {
+                setTimeout(function () {
+                    $(".msgtipbar").remove();
+                }, (time || 1500));
+            }
         }
     };
 
@@ -275,7 +279,7 @@ function cookie() {
 }
 
 /****注意：浏览器的localStorage的最大空间只有5M****/
-function localStorage() {
+function myStorage() {
  
     // 检查浏览器是否支持localStorage
     function isSupport() {
@@ -291,14 +295,14 @@ function localStorage() {
     function setStorage(name, value) {
         if (isSupport() && name) {
             value=JSON.stringify(value);
-            localStorage.setItem(name, value);
+            window.localStorage.setItem(name, value);
         }
     }
 
     /*获取localStorage*/
     function getStorage(name) {
         if (isSupport() && name) {
-            var value = localStorage.getItem(name);
+            var value =window.localStorage.getItem(name);
             if (value)
             value = JSON.parse(value);
             return value;

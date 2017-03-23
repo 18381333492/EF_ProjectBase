@@ -78,6 +78,7 @@
     <Property Name="sGoodNo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="sGoodsPicture" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="bShelves" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="GoodsComment">
     <Key>

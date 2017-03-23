@@ -25,6 +25,7 @@
           <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="sGoodsPicture" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+          <Property Name="bShelves" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="GoodsComment">
           <Key>
@@ -197,6 +198,7 @@
           <Property Name="sGoodNo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="sGoodsPicture" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="bShelves" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="GoodsComment">
           <Key>
@@ -302,6 +304,7 @@
           <EntitySetMapping Name="Goods">
             <EntityTypeMapping TypeName="EF_ProjectBaseModel.Goods">
               <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="bShelves" ColumnName="bShelves" />
                 <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
                 <ScalarProperty Name="sGoodsPicture" ColumnName="sGoodsPicture" />
                 <ScalarProperty Name="sGoodNo" ColumnName="sGoodNo" />

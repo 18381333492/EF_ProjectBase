@@ -36,4 +36,14 @@ namespace EFModel.MyModels
         }
     }
 
+
+    public enum MessageTip
+    {
+        操作成功,
+        操作失败,
+        添加成功,
+        添加失败,
+        编辑成功,
+        编辑失败
+    }
 }

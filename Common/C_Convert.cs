@@ -144,5 +144,18 @@ namespace Common
             DateTime.TryParse(s.ToString(),out result);
             return result;
         }
+
+        /// <summary>
+        /// 将时间的字符串格式化成相应格式时间的字符串
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string toDateString(this string s,int iType)
+        {
+            if (iType == 0)
+                return string.Format("{0} 00:00:00", DateTime.Parse(s).ToString("yyyy-MM-dd"));
+            else
+                return string.Format("{0} 23:59:59", DateTime.Parse(s).ToString("yyyy-MM-dd"));
+        }
     }
 }

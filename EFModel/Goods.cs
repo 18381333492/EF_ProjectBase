@@ -19,5 +19,6 @@ namespace EFModel
         public string sGoodNo { get; set; }
         public string sGoodsPicture { get; set; }
         public System.DateTime dInsertTime { get; set; }
+        public bool bShelves { get; set; }
     }
 }

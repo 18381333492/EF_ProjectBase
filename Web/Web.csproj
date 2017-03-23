@@ -133,6 +133,7 @@
     <Compile Include="App_Start\WeiXinMessage\AutoHandleMessage.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ButtonController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GoodsController.cs" />
     <Compile Include="Areas\Admin\Controllers\OperateLogController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
@@ -555,6 +556,9 @@
     <Content Include="OrderPage\fonts\fontawesome-webfont.woff" />
     <Content Include="OrderPage\fonts\fontawesome-webfont.woff2" />
     <Content Include="OrderPage\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Views\Goods\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Goods\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Goods\Edit.cshtml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="OrderPage\img\loading.gif" />
     <Content Include="OrderPage\Order.html" />

@@ -20,6 +20,7 @@
     <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="sGoodsPicture" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+    <Property Name="bShelves" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="GoodsComment">
     <Key>

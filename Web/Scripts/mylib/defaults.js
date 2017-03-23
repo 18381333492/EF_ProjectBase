@@ -9,13 +9,15 @@ void function () {
     $.extend($.fn.textbox.defaults, {
         height: 30,
         width: 200,
-        required:true 
+        required: true,
+        missingMessage:'亲,该项为必填项哦'
     });
    
     $.extend($.fn.numberbox.defaults, {
         height: 30,
         width: 200,
-        required: true
+        required: true,
+        missingMessage: '亲,该项为必填项哦'
     });
 
     $.extend($.fn.combobox.defaults, {

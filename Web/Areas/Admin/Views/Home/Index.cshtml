@@ -94,20 +94,13 @@
                         <p>欢迎!</p> 
                         <p><span style="color:red">当前在线人数:</span>@ViewBag.Online</p>
                         <p><span style="color:green">今日访问量:</span>@ViewBag.Visits</p>
-                        @*<video id="video" controls="controls" height="500" width="600">
-                            <source src="/Admin/Home/file" type="video/mp4" />
-                        </video>*@
                     </div>
-                    <div title="图片上传测试" style="padding:10px;">
-                        <div id="sds"></div>
-                        <input type="hidden" name="sds" />
-                        @*<textarea id="upload" style="height:400px;width:640px;"></textarea>*@
+                    @*<div title="图片上传测试" style="padding:10px;">
+                      
                     </div>
                     <div title="html视频测试" style="padding:10px;">
-                        @*<video id="video" height="500" width="600" src="http://play.68mtv.com:1010/play1/57521.mp4" controls="controls">
-                            your browser does not support the video tag
-                        </video>*@
-                    </div>            
+                     
+                    </div>*@            
                  </div>
         </div>
 
@@ -125,40 +118,3 @@
     </div>
 </body>
 </html>
-<link href="~/Content/kindeditor/themes/default/default.css" rel="stylesheet" />
-<script src="~/Content/kindeditor/kindeditor.js"></script>
-<script src="~/Content/kindeditor/lang/zh_CN.js"></script>
-<script src="~/Scripts/plug-in/kindeditor.js"></script>
-<script src="~/Scripts/plug-in/picture/upload.js"></script>
-<script type="text/javascript">
-    $(function () {
-        var f = new upload();
-        f.create("sds");
-       
-
-        //var f = new kindeditor();
-        //f.create("#upload",
-        //    {
-        //        uploadJson: "http://localhost:8888/api/Picture/UploadByFrom", items: f.items.defaults
-        //    });
-
-        //var Media = document.getElementById("video");
-        //Media.controls = true;//是否显示进度条(默认true)
-
-        //Media.play(); //播放
-        //var eventTester = function (e) {
-        //    Media.addEventListener(e, function () {
-        //        var dd = Media.currentTime;
-        //        if (dd >= 300) {
-        //            Media.currentTime = 0;
-        //            Media.play();
-        //        }
-        //      //  alert("start");
-        //    }, false);
-        //}
-        //eventTester("play");
-
-        //eventTester("timeupdate")
-    })
-   
-</script>

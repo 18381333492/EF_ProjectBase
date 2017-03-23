@@ -15,4 +15,16 @@ namespace EFModel
             set;
         }
     }
+
+    [Serializable]
+    public partial class Button
+    {
+
+    }
+
+    [Serializable]
+    public partial class Menus
+    {
+
+    }
 }

@@ -12,6 +12,53 @@ namespace Common
     public class C_String
     {
 
+        private static int rep = 0;
+        /// <summary>
+        /// 随机码数字与字母混合(不重复）
+        /// </summary>
+        /// <param name="codeCount">随机码位数</param>
+        /// <returns></returns>
+        public static string RandomCode(int codeCount)
+        {
+            string str = string.Empty;
+            long num2 = DateTime.Now.Ticks + rep;
+            rep++;
+            Random random = new Random(((int)(((ulong)num2) & 0xffffffffL)) | ((int)(num2 >> rep)));
+            for (int i = 0; i < codeCount; i++)
+            {
+                char ch;
+                int num = random.Next();
+                if ((num % 2) == 0)
+                {
+                    ch = (char)(0x30 + ((ushort)(num % 10)));
+                }
+                else
+                {
+                    ch = (char)(0x41 + ((ushort)(num % 0x1a)));
+                }
+                str = str + ch.ToString();
+            }
+            return str;
+        }
+        /// <summary>
+        /// 随机数字的生成(不重复).
+        /// </summary>
+        /// <param name="codeCount">随机码位数</param>
+        /// <returns></returns>
+        public static string RandomCodeNum(int codeCount)
+        {
+            string str = string.Empty;
+            long num2 = DateTime.Now.Ticks + rep;
+            rep++;
+            Random random = new Random(((int)(((ulong)num2) & 0xffffffffL)) | ((int)(num2 >> rep)));
+            for (int i = 0; i < codeCount; i++)
+            {
+                int num = random.Next();
+                str = str + ((char)(0x30 + ((ushort)(num % 10)))).ToString();
+            }
+            return str;
+        }
+
         /// <summary>
         /// 去除所有的Html标签
         /// </summary>

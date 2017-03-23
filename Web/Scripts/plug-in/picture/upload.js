@@ -37,8 +37,8 @@ function upload() {
     * author:[汤台]
     * version:[1.0.0]
     */
-    function init(id) {
-        var dd = $(element).load("/Scripts/plug-in/picture/style.html",
+    function init() {
+        $(element).load("/Scripts/plug-in/picture/style.html",
             function (data) {
                 $(element).html("");
                 data = data.trim();

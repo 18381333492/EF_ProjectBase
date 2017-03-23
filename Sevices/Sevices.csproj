@@ -48,6 +48,7 @@
     <Compile Include="Excute\ButtonExcute.cs" />
     <Compile Include="Excute\MenusExcute.cs" />
     <Compile Include="Excute\OperateLogExcute.cs" />
+    <Compile Include="Excute\GoodsExcute.cs" />
     <Compile Include="Excute\RoleExcute.cs" />
     <Compile Include="Excute\OrderExcute.cs" />
     <Compile Include="Excute\UserExcute.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="QueryBase.cs" />
     <Compile Include="Query\MenusQuery.cs" />
     <Compile Include="Query\ButtonQuery.cs" />
+    <Compile Include="Query\GoodsQuery.cs" />
     <Compile Include="Query\RoleQuery.cs" />
     <Compile Include="Query\OperateLogQuery.cs" />
     <Compile Include="Query\OrdersQuery.cs" />

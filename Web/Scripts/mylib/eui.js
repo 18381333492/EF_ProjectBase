@@ -116,7 +116,15 @@ function eui() {
                     handler: function () { name.dialog('close'); }
                 }],
                 onClose: function () { name.dialog("destroy"); },
-                onLoad: callload,
+                onLoad: function () {
+                    //加载之后的动作   
+                    document.onkeydown = function (event) {
+                        if (event.keyCode == "13") {
+                            $('#ok').click();
+                        }
+                    }
+                    if (callload) callload();
+                },
                 modal: true
             });
         return dlg;

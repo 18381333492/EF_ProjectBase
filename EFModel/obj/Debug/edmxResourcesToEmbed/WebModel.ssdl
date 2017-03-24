@@ -31,6 +31,7 @@
     <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="dCommentTime" Type="datetime" Nullable="false" />
     <Property Name="sCommentPerson" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="iScore" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Menus">
     <Key>

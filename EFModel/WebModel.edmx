@@ -36,6 +36,7 @@
           <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="dCommentTime" Type="datetime" Nullable="false" />
           <Property Name="sCommentPerson" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="iScore" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Menus">
           <Key>
@@ -209,6 +210,7 @@
           <Property Name="sGoodNo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="dCommentTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="sCommentPerson" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="iScore" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -316,6 +318,7 @@
           <EntitySetMapping Name="GoodsComment">
             <EntityTypeMapping TypeName="EF_ProjectBaseModel.GoodsComment">
               <MappingFragment StoreEntitySet="GoodsComment">
+                <ScalarProperty Name="iScore" ColumnName="iScore" />
                 <ScalarProperty Name="sCommentPerson" ColumnName="sCommentPerson" />
                 <ScalarProperty Name="dCommentTime" ColumnName="dCommentTime" />
                 <ScalarProperty Name="sGoodNo" ColumnName="sGoodNo" />

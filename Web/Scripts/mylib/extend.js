@@ -45,6 +45,26 @@ function extend() {
     }
 
     /*
+    * 获取datagrid选择行的ID集合(逗号隔开) 不加单引号
+    * @author [汤台]
+    * @version 1.0.0
+    * @param   array(选择行的数据集合数组)
+    * @return {String}
+    */
+    this.ArrayID = function (array) {
+        try {
+            var Ids = [];
+            $(array).each(function () {
+                var $this = this;
+                Ids.push($this.ID);
+            });
+            return Ids.join();
+        } catch (e) {
+            alert(e.message);
+        }
+    }
+
+    /*
     * 获取html标签数组val集合(逗号隔开)
     * @author [汤台]
     * @version 1.0.0

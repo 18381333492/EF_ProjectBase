@@ -33,15 +33,35 @@ namespace Sevices
             }
             if (!string.IsNullOrEmpty(Sta))
             {
-                sSql.AppendFormat(" AND dInsertTime>='{0}')", Sta.toDateString(0));
+                sSql.AppendFormat(" AND dInsertTime>='{0}'", Sta.toDateString(0));
             }
             if (!string.IsNullOrEmpty(End))
             {
-                sSql.AppendFormat(" AND dInsertTime<='{0}')", End.toDateString(1));
+                sSql.AppendFormat(" AND dInsertTime<='{0}'", End.toDateString(1));
             }
             Info.sort = "dInsertTime";
             Info.order = OrderType.DESC;
             return query.QueryPage(sSql.ToString(), Info, null);
+        }
+
+
+        /// <summary>
+        /// 根据商品主键ID获取商品实体
+        /// </summary>
+        /// <param name="sGoodsId"></param>
+        /// <returns></returns>
+        public Goods Get(Guid sGoodsId)
+        {
+            return query.db.Goods.Find(sGoodsId);
+        }
+
+        /// <summary>
+        /// 根据商品编号查询是否该商品是否存在
+        /// </summary>
+        /// <returns></returns>
+        public bool IsExistGoods(string sGoodNo)
+        {
+            return query.db.Goods.Any(m => m.sGoodNo == sGoodNo);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Sevices
         public int Add(Goods item)
         {
             item.ID = Guid.NewGuid();
-            item.sGoodNo =C_String.RandomCodeNum(8);
+            item.sGoodNo =C_String.RandomCode(8);
             item.dInsertTime = DateTime.Now;
             excute.Add<Goods>(item);
             return excute.SaveChange();

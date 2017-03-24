@@ -19,5 +19,6 @@ namespace EFModel
         public string sGoodNo { get; set; }
         public System.DateTime dCommentTime { get; set; }
         public string sCommentPerson { get; set; }
+        public int iScore { get; set; }
     }
 }

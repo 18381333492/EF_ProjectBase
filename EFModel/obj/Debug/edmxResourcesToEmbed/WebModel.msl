@@ -80,6 +80,7 @@
     <EntitySetMapping Name="GoodsComment">
       <EntityTypeMapping TypeName="EF_ProjectBaseModel.GoodsComment">
         <MappingFragment StoreEntitySet="GoodsComment">
+          <ScalarProperty Name="iScore" ColumnName="iScore" />
           <ScalarProperty Name="sCommentPerson" ColumnName="sCommentPerson" />
           <ScalarProperty Name="dCommentTime" ColumnName="dCommentTime" />
           <ScalarProperty Name="sGoodNo" ColumnName="sGoodNo" />

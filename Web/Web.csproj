@@ -133,6 +133,7 @@
     <Compile Include="App_Start\WeiXinMessage\AutoHandleMessage.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ButtonController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GoodsCommentController.cs" />
     <Compile Include="Areas\Admin\Controllers\GoodsController.cs" />
     <Compile Include="Areas\Admin\Controllers\OperateLogController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
@@ -559,6 +560,9 @@
     <Content Include="Areas\Admin\Views\Goods\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Goods\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Goods\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\GoodsComment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\GoodsComment\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\GoodsComment\Edit.cshtml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="OrderPage\img\loading.gif" />
     <Content Include="OrderPage\Order.html" />
@@ -665,6 +669,15 @@
     <Content Include="Scripts\plug-in\cityselect\jquery.cityselect.js" />
     <Content Include="Scripts\plug-in\picture\uploadimg.jpg" />
     <Content Include="Scripts\plug-in\jquery.qrcode.js" />
+    <Content Include="Scripts\plug-in\starsScore\images\star-half-big.png" />
+    <Content Include="Scripts\plug-in\starsScore\images\star-half.png" />
+    <Content Include="Scripts\plug-in\starsScore\images\star-off-big.png" />
+    <Content Include="Scripts\plug-in\starsScore\images\star-off.png" />
+    <Content Include="Scripts\plug-in\starsScore\images\star-on-big.png" />
+    <Content Include="Scripts\plug-in\starsScore\images\star-on.png" />
+    <Content Include="Scripts\plug-in\starsScore\index.html" />
+    <Content Include="Scripts\plug-in\starsScore\jquery.raty.min.js" />
+    <Content Include="Scripts\plug-in\starsScore\starComment.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\icheck.js" />
     <Content Include="Web.config">

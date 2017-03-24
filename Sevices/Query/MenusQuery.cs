@@ -96,7 +96,6 @@ namespace Sevices
             return array.ToString();
         }
 
-
         /// <summary>
         /// 根据角色获取用户的二级菜单
         /// </summary>

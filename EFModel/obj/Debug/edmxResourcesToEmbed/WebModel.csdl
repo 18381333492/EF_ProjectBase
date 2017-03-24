@@ -89,6 +89,7 @@
     <Property Name="sGoodNo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="dCommentTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="sCommentPerson" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="iScore" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>

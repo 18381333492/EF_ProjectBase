@@ -41,9 +41,9 @@ namespace Web.Areas.Admin.Controllers
         /// 商品编辑视图
         /// </summary>
         /// <returns></returns>
-        public ActionResult Edit()
+        public ActionResult Edit(Guid sGoodsId)
         {
-            return View();
+            return View(_server.Get(sGoodsId));
         }
 
 
@@ -60,11 +60,11 @@ namespace Web.Areas.Admin.Controllers
             return Content(_server.GetList(Info, Sta, End, searchText));
         }
 
-    
+
         /// <summary>
         /// 添加商品
         /// </summary>
-        /// <param name="menu"></param>
+        /// <param name="goods"></param>
         /// <returns></returns>
         public void Insert(Goods goods)
         {
@@ -80,7 +80,7 @@ namespace Web.Areas.Admin.Controllers
         /// <summary>
         /// 编辑商品
         /// </summary>
-        /// <param name="menu"></param>
+        /// <param name="goods"></param>
         /// <returns></returns>
         public void Update(Goods goods)
         {

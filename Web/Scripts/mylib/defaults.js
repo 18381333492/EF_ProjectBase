@@ -27,6 +27,7 @@ void function () {
         editable: false
     });
 
+   
     //重写datebox的formatter **处理两次的formatter***
     $.extend($.fn.datebox.defaults, {
         formatter: function (date) {
@@ -66,11 +67,14 @@ void function () {
       
     });
 
-    $.extend($.fn.treegrid.defaults, {
-       
-    });
-
-    $.extend($.fn.tree.defaults, {
-       
+    //重写validatebox验证规则
+    $.extend($.fn.validatebox.defaults.rules, {
+        isPhone: {
+            validator: function (value, param) {
+                var regex = /^((13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8})*$/;
+                return regex.exec(value);
+            },
+            message: '亲,手机号码格式错误!'
+        }
     });
 }()

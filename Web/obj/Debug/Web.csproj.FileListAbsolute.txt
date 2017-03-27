@@ -52,7 +52,6 @@ E:\GitHub源代码管理\EF_ProjectBase\Web\bin\zh-Hans\System.Web.WebPages.Razo
 E:\GitHub源代码管理\EF_ProjectBase\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
 E:\GitHub源代码管理\EF_ProjectBase\Web\obj\Debug\Web.dll
 E:\GitHub源代码管理\EF_ProjectBase\Web\obj\Debug\Web.pdb
-D:\GitHub源代码\EF_ProjectBase\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
 D:\GitHub源代码\EF_ProjectBase\Web\bin\Web.dll.config
 D:\GitHub源代码\EF_ProjectBase\Web\bin\Web.dll
 D:\GitHub源代码\EF_ProjectBase\Web\bin\Web.pdb
@@ -108,5 +107,6 @@ D:\GitHub源代码\EF_ProjectBase\Web\bin\zh-Hans\System.Web.Razor.resources.dll
 D:\GitHub源代码\EF_ProjectBase\Web\bin\zh-Hans\System.Web.WebPages.resources.dll
 D:\GitHub源代码\EF_ProjectBase\Web\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 D:\GitHub源代码\EF_ProjectBase\Web\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+D:\GitHub源代码\EF_ProjectBase\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
 D:\GitHub源代码\EF_ProjectBase\Web\obj\Debug\Web.dll
 D:\GitHub源代码\EF_ProjectBase\Web\obj\Debug\Web.pdb

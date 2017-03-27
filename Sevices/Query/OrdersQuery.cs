@@ -24,7 +24,7 @@ namespace Sevices
         public string GetList(PageInfo Info, string Sta, string End, string searchText, int iState)
         {
             StringBuilder sSql = new StringBuilder();
-            sSql.Append("SELECT * FROM　[Orders] WHERE 1=1");
+            sSql.Append("SELECT * FROM [Orders] WHERE 1=1");
 
             //条件查询
             if (iState > -1)
@@ -38,6 +38,41 @@ namespace Sevices
             Info.sort = "dBookTime";
             Info.order = OrderType.DESC;
             return query.QueryPage(@"select * from [Orders]", Info, null);
+
+        }
+
+        /// <summary>
+        /// 根据手机号码查询用户订单
+        /// </summary>
+        /// <param name="Info"></param>
+        /// <param name="sPhone"></param>
+        /// <param name="iState"></param>
+        /// <returns></returns>
+        public string GetListByPhone(PageInfo Info, string sPhone, int iState)
+        {
+            StringBuilder sSql = new StringBuilder();
+            sSql.Append("SELECT * FROM [Orders] WHERE 1=1");
+
+            //条件查询
+            if (iState > -1)
+            {
+                sSql.AppendFormat(" AND iState={0}", iState);
+            }
+            if (!string.IsNullOrEmpty(sPhone))
+            {
+                sSql.AppendFormat(" AND sPhone LIKE '%{0}%'", sPhone);
+            }
+            else
+            {//没有输入号码查询的时候
+               return
+                    C_Json.toJson(new {
+                    total = 0,
+                    rows=new List<object>()
+                });
+            }
+            Info.sort = "dBookTime";
+            Info.order = OrderType.DESC;
+            return query.QueryPage(sSql.ToString(), Info, null);
 
         }
     }

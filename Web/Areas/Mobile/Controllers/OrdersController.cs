@@ -1,4 +1,5 @@
 ﻿using EFModel;
+using EFModel.MyModels;
 using Sevices;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,31 @@ namespace Web.Areas.Mobile.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        /// <summary>
+        /// 根据订单ID查看订单详情视图
+        /// </summary>
+        /// <param name="sOrderId"></param>
+        /// <returns></returns>
+        public ActionResult Detail()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 根据手机号码查询用户订单
+        /// </summary>
+        /// <param name="Info"></param>
+        /// <param name="Sta"></param>
+        /// <param name="End"></param>
+        /// <param name="searchText"></param>
+        /// <param name="iState"></param>
+        /// <returns></returns>
+
+        public ActionResult List(PageInfo Info, string sPhone, int iState = -1)
+        {
+            return Content(_server.GetListByPhone(Info, sPhone, iState));
         }
 
         /// <summary>

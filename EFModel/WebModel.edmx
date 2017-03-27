@@ -82,6 +82,7 @@
           <Property Name="iState" Type="int" Nullable="false" />
           <Property Name="dBookTime" Type="datetime" Nullable="false" />
           <Property Name="dPayTime" Type="datetime" Nullable="false" />
+          <Property Name="sPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -232,6 +233,7 @@
           <Property Name="dBookTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dPayTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="sGoodsInfo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="sPhone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -330,6 +332,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="EF_ProjectBaseModel.Orders">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="sPhone" ColumnName="sPhone" />
                 <ScalarProperty Name="sGoodsInfo" ColumnName="sGoodsInfo" />
                 <ScalarProperty Name="dPayTime" ColumnName="dPayTime" />
                 <ScalarProperty Name="dBookTime" ColumnName="dBookTime" />

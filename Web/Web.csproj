@@ -551,6 +551,9 @@
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
     <Content Include="Areas\Mobile\Views\Orders\Index.cshtml" />
     <Content Include="HandleProgram\PictureUpload.ashx" />
+    <Content Include="OrderPage\img\headerSearchLogo.png" />
+    <Content Include="OrderPage\MyOrder.html" />
+    <Content Include="OrderPage\css\font-awesome.min.css" />
     <Content Include="OrderPage\css\weui.min.css" />
     <Content Include="OrderPage\fonts\fontawesome-webfont.eot" />
     <Content Include="OrderPage\fonts\fontawesome-webfont.ttf" />
@@ -563,6 +566,8 @@
     <Content Include="Areas\Admin\Views\GoodsComment\Index.cshtml" />
     <Content Include="Areas\Admin\Views\GoodsComment\Add.cshtml" />
     <Content Include="Areas\Admin\Views\GoodsComment\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\GoodsComment\Detail.cshtml" />
+    <Content Include="Areas\Mobile\Views\Orders\Detail.cshtml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="OrderPage\img\loading.gif" />
     <Content Include="OrderPage\Order.html" />
@@ -637,6 +642,7 @@
     <Content Include="OrderPage\script\product-list.js" />
     <Content Include="OrderPage\script\set-password.js" />
     <Content Include="OrderPage\script\t-choose.js" />
+    <Content Include="OrderPage\style.css" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
@@ -669,6 +675,7 @@
     <Content Include="Scripts\plug-in\cityselect\jquery.cityselect.js" />
     <Content Include="Scripts\plug-in\picture\uploadimg.jpg" />
     <Content Include="Scripts\plug-in\jquery.qrcode.js" />
+    <Content Include="Scripts\plug-in\slidepage.js" />
     <Content Include="Scripts\plug-in\starsScore\images\star-half-big.png" />
     <Content Include="Scripts\plug-in\starsScore\images\star-half.png" />
     <Content Include="Scripts\plug-in\starsScore\images\star-off-big.png" />

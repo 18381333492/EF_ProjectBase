@@ -12,7 +12,7 @@
             <input type="text" name="Sta" class="easyui-datebox" data-options="width:120,editable:false">--<input name="End" type="text" class="easyui-datebox" data-options="width:120,editable:false">
             <span>模糊查询</span>
             <input class="easyui-textbox" name="searchText" data-options="width:180,height:22,required:false,prompt:'商品编号/评价人/商品编号'">
-            <a data-name="goods_search" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查 询</a>
+            <a data-name="goodscomment_search" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查 询</a>
         </div>
     </form>
     @Html.Partial("~/Areas/Admin/Views/Shared/_Button.cshtml")
@@ -53,7 +53,7 @@
                     });
                 }
             }, 500, 320, function () {
-                goodsComment.starComment.starCreate("iScore", 5,3);
+                goodsComment.starComment.starCreate("iScore", 5);
             });
         }
 
@@ -65,7 +65,7 @@
         goodsComment.Update.handle = function () {
             var select = goodsComment.grid.datagrid('getSelections');
             if (select.length == 1) {
-                var dialog = f.dialog(goodsComment.route('Edit') + "?sGoodsId=" + select[0].ID, '编辑商品评论', function () {
+                var dialog = f.dialog(goodsComment.route('Edit') + "?sGoodsCommentId=" + select[0].ID, '编辑商品评论', function () {
                     if ($(goodsComment.form.add).form('validate')) {
                         goodsComment.button.disable();
                         var data = $(goodsComment.form.edit).serialize();
@@ -76,7 +76,7 @@
                         });
                     }
                 }, 500, 320, function () {
-                    goodsComment.starComment.starCreate("iScore", 5,3);
+                    goodsComment.starComment.starCreate("iScore", 5);
                 });
             }
             else {
@@ -85,27 +85,12 @@
         }
 
         /*!
-        * method:上/下架商品评论
+        * method:查看商品评论详情
         * author:[汤台]
         * version:[1.0.0]
         */
-        goodsComment.AlterShelves = function () {
-            var select = goodsComment.grid.datagrid('getSelections');
-            if (select.length > 0) {
-                $.messager.confirm('确认', '您确认想要上/下架所选择的商品评论？', function (r) {
-                    if (r) {
-                        f.post(goodsComment.route("AlterShelves"), { Ids: d.ArrayID(select) },
-                            function (res) {
-                                f.alert(res.info);
-                                goodsComment.grid.datagrid('reload');
-                                goodsComment.grid.datagrid('clearSelections');
-                            });
-                    }
-                });
-            }
-            else {
-                f.alert("请选择数据进行操作!");
-            }
+        goodsComment.Detail = function (id) {
+            var dialog = f.detail(goodsComment.route('Detail') + "?sGoodsCommentId=" + id, '评论详情查看', 500, 320);
         }
 
 
@@ -117,8 +102,7 @@
         $(goodsComment.toolbar)
                 .on('click', 'a[data-name=goodscomment_add]', goodsComment.Insert.handle)
                 .on('click', 'a[data-name=goodscomment_edit]', goodsComment.Update.handle)
-                .on('click', 'a[data-name=goods_bshelves]', goodsComment.AlterShelves)
-                .on('click', 'a[data-name=goods_search]', goodsComment.Search)
+                .on('click', 'a[data-name=goodscomment_search]', goodsComment.Search)
 
         /*!
         * method:商品评论数据列表(datagrid)的绑定
@@ -140,9 +124,9 @@
                 { field: 'sGoodNo', title: '商品编号', align: 'center', width: 100 },
                 { field: 'sGoodsName', title: '商品名称', align: 'center', width: 300 },
                 {
-                    field: 'iScore', title: '评论分数', align: 'center', width: 150, formatter: function (value) {
+                    field: 'iScore', title: '评论分数', align: 'center', width: 100, formatter: function (value) {
                         var html = [];
-                        html.push('<div style="cursor: pointer; width: 140px;">');
+                        html.push('<div style="cursor: pointer;">');
                         for (var i = 0; i < value; i++) {
                             html.push('<img style="vertical-align: middle" src="/Scripts/plug-in/starsScore/images/star-on.png">');
                         }
@@ -150,9 +134,18 @@
                         return html.join('');
                     }
                 },
-                { field: 'sCommentContent', title: '评价内容', align: 'center', width: 250 },
-                { field: 'dCommentTime', title: '评价时间', align: 'center', width: 150 },
+                {
+                    field: 'ID', title: '查看详情', align: 'center', width: 80, formatter: function (value, rows) {
+                        return '<a class="goodscomemnt_detail" data-id='+value+' style="color:red">详 情</a>';
+                    }
+                },
             ]],
+            onLoadSuccess: function (data) {
+                $('.goodscomemnt_detail').on("click", function () {
+                    var id = $(this).attr("data-id");
+                    goodsComment.Detail(id);
+                });
+            }
         });
     });
 

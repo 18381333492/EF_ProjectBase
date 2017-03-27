@@ -77,6 +77,7 @@
     <Property Name="iState" Type="int" Nullable="false" />
     <Property Name="dBookTime" Type="datetime" Nullable="false" />
     <Property Name="dPayTime" Type="datetime" Nullable="false" />
+    <Property Name="sPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Role">
     <Key>

@@ -29,7 +29,7 @@ namespace Sevices
             //条件查询
             if (!string.IsNullOrEmpty(searchText))
             {
-                sSql.AppendFormat(" AND (A.GoodNo LIKE '%{0}%' OR A.sCommentPerson LIKE '%{0}%' OR B.sGoodsName LIKE '%{0}%')", searchText);
+                sSql.AppendFormat(" AND (A.sGoodNo LIKE '%{0}%' OR A.sCommentPerson LIKE '%{0}%' OR B.sGoodsName LIKE '%{0}%')", searchText);
             }
             if (!string.IsNullOrEmpty(Sta))
             {
@@ -46,13 +46,13 @@ namespace Sevices
 
 
         /// <summary>
-        /// 根据商品主键ID获取商品实体
+        /// 根据商品评论主键ID获取商品评论
         /// </summary>
         /// <param name="sGoodsId"></param>
         /// <returns></returns>
-        public Goods Get(Guid sGoodsId)
+        public GoodsComment Get(Guid sGoodsCommentId)
         {
-            return query.db.Goods.Find(sGoodsId);
+            return query.db.GoodsComment.Find(sGoodsCommentId);
         }
     }
 }

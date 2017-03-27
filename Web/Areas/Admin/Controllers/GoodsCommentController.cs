@@ -41,9 +41,19 @@ namespace Web.Areas.Admin.Controllers
         /// 编辑评论视图
         /// </summary>
         /// <returns></returns>
-        public ActionResult Edit()
+        public ActionResult Edit(Guid sGoodsCommentId)
         {
-            return View();
+            return View(_server.Get(sGoodsCommentId));
+        }
+
+        /// <summary>
+        /// 评论详情查看视图
+        /// </summary>
+        /// <param name="sGoodsCommentId"></param>
+        /// <returns></returns>
+        public ActionResult Detail(Guid sGoodsCommentId)
+        {
+            return View(_server.Get(sGoodsCommentId));
         }
 
 

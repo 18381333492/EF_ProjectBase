@@ -30,5 +30,6 @@ namespace EFModel
         public System.DateTime dBookTime { get; set; }
         public System.DateTime dPayTime { get; set; }
         public string sGoodsInfo { get; set; }
+        public string sPhone { get; set; }
     }
 }

@@ -129,4 +129,44 @@ function eui() {
             });
         return dlg;
     }
+
+   /*
+   * EasyUi详情弹出框（dialog）.
+   * @author [汤台]
+   * @version 1.0.0
+   * @param  url, title,width,height,callload(加载成功的回调函数)
+   * @return {dialog}
+   */
+    this.detail = function (url, title,width, height, callload) {
+        width = width || 600;
+        height = height || 400;
+        var name = $('<div/>');
+        var dlg =
+            name.dialog({
+                href: url,
+                title: title,
+                iconCls: 'icon-save',
+                width: width,
+                height: height,
+                border: false,
+                buttons: [{
+                    id: 'ok',
+                    text: '<span>关闭</span>',
+                    iconCls: 'icon-cancel',
+                    handler: function () { name.dialog('close'); }
+                }],
+                onClose: function () { name.dialog("destroy"); },
+                onLoad: function () {
+                    //加载之后的动作   
+                    document.onkeydown = function (event) {
+                        if (event.keyCode == "13") {
+                            $('#ok').click();
+                        }
+                    }
+                    if (callload) callload();
+                },
+                modal: true
+            });
+        return dlg;
+    }
 }

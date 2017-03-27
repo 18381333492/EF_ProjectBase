@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>我的订单</title>
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!--分享使用-->
+	<meta itemprop="name" content="" />
+	<meta itemprop="description" name="description" content="" />
+	<meta itemprop="image" content="img_url" />
+	<meta name="format-detection" content="telephone=no" />
+
+    <link href="css/global.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <script src="lib/jquery-2.1.4.min.js"></script>
+	<script src="lib/judge.js"></script>
+	<script src="script/common.js"></script>
+
+
+</head>
+<body class="has-head t-p-b">
+    <header>
+        <div class="head-wrap clearfix">
+            <i></i>
+            <div>
+                <div>
+                    <input class="search_phone" placeholder="请输入手机号码查询订单" /><span id="search"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <section>
+            <div class="t-order-title t-b-b t-bg-ff">
+                <a href="javascript:;" class="t-active t-active-on" data-iState="-1">全部</a>
+                <a href="javascript:;" class="t-active " data-iState="0">待付款</a>
+                <a href="javascript:;" class="t-active"  data-iState="1">待发货</a>
+                <a href="javascript:;" class="t-active"  data-iState="2">待收货</a>
+                <a href="javascript:;" class="t-active"  data-iState="3">已完成</a>
+            </div>
+        </section>
+        <div id="orderlist">
+            <!--<div class="payment-Box">
+                <section>
+                    <div class="t-general-listing t-bg-ff t-m-t t-b-t-c t-b-c">
+                        <a href="javascript:;" class="t-active">
+                            <h3 class="t-listing-title t-b-c t-c-82">
+                                <span> 订单号：1234567890123</span>
+                                <span class="pull-right t-c">待付款</span>
+                            </h3>
+                            <div class="t-listing-Box clearfix t-order-bg t-b-c">
+                                <i class="t-picture" style="background-image: url('img/t-icon-picture.png')"></i>
+                                <div class="t-listing-right">
+                                    <h3>钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒</h3>
+                                    <p class="t-size">净度：VS3</p>
+                                    <p class="t-listing-money">&yen; 119.00</p>
+                                    <span class="t-number">&times;1</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="t-payment-btn clearfix">
+                            <span class="t-total">合计：<span class="t-c">&yen; 119.00</span></span>
+                            <a href="javascript:;" class="t-payment">付款</a>
+                            <a href="javascript:;" class="t-active">取消订单</a>
+                        </div>
+                    </div>
+                </section>
+            </div>-->
+        </div>
+    </div>
+</body>
+</html>
+<script src="../Scripts/mylib/common.client.js"></script>
+<script type="text/javascript">
+    $(function () {
+        domin.initPage();
+        domin.loadData();
+        domin.bingEvent();
+
+    });
+
+    var domin = function (obj) { return obj; }(new function () {
+
+        var stateName = ["待付款", "待发货", "待收货", "已完成"];
+        var buttonName = ["付 款", "提醒卖家发货", "确认收货", "评 价"];
+       
+        var defaults = {
+            url: '/Mobile/Orders/List',//请求的路径
+            page: 1,//页面
+            rows: 10,//每页的数量
+            state: true,//是否请求的标识
+            sPhone: '',//要查询的订单的号码,
+            iState:-1
+        }
+
+        //页面的初始化
+        function initPage() {
+            defaults.sPhone = client.localStorage.getStorage("search_phone");
+            defaults.sPhone = defaults.sPhone || "";
+            $('.search_phone').val(defaults.sPhone);
+        }
+
+        //查询订单
+        function searchOrder() {
+            defaults.sPhone = $('.search_phone').val();
+            defaults.iState = parseInt($('.t-active-on').attr("data-iState"));
+            defaults.state = true;
+            defaults.page = 1;
+            $('#orderlist').html('');
+            loadData();
+        }
+
+        //加载数据
+        function loadData() {
+            client.ajax.ajaxRequest(defaults.url,
+                                    defaults,
+                                    function (res) {
+                                        if (res.rows.length > 0) {
+                                            var html = [];
+                                            $(res.rows).each(function () {
+                                                html.push('<div class="payment-Box">');
+                                                html.push('<section>');
+                                                html.push('<div class="t-general-listing t-bg-ff t-m-t t-b-t-c t-b-c">');
+                                                html.push('<a href="/OrderPage/OrderDetail?sOrderId='+this.ID+'" class="t-active">');
+                                                html.push('<h3 class="t-listing-title t-b-c t-c-82">');
+                                                html.push('<span> 订单号：' + this.sOrderNo + '</span>');
+                                                html.push('<span class="pull-right t-c">' + stateName[this.iState] + '</span>');
+                                                html.push('</h3>');
+                                                html.push('<div class="t-listing-Box clearfix t-order-bg t-b-c">');
+                                                html.push('<i class="t-picture" style="background-image: url(img/t-icon-picture.png)"></i>');
+                                                html.push('<div class="t-listing-right">');
+                                                html.push('<h3>' + this.sGoodName + '</h3>');
+                                                html.push('<p class="t-size">净度：VS3</p>');
+                                                html.push('<p class="t-listing-money">&yen;' + this.dTotalPrices.toFixed(2) + '</p>');
+                                                html.push('<span class="t-number">&times;' + this.iGoodsCount + '</span>');
+                                                html.push('</div>');
+                                                html.push('</div>');
+                                                html.push('</a>');
+                                                html.push('<div class="t-payment-btn clearfix">');
+                                                html.push('<span class="t-total">合计：<span class="t-c">&yen; ' + this.dPrices.toFixed(2) + '</span></span>');
+                                                html.push('<a href="javascript:;" class="t-payment">' + buttonName[this.iState] + '</a>');
+                                                if (this.iState == 0)
+                                                    html.push('<a href="javascript:;" class="t-active">取消订单</a>');
+                                                html.push('</div>');
+                                                html.push('</div>');
+                                                html.push('</section>');
+                                                html.push('</div>');
+                                            });
+                                            $('#orderlist').append(html.join(''));
+                                            defaults.state =res.rows.length < 10? false:true;
+                                        }
+                                    },null,0);
+        }
+
+        //事件的绑定
+        function bingEvent() {
+
+            //订单的查询事件绑定
+            $('#search').on("click", searchOrder);
+
+            $('.t-order-title').on("click", "a", function () {
+                $(this).addClass("t-active-on").siblings().removeClass("t-active-on");
+                defaults.iState = parseInt($(this).attr("data-iState"));
+                //清空数据
+                defaults.state = true;
+                defaults.page = 1;
+                $('#orderlist').html('');
+                loadData();
+            })
+
+            ////绑定滚动事件
+            $(window).scroll(function () {
+                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                    if (defaults.state) {
+                        loadData();
+                    }
+                }
+            });
+
+        }
+
+        return {
+            initPage: initPage,
+            loadData:loadData,
+            bingEvent: bingEvent
+        }
+
+    });
+</script>

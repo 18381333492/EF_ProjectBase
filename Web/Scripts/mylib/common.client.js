@@ -320,7 +320,7 @@ function myStorage() {
 /*前端ajax的封装*/
 function ajax() {
 
-    function ajaxRequest(url, params, callback, er_callback, async) {
+    function ajaxRequest(url, params, callback,er_callback,type,async) {
         $.ajax({
             url: url,
             data: params,
@@ -328,15 +328,20 @@ function ajax() {
             dataType: 'json',
             async: (async == null) ? true : async,
             success: function (r) {
-                if (r.success) {
-                    callback(r);
+                if (type == 1) {//是否加载数据列表类型 type==1 否 0 是
+                    if (r.success) {
+                        callback(r);
+                    }
+                    else {
+                        if (er_callback) {
+                            er_callback(r);//手动提示错误
+                        }
+                        else
+                            alert(r.info);
+                    }
                 }
                 else {
-                    if (er_callback) {
-                        er_callback(r);//手动提示错误
-                    }
-                    else
-                       alert(r.info);
+                    callback(r);
                 }
             },
             // jqXHR 是经过jQuery封装的XMLHttpRequest对象
@@ -344,9 +349,9 @@ function ajax() {
             // errorMsg 是错误信息字符串(响应状态的文本描述部分，例如'Not Found'或'Internal Server Error')
             error: function (jqXHR, textStatus, errorMsg) {
                 switch (jqXHR.status) {
-                    case 404: f.alert('链接地址错误!', null, 'error'); break;
-                    case 500: f.alert('服务器内部错误!', null, 'error'); break;
-                    default: f.alert(jqXHR.status + ":" + jqXHR.statusText, null, 'error');
+                    case 404: dialog.tip('链接地址错误!'); break;
+                    case 500: dialog.tip('服务器内部错误!'); break;
+                    default: dialog.tip(jqXHR.status + ":" + jqXHR.statusText);
                 }
             }
         });

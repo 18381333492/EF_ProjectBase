@@ -60,7 +60,7 @@ window.dialog = function () {
         var divContent = document.createElement("div");
 
         //设置DIV样式
-        divContent.style.cssText = "width: 72%;background: #ffffff;border-radius: 8px;margin:65% auto;position: relative;text-align: center;overflow:hidden;font-size:14px;";
+        divContent.style.cssText = "width: 72%;background: #ffffff;border-radius: 8px;margin:70% auto;position: relative;text-align: center;overflow:hidden;font-size:14px;";
 
         //创建消息SPAN
         var outSpan = document.createElement("span");

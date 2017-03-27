@@ -91,14 +91,14 @@
             page: 1,//页面
             rows: 10,//每页的数量
             state: true,//是否请求的标识
-            sPhone: '',//要查询的订单的号码,
+            sPhone: '1838133492',//要查询的订单的号码,
             iState:-1
         }
 
         //页面的初始化
         function initPage() {
             defaults.sPhone = client.localStorage.getStorage("search_phone");
-            defaults.sPhone = defaults.sPhone || "";
+            defaults.sPhone = defaults.sPhone || "18381333492";
             $('.search_phone').val(defaults.sPhone);
         }
 
@@ -142,16 +142,32 @@
                                                 html.push('<span class="t-total">合计：<span class="t-c">&yen; ' + this.dPrices.toFixed(2) + '</span></span>');
                                                 html.push('<a href="javascript:;" class="t-payment">' + buttonName[this.iState] + '</a>');
                                                 if (this.iState == 0)
-                                                    html.push('<a href="javascript:;" class="t-active">取消订单</a>');
+                                                    html.push('<a href="javascript:;" class="t-active cancel">取消订单</a>');
                                                 html.push('</div>');
                                                 html.push('</div>');
                                                 html.push('</section>');
                                                 html.push('</div>');
                                             });
                                             $('#orderlist').append(html.join(''));
-                                            defaults.state =res.rows.length < 10? false:true;
+                                            defaults.state = res.rows.length < 10 ? false : true;
+                                            
+                                            //绑定按钮事件
+                                            $('.cancel').on("click", function () { cancelOrder($(this)) });
                                         }
                                     },null,0);
+        }
+
+        //取消订单
+        function cancelOrder(element) {
+
+            dialog.confrim("亲,您确认要取消该订单？",
+                {
+                    "text": "确定", fn: function () {
+                        alert('sds');
+                    }
+                });
+
+
         }
 
         //事件的绑定
@@ -160,25 +176,24 @@
             //订单的查询事件绑定
             $('#search').on("click", searchOrder);
 
+            //订单选项卡的切换
             $('.t-order-title').on("click", "a", function () {
+                $('#orderlist').html('');
                 $(this).addClass("t-active-on").siblings().removeClass("t-active-on");
                 defaults.iState = parseInt($(this).attr("data-iState"));
                 //清空数据
                 defaults.state = true;
                 defaults.page = 1;
-                $('#orderlist').html('');
                 loadData();
             })
 
             ////绑定滚动事件
             $(window).scroll(function () {
                 if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-                    if (defaults.state) {
+                    if (defaults.state)
                         loadData();
-                    }
                 }
             });
-
         }
 
         return {

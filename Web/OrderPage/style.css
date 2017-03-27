@@ -85,8 +85,8 @@ header .head-wraps .title{
              height:.6rem;
              background-image: url('img/headerSearchLogo.png');
              background-repeat:no-repeat;
-            background-size:.6rem auto;
-            background-position:center center;
+            background-size:.5rem auto;
+            background-position:left -.01rem;
             float:right;
             margin:.11rem .1rem .11rem 0;
          }

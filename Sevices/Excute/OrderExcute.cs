@@ -20,6 +20,10 @@ namespace Sevices
         /// <returns></returns>
         public int Add(Orders item)
         {
+            if (string.IsNullOrEmpty(item.sActivity))
+                item.sActivity = string.Empty;
+            if (string.IsNullOrEmpty(item.sOrderRemark))
+                item.sOrderRemark = string.Empty;
             item.ID = Guid.NewGuid();
             item.sOrderNo = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             item.dBookTime = DateTime.Now;

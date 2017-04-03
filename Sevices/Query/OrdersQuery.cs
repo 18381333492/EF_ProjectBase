@@ -24,7 +24,7 @@ namespace Sevices
         public string GetList(PageInfo Info, string Sta, string End, string searchText, int iState)
         {
             StringBuilder sSql = new StringBuilder();
-            sSql.Append("SELECT * FROM [Orders] WHERE 1=1");
+            sSql.Append("SELECT * FROM [Orders] WHERE bIsDeleted=0");
 
             //条件查询
             if (iState > -1)
@@ -33,11 +33,11 @@ namespace Sevices
             }
             if (!string.IsNullOrEmpty(searchText))
             {
-                sSql.AppendFormat(" AND iState={0}", iState);
+                sSql.AppendFormat(" AND sPhone LIKE '%{0}%' OR sReceiver LIKE '%{0}%' OR sGoodName LIKE '%{0}%' OR sGoodNo LIKE '%{0}%'", searchText);
             }
             Info.sort = "dBookTime";
             Info.order = OrderType.DESC;
-            return query.QueryPage(@"select * from [Orders]", Info, null);
+            return query.QueryPage(sSql.ToString(), Info, null);
 
         }
 
@@ -51,7 +51,7 @@ namespace Sevices
         public string GetListByPhone(PageInfo Info, string sPhone, int iState)
         {
             StringBuilder sSql = new StringBuilder();
-            sSql.Append("SELECT * FROM [Orders] WHERE 1=1");
+            sSql.Append("SELECT * FROM [Orders] WHERE bIsDeleted=0");
 
             //条件查询
             if (iState > -1)

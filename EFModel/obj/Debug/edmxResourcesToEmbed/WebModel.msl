@@ -92,8 +92,8 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="EF_ProjectBaseModel.Orders">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
           <ScalarProperty Name="sPhone" ColumnName="sPhone" />
-          <ScalarProperty Name="sGoodsInfo" ColumnName="sGoodsInfo" />
           <ScalarProperty Name="dPayTime" ColumnName="dPayTime" />
           <ScalarProperty Name="dBookTime" ColumnName="dBookTime" />
           <ScalarProperty Name="iState" ColumnName="iState" />
@@ -104,6 +104,7 @@
           <ScalarProperty Name="dTotalPrices" ColumnName="dTotalPrices" />
           <ScalarProperty Name="dPrices" ColumnName="dPrices" />
           <ScalarProperty Name="iGoodsCount" ColumnName="iGoodsCount" />
+          <ScalarProperty Name="sGoodsInfo" ColumnName="sGoodsInfo" />
           <ScalarProperty Name="sGoodsPicture" ColumnName="sGoodsPicture" />
           <ScalarProperty Name="sGoodNo" ColumnName="sGoodNo" />
           <ScalarProperty Name="sGoodName" ColumnName="sGoodName" />

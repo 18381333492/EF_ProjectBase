@@ -178,6 +178,7 @@
     </div>
     <div class="clear"></div>
     <input id="iGoodsId" type="hidden" value="146" />
+    <input id="sGoodNo" type="hidden" value="42RRBB8Z" />
     <footer class="footer">
         <div class="foot-con">
             <div class="foot-con_2">
@@ -253,6 +254,7 @@
 
          //立即购买
          function buyNow() {
+             order.sGoodNo = $('#sGoodNo').val();//商品编号
              order.sGoodName = $('title').text();
              order.iGoodsCount = $('#prodCount').val();
              order.dSinglePrices = $('#prodCash').text();

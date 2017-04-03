@@ -100,7 +100,8 @@
     <Property Name="sGoodName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="sGoodNo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="sGoodsPicture" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="iGoodsCount" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sGoodsInfo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="iGoodsCount" Type="Int32" Nullable="false" />
     <Property Name="dPrices" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="dTotalPrices" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="sActivity" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -110,7 +111,7 @@
     <Property Name="iState" Type="Int32" Nullable="false" />
     <Property Name="dBookTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="dPayTime" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="sGoodsInfo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="sPhone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
   </EntityType>
 </Schema>

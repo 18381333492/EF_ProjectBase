@@ -69,16 +69,22 @@ namespace Web.Areas.Mobile.Controllers
         [HttpPost]
         public void BookOrder(Orders order)
         {
-            if (_server.Add(order) > 0)
+            var domin = Resolve<GoodsService>();
+            if (domin.IsExistGoods(order.sGoodNo))
             {
-                //订单生成之后发起支付所需要的额参数
-                string url=PayHelper.sGetPayUrl(order.sOrderNo, order.sGoodName, order.dPrices.ToString(), "怡佳之城订单");
-                result.data = url;
-                result.success = true;
-                result.info = "下单成功!";
+                if (_server.Add(order) > 0)
+                {
+                    //订单生成之后发起支付所需要的额参数
+                    string url = PayHelper.sGetPayUrl(order.sOrderNo, order.sGoodName, order.dPrices.ToString(), "怡佳之城订单");
+                    result.data = url;
+                    result.success = true;
+                    result.info = "下单成功!";
+                }
+                else
+                    result.info = "操作失败!";
             }
             else
-                result.info = "操作失败!";
+                result.info = "亲,该商品信息有误,无法购买!";
         }
 
 

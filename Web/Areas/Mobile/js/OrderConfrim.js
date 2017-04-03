@@ -50,7 +50,6 @@ function orderConfrim() {
             return dialog.tip("亲,收货地址还没填写呢!");
 
         //系统验证
-        debugger
         if (orders.iGoodsCount <= 0)
             return dialog.tip("参数错误!");
         if (orders.dTotalPrices <= 0)
@@ -76,7 +75,7 @@ function orderConfrim() {
                 "/Mobile/Orders/BookOrder",
                 orders,
                 function (r) {
-                    location.href = "跳转支付链接";
+                    location.href =r.data;
                 });
         }
     }

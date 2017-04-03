@@ -67,7 +67,7 @@
     <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="sGoodsPicture" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="sGoodsInfo" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="iGoodsCount" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="iGoodsCount" Type="int" Nullable="false" />
     <Property Name="dPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="dTotalPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="sActivity" Type="nvarchar" MaxLength="255" Nullable="false" />
@@ -78,6 +78,7 @@
     <Property Name="dBookTime" Type="datetime" Nullable="false" />
     <Property Name="dPayTime" Type="datetime" Nullable="false" />
     <Property Name="sPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Role">
     <Key>

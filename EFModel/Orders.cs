@@ -19,7 +19,8 @@ namespace EFModel
         public string sGoodName { get; set; }
         public string sGoodNo { get; set; }
         public string sGoodsPicture { get; set; }
-        public string iGoodsCount { get; set; }
+        public string sGoodsInfo { get; set; }
+        public int iGoodsCount { get; set; }
         public decimal dPrices { get; set; }
         public decimal dTotalPrices { get; set; }
         public string sActivity { get; set; }
@@ -29,7 +30,7 @@ namespace EFModel
         public int iState { get; set; }
         public System.DateTime dBookTime { get; set; }
         public System.DateTime dPayTime { get; set; }
-        public string sGoodsInfo { get; set; }
         public string sPhone { get; set; }
+        public bool bIsDeleted { get; set; }
     }
 }

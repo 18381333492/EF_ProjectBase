@@ -71,11 +71,24 @@ namespace Web.Areas.Mobile.Controllers
         {
             if (_server.Add(order) > 0)
             {
+                //订单生成之后发起支付所需要的额参数
+                string url=PayHelper.sGetPayUrl(order.sOrderNo, order.sGoodName, order.dPrices.ToString(), "怡佳之城订单");
+                result.data = url;
                 result.success = true;
                 result.info = "下单成功!";
             }
             else
                 result.info = "操作失败!";
+        }
+
+
+        /// <summary>
+        /// 买家提醒发货
+        /// </summary>
+        /// <param name="sOrderId"></param>
+        public void OrderTip(Guid sOrderId)
+        {
+
         }
     }
 }

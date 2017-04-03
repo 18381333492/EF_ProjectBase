@@ -110,3 +110,7 @@ D:\GitHub源代码\EF_ProjectBase\Web\bin\zh-Hans\System.Web.WebPages.Razor.reso
 D:\GitHub源代码\EF_ProjectBase\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
 D:\GitHub源代码\EF_ProjectBase\Web\obj\Debug\Web.dll
 D:\GitHub源代码\EF_ProjectBase\Web\obj\Debug\Web.pdb
+E:\GitHub源代码管理\EF_ProjectBase\Web\bin\WeiXin.Base.dll
+E:\GitHub源代码管理\EF_ProjectBase\Web\bin\WeiXin.Tool.dll
+E:\GitHub源代码管理\EF_ProjectBase\Web\bin\WeiXin.Base.pdb
+E:\GitHub源代码管理\EF_ProjectBase\Web\bin\WeiXin.Tool.pdb

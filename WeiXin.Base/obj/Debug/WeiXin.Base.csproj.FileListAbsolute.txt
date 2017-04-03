@@ -9,3 +9,14 @@ D:\GitHub源代码\EF_ProjectBase\WeiXin.Base\bin\Debug\Newtonsoft.Json.xml
 D:\GitHub源代码\EF_ProjectBase\WeiXin.Base\obj\Debug\WeiXin.Base.csprojResolveAssemblyReference.cache
 D:\GitHub源代码\EF_ProjectBase\WeiXin.Base\obj\Debug\WeiXin.Base.dll
 D:\GitHub源代码\EF_ProjectBase\WeiXin.Base\obj\Debug\WeiXin.Base.pdb
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Debug\WeiXin.Base.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Debug\WeiXin.Base.pdb
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Debug\Common.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Debug\WeiXin.Tool.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Debug\Newtonsoft.Json.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Debug\Common.pdb
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Debug\WeiXin.Tool.pdb
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Debug\Newtonsoft.Json.xml
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\obj\Debug\WeiXin.Base.csprojResolveAssemblyReference.cache
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\obj\Debug\WeiXin.Base.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\obj\Debug\WeiXin.Base.pdb

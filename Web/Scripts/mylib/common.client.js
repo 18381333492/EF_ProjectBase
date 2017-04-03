@@ -19,7 +19,7 @@ window.dialog = function () {
     divBackground.style.cssText = "position:fixed;top: 0;left:0;width: 100%;height: 100%;background: rgba(0,0,0,0.5);z-index:9999999999;";
 
 
-    //加载等待提示框
+    //加载等待提示框   
     function loading(msg) {
         if ($(".alert_box").length) {
             $(".alert_box .content p:first").text(msg).parents(".alert_box").css({
@@ -32,6 +32,14 @@ window.dialog = function () {
             $("body").css({ 'position': 'fixed', 'width': '100%', 'height': '100%', 'top': '0', 'left': '0' });
         }
     };
+
+    //关闭加载效果
+    function closeLoading() {
+        if ($(".alert_box").length) {
+            $('body').attr("style", "");
+            $(".alert_box").remove();
+        }
+    }
 
     //提示框 msg-提示的消息
     function tip(msg, hide, time) {
@@ -122,7 +130,8 @@ window.dialog = function () {
     return {
         tip: tip,
         loading: loading,
-        confrim: confrim
+        confrim: confrim,
+        closeLoading: closeLoading
     }
 }();
 
@@ -348,6 +357,7 @@ function ajax() {
             // textStatus 可能为null、 'timeout（超时）'、 'error（错误）'、 'abort(中止)'和'parsererror（解析错误)'等
             // errorMsg 是错误信息字符串(响应状态的文本描述部分，例如'Not Found'或'Internal Server Error')
             error: function (jqXHR, textStatus, errorMsg) {
+                dialog.closeLoading();//关闭loading效果
                 switch (jqXHR.status) {
                     case 404: dialog.tip('链接地址错误!'); break;
                     case 500: dialog.tip('服务器内部错误!'); break;

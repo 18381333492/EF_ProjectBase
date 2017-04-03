@@ -8,24 +8,37 @@
 ******************************/
 
 function orderConfrim() {
-
+ 
     var orders = {
-        sGoodName: "",              //商品名字
-        sGoodNo: "",                //商品编号(唯一)
-        sGoodsPicture: "",          //商品图片
-        sGoodsInfo:'',              //商品规格
-        iGoodsCount: 0,             //购买数量
-        dTotalPrices: 0,            //总价
-        dPrices: 0,                 //实际支付价格
-        sActivity: '',              //活动
-        sOrderRemark: '',           //订单备注
-        sReceiver: '',              //收件人
-        sAddress: '',               //收货地址
-        sPhone: '',                 //手机号
+        //商品名字
+        sGoodName: "",
+        //商品编号(唯一)
+        sGoodNo: "",
+        //商品图片
+        sGoodsPicture: "",          
+        //商品规格
+        sGoodsInfo: '',              
+        //购买数量
+        iGoodsCount: 0,             
+        //总价
+        dTotalPrices: 0,           
+        //实际支付价格
+        dPrices: 0,
+        //商品单价
+        dSinglePrices: 0,
+        //活动
+        sActivity: '',
+        //订单备注
+        sOrderRemark: '',
+        //收货地址
+        sReceiver: '',
+        //手机号
+        sAddress: '',
+        //手机号
+        sPhone: '',                 
     }
 
     function checkParams() {
-
         //反馈给用户的提示
         if (client.string.isEmpty(orders.sReceiver))
             return dialog.tip("亲,请输入收件人姓名!");
@@ -37,6 +50,7 @@ function orderConfrim() {
             return dialog.tip("亲,收货地址还没填写呢!");
 
         //系统验证
+        debugger
         if (orders.iGoodsCount <= 0)
             return dialog.tip("参数错误!");
         if (orders.dTotalPrices <= 0)

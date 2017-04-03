@@ -8,3 +8,13 @@ D:\GitHub源代码\EF_ProjectBase\支付接口\TenPayV3\bin\Debug\Newtonsoft.Jso
 D:\GitHub源代码\EF_ProjectBase\支付接口\TenPayV3\obj\Debug\TenPayV3.csprojResolveAssemblyReference.cache
 D:\GitHub源代码\EF_ProjectBase\支付接口\TenPayV3\obj\Debug\TenPayV3.dll
 D:\GitHub源代码\EF_ProjectBase\支付接口\TenPayV3\obj\Debug\TenPayV3.pdb
+E:\GitHub源代码管理\EF_ProjectBase\支付接口\TenPayV3\bin\Debug\TenPayV3.dll
+E:\GitHub源代码管理\EF_ProjectBase\支付接口\TenPayV3\bin\Debug\TenPayV3.pdb
+E:\GitHub源代码管理\EF_ProjectBase\支付接口\TenPayV3\bin\Debug\Common.dll
+E:\GitHub源代码管理\EF_ProjectBase\支付接口\TenPayV3\bin\Debug\ThoughtWorks.QRCode.dll
+E:\GitHub源代码管理\EF_ProjectBase\支付接口\TenPayV3\bin\Debug\Newtonsoft.Json.dll
+E:\GitHub源代码管理\EF_ProjectBase\支付接口\TenPayV3\bin\Debug\Common.pdb
+E:\GitHub源代码管理\EF_ProjectBase\支付接口\TenPayV3\bin\Debug\Newtonsoft.Json.xml
+E:\GitHub源代码管理\EF_ProjectBase\支付接口\TenPayV3\obj\Debug\TenPayV3.csprojResolveAssemblyReference.cache
+E:\GitHub源代码管理\EF_ProjectBase\支付接口\TenPayV3\obj\Debug\TenPayV3.dll
+E:\GitHub源代码管理\EF_ProjectBase\支付接口\TenPayV3\obj\Debug\TenPayV3.pdb

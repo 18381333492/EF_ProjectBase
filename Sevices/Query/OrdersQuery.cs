@@ -60,7 +60,7 @@ namespace Sevices
             }
             if (!string.IsNullOrEmpty(sPhone))
             {
-                sSql.AppendFormat(" AND sPhone LIKE '%{0}%'", sPhone);
+                sSql.AppendFormat(" AND sPhone='{0}'", sPhone);
             }
             else
             {//没有输入号码查询的时候

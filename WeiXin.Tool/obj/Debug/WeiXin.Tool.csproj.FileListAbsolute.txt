@@ -2,3 +2,8 @@ D:\GitHub源代码\EF_ProjectBase\WeiXin.Tool\bin\Debug\WeiXin.Tool.dll
 D:\GitHub源代码\EF_ProjectBase\WeiXin.Tool\bin\Debug\WeiXin.Tool.pdb
 D:\GitHub源代码\EF_ProjectBase\WeiXin.Tool\obj\Debug\WeiXin.Tool.dll
 D:\GitHub源代码\EF_ProjectBase\WeiXin.Tool\obj\Debug\WeiXin.Tool.pdb
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Tool\bin\Debug\WeiXin.Tool.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Tool\bin\Debug\WeiXin.Tool.pdb
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Tool\obj\Debug\WeiXin.Tool.csprojResolveAssemblyReference.cache
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Tool\obj\Debug\WeiXin.Tool.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Tool\obj\Debug\WeiXin.Tool.pdb

@@ -92,7 +92,7 @@
             rows: 10,//每页的数量
             state: true,//是否请求的标识
             sPhone: '1838133492',//要查询的订单的号码,
-            iState:-1
+            iState:-1  //订单默认状态
         }
 
         //页面的初始化
@@ -150,24 +150,32 @@
                                             });
                                             $('#orderlist').append(html.join(''));
                                             defaults.state = res.rows.length < 10 ? false : true;
-                                            
                                             //绑定按钮事件
                                             $('.cancel').on("click", function () { cancelOrder($(this)) });
                                         }
+                                        dialog.closeLoading();//关闭loading效果
+                                        $('.moreData').remove();
+                                        //没有数据的提示
+                                        if ($('#orderlist div').length == 0) {
+                                            $('#orderlist').text("暂时没有数据!");
+                                        }
                                     },null,0);
         }
+    
+        //订单支付
+        function orderPay() {
+
+        }
+
 
         //取消订单
         function cancelOrder(element) {
-
             dialog.confrim("亲,您确认要取消该订单？",
                 {
                     "text": "确定", fn: function () {
                         alert('sds');
                     }
                 });
-
-
         }
 
         //事件的绑定
@@ -184,14 +192,18 @@
                 //清空数据
                 defaults.state = true;
                 defaults.page = 1;
+                dialog.loading("亲,数据加载..");
                 loadData();
             })
 
             ////绑定滚动事件
             $(window).scroll(function () {
                 if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-                    if (defaults.state)
+                    if (defaults.state) {
+                        $('#orderlist').append("<p class='moreData'>数据在加载中!</p>");
+                        defaults.page = defaults.page + 1;
                         loadData();
+                    }
                 }
             });
         }

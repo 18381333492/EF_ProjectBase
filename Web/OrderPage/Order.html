@@ -31,9 +31,9 @@
                 <i class="t-icon-arrow-right"></i>
                 <ul style="background: url(img/location-border.jpg) repeat-x left bottom;background-size: 100%">
                     <li >
-                        <h4>收货人：<span id="sName">张浛庆</span><span class="t-m-lr">1510000000</span></h4>
+                        <h4>收货人：<span id="sName"></span><span class="t-m-lr"></span></h4>
                     </li>
-                    <li class="t-c-9 sAddress">成都市青羊区光华中心B座1206-1209</li>
+                    <li class="t-c-9 sAddress"></li>
                     <li id="address_hide" style="display:none">
                         <h3 style="font-size:18px;color: #df5179;line-height: 93px;">亲,请选择收货地址</h3>
                     </li>
@@ -44,10 +44,10 @@
         <section>
              <div class="t-general-listing t-bg-ff t-m-t t-b-t t-b-b">
                     <div class="t-listing-Box clearfix">
-                        <i class="t-picture" style="background-image: url('img/t-icon-picture.png')"></i>
+                        <i class="t-picture"></i>
                         <div class="t-listing-right">
-                            <h3 class="sGoodName">钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒</h3>
-                            <p class="t-size">净度：VS3</p>
+                            <h3 class="sGoodName"></h3>
+                            <p class="t-size"></p>
                             <p class="t-listing-money">&yen; <span class="dSinglePrices">0.00</span></p>
                             <span class="t-number">&times;<span class="iGoodsCount"></span></span>
                         </div>
@@ -156,21 +156,23 @@
 
         //选择地址
         function selectAddress() {
-            order.sReceiver = $('.sReceiver').val();
-            order.sPhone = $('.sPhone').val();
+            var sReceiver = $('.sReceiver').val();
+            var sPhone = $('.sPhone').val();
             var prov = $('.prov').val();
             var city = $('.city').val();
             var dist = $('.dist').val();
             var addressDetail = $('.addressDetail').val();
 
-            if (client.string.isEmpty(order.sReceiver))
+            if (client.string.isEmpty(sReceiver))
                 return dialog.tip("亲,请输入收件人姓名!");
-            if (client.string.isEmpty(order.sPhone))
+            if (client.string.isEmpty(sPhone))
                 return dialog.tip("亲,请输入手机号码!");
-            if (!client.regex.isPhone(order.sPhone))
+            if (!client.regex.isPhone(sPhone))
                 return dialog.tip("亲,手机号码格式不对!");
             if (client.string.isEmpty(addressDetail))
                 return dialog.tip("亲,收货详细地址还没填写呢!");
+            order.sReceiver = sReceiver;
+            order.sPhone = sPhone;
             order.sAddress = prov + city + dist + addressDetail;
 
             //设置显示
@@ -181,6 +183,10 @@
             address.sPhone = order.sPhone;
             address.sReceiver = order.sReceiver;
             address.sAddress = order.sAddress;
+            address.addressDetail = addressDetail;
+            address.prov = prov;
+            address.city = city;
+            address.dist = dist;
             client.localStorage.setStorage("receiver_address", address);
             state = true;
             $('#address_hide').hide().siblings().show();
@@ -189,7 +195,6 @@
 
         //提交订单
         function commitOrder() {
-            debugger
             if (state) {
                 var object = new orderConfrim();
                 for (var name in object.orders) {
@@ -215,6 +220,18 @@
                     $('.t-footer').show();
                 } else {
                     $('.t-footer').hide();
+                    //收货地址的显示
+                    var address = client.localStorage.getStorage("receiver_address");//收货地址
+                    if (address) {
+                        $('.sReceiver').val(address.sReceiver);
+                        $('.sPhone').val(address.sPhone);
+                        $('.addressDetail').val(address.addressDetail);
+
+                        //城市选择控件的赋值    
+                        $('.prov').val(address.prov);
+                        $('.city').val(address.city);
+                        $('.dist').val(address.dist);
+                    }
                 }
             }
         }

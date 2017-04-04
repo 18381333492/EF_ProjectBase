@@ -44,5 +44,38 @@ namespace Sevices
             order.iState = order.iState + 1;
             return  excute.SaveChange();
         }
+
+        /// <summary>
+        /// 根据订单ID取消订单
+        /// </summary>
+        /// <param name="sOrderId"></param>
+        /// <returns></returns>
+        public int CancelOrder(Guid sOrderId)
+        {
+            var order = excute.db.Orders.Find(sOrderId);
+            order.bIsDeleted = true;
+            return excute.SaveChange();
+        }
+
+        
+        /// <summary>
+        /// 根据订单编号修改订单状态
+        /// </summary>
+        /// <param name="sOrderNO"></param>
+        /// <returns></returns>
+        public int AlterStateByOrderNo(string sOrderNO)
+        {
+            var order = excute.db.Orders.FirstOrDefault(m=>m.sOrderNo== sOrderNO);
+            if (order.iState == 0)
+            {
+                order.iState = 1;//修改为已支付
+                order.dPayTime = DateTime.Now;
+                return  excute.SaveChange();
+            }
+            else
+            {
+                return -2;
+            }
+        }
     }
 }

@@ -329,7 +329,8 @@ function myStorage() {
 /*前端ajax的封装*/
 function ajax() {
 
-    function ajaxRequest(url, params, callback,er_callback,type,async) {
+    function ajaxRequest(url, params, callback, er_callback, type, async) {
+        type = type || false;
         $.ajax({
             url: url,
             data: params,
@@ -337,7 +338,7 @@ function ajax() {
             dataType: 'json',
             async: (async == null) ? true : async,
             success: function (r) {
-                if (type == 1) {//是否加载数据列表类型 type==1 否 0 是
+                if (type==false) {//是否加载数据列表类型 
                     if (r.success) {
                         callback(r);
                     }

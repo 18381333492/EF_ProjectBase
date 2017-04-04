@@ -87,6 +87,19 @@ namespace Web.Areas.Mobile.Controllers
                 result.info = "亲,该商品信息有误,无法购买!";
         }
 
+        /// <summary>
+        /// 取消订单
+        /// </summary>
+        /// <param name="sOrderId"></param>
+        public void CancelOrder(Guid sOrderId)
+        {
+            if (_server.CancelOrder(sOrderId)>0)
+                result.success = true;
+            else
+            {
+                result.info = "操作失败!";
+            }
+        }
 
         /// <summary>
         /// 买家提醒发货
@@ -95,6 +108,19 @@ namespace Web.Areas.Mobile.Controllers
         public void OrderTip(Guid sOrderId)
         {
 
+        }
+
+
+        /// <summary>
+        /// 确认收货
+        /// </summary>
+        /// <param name="sOrderId"></param>
+        public void Confirm(Guid sOrderId)
+        {
+            if (_server.Alter(sOrderId) > 0)
+                result.success = true;
+            else
+                result.info = "操作失败!";
         }
     }
 }

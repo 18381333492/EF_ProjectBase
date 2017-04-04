@@ -12,17 +12,17 @@ namespace Web.App_Start
     public class PayHelper
     {
 
-        private static string partner =C_Config.ReadAppSetting("partner") ;//云通付PID(必填)
+        public static string partner =C_Config.ReadAppSetting("partner") ;//云通付PID(必填)
 
-        private static string user_seller =C_Config.ReadAppSetting("user_seller");//云通付商户号(必填)
+        public static string user_seller =C_Config.ReadAppSetting("user_seller");//云通付商户号(必填)
 
         // 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-        private static string notify_url = "http://mall.ltgirl.com/Mobile/Pay/NotifyUrl"; //异步回调地址(必填)
+        public static string notify_url = "http://mall.ltgirl.com/Mobile/Pay/PayNotify"; //异步回调地址(必填)
 
         // 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-        private static string return_url = "http://mall.ltgirl.com/Mobile/Pay/NotifyUrl"; //同步回调地址(必填)
+        public static string return_url = "http://mall.ltgirl.com/Mobile/Pay/Success"; //同步回调地址(必填)
 
-        private static string key = C_Config.ReadAppSetting("key"); //密钥(必填)
+        public static string key = C_Config.ReadAppSetting("key"); //密钥(必填)
 
 
         /// <summary>

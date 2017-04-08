@@ -44,7 +44,7 @@ window.dialog = function () {
     //提示框 msg-提示的消息
     function tip(msg, hide, time) {
         if ($(".msgtipbar").length == 0) {
-            var maskPanelHtml = "<div class='msgtipbar animated flipInX' style='bottom:0px;font-weight:500;left: 0;position:fixed;text-align:center;width:100%;z-index:100000;opacity:0.9;transition:all .2s linear'><tip style='background: rgba(0,0,0,0.5) none repeat scroll 0 0;border-radius: 2px;color:#fff;display: inline-block;line-height:35px;padding: 0 10px;'><span style='background-image:url(img/logo.png);display:inline-block;width:16px;height:16px;background-repeat:no-repeat;background-size:100% 100%;vertical-align:middle;margin-right: 5px'></span>" + msg + "</tip></div>";
+            var maskPanelHtml = "<div class='msgtipbar animated flipInX' style='bottom:100px;font-weight:500;left: 0;position:fixed;text-align:center;width:100%;z-index:100000;opacity:0.9;transition:all .2s linear'><tip style='background: rgba(0,0,0,0.6) none repeat scroll 0 0;border-radius: 2px;color:#fff;display: inline-block;line-height:35px;padding: 0 10px;'><span style='background-image:url(/OrderPage/img/logo.png);display:inline-block;width:32px;height:32px;background-repeat:no-repeat;background-size:100% 100%;vertical-align:middle;margin-right: 5px'></span>" + msg + "</tip></div>";
             $("body").append(maskPanelHtml);
             $(".msgtipbar").show();
             $('.msgtipbar').css({'bottom':'150px'});

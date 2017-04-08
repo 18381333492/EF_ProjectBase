@@ -113,5 +113,8 @@
     <Property Name="dPayTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="sPhone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="bIsTip" Type="Boolean" Nullable="false" />
+    <Property Name="dTipTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dSinglePrices" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
   </EntityType>
 </Schema>

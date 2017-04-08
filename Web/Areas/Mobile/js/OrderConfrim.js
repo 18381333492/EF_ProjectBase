@@ -19,7 +19,9 @@ function orderConfrim() {
         //商品规格
         sGoodsInfo: '',              
         //购买数量
-        iGoodsCount: 0,             
+        iGoodsCount: 0,
+        //商品单价
+        dSinglePrices:0,
         //总价
         dTotalPrices: 0,           
         //实际支付价格

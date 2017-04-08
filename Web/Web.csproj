@@ -654,6 +654,7 @@
     <Content Include="HandleProgram\PictureUpload.ashx" />
     <Content Include="Html\Shoes\146.html" />
     <Content Include="OrderPage\img\headerSearchLogo.png" />
+    <Content Include="OrderPage\img\logo.png" />
     <Content Include="OrderPage\MyOrder.html" />
     <Content Include="OrderPage\css\font-awesome.min.css" />
     <Content Include="OrderPage\css\weui.min.css" />
@@ -670,6 +671,8 @@
     <Content Include="Areas\Admin\Views\GoodsComment\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\GoodsComment\Detail.cshtml" />
     <Content Include="Areas\Mobile\Views\Orders\Detail.cshtml" />
+    <Content Include="Areas\Mobile\Views\Orders\Comment.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Detail.cshtml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="OrderPage\img\loading.gif" />
     <Content Include="OrderPage\Order.html" />
@@ -685,7 +688,7 @@
     <Content Include="OrderPage\img\i-index.png" />
     <Content Include="OrderPage\img\icon_nav_city.png" />
     <Content Include="OrderPage\img\location-border1.png" />
-    <Content Include="OrderPage\img\logo.png" />
+    <Content Include="OrderPage\img\logo1.png" />
     <Content Include="OrderPage\img\pay-bg.png" />
     <Content Include="OrderPage\img\personal-bg.png" />
     <Content Include="OrderPage\img\slice\i-check.png" />

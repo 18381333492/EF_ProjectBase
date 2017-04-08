@@ -20,6 +20,16 @@ namespace Web.Areas.Admin.Controllers
         }
 
         /// <summary>
+        /// 订单详情
+        /// </summary>
+        /// <param name="sOrderId"></param>
+        /// <returns></returns>
+        public ActionResult Detail(Guid sOrderId)
+        {
+            return View(_server.Get(sOrderId));
+        }
+
+        /// <summary>
         /// 获取订单数据列表
         /// </summary>
         /// <param name="Info"></param>

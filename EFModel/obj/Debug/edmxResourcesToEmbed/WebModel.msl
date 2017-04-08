@@ -92,6 +92,9 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="EF_ProjectBaseModel.Orders">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="dSinglePrices" ColumnName="dSinglePrices" />
+          <ScalarProperty Name="dTipTime" ColumnName="dTipTime" />
+          <ScalarProperty Name="bIsTip" ColumnName="bIsTip" />
           <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
           <ScalarProperty Name="sPhone" ColumnName="sPhone" />
           <ScalarProperty Name="dPayTime" ColumnName="dPayTime" />

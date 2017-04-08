@@ -33,9 +33,18 @@ namespace Web.Areas.Mobile.Controllers
         /// </summary>
         /// <param name="sOrderId"></param>
         /// <returns></returns>
-        public ActionResult Detail()
+        public ActionResult Detail(Guid sOrderId)
         {
-            return View();
+            return View(_server.Get(sOrderId));
+        }
+
+        /// <summary>
+        /// 商品评论视图
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Comment(Guid sOrderId)
+        {
+            return View(_server.Get(sOrderId));
         }
 
         /// <summary>
@@ -51,15 +60,6 @@ namespace Web.Areas.Mobile.Controllers
         public ActionResult List(PageInfo Info, string sPhone, int iState = -1)
         {
             return Content(_server.GetListByPhone(Info, sPhone, iState));
-        }
-
-        /// <summary>
-        /// 检查订单状态
-        /// </summary>
-        /// <param name="sOrderId"></param>
-        public void CheckOrderState(Guid sOrderId)
-        {
-            
         }
 
         /// <summary>
@@ -87,6 +87,26 @@ namespace Web.Areas.Mobile.Controllers
                 result.info = "亲,该商品信息有误,无法购买!";
         }
 
+
+        /// <summary>
+        /// 订单支付
+        /// </summary>
+        /// <param name="sOrderId"></param>
+        public void Pay(Guid sOrderId)
+        {
+            var order = new Orders();
+            if (_server.CheckOrderState(sOrderId,out order))
+            {
+                string url = PayHelper.sGetPayUrl(order.sOrderNo, order.sGoodName, order.dPrices.ToString(), "怡佳之城订单");
+                result.data = url;
+                result.success = true;
+            }
+            else
+                result.info = "该订单已支付过,不能再次发起支付!";
+        }
+
+
+
         /// <summary>
         /// 取消订单
         /// </summary>
@@ -107,7 +127,14 @@ namespace Web.Areas.Mobile.Controllers
         /// <param name="sOrderId"></param>
         public void OrderTip(Guid sOrderId)
         {
-
+            var res = _server.TipOrder(sOrderId);
+            if (res > 0)
+            {
+                result.success = true;
+                result.info = "提醒成功!";
+                if (res == 2)
+                    result.info = "一天只能提醒卖家发货一次!";
+            }
         }
 
 

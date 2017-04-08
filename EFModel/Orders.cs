@@ -32,5 +32,8 @@ namespace EFModel
         public System.DateTime dPayTime { get; set; }
         public string sPhone { get; set; }
         public bool bIsDeleted { get; set; }
+        public bool bIsTip { get; set; }
+        public System.DateTime dTipTime { get; set; }
+        public decimal dSinglePrices { get; set; }
     }
 }

@@ -100,6 +100,7 @@
             <a class="public-button m-t-10" id="js_sure">确定</a>
         </div>
     </div>
+
     <footer class="t-bg-ff t-h  t-footer">
         <div class="t-balance-Box t-p-l t-pay-btn flex-wrap">
             <div class="t-footer-money">
@@ -208,11 +209,17 @@
 
         //事件的绑定
         function bingEvent() {
+            //城市控件的绑定
+            var address = client.localStorage.getStorage("receiver_address");//收货地址
+            if (address) {
+                $("#area").citySelect({ type: 2, prov: address.prov, city: address.city, dist: address.dist });
+            }
+            else
+                $("#area").citySelect({ type: 2 });
+
             $('#js_sure').on("click", selectAddress);
 
             $('#OrderConfrim').on("click", commitOrder);
-
-            $("#area").citySelect({ type: 2 });
 
             Mobilebone.callback = function (page_in, page_out) {
                 var id_in = page_in.id;
@@ -228,7 +235,7 @@
                         $('.sPhone').val(address.sPhone);
                         $('.addressDetail').val(address.addressDetail);
 
-                        //城市选择控件的赋值    
+                        //城市选择控件的赋值   
                         $('.prov').val(address.prov);
                         $('.city').val(address.city);
                         $('.dist').val(address.dist);

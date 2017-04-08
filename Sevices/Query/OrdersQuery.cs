@@ -24,7 +24,7 @@ namespace Sevices
         public string GetList(PageInfo Info, string Sta, string End, string searchText, int iState)
         {
             StringBuilder sSql = new StringBuilder();
-            sSql.Append("SELECT * FROM [Orders] WHERE bIsDeleted=0");
+            sSql.Append("SELECT * FROM [Orders] WHERE 1=1");
 
             //条件查询
             if (iState > -1)
@@ -74,6 +74,16 @@ namespace Sevices
             Info.order = OrderType.DESC;
             return query.QueryPage(sSql.ToString(), Info, null);
 
+        }
+
+        /// <summary>
+        /// 获取订单实体对象
+        /// </summary>
+        /// <param name="sOrderId"></param>
+        /// <returns></returns>
+        public Orders Get(Guid sOrderId)
+        {
+            return query.db.Orders.Find(sOrderId);
         }
     }
 }

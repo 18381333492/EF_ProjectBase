@@ -33,6 +33,19 @@ namespace Sevices
             return excute.SaveChange();
         }
 
+
+        /// <summary>
+        /// 检查订单状态是否能发起支付
+        /// </summary>
+        /// <param name="sOrderId"></param>
+        /// <returns></returns>
+        public bool CheckOrderState(Guid sOrderId,out Orders order)
+        {
+            order = excute.db.Orders.Find(sOrderId);
+            return excute.db.Orders.Any(m => m.ID == sOrderId && m.iState == 0);
+        }
+
+
         /// <summary>
         /// 根据ID修改订单状态
         /// </summary>
@@ -55,6 +68,35 @@ namespace Sevices
             var order = excute.db.Orders.Find(sOrderId);
             order.bIsDeleted = true;
             return excute.SaveChange();
+        }
+
+        /// <summary>
+        /// 提醒卖家发货
+        /// </summary>
+        /// <param name="sOrderId"></param>
+        /// <returns></returns>
+        public int TipOrder(Guid sOrderId)
+        {
+            var order = excute.db.Orders.Find(sOrderId);
+            if (!order.bIsTip)
+            {
+                order.bIsTip = true;
+                order.dTipTime = DateTime.Now;
+                return excute.SaveChange();
+            }
+            else
+            {//提醒过
+                var Timesapn=DateTime.Now.Subtract(order.dTipTime);
+                if (Timesapn.Days < 1)
+                {
+                    return 2;//一天只能提醒卖家发货一次
+                }
+                else
+                {
+                    order.dTipTime = DateTime.Now;
+                    return excute.SaveChange();
+                }
+            }
         }
 
         

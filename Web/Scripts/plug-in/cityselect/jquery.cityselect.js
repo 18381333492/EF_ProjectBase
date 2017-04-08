@@ -203,6 +203,7 @@ ziti:是否是自提(默认false)
 
             // 选择省份时发生事件
             prov_obj.bind("change", function () {
+                debugger
                 id_obj.val($(this).find(":selected").attr("data-id"));
                 cityStart();
                 if (settings.ziti) {//是自提需要去获取自提地址

@@ -38,6 +38,23 @@ namespace Sevices
             return excute.SaveChange();
         }
 
+
+        /// <summary>
+        /// 用户评价
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="sOrderId"></param>
+        /// <returns></returns>
+        public int ClientAddComment(GoodsComment item,Guid sOrderId)
+        {
+            var order = excute.db.Orders.Find(sOrderId);
+            order.iState = 4;//已完成
+            item.ID = Guid.NewGuid();
+            item.dCommentTime = DateTime.Now;
+            excute.Add<GoodsComment>(item);
+            return excute.SaveChange();
+        }
+
         ///// <summary>
         ///// 上下架商品
         ///// </summary>

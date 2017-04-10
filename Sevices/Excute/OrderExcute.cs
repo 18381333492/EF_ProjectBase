@@ -105,9 +105,9 @@ namespace Sevices
         /// </summary>
         /// <param name="sOrderNO"></param>
         /// <returns></returns>
-        public int AlterStateByOrderNo(string sOrderNO)
+        public int AlterStateByOrderNo(string sOrderNO,out Orders order)
         {
-            var order = excute.db.Orders.FirstOrDefault(m=>m.sOrderNo== sOrderNO);
+             order = excute.db.Orders.FirstOrDefault(m=>m.sOrderNo== sOrderNO);
             if (order.iState == 0)
             {
                 order.iState = 1;//修改为已支付

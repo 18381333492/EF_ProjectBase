@@ -13,7 +13,7 @@ namespace Web.Areas.Mobile.Controllers
     /// <summary>
     /// 商品评论相关
     /// </summary>
-    public class GoodsCommentController : MobileBaseController<OrdersService>
+    public class GoodsCommentController : MobileBaseController<GoodsCommentService>
     {
         //
         // GET: /Mobile/Order/
@@ -23,12 +23,12 @@ namespace Web.Areas.Mobile.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public void AddGoodsComment(Orders order)
+        public void AddGoodsComment(GoodsComment item, Guid  sOrderId)
         {
-            if (_server.Add(order) > 0)
+            if (_server.ClientAddComment(item, sOrderId) > 0)
             {
                 result.success = true;
-                result.info = "下单成功!";
+                result.info = "评论成功!";
             }
             else
                 result.info = "操作失败!";

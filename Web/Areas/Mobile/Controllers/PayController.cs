@@ -1,4 +1,5 @@
-﻿using Sevices;
+﻿using EFModel;
+using Sevices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,9 +48,13 @@ namespace Web.Areas.Mobile.Controllers
                 if (State&&trade_status=="TRADE_SUCCESS")
                 {//支付成功处理业务逻辑
                     //修改订单状态
-                    if (_server.AlterStateByOrderNo(out_order_no) > 0)
+                    var order = new Orders();
+                    if (_server.AlterStateByOrderNo(out_order_no,out order) > 0)
                     {//业务逻辑修改改成功
                         meg = "验证成功";
+
+                        //购买成功发送给用户短信
+
                     }  
                 }
                 else

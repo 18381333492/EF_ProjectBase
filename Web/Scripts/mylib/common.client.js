@@ -14,10 +14,9 @@ window.client = {
 
 window.dialog = function () {
 
-    //创建背景DIV(创建遮罩层)
-    var divBackground = document.createElement("div");
-    divBackground.style.cssText = "position:fixed;top: 0;left:0;width: 100%;height: 100%;background: rgba(0,0,0,0.5);z-index:9999999999;";
-
+    ////创建背景DIV(创建遮罩层)
+    //var divBackground = document.createElement("div");
+    //divBackground.style.cssText = "position:fixed;top: 0;left:0;width: 100%;height: 100%;background: rgba(0,0,0,0.5);z-index:9999999999;";
 
     //加载等待提示框   
     function loading(msg) {
@@ -64,6 +63,9 @@ window.dialog = function () {
     * @param {Function} callback 可选：按了确定后，调了确定方法后的回调事件*/
     function confrim(msg, okOptopn, canclOption, callback) {
 
+        //创建背景DIV(创建遮罩层)
+        var divBackground = document.createElement("div");
+        divBackground.style.cssText = "position:fixed;top: 0;left:0;width: 100%;height: 100%;background: rgba(0,0,0,0.5);z-index:9999999999;";
         //创建内容DIV
         var divContent = document.createElement("div");
 
@@ -117,6 +119,7 @@ window.dialog = function () {
             if (callback) callback();
             document.body.removeChild(divBackground);
         };
+
         ul.appendChild(li1);
         ul.appendChild(li2);
         outSpan.appendChild(iconSpan);

@@ -28,6 +28,7 @@ namespace Sevices
             item.sOrderNo = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             item.dBookTime = DateTime.Now;
             item.dPayTime = DateTime.Now;
+            item.dTipTime = DateTime.Now;//默认时间
             item.iState = 0;//待付款
             excute.Add<Orders>(item);
             return excute.SaveChange();

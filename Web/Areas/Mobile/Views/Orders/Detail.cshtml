@@ -20,7 +20,7 @@
 @using EFModel;
 @model Orders
 @{ 
-    string[] iStateName = { "付 款", "提醒卖家发货", "确认收货", "评 价" };
+    string[] iStateName = { "付 款", "提醒卖家发货", "确认收货", "评 价" ,"已完成"};
 }
 <body class="has-head t-p-b">
     <div class="main">
@@ -65,7 +65,7 @@
                     <div class="t-listing-right">
                         <h3>@Model.sGoodName</h3>
                         <p class="t-size">@Model.sGoodsInfo</p>
-                        <p class="t-listing-money">&yen; @Model.dTotalPrices</p>
+                        <p class="t-listing-money">&yen; @Model.dSinglePrices</p>
                         <span class="t-number">&times;@Model.iGoodsCount</span>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                 case 0: orderPay(sOrderId); break;
                 case 1: orderTip(sOrderId); break;
                 case 2: confrim(sOrderId, element); break;
-                case 3: break;
+                case 3: location.href = "/Mobile/Orders/Comment?sOrderId=" + sOrderId;break;
             }
         }
 
@@ -162,7 +162,9 @@
                                                  "sOrderId=" + $(element).attr("data-id"),
                                                  function (r) {
                                                      dialog.tip("取消成功");
-                                                     $(element).parents('.payment-Box').remove();
+                                                     setTimeout(function () {
+                                                         location.href = "/OrderPage/MyOrder.html";
+                                                     }, 1500);
                                                  })
                     }
                 });

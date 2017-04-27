@@ -48,11 +48,16 @@ namespace Sevices
         public int ClientAddComment(GoodsComment item,Guid sOrderId)
         {
             var order = excute.db.Orders.Find(sOrderId);
-            order.iState = 4;//已完成
-            item.ID = Guid.NewGuid();
-            item.dCommentTime = DateTime.Now;
-            excute.Add<GoodsComment>(item);
-            return excute.SaveChange();
+            if (order.iState == 3)
+            {
+                order.iState = 4;//已完成
+                item.ID = Guid.NewGuid();
+                item.dCommentTime = DateTime.Now;
+                excute.Add<GoodsComment>(item);
+                return excute.SaveChange();
+            }
+            else
+                return -2;//已经评价过
         }
 
         ///// <summary>

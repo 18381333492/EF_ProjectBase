@@ -149,5 +149,28 @@ namespace Web.Areas.Mobile.Controllers
             else
                 result.info = "操作失败!";
         }
+
+
+        /// <summary>
+        /// 会员评价商品
+        /// </summary>
+        /// <param name="comment"></param>
+        /// <param name="sOrderId"></param>
+        public void GoodsComment(GoodsComment comment,Guid sOrderId)
+        {
+            var domin = Resolve<GoodsCommentService>();
+            var res = domin.ClientAddComment(comment, sOrderId);
+            if (res > 0)
+            {
+                result.success = true;
+            }
+            else
+            {
+                if (res == -2) result.info = "该商品已评价过!";
+                result.info = "评价失败!";
+            }
+
+        }
+         
     }
 }

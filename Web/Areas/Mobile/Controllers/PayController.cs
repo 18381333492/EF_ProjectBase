@@ -2,10 +2,14 @@
 using Sevices;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Web.App_Start;
+using Common;
 
 namespace Web.Areas.Mobile.Controllers
 {
@@ -51,10 +55,9 @@ namespace Web.Areas.Mobile.Controllers
                     var order = new Orders();
                     if (_server.AlterStateByOrderNo(out_order_no,out order) > 0)
                     {//业务逻辑修改改成功
-                        meg = "验证成功";
-
+                        meg = "SUCCESS";
+                        // SendMessage(order.sPhone, string.Format(C_Config.ReadAppSetting("MsgContent"), order.sGoodName));
                         //购买成功发送给用户短信
-
                     }  
                 }
                 else
@@ -103,6 +106,41 @@ namespace Web.Areas.Mobile.Controllers
             else
                 return false;
 
+        }
+
+        /// <summary>
+        /// 发送手机验证码
+        /// </summary>
+        /// <param name="mobileNumber"></param>
+        /// <param name="MsgContent"></param>
+        /// <returns></returns>
+        public bool SendMessage(string mobileNumber, string MsgContent)
+        {
+            bool bResult = false;
+            string postStrTpl = "un={0}&pw={1}&phone={2}&msg={3}&rd=1";
+            UTF8Encoding encoding = new UTF8Encoding();
+            string sMsgAccount = C_Config.ReadAppSetting("account");
+            string sMsgPassword = C_Config.ReadAppSetting("password");
+            string postUrl = C_Config.ReadAppSetting("postUrl");
+            byte[] postData = encoding.GetBytes(string.Format(postStrTpl, sMsgAccount, sMsgPassword, mobileNumber, MsgContent));
+            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(postUrl);
+            myRequest.Method = "POST";
+            myRequest.ContentType = "application/x-www-form-urlencoded";
+            myRequest.ContentLength = postData.Length;
+            Stream newStream = myRequest.GetRequestStream();
+
+            newStream.Write(postData, 0, postData.Length);
+            newStream.Flush();
+            newStream.Close();
+
+            HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse();
+            StreamReader sr = new StreamReader(myResponse.GetResponseStream());
+            string res=sr.ReadToEnd();
+            if (myResponse.StatusCode == HttpStatusCode.OK)
+            {
+                bResult = true;
+            }
+            return bResult;
         }
     }
 }

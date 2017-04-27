@@ -23,7 +23,7 @@
         }
     </style>
 </head>
-<body class="has-head t-p-b">
+<body class="has-head">
     <header>
         <div class="head-wrap clearfix">
             <i></i>
@@ -46,14 +46,14 @@
             </section>
             <div id="orderlist">
                 <!--<div class="payment-Box">
-                    <section>
-                        <div class="t-general-listing t-bg-ff t-m-t t-b-t-c t-b-c">
-                            <a href="javascript:;" class="t-active">
-                                <h3 class="t-listing-title t-b-c t-c-82">
-                                    <span> 订单号：1234567890123</span>
-                                    <span class="pull-right t-c">待付款</span>
-                                </h3>
-                                <div class="t-listing-Box clearfix t-order-bg t-b-c">
+                    <section style="height:50px;background-color:white">-->
+                        <!--<div class="t-general-listing t-bg-ff t-m-t t-b-t-c t-b-c">-->
+                            <!--<a href="javascript:;" class="t-active">-->
+                                <!--<h3 class="t-listing-title t-b-c t-c-82">-->
+                                    <!--<span> 订单号：1234567890123</span>
+                                    <span class="pull-right t-c">待付款</span>-->
+                                <!--</h3>-->
+                                <!--<div class="t-listing-Box clearfix t-order-bg t-b-c">
                                     <i class="t-picture" style="background-image: url('img/t-icon-picture.png')"></i>
                                     <div class="t-listing-right">
                                         <h3>钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒钻戒</h3>
@@ -61,17 +61,20 @@
                                         <p class="t-listing-money">&yen; 119.00</p>
                                         <span class="t-number">&times;1</span>
                                     </div>
-                                </div>
-                            </a>
-                            <div class="t-payment-btn clearfix">
+                                </div>-->
+                            <!--</a>-->
+                            <!--<div class="t-payment-btn clearfix">
                                 <span class="t-total">合计：<span class="t-c">&yen; 119.00</span></span>
                                 <a href="javascript:;" class="t-payment">付款</a>
                                 <a href="javascript:;" class="t-active">取消订单</a>
-                            </div>
-                        </div>
-                    </section>
+                            </div>-->
+                        <!--</div>-->
+                    <!--</section>
                 </div>-->
             </div>
+            <p style="height:40px;background-color:white;text-align:center;line-height:40px;display:none">
+            <img src="img/loading.gif" style="vertical-align: middle; margin-right: 5px;display: inline-block" /> 
+             数据在加载中...</p>
         </div>
 </body>
 </html>
@@ -92,7 +95,7 @@
         var defaults = {
             url: '/Mobile/Orders/List',//请求的路径
             page: 1,//页面
-            rows: 10,//每页的数量
+            rows: 3,//每页的数量
             state: true,//是否请求的标识
             sPhone: '1838133492',//要查询的订单的号码,
             iState:-1  //订单默认状态
@@ -159,14 +162,14 @@
                                                 html.push('</section>');
                                                 html.push('</div>');
                                             });
+                                            $('#orderlist').next().hide();
                                             $('#orderlist').append(html.join(''));
-                                            defaults.state = res.rows.length < 10 ? false : true;
+                                            defaults.state = res.total <= defaults.rows*defaults.page? false : true;
                                             //绑定按钮事件
                                             $('.cancel').on("click", function () { cancelOrder($(this)) });
                                             $('.operate').on("click", function () { operateOrder($(this)) });
                                         }
                                         dialog.closeLoading();//关闭loading效果
-                                        $('.moreData').remove();
                                         //没有数据的提示
                                         if ($('#orderlist div').length == 0) {
                                             $('#orderlist').html("<p style='text-align:center'>暂时没有数据!</p>");
@@ -256,7 +259,7 @@
             $(window).scroll(function () {
                 if ($(window).scrollTop() == $(document).height() - $(window).height()) {
                     if (defaults.state) {
-                        $('#orderlist').append("<p class='moreData'>数据在加载中!</p>");
+                        $('#orderlist').next().show();
                         defaults.page = defaults.page + 1;
                         loadData();
                     }

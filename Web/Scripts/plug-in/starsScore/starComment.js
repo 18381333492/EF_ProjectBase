@@ -13,32 +13,38 @@ function starComment() {
     * id(标签ID) 
     * number(星星个数) 
     */
-    function starCreate(id, number) {
-
+    function starCreate(id, number,show) {
+       
         var element = document.getElementById(id);
         var score = $(element).next().val();
         $.fn.raty.defaults.path = '/Scripts/plug-in/starsScore/images';
 
-        $(element).raty({
+        var params = {
             number: number,//总星星设置	
             score: score,//初始值设置
             targetType: 'number',//类型选择，number是数字值，hint，是设置的数组值
             //path: 'images',
-            hints: ['差', '一般', '好'],
+            hints: ['差', '一般', '好', "满意", "非常喜欢"],
             cancelOff: 'cancel-off-big.png',
             cancelOn: 'cancel-on-big.png',
             size: 24,
             starHalf: 'star-half-big.png',
             starOff: 'star-off-big.png',
             starOn: 'star-on-big.png',
-            //target: '#function-hint',
+            //target: showId,
             //cancel: false,
             //targetKeep: true,
             //targetText: '请选择评分',
             click: function (score, evt) {
                 $(element).next().val(score);
             }
-        });
+        }
+        if (show == true) {
+            params.target = "#" + id + "-hint";
+            params.targetType = "hint";
+        }
+
+        $(element).raty(params);
 
     }
       

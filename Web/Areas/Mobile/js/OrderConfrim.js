@@ -77,6 +77,7 @@ function orderConfrim() {
                 "/Mobile/Orders/BookOrder",
                 orders,
                 function (r) {
+                    window.location.hostname = "mall.ltgirl.com";
                     location.href =r.data;
                 });
         }

@@ -73,11 +73,12 @@ function orderConfrim() {
     //订单提交
     function orderCommit() {
         if (checkParams()) {
+            dialog.loading("亲,订单生成中...");
             client.ajax.ajaxRequest(
                 "/Mobile/Orders/BookOrder",
                 orders,
                 function (r) {
-                    window.location.hostname = "mall.ltgirl.com";
+                  //window.location.hostname = "mall.ltgirl.com";
                     location.href =r.data;
                 });
         }

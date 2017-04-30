@@ -1,0 +1,4 @@
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Tool\bin\Release\WeiXin.Tool.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Tool\bin\Release\WeiXin.Tool.pdb
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Tool\obj\Release\WeiXin.Tool.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Tool\obj\Release\WeiXin.Tool.pdb

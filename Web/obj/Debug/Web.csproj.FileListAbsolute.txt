@@ -114,3 +114,6 @@ E:\GitHub源代码管理\EF_ProjectBase\Web\bin\WeiXin.Base.dll
 E:\GitHub源代码管理\EF_ProjectBase\Web\bin\WeiXin.Tool.dll
 E:\GitHub源代码管理\EF_ProjectBase\Web\bin\WeiXin.Base.pdb
 E:\GitHub源代码管理\EF_ProjectBase\Web\bin\WeiXin.Tool.pdb
+E:\GitHub源代码管理\EF_ProjectBase\Web\bin\EntityFramework.SqlServer.dll
+E:\GitHub源代码管理\EF_ProjectBase\Web\bin\EntityFramework.SqlServer.xml
+E:\GitHub源代码管理\EF_ProjectBase\Web\bin\zh-Hans\EntityFramework.SqlServer.resources.dll

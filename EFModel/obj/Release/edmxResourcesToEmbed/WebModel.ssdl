@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EF_ProjectBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Button">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sButtonName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sToMenuId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sButtonIcon" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sButtonEn_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="iOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Goods">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sGoodsName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sGoodsPicture" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+    <Property Name="bShelves" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GoodsComment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sCommentContent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="dCommentTime" Type="datetime" Nullable="false" />
+    <Property Name="sCommentPerson" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="iScore" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sMenuName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sMenuUrl" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sParentMenuId" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sMenuIcon" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+    <Property Name="iOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OperateLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sUserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+    <Property Name="sIpAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sContent" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sOrderNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sGoodName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sGoodNo" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sGoodsPicture" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sGoodsInfo" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="iGoodsCount" Type="int" Nullable="false" />
+    <Property Name="dSinglePrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="dPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="dTotalPrices" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="sActivity" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sOrderRemark" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="sReceiver" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="iState" Type="int" Nullable="false" />
+    <Property Name="dBookTime" Type="datetime" Nullable="false" />
+    <Property Name="dPayTime" Type="datetime" Nullable="false" />
+    <Property Name="sPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+    <Property Name="bIsTip" Type="bit" Nullable="false" />
+    <Property Name="dTipTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sRoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sRolePower" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="sInsertTime" Type="datetime" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+    <Property Name="IsDeveloper" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="sUserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sPassWord" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="sPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="bState" Type="bit" Nullable="false" />
+    <Property Name="sRoleID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+    <Property Name="dInsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="EF_ProjectBaseModelStoreContainer">
+    <EntitySet Name="Button" EntityType="Self.Button" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GoodsComment" EntityType="Self.GoodsComment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OperateLog" EntityType="Self.OperateLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

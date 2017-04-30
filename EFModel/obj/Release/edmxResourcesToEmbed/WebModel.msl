@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EF_ProjectBaseModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="sUserName" ColumnName="sUserName" />
+          <ScalarProperty Name="sPassWord" ColumnName="sPassWord" />
+          <ScalarProperty Name="sPhone" ColumnName="sPhone" />
+          <ScalarProperty Name="bState" ColumnName="bState" />
+          <ScalarProperty Name="sRoleID" ColumnName="sRoleID" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+          <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.Menus">
+        <MappingFragment StoreEntitySet="Menus">
+          <ScalarProperty Name="iOrder" ColumnName="iOrder" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+          <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+          <ScalarProperty Name="sMenuIcon" ColumnName="sMenuIcon" />
+          <ScalarProperty Name="sParentMenuId" ColumnName="sParentMenuId" />
+          <ScalarProperty Name="sMenuUrl" ColumnName="sMenuUrl" />
+          <ScalarProperty Name="sMenuName" ColumnName="sMenuName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Button">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.Button">
+        <MappingFragment StoreEntitySet="Button">
+          <ScalarProperty Name="iOrder" ColumnName="iOrder" />
+          <ScalarProperty Name="sButtonEn_Name" ColumnName="sButtonEn_Name" />
+          <ScalarProperty Name="sButtonIcon" ColumnName="sButtonIcon" />
+          <ScalarProperty Name="sToMenuId" ColumnName="sToMenuId" />
+          <ScalarProperty Name="sButtonName" ColumnName="sButtonName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="IsDeveloper" ColumnName="IsDeveloper" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+          <ScalarProperty Name="sInsertTime" ColumnName="sInsertTime" />
+          <ScalarProperty Name="sRolePower" ColumnName="sRolePower" />
+          <ScalarProperty Name="sRoleName" ColumnName="sRoleName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OperateLog">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.OperateLog">
+        <MappingFragment StoreEntitySet="OperateLog">
+          <ScalarProperty Name="sContent" ColumnName="sContent" />
+          <ScalarProperty Name="sCity" ColumnName="sCity" />
+          <ScalarProperty Name="sIpAddress" ColumnName="sIpAddress" />
+          <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+          <ScalarProperty Name="sUserName" ColumnName="sUserName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goods">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.Goods">
+        <MappingFragment StoreEntitySet="Goods">
+          <ScalarProperty Name="bShelves" ColumnName="bShelves" />
+          <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+          <ScalarProperty Name="sGoodsPicture" ColumnName="sGoodsPicture" />
+          <ScalarProperty Name="sGoodNo" ColumnName="sGoodNo" />
+          <ScalarProperty Name="sGoodsName" ColumnName="sGoodsName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoodsComment">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.GoodsComment">
+        <MappingFragment StoreEntitySet="GoodsComment">
+          <ScalarProperty Name="iScore" ColumnName="iScore" />
+          <ScalarProperty Name="sCommentPerson" ColumnName="sCommentPerson" />
+          <ScalarProperty Name="dCommentTime" ColumnName="dCommentTime" />
+          <ScalarProperty Name="sGoodNo" ColumnName="sGoodNo" />
+          <ScalarProperty Name="sCommentContent" ColumnName="sCommentContent" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="EF_ProjectBaseModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="dSinglePrices" ColumnName="dSinglePrices" />
+          <ScalarProperty Name="dTipTime" ColumnName="dTipTime" />
+          <ScalarProperty Name="bIsTip" ColumnName="bIsTip" />
+          <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+          <ScalarProperty Name="sPhone" ColumnName="sPhone" />
+          <ScalarProperty Name="dPayTime" ColumnName="dPayTime" />
+          <ScalarProperty Name="dBookTime" ColumnName="dBookTime" />
+          <ScalarProperty Name="iState" ColumnName="iState" />
+          <ScalarProperty Name="sAddress" ColumnName="sAddress" />
+          <ScalarProperty Name="sReceiver" ColumnName="sReceiver" />
+          <ScalarProperty Name="sOrderRemark" ColumnName="sOrderRemark" />
+          <ScalarProperty Name="sActivity" ColumnName="sActivity" />
+          <ScalarProperty Name="dTotalPrices" ColumnName="dTotalPrices" />
+          <ScalarProperty Name="dPrices" ColumnName="dPrices" />
+          <ScalarProperty Name="iGoodsCount" ColumnName="iGoodsCount" />
+          <ScalarProperty Name="sGoodsInfo" ColumnName="sGoodsInfo" />
+          <ScalarProperty Name="sGoodsPicture" ColumnName="sGoodsPicture" />
+          <ScalarProperty Name="sGoodNo" ColumnName="sGoodNo" />
+          <ScalarProperty Name="sGoodName" ColumnName="sGoodName" />
+          <ScalarProperty Name="sOrderNo" ColumnName="sOrderNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

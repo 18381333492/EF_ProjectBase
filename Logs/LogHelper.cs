@@ -49,16 +49,19 @@ namespace Logs
         }
 
 
-
         /// <summary>
         /// 写错误日志
         /// </summary>
         public static void ErrorLog(Exception e)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory+
-                            "ErrorLogs\\Error\\" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
+            string sDirectoryPath = AppDomain.CurrentDomain.BaseDirectory +"ErrorLogs\\Error\\";//文件夹路径
+            if (!Directory.Exists(sDirectoryPath))
+            {//检查文件夹是否存在
+                Directory.CreateDirectory(sDirectoryPath);
+            }
+            string path = sDirectoryPath + DateTime.Now.ToString("yyyyMMdd") + ".txt";
             if (!File.Exists(path))
-            {
+            {//检查文件是否存在
                 File.Create(path).Close();
             }
             using (StreamWriter w = File.AppendText(path))

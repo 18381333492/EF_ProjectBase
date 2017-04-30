@@ -1,0 +1,11 @@
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Release\WeiXin.Base.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Release\WeiXin.Base.pdb
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Release\Common.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Release\WeiXin.Tool.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Release\Newtonsoft.Json.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Release\Common.pdb
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Release\WeiXin.Tool.pdb
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\bin\Release\Newtonsoft.Json.xml
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\obj\Release\WeiXin.Base.csprojResolveAssemblyReference.cache
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\obj\Release\WeiXin.Base.dll
+E:\GitHub源代码管理\EF_ProjectBase\WeiXin.Base\obj\Release\WeiXin.Base.pdb

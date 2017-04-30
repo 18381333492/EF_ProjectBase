@@ -21,7 +21,7 @@ namespace Web.Areas.Mobile.Controllers
         //
         // GET: /Mobile/Pay/
 
-        public ActionResult Index()
+        public ActionResult SuccessTip()
         {
             return View();
         }

@@ -46,6 +46,22 @@ namespace Sevices
 
 
         /// <summary>
+        /// 根据商品编号获取商品评论
+        /// </summary>
+        /// <param name="Info"></param>
+        /// <param name="sGoodNo"></param>
+        /// <returns></returns>
+        public string GetListBysGoodNo(PageInfo Info, string sGoodNo)
+        {
+            StringBuilder sSql = new StringBuilder();
+            sSql.AppendFormat("SELECT * FROM [GoodsComment] WHERE sGoodNo='{0}'",sGoodNo);
+            Info.sort = "dCommentTime";
+            Info.order = OrderType.DESC;
+            return query.QueryPage(sSql.ToString(), Info, null);
+        }
+
+
+        /// <summary>
         /// 根据商品评论主键ID获取商品评论
         /// </summary>
         /// <param name="sGoodsId"></param>

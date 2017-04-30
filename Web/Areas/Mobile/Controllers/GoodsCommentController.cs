@@ -1,4 +1,5 @@
 ﻿using EFModel;
+using EFModel.MyModels;
 using Sevices;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,20 @@ namespace Web.Areas.Mobile.Controllers
     {
         //
         // GET: /Mobile/Order/
+
+
+
+        /// <summary>
+        /// 分页获取商品评论数据
+        /// </summary>
+        /// <param name="Info"></param>
+        /// <param name="sGoodNo"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult GetList(PageInfo Info, string sGoodNo)
+        {
+            return Content(_server.GetListBysGoodNo(Info,sGoodNo));
+        }
 
         /// <summary>
         /// 添加商品评论

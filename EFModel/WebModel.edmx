@@ -87,6 +87,8 @@
           <Property Name="bIsDeleted" Type="bit" Nullable="false" />
           <Property Name="bIsTip" Type="bit" Nullable="false" />
           <Property Name="dTipTime" Type="datetime" Nullable="false" />
+          <Property Name="sWuliuCompany" Type="nvarchar" MaxLength="50" />
+          <Property Name="sWuliuNumber" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -242,6 +244,8 @@
           <Property Name="bIsTip" Type="Boolean" Nullable="false" />
           <Property Name="dTipTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dSinglePrices" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="sWuliuCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sWuliuNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -340,6 +344,8 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="EF_ProjectBaseModel.Orders">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="sWuliuNumber" ColumnName="sWuliuNumber" />
+                <ScalarProperty Name="sWuliuCompany" ColumnName="sWuliuCompany" />
                 <ScalarProperty Name="dSinglePrices" ColumnName="dSinglePrices" />
                 <ScalarProperty Name="dTipTime" ColumnName="dTipTime" />
                 <ScalarProperty Name="bIsTip" ColumnName="bIsTip" />

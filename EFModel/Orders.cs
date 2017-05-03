@@ -35,5 +35,7 @@ namespace EFModel
         public bool bIsTip { get; set; }
         public System.DateTime dTipTime { get; set; }
         public decimal dSinglePrices { get; set; }
+        public string sWuliuCompany { get; set; }
+        public string sWuliuNumber { get; set; }
     }
 }

@@ -26,7 +26,7 @@ window.dialog = function () {
             });
         }
         else {
-            var win = "<div class='alert_box' style='position:fixed;z-index:1500;width:100%;opacity:1;height:100%;left:0;top:0px;background-color:rgba(68,68,68,0.4);transition:all 0.3s linear'><div class='content' style='width:250px;text-align:center;position:absolute;font-size:14px;left:50%;top:50%; transform:translateY(-50%) translateX(-50%);-webkit-transform:translateY(-50%) translateX(-50%);border-radius:10px'><P style='padding:20px 15px; line-height:25px; color:#fff;font-weight:600;font-size:14px'><span style='background-image:url(img/loading.gif);display:inline-block;width:17px;height:17px;background-repeat:no-repeat;background-size:100% 100%;vertical-align:middle;margin-right:10px'></span>" + msg + "<P><div><div>";
+            var win = "<div class='alert_box' style='position:fixed;z-index:1500;width:100%;opacity:1;height:100%;left:0;top:0px;background-color:rgba(68,68,68,0.4);transition:all 0.3s linear'><div class='content' style='width:250px;text-align:center;position:absolute;font-size:14px;left:50%;top:50%; transform:translateY(-50%) translateX(-50%);-webkit-transform:translateY(-50%) translateX(-50%);border-radius:10px'><P style='padding:20px 15px; line-height:25px; color:#fff;font-weight:600;font-size:14px'><span style='background-image:url(/OrderPage/img/loading.gif);display:inline-block;width:17px;height:17px;background-repeat:no-repeat;background-size:100% 100%;vertical-align:middle;margin-right:10px'></span>" + msg + "<P><div><div>";
             $("body").append(win);
             $("body").css({ 'position': 'fixed', 'width': '100%', 'height': '100%', 'top': '0', 'left': '0' });
         }
@@ -344,6 +344,7 @@ function ajax() {
                 if (type==false) {//是否加载数据列表类型 
                     if (r.success) {
                         callback(r);
+                      //  dialog.closeLoading();//关闭遮罩层
                     }
                     else {
                         if (er_callback) {

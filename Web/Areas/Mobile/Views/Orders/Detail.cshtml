@@ -45,6 +45,17 @@
             </div>
         </section>
         }
+        @if (Model.iState >= 2)
+        {
+        <section>
+            <div class="t-details-address t-bg-ff t-b-c">
+                <div class="t-address-one">
+                    <span class="t-details-title-one" style="line-height:1rem">物流信息：</span>
+                    <p class="t-f-12" style="line-height:0.65rem;padding:0.2rem 0.2rem 0.2rem 0">@Model.sWuliuCompany<br />快递单号：@Model.sWuliuNumber</p>
+                </div>
+            </div>
+        </section>
+        }
         <section>
             <div class="t-details-address t-bg-ff t-b-c">
                 <p class="clearfix">
@@ -111,7 +122,7 @@
 
         //订单的相关操作
         function operateOrder(element) {
-            //0-待支付 1-待发货 2-已收货 3-退货
+            //0-待支付 1-待发货 2-已收货 3-评价
             var sOrderId = $(element).attr("data-id");
             var iState = parseInt($(element).attr("data-iState"));//订单状态
             switch (iState) {
@@ -137,7 +148,7 @@
                                      "sOrderId=" + sOrderId,
                                       function (r) {
                                           dialog.tip("收货成功");
-                                          location.href = "评价页面";
+                                          location.href = "/Mobile/Orders/Comment?sOrderId=" + sOrderId;
                                       });
         }
 
@@ -148,7 +159,6 @@
                                     "sOrderId=" + sOrderId,
                                      function (r) {
                                          location.href = r.data;
-                                         dialog.closeLoading();
                                      });
         }
 

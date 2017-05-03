@@ -116,5 +116,7 @@
     <Property Name="bIsTip" Type="Boolean" Nullable="false" />
     <Property Name="dTipTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="dSinglePrices" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="sWuliuCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sWuliuNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

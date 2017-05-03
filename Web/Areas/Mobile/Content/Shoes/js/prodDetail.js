@@ -43,7 +43,7 @@ $(function(){
     //参数
 	var defaults = {
 	    page: 1,//页面
-	    rows: 1,//每页的数量
+	    rows:8,//每页的数量
 	    state: true,//是否请求的标识
 	    sGoodNo: $('#sGoodNo').val(),//商品的编号
 	};

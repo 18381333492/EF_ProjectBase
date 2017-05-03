@@ -91,7 +91,6 @@ void function () {
     */
     $.extend($.fn.datagrid.defaults, {
         pageSize: 20,
-      
     });
 
     //重写validatebox验证规则

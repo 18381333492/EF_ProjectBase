@@ -82,6 +82,8 @@
     <Property Name="bIsDeleted" Type="bit" Nullable="false" />
     <Property Name="bIsTip" Type="bit" Nullable="false" />
     <Property Name="dTipTime" Type="datetime" Nullable="false" />
+    <Property Name="sWuliuCompany" Type="nvarchar" MaxLength="50" />
+    <Property Name="sWuliuNumber" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Role">
     <Key>

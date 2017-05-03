@@ -8,12 +8,14 @@
         <div style="margin-bottom:5px;">
             <span>状态</span>
             <select class="easyui-combobox" name="iState" data-options="height:22,width:80">
-                <option>待付款</option>
-                <option>待发货</option>
-                <option>待收货</option>
-                <option>已完成</option>
-                <option>退货中</option>
-                <option>退货完成</option>
+                <option value="-1">请选择</option>
+                <option value="0">待付款</option>
+                <option value="1">待发货</option>
+                <option value="2">待收货</option>
+                <option value="3">待评价</option>
+                <option value="4">已完成</option>
+                <option value="5">已取消</option>
+                <option value="6">未取消</option>
             </select>
             <span>下单时间</span>
             <input  type="text" name="Sta" class="easyui-datebox" data-options="width:120,editable:false" >--<input name="End" type="text" class="easyui-datebox" data-options="width:120,editable:false">
@@ -71,9 +73,39 @@
             }
         }
 
+        /*!
+        * method:查看订单详情
+        * author:[汤台]
+        * version:[1.0.0]
+        */
         orders.DetailDialog = function (id) {
             f.detail("/Admin/Orders/Detail?sOrderId=" + id,
-                      "订单详情", 880, 400);
+                      "订单详情", 880, 430);
+        }
+
+        /*!
+         * method:添加订单物流信息
+         * author:[汤台]
+         * version:[1.0.0]
+         */
+        orders.AddWuliu = function () {
+            var select = orders.grid.datagrid('getSelections');
+            if (select.length == 1) {
+                var dialog = f.dialog(orders.route('Wuliu') + "?sOrderId=" + select[0].ID, '添加物流信息', function () {
+                    if ($(orders.form.add).form('validate')) {
+                        orders.button.disable();
+                        var data = $('#wuliu_form').serialize();
+                        f.post(orders.route('AddWuliu'), data, function (res) {
+                            f.alert(res.info);
+                            dialog.dialog('close');
+                            orders.grid.datagrid('reload');
+                        });
+                    }
+                }, 400,250 );
+            }
+            else {
+                f.alert("请选择一条数据进行操作!");
+            }
         }
 
    
@@ -84,6 +116,7 @@
         */
         $(orders.toolbar)
                 .on('click', 'a[data-name=orders_alter]', orders.Alter)
+                .on('click', 'a[data-name=orders_wuliu]', orders.AddWuliu)
                 .on('click', 'a[data-name=orders_search]', orders.Search)
 
 
@@ -109,13 +142,13 @@
                 { field: '', checkbox: true, },
                 { field: 'sOrderNo', title: '订单编号', align: 'center', width: 150 },
                 { field: 'sReceiver', title: '收件人', align: 'center', width: 100 },
-                { field: 'sPhone', title: '电话号码', align: 'center', width: 120 },
+                { field: 'sPhone', title: '电话号码', align: 'center', width: 120, formatter: function (value) { return "<span style='color:blue'>" + value + "<span>" } },
                 { field: 'sGoodName', title: '商品名字', align: 'center', width: 250 },
                 { field: 'sGoodNo', title: '商品编号', align: 'center', width: 120 },
                 { field: 'iGoodsCount', title: '商品数量', align: 'center', width: 60 },
                 {
                     field: 'dPrices', title: '实际支付金额', align: 'center', width: 120, formatter: function (value) {
-                        return value.toFixed(2);
+                        return "<span style='color:green'>" + value.toFixed(2) + "<span>"
                     }},
                 {
                     field: 'iState', title: '状态', align: 'center', width: 80, formatter: function (value) {
@@ -133,7 +166,21 @@
                         return value == true ? "<span style='color:red'>已取消<span>" : "--";
                     }
                 },
-                { field: 'dBookTime', title: '下单时间', align: 'center', width: 200 }
+                { field: 'dBookTime', title: '下单时间', align: 'center', width: 150 },
+                {
+                    field: 'bIsTip', title: '是否提醒发货', align: 'center', width: 80, formatter: function (value) {
+                        if (value) return "<span style='color:red'>是<span>";
+                        else return "否";
+                    }
+                },
+                {
+                    field: 'dTipTime', title: '最近提醒时间', align: 'center', width: 150, formatter: function (value, row, index) {
+                        if (row.bIsTip) {
+                            return value;
+                        }
+                        else return "--";
+                    }
+                }
             ]],
         });
     });

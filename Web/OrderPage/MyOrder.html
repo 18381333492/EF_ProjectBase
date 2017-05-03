@@ -95,16 +95,16 @@
         var defaults = {
             url: '/Mobile/Orders/List',//请求的路径
             page: 1,//页面
-            rows: 3,//每页的数量
+            rows: 8,//每页的数量
             state: true,//是否请求的标识
-            sPhone: '1838133492',//要查询的订单的号码,
+            sPhone: '',//要查询的订单的号码,
             iState:-1  //订单默认状态
         }
 
         //页面的初始化
         function initPage() {
             defaults.sPhone = client.localStorage.getStorage("search_phone");
-            defaults.sPhone = defaults.sPhone || "18381333492";
+            defaults.sPhone = defaults.sPhone || "";
             $('.search_phone').val(defaults.sPhone);
         }
 
@@ -179,7 +179,7 @@
     
         //订单的相关操作
         function operateOrder(element) {
-            //0-待支付 1-待发货 2-待收货 3-待评价 4-已完成
+            //0-待支付 1-待发货 2-待收货 3-待评价 
             var sOrderId = $(element).attr("data-id");
             var iState = parseInt($(element).attr("data-iState"));//订单状态
             switch (iState) {
@@ -217,7 +217,6 @@
                                     "sOrderId=" + sOrderId,
                                      function (r) {
                                          location.href = r.data;
-                                         dialog.closeLoading();
                                      });
         }
 
@@ -270,7 +269,7 @@
         return {
             initPage: initPage,
             loadData:loadData,
-            bingEvent: bingEvent
+            bingEvent: bingEvent,
         }
 
     });

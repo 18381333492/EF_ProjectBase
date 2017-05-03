@@ -120,5 +120,20 @@ namespace Sevices
                 return -2;
             }
         }
+
+
+        /// <summary>
+        /// 添加物流信息
+        /// </summary>
+        /// <param name="sOrderId"></param>
+        /// <param name="sWuliuCompany">物流公司</param>
+        /// <param name="sWuliuNumber">物流单号</param>
+        public int AddWuliu(Guid sOrderId, string sWuliuCompany, string sWuliuNumber)
+        {
+            var order = excute.db.Orders.Find(sOrderId);
+            order.sWuliuCompany = sWuliuCompany;
+            order.sWuliuNumber = sWuliuNumber;
+            return excute.SaveChange();
+        }
     }
 }

@@ -1092,6 +1092,8 @@
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
     <Content Include="Areas\Mobile\Views\Orders\Index.cshtml" />
     <Content Include="HandleProgram\PictureUpload.ashx" />
+    <Content Include="Html\Shoes\169.html" />
+    <Content Include="Html\Shoes\176.html" />
     <Content Include="Html\Shoes\149.html" />
     <Content Include="Html\Shoes\146.html" />
     <Content Include="Images\2016-10\20161028141847525.jpg" />
@@ -1127,6 +1129,7 @@
     <Content Include="Areas\Mobile\Views\Pay\SuccessTip.cshtml" />
     <Content Include="Areas\Admin\Content\easyui\themes\material\images\Thumbs.db" />
     <Content Include="Areas\Admin\Content\Login\images\Thumbs.db" />
+    <Content Include="Areas\Admin\Views\Orders\Wuliu.cshtml" />
     <None Include="Properties\PublishProfiles\怡佳之城.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="OrderPage\img\loading.gif" />

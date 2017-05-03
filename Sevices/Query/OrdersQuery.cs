@@ -29,7 +29,13 @@ namespace Sevices
             //条件查询
             if (iState > -1)
             {
-                sSql.AppendFormat(" AND iState={0}", iState);
+                if (iState >= 5)
+                {
+                    if (iState == 5) sSql.AppendFormat(" AND bIsDeleted=1");
+                    else sSql.AppendFormat(" AND bIsDeleted=0");       
+                }
+                else
+                    sSql.AppendFormat(" AND iState={0}", iState);
             }
             if (!string.IsNullOrEmpty(searchText))
             {

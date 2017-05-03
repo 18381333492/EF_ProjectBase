@@ -19,6 +19,16 @@ namespace Web.Areas.Admin.Controllers
             return View();
         }
 
+
+        /// <summary>
+        /// 订单物流信息视图
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Wuliu(Guid sOrderId)
+        {
+            return View(_server.Get(sOrderId));
+        }
+
         /// <summary>
         /// 订单详情
         /// </summary>
@@ -52,5 +62,23 @@ namespace Web.Areas.Admin.Controllers
             }
             else result.info = "操作失败!";
         }
+
+
+        /// <summary>
+        /// 添加物流信息
+        /// </summary>
+        /// <param name="sOrderId"></param>
+        /// <param name="sWuliuCompany">物流公司</param>
+        /// <param name="sWuliuNumber">物流单号</param>
+        public void AddWuliu(Guid sOrderId,string sWuliuCompany,string sWuliuNumber)
+        {
+            if(_server.AddWuliu(sOrderId, sWuliuCompany, sWuliuNumber)>0)
+            {
+                result.success = true;
+                result.info = "操作成功";
+            }
+            else result.info = "操作失败!";
+        }
+
     }
 }
